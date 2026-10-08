@@ -158,6 +158,77 @@ body{padding-bottom:98px}button,input{font:inherit}button{cursor:pointer}
   .fuel-arrow{font-size:19px;}
 }
 
+
+/* ===== V14.2.7 FINAL TODAY HERO ===== */
+:root{--gold:#d6a45b;--gold2:#f3c77f;--gold-soft:rgba(214,164,91,.16);--green:#7fd7a1}
+.lux-header{position:relative!important;padding:12px 3px 24px!important}
+.lux-header h1{margin-top:7px!important}
+/* no decorative header orb */
+.cinema-card{
+  min-height:410px!important;
+  width:100%!important;
+  margin:0!important;
+  position:relative!important;
+  overflow:hidden!important;
+  border-radius:30px!important;
+  border:1px solid rgba(214,164,91,.25)!important;
+  background:#0b0f12 url('./dumbbell-hero.png') center right/cover no-repeat!important;
+  box-shadow:0 28px 80px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.07)!important;
+  isolation:isolate!important;
+}
+.cinema-card:before{
+  content:""!important;position:absolute!important;inset:0!important;z-index:0!important;
+  background:
+    linear-gradient(90deg,rgba(7,11,14,.99) 0%,rgba(7,11,14,.96) 20%,rgba(7,11,14,.78) 38%,rgba(7,11,14,.38) 61%,rgba(7,11,14,.08) 100%),
+    linear-gradient(0deg,rgba(7,11,14,.76) 0%,rgba(7,11,14,.08) 42%,rgba(7,11,14,.15) 100%)!important;
+  pointer-events:none!important;
+}
+.cinema-card:after{content:""!important;position:absolute!important;inset:0!important;z-index:0!important;background:radial-gradient(circle at 86% 22%,rgba(243,199,127,.10),transparent 28%),radial-gradient(circle at 50% 100%,rgba(214,164,91,.08),transparent 40%)!important;pointer-events:none!important}
+.cinema-noise,.cinema-orb{display:none!important}
+.cinema-content{
+  position:relative!important;z-index:2!important;width:100%!important;max-width:none!important;
+  min-height:410px!important;box-sizing:border-box!important;padding:28px 34px 104px!important;
+  text-align:left!important;display:block!important;
+}
+.cinema-content .eyebrow{text-align:left!important}
+.cinema-content h2{width:min(57%,350px)!important;max-width:none!important;font-size:34px!important;line-height:1.03!important;letter-spacing:-1.6px!important;margin:14px 0 16px!important;color:#f5f4f1!important}
+.cinema-meta{width:min(60%,360px)!important;display:flex!important;flex-wrap:wrap!important;gap:8px 11px!important;align-items:center!important;font-size:12px!important;color:#d2d0cb!important}
+.cinema-focus{width:min(56%,340px)!important;color:#a7a49e!important;font-size:12px!important;line-height:1.55!important;margin:15px 0 0!important}
+.lux-cta{
+  position:absolute!important;z-index:4!important;left:50%!important;bottom:22px!important;transform:translateX(-50%)!important;
+  width:min(72%,390px)!important;max-width:390px!important;min-height:60px!important;height:60px!important;
+  margin:0!important;padding:13px 20px!important;border-radius:17px!important;
+  display:flex!important;align-items:center!important;justify-content:space-between!important;gap:18px!important;
+  background:linear-gradient(110deg,#f2c77f,#d9a457)!important;color:#17110a!important;
+  box-shadow:0 14px 34px rgba(214,164,91,.24)!important;
+}
+.lux-cta .cta-main{display:flex!important;align-items:center!important;justify-content:center!important;gap:13px!important;flex:1!important;font-size:15px!important;font-weight:900!important}
+.lux-cta .cta-dumbbell{width:23px!important;height:23px!important;flex:none!important}
+.lux-cta>b{font-size:25px!important;line-height:1!important;font-weight:500!important}
+.cinema-index{z-index:3!important;right:18px!important;bottom:14px!important;color:rgba(255,255,255,.16)!important}
+/* unified gold instead of green on primary Today elements */
+.cinema-meta .live-dot{color:#aaa59c!important}
+.cinema-meta .live-dot b{background:var(--gold)!important;box-shadow:0 0 10px rgba(214,164,91,.35)!important}
+.nav button.active .navicon{color:var(--gold2)!important;background:rgba(214,164,91,.10)!important;border-color:rgba(214,164,91,.20)!important;box-shadow:0 7px 20px rgba(214,164,91,.10),inset 0 1px 0 rgba(255,255,255,.06)!important}
+.nav button.active:after{background:var(--gold2)!important;box-shadow:0 0 14px rgba(214,164,91,.45)!important}
+@media(max-width:520px){
+ .cinema-card{min-height:410px!important}
+ .cinema-content{min-height:410px!important;padding:27px 27px 102px!important}
+ .cinema-content h2{width:57%!important;font-size:32px!important;line-height:1.04!important}
+ .cinema-meta{width:58%!important;font-size:11.5px!important}
+ .cinema-focus{width:57%!important;font-size:11.5px!important}
+ .lux-cta{width:74%!important;min-height:60px!important;height:60px!important;bottom:21px!important}
+}
+@media(max-width:390px){
+ .cinema-card{min-height:395px!important}
+ .cinema-content{min-height:395px!important;padding:25px 23px 96px!important}
+ .cinema-content h2{width:59%!important;font-size:29px!important}
+ .cinema-meta{width:61%!important;font-size:10.8px!important}
+ .cinema-focus{width:59%!important;font-size:10.8px!important}
+ .lux-cta{width:78%!important;height:56px!important;min-height:56px!important}
+ .lux-cta .cta-main{font-size:14px!important}
+}
+
 </style>
 </style>
 <style>
@@ -819,10 +890,10 @@ body{background:#07090b;color:#f5f3ee}
 
 <nav class="nav">
 <button class="active" onclick="show('general',this)"><span class="navicon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11.2 12 4l8 7.2V20a1 1 0 0 1-1 1h-5v-5h-4v5H5a1 1 0 0 1-1-1z"/></svg></span><b>Today</b></button>
-<button onclick="show('nutrition',this)"><span class="navicon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7.5"/><path d="M8 4v6M6 4v4M10 4v4M8 10v10M16 4v16M14 4h4"/></svg></span><b>Nutrition</b></button>
+<button onclick="show('nutrition',this)"><span class="navicon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 10.5c.6 4.2 3.2 7 7 7s6.4-2.8 7-7H5Z"/><path d="M6 10.5h12M8 7.5c1.4-1.8 2.7-2.6 4-2.6s2.6.8 4 2.6M4 10.5h16"/><path d="M8 19.5h8"/></svg></span><b>Nutrition</b></button>
 <button onclick="show('workout',this)"><span class="navicon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9v6m3-8v10m8-10v10m3-8v6M3 10v4m18-4v4M8 12h8"/></svg></span><b>Workout</b></button>
 <button onclick="show('sleep',this)"><span class="navicon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.2A8.7 8.7 0 0 1 9.8 4a8.7 8.7 0 1 0 10.2 10.2Z"/></svg></span><b>Sleep</b></button>
-<button onclick="show('settings',this)"><span class="navicon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/><circle cx="9" cy="6" r="2"/><circle cx="15" cy="12" r="2"/><circle cx="10" cy="18" r="2"/></svg></span><b>Settings</b></button>
+<button onclick="show('settings',this)"><span class="navicon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8.2a3.8 3.8 0 1 0 0 7.6 3.8 3.8 0 0 0 0-7.6Z"/><path d="M19.2 13.7a7.7 7.7 0 0 0 0-3.4l2-1.5-2-3.4-2.4 1a8 8 0 0 0-3-1.7L13.5 2h-3l-.4 2.7a8 8 0 0 0-3 1.7l-2.4-1-2 3.4 2 1.5a7.7 7.7 0 0 0 0 3.4l-2 1.5 2 3.4 2.4-1a8 8 0 0 0 3 1.7l.4 2.7h3l.4-2.7a8 8 0 0 0 3-1.7l2.4 1 2-3.4-2-1.5Z"/></svg></span><b>Settings</b></button>
 </nav>
 <div id="toast" class="toast"></div>
 
@@ -916,13 +987,15 @@ function renderNotificationUI(){const on=read("notificationsEnabled",false),rem=
 async function toggleNotifications(){if(!("Notification"in window)){toast("This browser does not support notifications");return}if(Notification.permission==="denied"){toast("Notifications are blocked by the browser");return}const p=await Notification.requestPermission();if(p==="granted"){store("notificationsEnabled",true);toast("Notifications enabled ✓")}else{store("notificationsEnabled",false);toast("Notifications were not granted")}renderNotificationUI()}
 function toggleReminderSetting(){store("remindersEnabled",!read("remindersEnabled",true));renderNotificationUI();toast(read("remindersEnabled",true)?"Reminders are enabled":"Reminders are disabled")}
 function notifyIfDue(){if(!read("notificationsEnabled",false)||!read("remindersEnabled",true)||!("Notification"in window)||Notification.permission!=="granted")return;const n=currentNext();if(!n.time)return;const key=todayKey()+"-"+n.time;if(Math.abs(nowMin()-tmin(n.time))>1)return;if(read("lastNotification","")===key)return;new Notification("My Routine",{body:`${n.time} — ${n.label}`});store("lastNotification",key)}
-document.body.dataset.screen="general";document.getElementById("general")?.classList.add("screen-lux");renderGeneral();renderMeals();renderWorkout();renderSleep();setInterval(()=>{renderGeneral();notifyIfDue()},60000);
+document.body.dataset.screen="general";document.getElementById("general")?.classList.add("screen-lux");
+renderGeneral();renderMeals();renderWorkout();renderSleep();
+setInterval(()=>{renderGeneral();notifyIfDue()},60000);
 </script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', async () => {
     try {
-      const registration = await navigator.serviceWorker.register('./sw.js?v=14.2.5', {updateViaCache:'none'});
+      const registration = await navigator.serviceWorker.register('./sw.js?v=14.2.7', {updateViaCache:'none'});
 
       const showUpdate = () => {
         if (document.getElementById('updateBanner')) return;
