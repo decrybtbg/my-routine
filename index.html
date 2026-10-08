@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="bg">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#111318">
+<title>My Routine</title>
+<style>
+:root{--bg:#0f1115;--card:#181b21;--card2:#20242c;--text:#f5f7fa;--muted:#9aa2ad;--accent:#73e6a6;--line:#2b3039;--danger:#ff7777}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#0d0f13,#14171c);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.app{max-width:680px;margin:auto;padding:20px 16px 90px}
+header{padding:12px 4px 18px}h1{font-size:30px;margin:0 0 5px}h2{font-size:20px;margin:0 0 12px}.sub{color:var(--muted)}
+.card{background:rgba(24,27,33,.94);border:1px solid var(--line);border-radius:20px;padding:16px;margin:12px 0;box-shadow:0 8px 30px #0003}
+.today{display:flex;justify-content:space-between;align-items:center}.badge{background:#23352b;color:var(--accent);padding:7px 10px;border-radius:999px;font-weight:700;font-size:13px}
+.progress{height:8px;background:#292e37;border-radius:10px;overflow:hidden;margin-top:12px}.bar{height:100%;width:0;background:var(--accent);transition:.25s}
+.task{display:flex;gap:12px;align-items:flex-start;padding:13px 0;border-bottom:1px solid var(--line)}.task:last-child{border-bottom:0}
+input[type=checkbox]{appearance:none;width:23px;height:23px;border:2px solid #606874;border-radius:7px;flex:none;margin-top:1px}
+input[type=checkbox]:checked{background:var(--accent);border-color:var(--accent);position:relative}input[type=checkbox]:checked:after{content:"✓";color:#102016;position:absolute;font-weight:900;left:4px;top:-1px}
+.task.done .txt{text-decoration:line-through;color:#7f8792}.time{font-weight:800}.note{color:var(--muted);font-size:13px;margin-top:3px}
+.tabs{position:fixed;bottom:0;left:0;right:0;background:#111318ee;border-top:1px solid var(--line);backdrop-filter:blur(15px);display:flex;justify-content:center;z-index:5}
+.tabs button{background:none;border:0;color:var(--muted);padding:13px 18px;font-size:12px}.tabs button.active{color:var(--accent);font-weight:800}
+.panel{display:none}.panel.active{display:block}
+.exercise{padding:12px 0;border-bottom:1px solid var(--line)}.exercise b{display:block}.sets{color:var(--accent);font-weight:700;font-size:13px}
+.row{display:flex;gap:8px;align-items:center}.row input{width:100%;background:var(--card2);border:1px solid var(--line);color:var(--text);padding:10px;border-radius:10px}
+button.primary{background:var(--accent);color:#102016;border:0;border-radius:12px;padding:11px 15px;font-weight:800}
+.small{font-size:12px;color:var(--muted)}.daybtn{padding:9px 11px;border:1px solid var(--line);background:var(--card2);color:var(--text);border-radius:10px}.daybtn.active{border-color:var(--accent);color:var(--accent)}
+</style>
+<link rel="manifest" href="manifest.json"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="apple-touch-icon" href="icon-192.png"></head>
+<body>
+<div class="app">
+<header><h1>My Routine</h1><div class="sub">Твоят режим • сън • храна • тренировки</div></header>
+
+<section id="home" class="panel active">
+<div class="card">
+<div class="today"><div><div class="small">ДНЕС</div><strong id="dayName"></strong></div><span class="badge" id="workoutBadge">—</span></div>
+<div class="progress"><div class="bar" id="bar"></div></div>
+<div class="small" id="progressText" style="margin-top:7px">0 / 0 изпълнени</div>
+</div>
+<div class="card"><h2>Днешният план</h2><div id="tasks"></div></div>
+<div class="card"><h2>Хранене</h2><div class="small">Цел: ~2700 kcal • 145–165 г протеин</div><div id="meals"></div></div>
+</section>
+
+<section id="workout" class="panel">
+<div class="card"><h2>🏋️ Тренировки</h2><div class="small">4 дни седмично • 50–60 мин • 1–2 повторения в резерв</div>
+<div id="dayButtons" style="display:flex;gap:7px;flex-wrap:wrap;margin-top:12px"></div>
+<div id="exerciseList"></div></div>
+</section>
+
+<section id="tracker" class="panel">
+<div class="card"><h2>📈 Проследяване</h2><div class="small">Мери се сутрин след тоалетна, преди закуска.</div>
+<div class="row" style="margin-top:12px"><input id="weight" type="number" step="0.1" placeholder="Тегло, кг"><button class="primary" onclick="saveWeight()">Запази</button></div>
+<div id="weights" style="margin-top:14px"></div>
+</div>
+<div class="card"><h2>😴 Сън</h2><div class="small">Седмица 1: цел 01:30 • Седмица 2: 01:00 • След това: 00:30</div></div>
+</section>
+
+<section id="week" class="panel">
+<div class="card"><h2>📅 Седмица</h2>
+<div class="small">Пон/Вт — тренировка • Ср — почивка • Чет — тренировка • Пет — почивка • Съб — тренировка • Нед — почивка</div>
+</div>
+<div class="card"><h2>Основни правила</h2>
+<div class="small">• 2.5–3 л вода<br>• 7+ часа сън като крайна цел<br>• Не пропускай тренировка само защото денят не е идеален<br>• Ако си много изморен: съкратена 30-мин тренировка<br>• Алкохолът постепенно да стане рядкост, не вечерна рутина</div></div>
+</section>
+</div>
+<nav class="tabs">
+<button class="active" onclick="show('home',this)">Днес</button>
+<button onclick="show('workout',this)">Тренировка</button>
+<button onclick="show('tracker',this)">Прогрес</button>
+<button onclick="show('week',this)">Седмица</button>
+</nav>
+<script>
+const workouts={
+"Понеделник":["Bench Press / Dumbbell Bench Press|4 × 6–10","Lat Pulldown / Pull-ups|4 × 8–12","Incline Dumbbell Press|3 × 8–12","Seated Cable Row / Dumbbell Row|3 × 8–12","Lateral Raises|3 × 12–15","Biceps Curl|3 × 10–12","Triceps Pushdown|3 × 10–12"],
+"Вторник":["Squat / Leg Press|4 × 6–10","Romanian Deadlift|3 × 8–10","Bulgarian Split Squat|3 × 8–12 / крак","Leg Curl|3 × 10–15","Calf Raises|4 × 10–15","Abs|3 × 10–15"],
+"Четвъртък":["Overhead Press|3 × 6–10","Pull-ups / Lat Pulldown|4 × 8–12","Dumbbell Bench Press|3 × 8–12","Chest-Supported Row|3 × 8–12","Cable/Dumbbell Fly|3 × 10–15","Lateral Raises|3 × 12–15","Biceps Curl + Triceps Extension|3 × 10–15"],
+"Събота":["Leg Press / Squat|4 × 8–12","Romanian Deadlift|3 × 8–12","Walking Lunges|3 × 10 / крак","Leg Extension|3 × 10–15","Leg Curl|3 × 10–15","Calf Raises|4 × 12–15","Abs|3 серии"]
+};
+const meals=[
+["08:20","Закуска","3 яйца + 2 филии пълнозърнест хляб + 200 г кисело мляко + банан"],
+["12:30","Обяд","180 г пиле/месо + 250–300 г сварен ориз или 300–350 г картофи + зеленчуци"],
+["16:30","Междинно","200 г кисело мляко + банан + 20–25 г ядки"],
+["18:30","Преди тренировка","Банан + 2–3 оризовки + 20–25 г протеин"],
+["20:30","Вечеря","180–200 г месо/риба + ориз или картофи + салата"],
+["22:30","При глад","150–200 г извара или кисело мляко"]
+];
+const dayNames=["Неделя","Понеделник","Вторник","Сряда","Четвъртък","Петък","Събота"];
+const today=dayNames[new Date().getDay()];
+document.getElementById("dayName").textContent=today;
+document.getElementById("workoutBadge").textContent=workouts[today]?"🏋️ "+today:"😌 Почивка";
+function key(){return "tasks-"+new Date().toISOString().slice(0,10)}
+function renderTasks(){
+ const base=[
+ ["08:00","Ставане + вода"],
+ ["08:20","Закуска"],
+ ["09:00","Работа"],
+ ["12:30","Обяд"],
+ ["18:00","Край на работа"],
+ ["18:30","Хранене / подготовка"],
+ ["19:00",workouts[today]?"Тренировка":"Разходка / свободно време"],
+ ["20:30","Вечеря"],
+ ["21:00","Свободно време"],
+ ["23:30","Успокояване преди сън"],
+ ["00:30","Сън"]
+ ];
+ const done=JSON.parse(localStorage.getItem(key())||"{}");
+ document.getElementById("tasks").innerHTML=base.map((x,i)=>`<label class="task ${done[i]?'done':''}"><input type="checkbox" ${done[i]?'checked':''} onchange="toggle(${i},this.checked)"><div class="txt"><div class="time">${x[0]}</div><div>${x[1]}</div></div></label>`).join("");
+ updateProgress(done,base.length);
+}
+function toggle(i,v){const d=JSON.parse(localStorage.getItem(key())||"{}");d[i]=v;localStorage.setItem(key(),JSON.stringify(d));renderTasks()}
+function updateProgress(d,n){const c=Object.values(d).filter(Boolean).length;document.getElementById("bar").style.width=(c/n*100)+"%";document.getElementById("progressText").textContent=`${c} / ${n} изпълнени`}
+document.getElementById("meals").innerHTML=meals.map(m=>`<div class="task"><div style="min-width:55px"><b>${m[0]}</b></div><div><b>${m[1]}</b><div class="note">${m[2]}</div></div></div>`).join("");
+let selected=today; if(!workouts[selected]) selected="Понеделник";
+function renderWorkout(){document.getElementById("dayButtons").innerHTML=Object.keys(workouts).map(d=>`<button class="daybtn ${d===selected?'active':''}" onclick="selected='${d}';renderWorkout()">${d.slice(0,2)}</button>`).join("");document.getElementById("exerciseList").innerHTML=workouts[selected].map((e,i)=>{let [a,b]=e.split("|");return `<div class="exercise"><b>${i+1}. ${a}</b><span class="sets">${b}</span></div>`}).join("")}
+function saveWeight(){let v=document.getElementById("weight").value;if(!v)return;let a=JSON.parse(localStorage.getItem("weights")||"[]");a.push({date:new Date().toLocaleDateString("bg-BG"),w:Number(v)});localStorage.setItem("weights",JSON.stringify(a));document.getElementById("weight").value="";renderWeights()}
+function renderWeights(){let a=JSON.parse(localStorage.getItem("weights")||"[]");document.getElementById("weights").innerHTML=a.slice(-10).reverse().map(x=>`<div class="task"><b>${x.date}</b><span>${x.w.toFixed(1)} кг</span></div>`).join("")||'<div class="small">Все още няма записи.</div>'}
+function show(id,btn){document.querySelectorAll(".panel").forEach(x=>x.classList.remove("active"));document.getElementById(id).classList.add("active");document.querySelectorAll(".tabs button").forEach(x=>x.classList.remove("active"));btn.classList.add("active")}
+renderTasks();renderWorkout();renderWeights();
+</script>
+<script>if ("serviceWorker" in navigator) navigator.serviceWorker.register("./sw.js").catch(()=>{});</script></body>
+</html>
