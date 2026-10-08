@@ -146,62 +146,102 @@ body{padding-bottom:98px}button,input{font:inherit}button{cursor:pointer}
 .v133-section-title{font-size:16px;font-weight:800;margin:2px 0 0}
 @media(min-width:700px){.general-v133{grid-template-columns:1.25fr .75fr}.v133-hero{grid-column:1/-1}}
 </style>
+<style id="luxury-system">
+:root{--bg:#07090b;--bg2:#0b0e11;--panel:#101419;--panel2:#14191f;--line:rgba(255,255,255,.075);--text:#f5f3ee;--muted:#858d96;--gold:#d7a55e;--gold2:#f0c67d;--green:#72d7a0;--blue:#65b9ee;--purple:#9c82e9;--orange:#e99a55}
+html{background:var(--bg);scroll-behavior:smooth}body{background:radial-gradient(circle at 50% -15%,rgba(215,165,94,.10),transparent 34%),linear-gradient(180deg,#07090b,#090c0f 55%,#06080a);overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 0 45%,rgba(255,255,255,.012) 50%,transparent 55%);mix-blend-mode:screen;z-index:-1}
+#ambientCanvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:-3;opacity:.72}.ambient-vignette{position:fixed;inset:0;pointer-events:none;z-index:-2;background:radial-gradient(circle at 50% 20%,transparent 0,rgba(0,0,0,.14) 55%,rgba(0,0,0,.52) 100%)}
+.app{width:min(100%,760px);padding:calc(env(safe-area-inset-top) + 18px) 18px 108px}.screen.active{animation:screenIn .45s cubic-bezier(.22,.8,.24,1)}
+.lux-today{position:relative}.lux-header{display:flex;justify-content:space-between;align-items:flex-start;padding:14px 2px 24px}.brandline{font-size:10px;letter-spacing:2.4px;color:#737b84;font-weight:900;display:flex;align-items:center;gap:7px}.brand-dot{width:5px;height:5px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px rgba(215,165,94,.65)}.lux-header h1{margin:9px 0 5px;font-size:34px;line-height:1;letter-spacing:-1.7px;font-weight:800}.lux-date{margin:0;color:#747c85;font-size:13px}.lux-icon{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.025);color:var(--gold2);font-size:17px;box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 10px 30px rgba(0,0,0,.2)}
+.cinema-card{min-height:330px;position:relative;overflow:hidden;border:1px solid rgba(215,165,94,.22);border-radius:30px;background:linear-gradient(145deg,#11171b 0%,#0b0f12 48%,#15100b 100%);box-shadow:0 28px 80px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.07);isolation:isolate}.cinema-card:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 82% 28%,rgba(215,165,94,.26),transparent 28%),radial-gradient(circle at 75% 65%,rgba(255,255,255,.06),transparent 20%),linear-gradient(125deg,transparent 30%,rgba(255,255,255,.025) 50%,transparent 70%);z-index:-1;animation:cinemaPulse 8s ease-in-out infinite}.cinema-card:after{content:"";position:absolute;width:240px;height:240px;right:-100px;bottom:-120px;border-radius:50%;background:rgba(215,165,94,.09);filter:blur(30px);z-index:-1}.cinema-noise{position:absolute;inset:0;opacity:.08;background-image:radial-gradient(rgba(255,255,255,.8) .6px,transparent .6px);background-size:5px 5px;mix-blend-mode:overlay}.cinema-orb{position:absolute;right:-30px;top:-35px;width:210px;height:210px;border-radius:50%;background:radial-gradient(circle at 40% 40%,rgba(246,194,113,.22),rgba(215,165,94,.03) 38%,transparent 68%);filter:blur(2px);animation:orbFloat 7s ease-in-out infinite}.cinema-content{position:relative;padding:28px 24px 25px;max-width:88%;z-index:2}.eyebrow{font-size:10px;letter-spacing:1.7px;font-weight:900;color:#6f7880}.eyebrow.gold{color:var(--gold2)}.cinema-content h2{font-size:32px;line-height:1.02;letter-spacing:-1.5px;margin:14px 0 12px;max-width:340px}.cinema-meta{display:flex;gap:9px;align-items:center;color:#c1c5c8;font-size:12px}.cinema-meta i{width:3px;height:3px;border-radius:50%;background:#555d64}.cinema-focus{color:#7f8991;font-size:12px;margin:16px 0 24px}.lux-cta{border:0;background:linear-gradient(100deg,#f0c67d,#d69e52);color:#16100a;border-radius:15px;padding:14px 15px 14px 18px;display:flex;align-items:center;justify-content:space-between;gap:30px;font-size:14px;font-weight:900;min-width:205px;box-shadow:0 12px 30px rgba(215,165,94,.22);transition:transform .22s,box-shadow .22s}.lux-cta b{font-size:18px}.lux-cta:active{transform:scale(.97)}.cinema-index{position:absolute;right:22px;bottom:18px;color:rgba(255,255,255,.14);font-size:12px;letter-spacing:2px}
+.lux-section{margin-top:26px}.lux-section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:11px}.lux-section-head>div span{display:block;color:#626b73;font-size:9px;letter-spacing:1.7px;font-weight:900;margin-bottom:5px}.lux-section-head h3{margin:0;font-size:18px;letter-spacing:-.5px}.lux-section-head button{border:0;background:transparent;color:#a9b0b7;font-size:11px;padding:4px 0}.fuel-card{min-height:112px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(110deg,#0f1418,#12161a);display:flex;align-items:center;padding:12px;gap:14px;box-shadow:0 18px 45px rgba(0,0,0,.18);transition:transform .25s,border-color .25s}.fuel-card:active{transform:scale(.985)}.fuel-art{width:88px;height:86px;border-radius:17px;display:flex;flex-direction:column;justify-content:center;padding-left:13px;background:radial-gradient(circle at 80% 25%,rgba(114,215,160,.22),transparent 28%),linear-gradient(145deg,#17251f,#0c1210);border:1px solid rgba(114,215,160,.13)}.fuel-art span{font-size:29px;font-weight:850;color:#d8e8df}.fuel-art small{font-size:8px;letter-spacing:1.5px;color:#6e8b7c}.fuel-copy{display:flex;flex-direction:column;gap:4px;flex:1}.fuel-copy strong{font-size:21px;letter-spacing:-.5px}.fuel-copy span{font-size:12px;color:#c3c9ce}.fuel-copy small{font-size:10px;color:#6d767e}.fuel-arrow{font-size:20px;color:#687179;padding:8px}
+.coach-lux{border:1px solid rgba(114,215,160,.14);border-radius:24px;padding:17px;background:linear-gradient(145deg,rgba(17,29,23,.96),rgba(9,13,12,.96));display:flex;gap:18px;align-items:center;box-shadow:0 20px 55px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.04)}.coach-ring-wrap{flex:0 0 auto}.coach-ring{--score:72%;width:108px;height:108px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--green) var(--score),rgba(255,255,255,.06) 0);box-shadow:0 0 35px rgba(114,215,160,.12);position:relative}.coach-ring:before{content:"";position:absolute;inset:7px;border-radius:50%;background:#0b100e;border:1px solid rgba(255,255,255,.04)}.coach-ring>div{position:relative;text-align:center;z-index:1}.coach-ring b{display:block;font-size:28px;letter-spacing:-1px}.coach-ring small{display:block;font-size:8px;letter-spacing:1.4px;color:var(--green);font-weight:900;margin-top:2px}.coach-lux-copy{flex:1}.coach-line{display:flex;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.06);padding:7px 0;font-size:11px}.coach-line span{color:#7f8982}.coach-line b{color:#83dca9}.coach-lux-copy p{margin:10px 0 0;color:#9ca49f;font-size:11px;line-height:1.5}.micro-status{font-size:9px;color:var(--green);letter-spacing:1.2px;font-weight:900}
+.lux-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.lux-metric{position:relative;min-height:122px;border:1px solid var(--line);border-radius:19px;background:linear-gradient(150deg,#101419,#0c1013);padding:13px;overflow:hidden}.lux-metric:after{content:"";position:absolute;right:-25px;top:-25px;width:75px;height:75px;border-radius:50%;filter:blur(18px);opacity:.12}.lux-metric.protein:after{background:var(--orange)}.lux-metric.water:after{background:var(--blue)}.lux-metric.sleep:after{background:var(--purple)}.metric-glyph{display:grid;place-items:center;width:25px;height:25px;border-radius:8px;background:rgba(255,255,255,.05);font-size:10px;font-weight:900;margin-bottom:16px}.protein .metric-glyph{color:var(--orange)}.water .metric-glyph{color:var(--blue)}.sleep .metric-glyph{color:var(--purple)}.lux-metric small{display:block;font-size:8px;letter-spacing:1.1px;color:#69727a}.lux-metric strong{display:block;font-size:14px;margin-top:4px;letter-spacing:-.3px}.lux-metric i{display:block;height:4px;border-radius:99px;background:#242a30;margin-top:12px;overflow:hidden}.lux-metric em{display:block;height:100%;width:0;border-radius:inherit;transition:width 1s cubic-bezier(.22,.8,.24,1)}.protein em{background:var(--orange)}.water em{background:var(--blue)}.sleep em{background:var(--purple)}
+.week-lux{border:1px solid var(--line);border-radius:23px;padding:16px;background:#0e1216}.week-bars{display:grid;grid-template-columns:repeat(4,1fr);gap:11px}.week-bars>div b{font-size:14px}.week-bars>div span{display:block;font-size:9px;color:#6f7880;margin:4px 0 7px}.week-bars i{display:block;height:3px;background:#242a2f;border-radius:99px;overflow:hidden}.week-bars em{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,#8fcaa7,#d4a260);transition:width .8s}.week-score{border-top:1px solid var(--line);margin-top:16px;padding-top:13px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:9px}.week-score strong{font-size:25px;letter-spacing:-1px}.week-score span{font-size:10px;color:#747d84}.week-score i{grid-column:1/-1;height:4px;background:#242a2f;border-radius:99px;overflow:hidden}.week-score em{display:block;height:100%;width:0;background:var(--gold);transition:width 1s}
+.progress-lux{border:1px solid var(--line);border-radius:23px;padding:17px;background:linear-gradient(145deg,#11161a,#0c1013);overflow:hidden}.progress-lux small{display:block;color:#6e767d;font-size:8px;letter-spacing:1.5px}.progress-lux strong{display:block;font-size:30px;letter-spacing:-1.4px;margin-top:4px}.progress-lux span{font-size:10px;color:var(--green)}.progress-lux svg{display:block;width:100%;height:88px;margin-top:8px;color:var(--gold)}.spark-area{fill:url(#sparkFill)}.progress-lux polyline{fill:none;stroke:var(--gold);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 5px rgba(215,165,94,.35))}.closing-note{margin:30px 2px 0;padding:24px 0 5px;border-top:1px solid var(--line)}.closing-note span{font-size:9px;letter-spacing:2px;color:#5e676f}.closing-note strong{display:block;margin-top:9px;font-size:23px;line-height:1.05;letter-spacing:-.8px}
+.nav{background:rgba(7,9,11,.86);border-top:1px solid rgba(255,255,255,.06);box-shadow:0 -25px 70px rgba(0,0,0,.42);backdrop-filter:blur(26px) saturate(140%)}.nav button{color:#5d656d}.nav button .navicon{background:transparent;border-color:transparent}.nav button.active .navicon{color:var(--gold2);background:rgba(215,165,94,.08);border-color:rgba(215,165,94,.14);box-shadow:0 0 25px rgba(215,165,94,.08)}.nav button.active{color:#eee9df}.nav button.active:after{background:var(--gold);box-shadow:0 0 15px rgba(215,165,94,.45)}
+.card,.metric,.hero,.workoutHero{background:linear-gradient(145deg,#101419,#0d1115);border-color:var(--line);box-shadow:0 18px 50px rgba(0,0,0,.18)}.hero{border-radius:24px}.cta{background:linear-gradient(100deg,#f0c67d,#d69e52);color:#17110a;box-shadow:0 12px 28px rgba(215,165,94,.18)}.pill{background:rgba(215,165,94,.09);color:var(--gold2);border:1px solid rgba(215,165,94,.14)}.progress{background:#242a30}.fill{background:var(--gold)}.sectionTitle{margin-top:24px}.sectionTitle span{color:#626b73}
+.reveal{opacity:0;transform:translateY(14px);animation:reveal .7s cubic-bezier(.22,.8,.24,1) forwards;animation-delay:var(--delay,0s)}@keyframes reveal{to{opacity:1;transform:none}}@keyframes screenIn{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}@keyframes cinemaPulse{0%,100%{transform:scale(1);opacity:.85}50%{transform:scale(1.05);opacity:1}}@keyframes orbFloat{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(-15px,12px,0)}}
+@media(max-width:520px){.app{padding-left:15px;padding-right:15px}.lux-header h1{font-size:31px}.cinema-card{min-height:315px}.cinema-content{padding:25px 20px}.cinema-content h2{font-size:29px}.coach-lux{gap:13px}.coach-ring{width:94px;height:94px}.coach-ring b{font-size:25px}.lux-metric{padding:11px;min-height:115px}.lux-metric strong{font-size:12px}.week-bars{gap:7px}.week-bars>div b{font-size:12px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+</style>
 </head>
 <body>
+<canvas id="ambientCanvas" aria-hidden="true"></canvas>
+<div class="ambient-vignette"></div>
 <div class="app">
 <section id="general" class="screen active">
-<div class="today-shell">
-  <div class="today-topbar">
+<div class="lux-today">
+  <header class="lux-header reveal">
     <div>
-      <div class="today-kicker">MY ROUTINE</div>
-      <h1 id="greeting">Добро утро</h1>
-      <div class="today-date" id="v133Date">Thursday · 8 October</div>
+      <div class="brandline"><span class="brand-dot"></span> MY ROUTINE</div>
+      <h1 id="greeting">Добро утро.</h1>
+      <p id="v133Date" class="lux-date">Thursday · 8 October</p>
     </div>
-    <div class="today-orb"><span>✦</span></div>
-  </div>
+    <button class="lux-icon" aria-label="Today"><span>✦</span></button>
+  </header>
 
-  <div class="today-hero">
-    <div class="today-hero-glow"></div>
-    <div class="today-hero-head"><div><span class="today-label">TODAY</span><span class="today-status">PERSONAL PLAN</span></div></div>
-    <div class="today-hero-title">Днешният ти план</div>
-    <div class="today-hero-sub">Фокус върху тренировка, хранене и възстановяване.</div>
-    <div class="today-focus-card">
-      <div class="today-focus-icon">⌁</div>
-      <div class="today-focus-copy"><span>ТРЕНИРОВКА</span><strong id="v133WorkoutName">Гърди, гръб, рамо и ръце</strong><small id="v133WorkoutMeta">19:00 · ~60 min</small></div>
-      <button class="today-arrow" onclick="show('workout',document.querySelector('.nav button:nth-child(3)'))">›</button>
+  <section class="cinema-card reveal" style="--delay:.04s">
+    <div class="cinema-noise"></div>
+    <div class="cinema-orb"></div>
+    <div class="cinema-content">
+      <div class="eyebrow gold">TODAY · TRAINING</div>
+      <h2 id="v133WorkoutName">Гърди, гръб, рамо и ръце</h2>
+      <div class="cinema-meta"><span id="v133WorkoutMeta">19:00 · ~60 min</span><i></i><span>1–2 RIR</span></div>
+      <p class="cinema-focus" id="v133WorkoutFocus">Гърди · гръб · рамо · бицепс · трицепс</p>
+      <button class="lux-cta" onclick="show('workout',document.querySelector('.nav button:nth-child(3)'))"><span>Започни тренировка</span><b>↗</b></button>
     </div>
-    <div class="today-nutrition-card">
-      <div class="today-nutrition-icon">◌</div>
-      <div class="today-focus-copy"><span>ХРАНЕНЕ</span><strong>6 хранения · 2700 kcal</strong><small>145–165 g protein · разпределено през деня</small></div>
-      <button class="today-arrow" onclick="show('nutrition',document.querySelector('.nav button:nth-child(2)'))">›</button>
+    <div class="cinema-index">01</div>
+  </section>
+
+  <section class="lux-section reveal" style="--delay:.09s">
+    <div class="lux-section-head"><div><span>FUEL</span><h3>Днешното хранене</h3></div><button onclick="show('nutrition',document.querySelector('.nav button:nth-child(2)'))">Виж →</button></div>
+    <div class="fuel-card">
+      <div class="fuel-art"><span>06</span><small>MEALS</small></div>
+      <div class="fuel-copy"><strong>2700 kcal</strong><span>145–165 g протеин</span><small>Разпределено през целия ден</small></div>
+      <div class="fuel-arrow">→</div>
     </div>
-    <button class="today-main-cta" onclick="show('workout',document.querySelector('.nav button:nth-child(3)'))"><span>Започни тренировката</span><b>→</b></button>
-  </div>
+  </section>
 
-  <div class="today-section-head"><div><span>YOUR STATUS</span><strong>Как си днес?</strong></div><button onclick="show('workout',document.querySelector('.nav button:nth-child(3)'))">Coach →</button></div>
-  <div class="today-coach-card">
-    <div class="today-coach-score"><div class="today-score-ring" id="todayScoreRing"><b id="v133CoachScore">—</b></div><div><span class="today-label">ADAPTIVE COACH</span><strong id="v133CoachState">READY</strong><p id="v133Insight">Analyzing your recent training and recovery…</p></div></div>
-    <div class="today-coach-stats"><div><span>Recovery</span><b id="v133Recovery">Good</b></div><div><span>Consistency</span><b id="v133Consistency">—%</b></div><div><span>Sessions</span><b id="v133WeekTraining">0 / 4</b></div></div>
-  </div>
+  <section class="lux-section reveal" style="--delay:.14s">
+    <div class="lux-section-head"><div><span>COACH</span><h3>Как си днес?</h3></div><span class="micro-status" id="v133Recovery">GOOD</span></div>
+    <div class="coach-lux">
+      <div class="coach-ring-wrap"><div class="coach-ring" id="todayScoreRing"><div><b id="v133CoachScore">—</b><small id="v133CoachState">READY</small></div></div></div>
+      <div class="coach-lux-copy"><div class="coach-line"><span>Recovery</span><b id="v133Recovery2">Good</b></div><div class="coach-line"><span>Consistency</span><b id="v133Consistency">—%</b></div><p id="v133Insight">Analyzing your recent training and recovery…</p></div>
+    </div>
+  </section>
 
-  <div class="today-section-head"><div><span>TODAY</span><strong>Днешни показатели</strong></div></div>
-  <div class="today-metrics">
-    <div class="today-metric-card protein"><div class="metric-icon">P</div><div class="metric-copy"><span>Protein</span><strong id="v133Protein">0 / 150 g</strong></div><div class="metric-ring"><i id="v133ProteinBar"></i></div></div>
-    <div class="today-metric-card water"><div class="metric-icon">W</div><div class="metric-copy"><span>Water</span><strong id="v133Water">0.0 / 2.7 L</strong></div><div class="metric-ring"><i id="v133WaterBar"></i></div></div>
-    <div class="today-metric-card sleep"><div class="metric-icon">☾</div><div class="metric-copy"><span>Sleep</span><strong id="v133Sleep">Not logged</strong></div><div class="metric-ring"><i id="v133SleepBar"></i></div></div>
-  </div>
+  <section class="lux-section reveal" style="--delay:.19s">
+    <div class="lux-section-head"><div><span>TODAY</span><h3>Показатели</h3></div></div>
+    <div class="lux-metrics">
+      <div class="lux-metric protein"><span class="metric-glyph">P</span><small>PROTEIN</small><strong id="v133Protein">0 / 150 g</strong><i><em id="v133ProteinBar"></em></i></div>
+      <div class="lux-metric water"><span class="metric-glyph">W</span><small>WATER</small><strong id="v133Water">0.0 / 2.7 L</strong><i><em id="v133WaterBar"></em></i></div>
+      <div class="lux-metric sleep"><span class="metric-glyph">☾</span><small>SLEEP</small><strong id="v133Sleep">Not logged</strong><i><em id="v133SleepBar"></em></i></div>
+    </div>
+  </section>
 
-  <div class="today-section-head"><div><span>THIS WEEK</span><strong>Твоят ритъм</strong></div><button onclick="show('progress',document.querySelector('.nav button:nth-child(5)'))">Details →</button></div>
-  <div class="today-week-card">
-    <div class="today-week-grid"><div><b id="v133WeekTraining">0 / 4</b><span>Training</span></div><div><b id="v133WeekNutrition">0 / 7</b><span>Nutrition</span></div><div><b id="v133WeekWater">0 / 7</b><span>Water</span></div><div><b id="v133WeekSleep">0 / 7</b><span>Sleep</span></div></div>
-    <div class="today-week-progress"><div><span>Weekly consistency</span><b id="v133WeekPercent">0%</b></div><i><em id="v133WeekBar"></em></i></div>
-  </div>
+  <section class="lux-section reveal" style="--delay:.24s">
+    <div class="lux-section-head"><div><span>THIS WEEK</span><h3>Твоят ритъм</h3></div><button onclick="show('progress')">Details →</button></div>
+    <div class="week-lux">
+      <div class="week-bars">
+        <div><b id="v133WeekTraining">0 / 4</b><span>Training</span><i><em style="width:0%"></em></i></div>
+        <div><b id="v133WeekNutrition">0 / 7</b><span>Nutrition</span><i><em style="width:0%"></em></i></div>
+        <div><b id="v133WeekWater">0 / 7</b><span>Water</span><i><em style="width:0%"></em></i></div>
+        <div><b id="v133WeekSleep">0 / 7</b><span>Sleep</span><i><em style="width:0%"></em></i></div>
+      </div>
+      <div class="week-score"><strong id="v133WeekPercent">0%</strong><span>consistency</span><i><em id="v133WeekBar"></em></i></div>
+    </div>
+  </section>
 
-  <div class="today-section-head"><div><span>PROGRESS</span><strong>Текуща форма</strong></div><button onclick="show('progress',document.querySelector('.nav button:nth-child(5)'))">View all →</button></div>
-  <div class="today-progress-card">
-    <div><span>WEIGHT</span><strong id="v133Weight">— kg</strong><small id="v133WeightChange">No change recorded</small></div>
-    <svg viewBox="0 0 300 64" preserveAspectRatio="none"><polyline id="v133Spark" points="0,48 40,43 80,45 120,35 160,38 200,27 240,31 300,18"></polyline></svg>
-  </div>
+  <section class="lux-section reveal" style="--delay:.29s">
+    <div class="lux-section-head"><div><span>PROGRESS</span><h3>Текуща форма</h3></div><button onclick="show('progress')">View all →</button></div>
+    <div class="progress-lux">
+      <div><small>WEIGHT</small><strong id="v133Weight">— kg</strong><span id="v133WeightChange">No change recorded</span></div>
+      <svg viewBox="0 0 360 88" preserveAspectRatio="none"><defs><linearGradient id="sparkFill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#d6a45b" stop-opacity=".26"/><stop offset="1" stop-color="#d6a45b" stop-opacity="0"/></linearGradient></defs><path class="spark-area" d="M0,70 C40,58 55,64 90,50 S145,59 180,38 S240,49 270,30 S325,38 360,18 L360,88 L0,88 Z"/><polyline id="v133Spark" points="0,70 40,58 90,50 145,59 180,38 240,49 270,30 325,38 360,18"/></svg>
+    </div>
+  </section>
+
+  <section class="closing-note reveal" style="--delay:.34s"><span>DISCIPLINE</span><strong>Small actions.<br>Compounded results.</strong></section>
 </div>
 </section>
 
@@ -237,7 +277,7 @@ body{padding-bottom:98px}button,input{font:inherit}button{cursor:pointer}
 <div class="sectionTitle"><h3>Известия</h3><span>NOTIFICATIONS</span></div>
 <div class="card settingsCard"><div class="setting"><div><b>Push notifications</b><div class="small">Напомняния за следващото действие.</div></div><button class="toggle" id="notifyToggle" onclick="toggleNotifications()"><i></i></button></div><div class="setting"><div><b>Автоматични напомняния</b><div class="small">Използват локалните часове в приложението.</div></div><button class="toggle on" id="reminderToggle" onclick="toggleReminderSetting()"><i></i></button></div></div>
 <div class="sectionTitle"><h3>Приложение</h3><span>APP</span></div>
-<div class="card settingsCard"><div class="setting"><div><b>Версия</b><div class="small">Автоматичните обновявания са активни.</div></div><span class="versionBadge" id="appVersion">V13.1 • 2026.10.08</span></div><div class="setting"><div><b>Последна проверка</b><div class="small">Update механизмът проверява при отваряне и периодично.</div></div><span class="statusDot">●</span></div></div>
+<div class="card settingsCard"><div class="setting"><div><b>Версия</b><div class="small">Автоматичните обновявания са активни.</div></div><span class="versionBadge" id="appVersion">V14.0 • 2026.10.08</span></div><div class="setting"><div><b>Последна проверка</b><div class="small">Update механизмът проверява при отваряне и периодично.</div></div><span class="statusDot">●</span></div></div>
 <div class="card settingsCard"><div class="notice">Ако има нова версия, ще видиш банер „Нова версия е налична“ и приложението ще се обнови с един бутон.</div></div>
 </section>
 
@@ -246,7 +286,7 @@ body{padding-bottom:98px}button,input{font:inherit}button{cursor:pointer}
 </div>
 
 <nav class="nav">
-<button class="active" onclick="show('general',this)"><span class="navicon">⌂</span><b>General</b></button>
+<button class="active" onclick="show('general',this)"><span class="navicon">⌂</span><b>Today</b></button>
 <button onclick="show('nutrition',this)"><span class="navicon">◉</span><b>Хранене</b></button>
 <button onclick="show('workout',this)"><span class="navicon">✦</span><b>Тренировка</b></button>
 <button onclick="show('sleep',this)"><span class="navicon">☾</span><b>Сън</b></button>
@@ -338,7 +378,7 @@ renderGeneral();renderMeals();renderWorkout();renderSleep();setInterval(()=>{ren
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', async () => {
     try {
-      const registration = await navigator.serviceWorker.register('./sw.js?v=13.4.0', {updateViaCache:'none'});
+      const registration = await navigator.serviceWorker.register('./sw.js?v=14.0.0', {updateViaCache:'none'});
 
       const showUpdate = () => {
         if (document.getElementById('updateBanner')) return;
@@ -411,25 +451,57 @@ if ('serviceWorker' in navigator) {
  window.addEventListener('load',()=>{setTimeout(coach,100);setTimeout(coach,700)});
 })();
 </script>
-<script id="v13-3-general-logic">
+<script id="v14-luxury-logic">
 (function(){
-function n(keys,f=0){for(const k of keys){const v=localStorage.getItem(k);if(v!==null&&v!==''&&!isNaN(Number(v)))return Number(v)}return f}
-function render(){
- const $=id=>document.getElementById(id); if(!$('v133Date'))return;
- const d=new Date(), days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'], months=['January','February','March','April','May','June','July','August','September','October','November','December'];
- $('v133Date').textContent=days[d.getDay()]+' · '+d.getDate()+' '+months[d.getMonth()];
- const p={Monday:['Гърди, гръб, рамо и ръце','19:00 · ~60 min'],Tuesday:['Крака, седалище и корем','19:00 · ~60 min'],Thursday:['Гърди, гръб, рамо и ръце','19:00 · ~60 min'],Saturday:['Крака, седалище, прасец и корем','19:00 · ~60 min']};
- const plan=p[days[d.getDay()]]||['Възстановяване','Разходка · мобилност · почивка']; $('v133WorkoutName').textContent=plan[0]; $('v133WorkoutMeta').textContent=plan[1];
- const daily=typeof state==='function'?state():{protein:0,water:0,meals:{},kcal:0}; const protein=Number(daily.protein)||0, water=Number(daily.water)||0, sleep=n(['sleepToday','todaySleep','sleepHours']);
- $('v133Protein').textContent=Math.round(protein)+' / 150 g'; $('v133Water').textContent=water.toFixed(1)+' / 2.7 L'; $('v133ProteinBar').style.width=Math.min(100,protein/150*100)+'%'; $('v133WaterBar').style.width=Math.min(100,water/2.7*100)+'%';
- $('v133Sleep').textContent=sleep?sleep.toFixed(1)+' h':'Not logged'; $('v133SleepBar').style.width=sleep?Math.min(100,sleep/8*100)+'%':'0%';
- let h=[];try{h=JSON.parse(localStorage.getItem('workoutHistory')||'[]')}catch(e){} const week=Date.now()-7*86400000, recent=h.filter(x=>new Date(x.date||x.timestamp||0).getTime()>=week), training=Math.min(4,recent.length), consistency=Math.round(training/4*100), score=Math.round(training/4*55+(sleep?Math.min(100,sleep/8*100)*.45:50));
- $('v133CoachScore').textContent=score; $('v133Consistency').textContent=consistency+'%'; $('v133Recovery').textContent=score>=75?'Good':score>=55?'Moderate':'Low'; $('v133CoachState').textContent=score>=75?'READY':score>=55?'CONTROL':'RECOVER'; $('v133Insight').textContent=score>=75?"You're ready for normal training intensity.":score>=55?"Keep the intensity controlled and prioritize recovery.":"Recovery is the priority today. Keep training light if needed.";
- const pd=protein>=145?1:0, wd=water>=2.8?1:0, sd=sleep>=7?1:0, pct=Math.round(training/4*35+pd/7*25+wd/7*20+sd/7*20);
- $('v133WeekTraining').textContent=training+' / 4'; $('v133CoachSessions')?.textContent=training+' / 4'; $('v133WeekNutrition').textContent=pd+' / 7'; $('v133WeekWater').textContent=wd+' / 7'; $('v133WeekSleep').textContent=sd+' / 7'; $('v133WeekPercent').textContent=pct+'%'; $('v133WeekBar').style.width=pct+'%';
- const weight=n(['currentWeight','weight']); const start=n(['startingWeight','initialWeight']); $('v133Weight').textContent=weight?weight.toFixed(1)+' kg':'— kg'; $('v133WeightChange').textContent=start&&weight?((weight-start>=0?'+':'')+(weight-start).toFixed(1)+' kg since start'):'No change recorded';
-}
-window.renderV133=render; document.addEventListener('DOMContentLoaded',render); setTimeout(render,300); setTimeout(render,1000);
+ const R=(k,f)=>{try{let v=localStorage.getItem(k);return v===null?f:JSON.parse(v)}catch(e){return f}};
+ const $=id=>document.getElementById(id);
+ function n(keys,f=0){for(const k of keys){const v=localStorage.getItem(k);if(v!==null&&v!==''&&!isNaN(Number(v)))return Number(v)}return f}
+ function coach(){
+  if(!$('v133CoachScore'))return;
+  const h=R('workoutHistory',R('workouts',[])),sl=R('sleep',[]),week=Date.now()-7*86400000;
+  const recent=h.filter(x=>{let t=new Date(x.date||x.timestamp||0).getTime();return Number.isFinite(t)&&t>=week});
+  const training=Math.min(4,recent.length), consistency=Math.min(100,Math.round(training/4*100));
+  const avg=sl.length?sl.slice(-7).reduce((a,x)=>a+(+x.v||0),0)/Math.min(7,sl.length):null;
+  const sleepScore=avg==null?68:Math.max(35,Math.min(100,avg/8*100));
+  const score=Math.max(35,Math.min(100,Math.round(Math.min(100,training*25)*.42+sleepScore*.33+consistency*.25)));
+  $('v133CoachScore').textContent=score; $('todayScoreRing').style.setProperty('--score',score+'%');
+  $('v133CoachState').textContent=score>=72?'READY':score>=55?'CONTROL':'RECOVER';
+  const rec=score>=72?'Good':score>=55?'Moderate':'Low'; $('v133Recovery').textContent=rec.toUpperCase(); $('v133Recovery2').textContent=rec;
+  $('v133Consistency').textContent=consistency+'%'; $('v133CoachSessions').textContent=training+' / 4';
+  $('v133Insight').textContent=score>=72?'Тялото ти е готово за нормална тренировъчна интензивност.':score>=55?'Дръж 1–2 RIR и остави качеството преди обема.':'Днес възстановяването е приоритет. Намали интензивността при нужда.';
+ }
+ function render(){
+  if(!$('v133Date'))return;
+  const d=new Date(), dn=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'], mn=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  $('v133Date').textContent=dn[d.getDay()]+' · '+d.getDate()+' '+mn[d.getMonth()];
+  const p={Monday:['Гърди, гръб, рамо и ръце','19:00 · ~60 min','Гърди · гръб · рамо · бицепс · трицепс'],Tuesday:['Крака, седалище и корем','19:00 · ~60 min','Крака · задно бедро · седалище · прасец · корем'],Thursday:['Гърди, гръб, рамо и ръце','19:00 · ~60 min','Горни гърди · гръб · рамо · бицепс · трицепс'],Saturday:['Крака, седалище, прасец и корем','19:00 · ~60 min','Крака · задно бедро · седалище · прасец · корем']};
+  const plan=p[dn[d.getDay()]]||['Възстановяване','Разходка · мобилност · почивка','Разходка · мобилност · леко възстановяване'];
+  $('v133WorkoutName').textContent=plan[0]; $('v133WorkoutMeta').textContent=plan[1]; $('v133WorkoutFocus').textContent=plan[2];
+  const daily=typeof state==='function'?state():{protein:0,water:0,meals:{}}; const protein=Number(daily.protein)||0,water=Number(daily.water)||0;
+  $('v133Protein').textContent=Math.round(protein)+' / 150 g'; $('v133Water').textContent=water.toFixed(1)+' / 2.7 L';
+  $('v133ProteinBar').style.width=Math.min(100,protein/150*100)+'%'; $('v133WaterBar').style.width=Math.min(100,water/2.7*100)+'%';
+  const sl=R('sleep',[]), today=todayKey(), todaySleep=sl.filter(x=>x.date===today).at(-1), sleep=todaySleep?+todaySleep.v:0;
+  $('v133Sleep').textContent=sleep?sleep.toFixed(1)+' h':'Not logged'; $('v133SleepBar').style.width=sleep?Math.min(100,sleep/8*100)+'%':'0%';
+  const h=R('workoutHistory',R('workouts',[])), week=Date.now()-7*86400000, recent=h.filter(x=>new Date(x.date||x.timestamp||0).getTime()>=week), training=Math.min(4,recent.length);
+  const nutrition=Object.values(daily.meals||{}).filter(Boolean).length>=5?1:0;
+  const waterDay=water>=2.7?1:0, sleepDay=sleep>=7?1:0;
+  const pct=Math.round(training/4*40+nutrition/1*20+waterDay/1*20+sleepDay/1*20);
+  $('v133WeekTraining').textContent=training+' / 4'; $('v133WeekNutrition').textContent=nutrition+' / 7'; $('v133WeekWater').textContent=waterDay+' / 7'; $('v133WeekSleep').textContent=sleepDay+' / 7'; $('v133WeekPercent').textContent=pct+'%'; $('v133WeekBar').style.width=pct+'%';
+  const bars=document.querySelectorAll('.week-bars em'); if(bars[0])bars[0].style.width=(training/4*100)+'%';if(bars[1])bars[1].style.width=(nutrition*100)+'%';if(bars[2])bars[2].style.width=(waterDay*100)+'%';if(bars[3])bars[3].style.width=(sleepDay*100)+'%';
+  const ws=R('weights',[]),weight=ws.length?Number(ws.at(-1).v):n(['currentWeight','weight']); const start=ws.length?Number(ws[0].v):n(['startingWeight','initialWeight']);
+  $('v133Weight').textContent=weight?weight.toFixed(1)+' kg':'— kg'; $('v133WeightChange').textContent=start&&weight?((weight-start>=0?'+':'')+(weight-start).toFixed(1)+' kg since start'):'No change recorded';
+  coach();
+ }
+ window.renderV133=render; document.addEventListener('DOMContentLoaded',()=>{render();setTimeout(render,250);}); setTimeout(render,500);
+})();
+</script>
+<script id="luxury-interactions">
+(function(){
+ const canvas=document.getElementById('ambientCanvas'),ctx=canvas&&canvas.getContext('2d');
+ if(ctx){let w,h,dpr,pts=[];function resize(){dpr=Math.min(2,devicePixelRatio||1);w=innerWidth;h=innerHeight;canvas.width=w*dpr;canvas.height=h*dpr;canvas.style.width=w+'px';canvas.style.height=h+'px';ctx.setTransform(dpr,0,0,dpr,0,0);pts=Array.from({length:Math.min(34,Math.floor(w/13))},()=>({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.2+.25,v:Math.random()*.18+.04,a:Math.random()*.25+.05}))}function tick(t){ctx.clearRect(0,0,w,h);for(const p of pts){p.y-=p.v;if(p.y<-5)p.y=h+5;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=`rgba(215,165,94,${p.a})`;ctx.fill()}requestAnimationFrame(tick)}addEventListener('resize',resize);resize();requestAnimationFrame(tick)}
+ document.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;b.classList.remove('press');void b.offsetWidth;b.classList.add('press');setTimeout(()=>b.classList.remove('press'),220)});
+ if('IntersectionObserver'in window){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('seen');io.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll('.reveal').forEach(e=>io.observe(e))}
+ window.addEventListener('load',()=>{document.querySelectorAll('.reveal').forEach((e,i)=>e.style.setProperty('--delay',Math.min(i*.035,.28)+'s'))});
 })();
 </script>
 </body>
