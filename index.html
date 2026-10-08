@@ -500,92 +500,119 @@ body{letter-spacing:-.01em}
 
 </style>
 
-<style id="v14-2-3-final">
-/* V14.2.3 — final Today composition */
-:root{--gold:#d6a45b;--gold-hi:#f3cc8e;--green:#79dca2}
+<style id="v14-2-3-today-composition-fix">
+/* V14.2.3 — Today hero composition fix */
 .cinema-card{
-  position:relative!important;
-  overflow:hidden!important;
-  min-height:372px!important;
-  border-radius:30px!important;
+  min-height:344px;
+  position:relative;
+  overflow:hidden;
+  isolation:isolate;
+  background:#0b0f12;
+  border:1px solid rgba(215,165,94,.23);
+}
+/* Natural aspect-ratio image: no horizontal squeezing. */
+.cinema-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:0;
   background:
-    linear-gradient(90deg,rgba(7,10,12,.985) 0%,rgba(7,10,12,.94) 34%,rgba(7,10,12,.68) 55%,rgba(7,10,12,.18) 100%),
-    linear-gradient(180deg,rgba(7,10,12,.04),rgba(7,10,12,.48)),
-    url('./dumbbell-hero.jpg') right center/58% 100% no-repeat,
-    #0d1114!important;
-  border:1px solid rgba(243,204,142,.24)!important;
-  box-shadow:0 28px 80px rgba(0,0,0,.48),inset 0 1px 0 rgba(255,255,255,.055)!important;
+    url('./dumbbell-hero.jpg') right center / auto 100% no-repeat,
+    linear-gradient(145deg,#0b0f12 0%,#0a0e11 58%,#15100b 100%);
+  transform:none;
+  animation:none;
 }
+/* Dark readability veil from left to right. */
+.cinema-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 83% 30%,rgba(215,165,94,.18),transparent 25%),
+    linear-gradient(90deg,
+      rgba(8,12,15,.99) 0%,
+      rgba(8,12,15,.97) 31%,
+      rgba(8,12,15,.78) 49%,
+      rgba(8,12,15,.35) 68%,
+      rgba(8,12,15,.04) 100%),
+    linear-gradient(180deg,rgba(6,9,11,.03),rgba(6,9,11,.16));
+}
+.cinema-noise{z-index:2;opacity:.025;pointer-events:none}
+.cinema-orb{z-index:2;right:-55px;top:-65px;width:220px;height:220px;opacity:.55;pointer-events:none}
 .cinema-content{
-  position:relative!important;
-  z-index:3!important;
-  width:100%!important;
-  max-width:none!important;
-  box-sizing:border-box!important;
-  padding:30px 34px 28px!important;
+  position:relative;
+  z-index:3;
+  width:100%;
+  max-width:none;
+  padding:28px 30px 24px;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  text-align:left;
+  box-sizing:border-box;
 }
-.cinema-content h2{
-  max-width:64%!important;
-  margin:15px 0 13px!important;
-  font-size:34px!important;
-  line-height:1.02!important;
-  letter-spacing:-1.55px!important;
+.cinema-card .eyebrow{margin:0;max-width:68%;}
+.cinema-card h2{
+  margin:13px 0 12px;
+  max-width:63%;
+  font-size:34px;
+  line-height:1.01;
+  letter-spacing:-1.7px;
+  text-wrap:balance;
 }
-.cinema-meta{max-width:76%!important;display:flex;align-items:center;flex-wrap:wrap;gap:8px 11px!important}
-.cinema-focus{max-width:74%!important;margin-top:13px!important}
-.hero-trust{max-width:76%!important;gap:15px!important;margin-top:17px!important}
+.cinema-meta{
+  width:auto;
+  max-width:72%;
+  justify-content:flex-start;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:7px 10px;
+}
+.cinema-focus{
+  max-width:64%;
+  margin:14px 0 0;
+  line-height:1.5;
+}
 .lux-cta{
-  width:82%!important;
-  max-width:390px!important;
-  min-height:58px!important;
-  margin-top:21px!important;
-  border-radius:17px!important;
-  background:linear-gradient(135deg,#f2cf91 0%,#d7a45b 100%)!important;
-  color:#17110a!important;
-  box-shadow:0 14px 34px rgba(214,164,91,.18),inset 0 1px 0 rgba(255,255,255,.42)!important;
+  width:auto;
+  min-width:0;
+  max-width:225px;
+  height:50px;
+  min-height:50px;
+  margin-top:auto;
+  padding:12px 14px 12px 16px;
+  border-radius:14px;
+  justify-content:space-between;
+  gap:18px;
+  font-size:13px;
+  box-shadow:0 12px 28px rgba(214,164,91,.19),inset 0 1px 0 rgba(255,255,255,.32);
 }
-.cta-dumbbell{width:23px!important;height:23px!important;color:#17110a!important}
-.cinema-index{z-index:4!important;color:rgba(243,204,142,.26)!important}
-/* compact, clean fuel arrow — no square */
-.fuel-card-clickable{border:1px solid rgba(255,255,255,.075)!important}
-.fuel-arrow{
-  width:22px!important;height:22px!important;
-  min-width:22px!important;
-  padding:0!important;
-  margin:0!important;
-  display:grid!important;
-  place-items:center!important;
-  border:0!important;
-  border-radius:0!important;
-  background:transparent!important;
-  box-shadow:none!important;
-  color:var(--gold-hi)!important;
-  font-size:20px!important;
-  line-height:1!important;
-  transform:none!important;
-}
-.fuel-card-clickable:hover .fuel-arrow{transform:translateX(2px)!important}
+.lux-cta .cta-main{gap:9px}
+.cta-dumbbell{width:19px;height:19px}
+.lux-cta b{font-size:17px}
+.cinema-index{z-index:3;right:18px;bottom:15px}
+
 @media(max-width:520px){
-  .cinema-card{min-height:372px!important;background-size:61% 100%!important}
-  .cinema-content{padding:29px 27px 26px!important}
-  .cinema-content h2{max-width:67%!important;font-size:32px!important}
-  .cinema-meta{max-width:80%!important;font-size:11px!important}
-  .cinema-focus{max-width:76%!important;font-size:11px!important}
-  .hero-trust{max-width:80%!important;font-size:9.5px!important;gap:12px!important}
-  .lux-cta{width:84%!important;min-height:56px!important;font-size:13px!important}
+  .cinema-card{min-height:344px;border-radius:28px}
+  .cinema-content{padding:27px 22px 22px}
+  .cinema-card h2{max-width:65%;font-size:31px;letter-spacing:-1.45px}
+  .cinema-meta{max-width:76%;font-size:11px}
+  .cinema-focus{max-width:67%;font-size:11px;margin-top:13px}
+  .lux-cta{height:50px;min-height:50px;max-width:200px;padding:11px 13px 11px 15px;font-size:12.5px}
 }
 @media(max-width:390px){
-  .cinema-card{min-height:355px!important;background-size:64% 100%!important}
-  .cinema-content{padding:27px 23px 24px!important}
-  .cinema-content h2{max-width:71%!important;font-size:29px!important;letter-spacing:-1.25px!important}
-  .cinema-meta{max-width:84%!important;font-size:10.5px!important}
-  .cinema-focus{max-width:79%!important;font-size:10.5px!important}
-  .hero-trust{max-width:83%!important;gap:10px!important;font-size:9px!important}
-  .lux-cta{width:88%!important;min-height:53px!important;font-size:12.5px!important}
-  .cta-dumbbell{width:20px!important;height:20px!important}
-  .fuel-arrow{width:20px!important;height:20px!important;font-size:18px!important}
+  .cinema-card{min-height:336px}
+  .cinema-content{padding:25px 20px 20px}
+  .cinema-card h2{max-width:66%;font-size:29px}
+  .cinema-meta{max-width:78%;gap:6px 8px;font-size:10.5px}
+  .cinema-focus{max-width:69%;font-size:10.5px}
+  .lux-cta{max-width:192px;height:48px;min-height:48px;font-size:12px}
+  .cta-dumbbell{width:18px;height:18px}
 }
 </style>
+
 </head>
 <body>
 <canvas id="ambientCanvas" aria-hidden="true"></canvas>
@@ -610,7 +637,6 @@ body{letter-spacing:-.01em}
       <h2 id="v133WorkoutName">Гърди, гръб, рамо и ръце</h2>
       <div class="cinema-meta"><span id="v133WorkoutMeta">19:00 · ~60 min</span><i></i><span>1–2 RIR</span><em class="live-dot"><b></b> READY</em></div>
       <p class="cinema-focus" id="v133WorkoutFocus">Гърди · гръб · рамо · бицепс · трицепс</p>
-      <div class="hero-trust"><span><b></b> Planned</span><span><b></b> Smart progression</span></div>
       <button class="lux-cta" onclick="show('workout',document.querySelector('.nav button:nth-child(3)'))"><span class="cta-main"><svg class="cta-dumbbell" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6M7 7v10M10 10h4M14 10v4M17 7v10M20 9v6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Започни тренировка</span></span><b aria-hidden="true">→</b></button>
     </div>
     <div class="cinema-index">01</div>
@@ -801,7 +827,7 @@ document.body.dataset.screen="general";document.getElementById("general")?.class
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', async () => {
     try {
-      const registration = await navigator.serviceWorker.register('./sw.js?v=14.2.3', {updateViaCache:'none'});
+      const registration = await navigator.serviceWorker.register('./sw.js?v=14.2.2', {updateViaCache:'none'});
 
       const showUpdate = () => {
         if (document.getElementById('updateBanner')) return;
