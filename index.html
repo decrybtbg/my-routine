@@ -26,7 +26,7 @@ body{padding-bottom:98px}button,input{font:inherit}button{cursor:pointer}
 .task{display:flex;gap:12px;padding:13px 0;border-bottom:1px solid var(--line)}.task:last-child{border:0}.check,.mealcheck{appearance:none;width:22px;height:22px;border:2px solid #5c6571;border-radius:7px;margin:1px 0 0;flex:0 0 auto}.check:checked,.mealcheck:checked{background:var(--green);border-color:var(--green)}.check:checked:after,.mealcheck:checked:after{content:"✓";display:block;color:#08130c;text-align:center;font-weight:900}.done{text-decoration:line-through;color:#727b86}.time{font-size:12px;color:var(--green);font-weight:850}
 .nav{position:fixed;z-index:20;bottom:0;left:0;right:0;padding:8px max(10px,env(safe-area-inset-right)) calc(8px + env(safe-area-inset-bottom)) max(10px,env(safe-area-inset-left));background:rgba(9,12,11,.88);border-top:1px solid rgba(255,255,255,.07);backdrop-filter:blur(24px) saturate(140%);display:flex;justify-content:center;gap:5px;box-shadow:0 -18px 45px rgba(0,0,0,.24)}.nav button{position:relative;flex:1;max-width:132px;background:transparent;border:0;color:#68716d;font-size:9px;font-weight:800;padding:4px 2px 5px;cursor:pointer;transition:transform .2s,color .2s}.nav button .navicon{width:36px;height:32px;margin:0 auto 4px;display:grid;place-items:center;border-radius:12px;font-size:18px;line-height:1;color:#77807c;background:rgba(255,255,255,.025);border:1px solid transparent;transition:.22s;box-shadow:inset 0 1px 0 rgba(255,255,255,.025)}.nav button b{font-weight:800}.nav button:active{transform:scale(.92)}.nav button.active{color:#f3faf6}.nav button.active .navicon{color:var(--green);background:rgba(160,255,194,.10);border-color:rgba(160,255,194,.18);box-shadow:0 7px 20px rgba(90,230,150,.10),inset 0 1px 0 rgba(255,255,255,.06);transform:translateY(-2px)}.nav button.active:after{content:"";position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:20px;height:3px;border-radius:99px;background:var(--green);box-shadow:0 0 14px rgba(160,255,194,.45)}
 .coachScore{position:relative;overflow:hidden;padding:18px;border-radius:26px;background:linear-gradient(145deg,rgba(27,43,35,.96),rgba(10,17,14,.96));border:1px solid rgba(160,255,194,.16);box-shadow:0 22px 55px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.05);animation:coachIn .55s ease both}.coachScore:before{content:"";position:absolute;width:150px;height:150px;right:-60px;top:-70px;background:radial-gradient(circle,rgba(160,255,194,.15),transparent 68%);pointer-events:none}.scoreRing{width:78px;height:78px;border-radius:50%;display:grid;place-items:center;flex:none;background:conic-gradient(var(--green) var(--score,72%),rgba(255,255,255,.065) 0);position:relative;box-shadow:0 0 0 1px rgba(160,255,194,.08),0 8px 30px rgba(90,230,150,.10)}.scoreRing:after{content:"";position:absolute;inset:7px;border-radius:50%;background:#0b120e}.scoreRing b{position:relative;z-index:1;font-size:20px}.coachMini{gap:6px;margin-top:12px}.coachMini>div{padding:10px 8px;border-radius:15px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.055)}.insight{margin-top:9px;background:linear-gradient(135deg,rgba(160,255,194,.055),rgba(255,255,255,.02));border-color:rgba(160,255,194,.12)}@keyframes coachIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}.settingsHero{display:flex;align-items:center;gap:15px;padding:20px;border-radius:26px;background:linear-gradient(145deg,rgba(25,38,31,.95),rgba(10,16,13,.95));border:1px solid rgba(160,255,194,.13);box-shadow:0 20px 50px rgba(0,0,0,.2)}.settingsHero h2{margin:8px 0 5px;font-size:23px;letter-spacing:-.6px}.settingsHero p{margin:0;color:#8d9892;font-size:11px;line-height:1.45}.settingsIcon{width:54px;height:54px;border-radius:18px;display:grid;place-items:center;font-size:24px;color:var(--green);background:rgba(160,255,194,.09);border:1px solid rgba(160,255,194,.16);box-shadow:0 10px 28px rgba(90,230,150,.08)}.settingsCard{padding:4px 15px}.settingsCard .setting{padding:15px 0}.versionBadge{font-size:10px;font-weight:900;color:var(--green);padding:7px 9px;border-radius:10px;background:rgba(160,255,194,.08);border:1px solid rgba(160,255,194,.13)}.statusDot{color:var(--green);font-size:12px;text-shadow:0 0 10px rgba(160,255,194,.5)}@media(max-width:420px){.nav button .navicon{width:33px;height:30px;font-size:17px}.nav button{font-size:8.5px}.coachScore{padding:16px;gap:11px}.scoreRing{width:70px;height:70px}.settingsHero{padding:17px}.settingsHero h2{font-size:21px}}
-.dayrow{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;width:100%;padding:4px 0 12px;overflow:visible}.day{min-width:0;width:100%;height:58px;border:1px solid rgba(255,255,255,.08);background:linear-gradient(180deg,#191c21,#14171b);border-radius:16px;padding:7px 2px 6px;text-align:center;color:#8f969f;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-size:9px;font-weight:850;letter-spacing:.5px;box-shadow:inset 0 1px 0 rgba(255,255,255,.025);transition:transform .2s ease,border-color .2s ease,background .2s ease,color .2s ease}.day strong{display:block;color:#cdd2d8;font-size:10px;line-height:1;font-weight:800}.day.active{border-color:rgba(214,184,112,.72);background:linear-gradient(180deg,rgba(214,184,112,.19),rgba(214,184,112,.06));color:#d6b870;box-shadow:0 8px 20px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.05);transform:translateY(-1px)}.day.active strong{color:#f1d99d}.day:active{transform:scale(.96)}@media(max-width:370px){.dayrow{gap:4px}.day{height:54px;border-radius:14px;font-size:8px}.day strong{font-size:9px}}
+.dayrow,.chips{display:flex;gap:7px;overflow:auto;padding-bottom:3px}.day{min-width:57px;border:1px solid var(--line);background:var(--surface2);border-radius:14px;padding:10px 6px;text-align:center;color:var(--muted)}.day strong{display:block;color:var(--text);font-size:16px}.day.active{border-color:var(--green);background:#17251d;color:var(--green)}
 .workoutHero{border-radius:23px;padding:18px;background:linear-gradient(145deg,#17261e,#15181d);border:1px solid #294133}.exercise{border-bottom:1px solid var(--line);padding:16px 0}.exercise:last-child{border:0}.exname{font-weight:850;font-size:16px}.exmeta{display:flex;gap:7px;margin-top:7px;flex-wrap:wrap}.exmeta span,.tag{background:var(--surface2);border-radius:8px;padding:6px 8px;font-size:11px;color:#cbd2da}
 .loggrid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:10px}.loggrid input,input[type=number],input[type=text]{width:100%;background:var(--surface2);border:1px solid var(--line);color:var(--text);border-radius:10px;padding:10px;text-align:center}
 .timer{font-size:34px;font-weight:900;text-align:center;margin:12px}.timerbtn{width:100%;padding:13px;border:1px solid var(--line);border-radius:13px;background:var(--surface2);color:var(--text);font-weight:800}
@@ -283,6 +283,9 @@ body{padding-bottom:98px}button,input{font:inherit}button{cursor:pointer}
 .rest-strip{display:flex;justify-content:space-between;padding:12px 14px;border-radius:14px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.05);margin-top:10px}.rest-strip span{font-size:9px;color:#737c84}.rest-strip b{font-size:12px;color:#d5d9dc}.sheet-actions{display:grid;grid-template-columns:1fr 1.35fr;gap:8px;margin-top:14px}.sheet-actions button{min-height:48px;padding:13px;border-radius:14px;border:1px solid rgba(255,255,255,.07);background:#10151a;color:#b9c0c5;font-weight:850}.sheet-actions .primary{background:linear-gradient(100deg,#f0c67d,#d69e52);color:#17110a;border:0}
 @media(max-width:430px){#workout .workout-overview{padding:21px;border-radius:24px}.overview-stats{gap:6px}.overview-stat{padding:10px 8px}.exercise-list{padding:0 12px}.exercise-row{grid-template-columns:32px 1fr 18px;gap:10px;padding:16px 0}.exercise-index{width:32px;height:32px}.exercise-name{font-size:14px}.sheet-title{font-size:22px}.form-cue-grid{grid-template-columns:1fr}.set-row,.set-header{grid-template-columns:28px 1fr 1fr 1fr 38px;gap:5px}}
 @media(min-width:700px){.general-v133{grid-template-columns:1.25fr .75fr}.v133-hero{grid-column:1/-1}}
+
+@media(max-width:420px){.dayrow{grid-template-columns:42px minmax(0,1fr) 42px;gap:7px;padding:7px 8px}.daynav{width:42px;height:42px}.daycurrent .dayname{font-size:17px}.workoutHero{padding:16px}.card{padding:15px}.exname{font-size:15px;line-height:1.3}.exmeta span{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.loggrid{grid-template-columns:repeat(3,minmax(0,1fr))}.loggrid input{min-width:0;font-size:16px}}
+.exercise,.card,.workoutHero,.sessionExercise{min-width:0;overflow:hidden}.exname,.small,.exercise p,.card p{overflow-wrap:anywhere;word-break:normal}.exmeta{min-width:0}.exmeta span{min-width:0}
 </style>
 <style id="luxury-system">
 :root{--bg:#07090b;--bg2:#0b0e11;--panel:#101419;--panel2:#14191f;--line:rgba(255,255,255,.075);--text:#f5f3ee;--muted:#858d96;--gold:#d7a55e;--gold2:#f0c67d;--green:#d7a55e;--blue:#65b9ee;--purple:#9c82e9;--orange:#e99a55}
@@ -485,15 +488,7 @@ body{letter-spacing:-.01em}
 #nutrition .mealcheck:checked:after{color:#171109}
 
 /* Training */
-#workout .dayrow{gap:7px;margin-bottom:12px;padding-bottom:4px}
-#workout .day{
-  min-width:56px;padding:10px 6px 9px;border-radius:15px;color:#6d767e;
-  background:linear-gradient(145deg,#12171c,#0d1115);
-}
-#workout .day strong{color:#aaa;display:block}
-#workout .day.active{background:rgba(214,164,91,.09);border-color:rgba(214,164,91,.28);color:var(--gold-hi);box-shadow:0 10px 25px rgba(214,164,91,.08)}
-#workout .day.active strong{color:var(--gold-hi)}
-#workout .workoutHero{padding:20px}
+#workout .dayrow{display:grid;grid-template-columns:48px minmax(0,1fr) 48px;align-items:center;gap:10px;margin:0 0 16px;padding:8px 10px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(180deg,#15181d,#111419);overflow:hidden}.daynav{width:48px;height:48px;border:1px solid var(--line);border-radius:14px;background:#1b1f25;color:var(--text);display:grid;place-items:center;font-size:24px;line-height:1;cursor:pointer;transition:.2s ease}.daynav:active{transform:scale(.95)}.daynav:hover{border-color:#8f7b56}.daycurrent{text-align:center;min-width:0}.daycurrent .daylabel{font-size:10px;letter-spacing:1.8px;text-transform:uppercase;color:var(--muted);font-weight:800}.daycurrent .dayname{font-size:18px;font-weight:900;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.daycurrent .daydate{font-size:11px;color:var(--muted);margin-top:2px}.workoutHero{padding:20px}
 #workout .coachsummary{border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);margin-top:15px;padding:13px 0}
 #workout .exercise{padding:17px 0;border-bottom:1px solid rgba(255,255,255,.055)}
 #workout .exercise:last-child{border-bottom:0}
@@ -561,16 +556,7 @@ body{letter-spacing:-.01em}
 
 /* Consistent motion across every screen. */
 .screen.active .top{animation:unifiedHeaderIn .55s cubic-bezier(.2,.78,.2,1) both}
-.screen.active .card,.screen.active .hero,.screen.active .workoutHero,.screen.active .settingsHero,.screen.active .dayrow{animation:unifiedSurfaceIn .58s cubic-bezier(.2,.78,.2,1) both}
-.screen.active .card:nth-of-type(2){animation-delay:.04s}.screen.active .card:nth-of-type(3){animation-delay:.08s}.screen.active .card:nth-of-type(4){animation-delay:.12s}
-@keyframes unifiedHeaderIn{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
-@keyframes unifiedSurfaceIn{from{opacity:0;transform:translateY(12px) scale(.992)}to{opacity:1;transform:none}}
-@media(max-width:520px){
-  .app{padding-left:15px;padding-right:15px}
-  .screen .top .title{font-size:32px}
-  .screen .card{padding:16px;border-radius:20px}
-  #nutrition .metric{min-height:106px;padding:14px}
-  #workout .workoutHero{padding:18px}
+.screen.active .card,.screen.active .hero,.screen.active .workoutHero,.screen.active .settingsHero,.screen.active .dayrow{display:grid;grid-template-columns:48px minmax(0,1fr) 48px;align-items:center;gap:10px;margin:0 0 16px;padding:8px 10px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(180deg,#15181d,#111419);overflow:hidden}.daynav{width:48px;height:48px;border:1px solid var(--line);border-radius:14px;background:#1b1f25;color:var(--text);display:grid;place-items:center;font-size:24px;line-height:1;cursor:pointer;transition:.2s ease}.daynav:active{transform:scale(.95)}.daynav:hover{border-color:#8f7b56}.daycurrent{text-align:center;min-width:0}.daycurrent .daylabel{font-size:10px;letter-spacing:1.8px;text-transform:uppercase;color:var(--muted);font-weight:800}.daycurrent .dayname{font-size:18px;font-weight:900;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.daycurrent .daydate{font-size:11px;color:var(--muted);margin-top:2px}.workoutHero{padding:18px}
   #sleep .weightrow button{min-width:92px}
 }
 @media(prefers-reduced-motion:reduce){
@@ -892,7 +878,7 @@ body{background:#07090b;color:#f5f3ee}
   <div class="tab-section-title"><span>NOTIFICATIONS</span><h2>Stay on track</h2></div>
   <div class="premium-panel settings-list"><div class="setting-row"><div><b>Push notifications</b><span>Training and routine reminders.</span></div><button class="toggle" id="notifyToggle" onclick="toggleNotifications()"><i></i></button></div><div class="setting-row"><div><b>Automatic reminders</b><span>Uses the local times in the app.</span></div><button class="toggle on" id="reminderToggle" onclick="toggleReminderSetting()"><i></i></button></div></div>
   <div class="tab-section-title"><span>APP</span><h2>System</h2></div>
-  <div class="premium-panel settings-list"><div class="setting-row"><div><b>Version</b><span>Automatic updates are active.</span></div><span class="status-badge" id="appVersion">V14.5.1 • 2026.10.08</span></div><div class="setting-row"><div><b>Update status</b><span>The app checks for updates on launch.</span></div><span class="live-status">● Live</span></div></div>
+  <div class="premium-panel settings-list"><div class="setting-row"><div><b>Version</b><span>Automatic updates are active.</span></div><span class="status-badge" id="appVersion">V14.5.2 • 2026.10.08</span></div><div class="setting-row"><div><b>Update status</b><span>The app checks for updates on launch.</span></div><span class="live-status">● Live</span></div></div>
   <div class="premium-panel settings-note"><span class="panel-kicker">UPDATE SYSTEM</span><p>If a new version is available, an update banner will appear automatically.</p></div>
 </div></section>
 
@@ -949,7 +935,18 @@ function renderMeals(){const s=state();document.getElementById("fullMeals").inne
 function toggleMeal(i,v){const s=state();s.meals[i]=v;s.protein=Math.max(0,s.protein+(v?meals[i][5]:-meals[i][5]));s.kcal=Math.max(0,s.kcal+(v?meals[i][6]:-meals[i][6]));saveState(s);archiveToday();renderMeals();renderGeneral()}
 function addWater(){const s=state();s.water=Math.min(5,Number((s.water+.25).toFixed(2)));saveState(s);archiveToday();renderMeals();renderGeneral();toast("+250 ml water 💧")}
 function renderCalorieAdvice(){const a=read("weights",[]);if(a.length<4){document.getElementById("calorieAdvice").textContent="Collect at least 2–3 weeks of weight data before making changes.";return}const recent=a.slice(-7).map(x=>Number(x.v)),diff=recent.at(-1)-recent[0];document.getElementById("calorieAdvice").textContent=Math.abs(diff)<.1?"The trend is nearly flat. If this continues, we may add a small calorie surplus.":diff<.2?"Gain is below the 0.2–0.4 kg/week target. With consistent tracking, we may add ~100–150 kcal.":diff>.5?"Gain is fast. We will watch a few more measurements before reducing calories.":"Trend is within the target range. Keep intake steady."}
-function renderDays(){document.getElementById("days").innerHTML=days.map(d=>`<button class="day ${d===selected?"active":""}" onclick="selected='${d}';renderWorkout()">${short[d]}</button>`).join("")}
+function renderDays(){
+ const idx=days.indexOf(selected);
+ const d=new Date();
+ const todayName=days[(d.getDay()+6)%7];
+ const dateText=d.toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'});
+ document.getElementById("days").innerHTML=`<button class="daynav" aria-label="Previous day" onclick="changeDay(-1)">‹</button><div class="daycurrent"><div class="daylabel">${selected===todayName?'TODAY':'SELECTED DAY'}</div><div class="dayname">${selected}</div><div class="daydate">${selected===todayName?dateText:'Workout schedule'}</div></div><button class="daynav" aria-label="Next day" onclick="changeDay(1)">›</button>`;
+}
+function changeDay(step){
+ const i=(days.indexOf(selected)+step+days.length)%days.length;
+ selected=days[i];
+ renderWorkout();
+}" onclick="selected='${d}';renderWorkout()">${short[d]}</button>`).join("")}
 function parseRange(x){const m=x.match(/(\d+)\s*[×x]\s*(\d+)[–-](\d+)/);return m?{sets:+m[1],lo:+m[2],hi:+m[3]}:null}
 function exerciseHistory(name){return read("exerciseHistory",{})[name]||[]}
 function exercisePB(name){const h=exerciseHistory(name);return h.reduce((b,x)=>{const v=(+x.kg||0)*(+x.reps||0);return v>(b?.score||0)?{kg:x.kg,reps:x.reps,score:v,date:x.date}:b},null)}
@@ -1008,7 +1005,7 @@ setInterval(()=>{renderGeneral();notifyIfDue()},60000);
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', async () => {
     try {
-      const registration = await navigator.serviceWorker.register('./sw.js?v=14.5.1', {updateViaCache:'none'});
+      const registration = await navigator.serviceWorker.register('./sw.js?v=14.5.2', {updateViaCache:'none'});
 
       const showUpdate = () => {
         if (document.getElementById('updateBanner')) return;
