@@ -1,17 +1,13 @@
-MY ROUTINE V13.1 — SMART ROUTINE CLEANUP
+My Routine V14.2 — Unified Luxury Minimal
 
-Base: V12.2 Premium
+A unified dark luxury visual system across Today, Nutrition, Training, Sleep, Settings, Progress and Session screens.
 
-Changes:
-- Removed Smart Routine / Your Next Move from General.
-- Removed the top-right refresh/update icon.
-- Removed the Adaptive Coach NEXT ACTION button.
-- Today's plan now contains only Nutrition and Workout.
-- Work is no longer a checkable daily task.
-- Daily task counter is now 0/2.
-- Notifications remain separate in Settings and use meal/workout reminder times only.
-- Premium bottom navigation retained.
-- Service worker bumped to 13.1.0 with updateViaCache:none.
-- No Apple Health / HealthKit integration.
+Visual language:
+- Deep charcoal / near-black backgrounds
+- Warm champagne-gold primary accent
+- Green reserved for positive/recovery states
+- Consistent typography, spacing, radii, borders and shadows
+- Unified cards, buttons, inputs, progress bars and navigation
+- Subtle motion and reduced-motion support
 
-Deploy the contents to the same GitHub Pages repository as the previous version.
+Data sync from V14.1 is preserved.
