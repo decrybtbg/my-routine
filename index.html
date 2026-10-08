@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="bg">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -9,7 +9,7 @@
 <title>My Routine</title>
 <link rel="manifest" href="manifest.json">
 <style>
-:root{--bg:#0b0d10;--surface:#15181d;--surface2:#1c2027;--line:#2a3038;--text:#f5f7fa;--muted:#929aa6;--green:#8cf0b0;--green2:#4fd18b;--orange:#ffb86b;--blue:#7db7ff;--red:#ff7d88;--purple:#b99cff}
+:root{--bg:#0b0d10;--surface:#15181d;--surface2:#1c2027;--line:#2a3038;--text:#f5f7fa;--muted:#929aa6;--green:#d7a55e;--green2:#f0c67d;--orange:#ffb86b;--blue:#7db7ff;--red:#ff7d88;--purple:#b99cff}
 *{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif}
 body{padding-bottom:98px}button,input{font:inherit}button{cursor:pointer}
 .app{width:min(100%,780px);margin:auto;padding:calc(env(safe-area-inset-top) + 28px) 16px 30px}
@@ -206,7 +206,7 @@ body{padding-bottom:98px}button,input{font:inherit}button{cursor:pointer}
 @media(min-width:700px){.general-v133{grid-template-columns:1.25fr .75fr}.v133-hero{grid-column:1/-1}}
 </style>
 <style id="luxury-system">
-:root{--bg:#07090b;--bg2:#0b0e11;--panel:#101419;--panel2:#14191f;--line:rgba(255,255,255,.075);--text:#f5f3ee;--muted:#858d96;--gold:#d7a55e;--gold2:#f0c67d;--green:#72d7a0;--blue:#65b9ee;--purple:#9c82e9;--orange:#e99a55}
+:root{--bg:#07090b;--bg2:#0b0e11;--panel:#101419;--panel2:#14191f;--line:rgba(255,255,255,.075);--text:#f5f3ee;--muted:#858d96;--gold:#d7a55e;--gold2:#f0c67d;--green:#d7a55e;--blue:#65b9ee;--purple:#9c82e9;--orange:#e99a55}
 html{background:var(--bg);scroll-behavior:smooth}body{background:radial-gradient(circle at 50% -15%,rgba(215,165,94,.10),transparent 34%),linear-gradient(180deg,#07090b,#090c0f 55%,#06080a);overflow-x:hidden}
 body:before{content:"";position:fixed;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 0 45%,rgba(255,255,255,.012) 50%,transparent 55%);mix-blend-mode:screen;z-index:-1}
 #ambientCanvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:-3;opacity:.72}.ambient-vignette{position:fixed;inset:0;pointer-events:none;z-index:-2;background:radial-gradient(circle at 50% 20%,transparent 0,rgba(0,0,0,.14) 55%,rgba(0,0,0,.52) 100%)}
@@ -292,7 +292,7 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.16;mi
 @media(max-width:520px){.app{padding-left:15px;padding-right:15px}.lux-header{padding-bottom:20px}.lux-header h1{font-size:34px}.cinema-card{min-height:344px;border-radius:28px}.cinema-content{padding:27px 21px 24px}.cinema-content h2{font-size:31px}.cinema-focus{margin-bottom:16px}.lux-cta{min-width:205px}.coach-lux{gap:12px;padding:16px}.coach-ring{width:98px;height:98px}.lux-metric{min-height:126px;padding:12px}.lux-metric strong{font-size:13px}.metric-glyph{margin-bottom:15px}.week-bars{gap:8px}.week-bars>div b{font-size:12px}.week-bars>div span{font-size:7px}.closing-note strong{font-size:20px}}
 
 /* =========================================================
-   V14.2 — UNIFIED LUXURY MINIMAL DESIGN SYSTEM
+   V14.2.5 — UNIFIED LUXURY MINIMAL DESIGN SYSTEM
    One visual language across Today / Nutrition / Training /
    Sleep / Settings / Progress / Session.
    ========================================================= */
@@ -619,6 +619,84 @@ body{letter-spacing:-.01em}
 .fuel-art{background:radial-gradient(circle at 80% 25%,rgba(215,165,94,.18),transparent 30%),linear-gradient(145deg,#241d13,#0c1013)!important;border-color:rgba(215,165,94,.16)!important}
 .fuel-art span{color:#f0cf96!important}.fuel-art small{color:#8f8068!important}.fuel-arrow{font-size:18px!important;color:#d8ad69!important;padding:4px 6px!important}
 </style>
+
+<style id="v14-2-5-final-system">
+/* V14.2.5 — Final Today composition + English unified system */
+:root{--accent:#d7a55e;--accent-hi:#f0c67d;--positive:#72d7a0;}
+body{background:#07090b;color:#f5f3ee}
+/* Primary action language is champagne/gold across the entire app. */
+.cta,.lux-cta{background:linear-gradient(135deg,#f0c67d 0%,#d7a55e 100%)!important;color:#171109!important}
+.cta{box-shadow:0 12px 28px rgba(215,165,94,.16)!important}
+.pill{background:rgba(215,165,94,.09)!important;color:#f0c67d!important;border-color:rgba(215,165,94,.15)!important}
+.progress .fill,.bar,.toggle.on,.check:checked,.mealcheck:checked{background:#d7a55e!important}
+.time,.coachlabel,.badgeup,.statusDot{color:#d7a55e!important}
+/* Today hero: true two-zone composition. The image never becomes a competing text layer. */
+.cinema-card{
+  min-height:455px!important;
+  background:#090d10!important;
+  border-color:rgba(215,165,94,.26)!important;
+}
+.cinema-card::before{
+  inset:0 0 0 47%!important;
+  background-position:center right!important;
+  background-size:cover!important;
+  opacity:.9!important;
+}
+.cinema-card::after{
+  background:
+    linear-gradient(90deg,#090d10 0%,#090d10 39%,rgba(9,13,16,.98) 48%,rgba(9,13,16,.78) 59%,rgba(9,13,16,.25) 76%,rgba(9,13,16,.04) 100%),
+    linear-gradient(180deg,rgba(5,8,10,.04) 0%,rgba(5,8,10,.08) 65%,rgba(5,8,10,.42) 100%)!important;
+}
+.cinema-content{
+  width:100%!important;max-width:none!important;min-height:455px!important;
+  padding:31px 30px 105px!important;align-items:flex-start!important;text-align:left!important;
+}
+.cinema-card .eyebrow{font-size:10px!important;letter-spacing:2.3px!important;color:#f0c67d!important}
+.cinema-card h2{
+  width:61%!important;max-width:270px!important;margin:18px 0 15px!important;
+  font-size:35px!important;line-height:1.03!important;letter-spacing:-1.8px!important;
+  text-wrap:balance!important;
+}
+.cinema-meta{width:62%!important;max-width:270px!important;gap:6px 9px!important;color:#d6d0c6!important}
+.cinema-focus{width:60%!important;max-width:260px!important;margin-top:15px!important;color:#9d9a95!important;line-height:1.45!important}
+.live-dot b{background:#d7a55e!important;box-shadow:0 0 10px rgba(215,165,94,.35)!important}
+.lux-cta{
+  position:absolute!important;left:50%!important;bottom:25px!important;transform:translateX(-50%)!important;
+  width:280px!important;max-width:calc(100% - 48px)!important;height:58px!important;min-height:58px!important;
+  margin:0!important;padding:0 18px!important;border-radius:17px!important;
+  justify-content:space-between!important;font-size:14px!important;font-weight:900!important;
+  box-shadow:0 15px 35px rgba(215,165,94,.22),inset 0 1px 0 rgba(255,255,255,.32)!important;
+}
+.lux-cta .cta-main{gap:10px!important}.cta-dumbbell{width:20px!important;height:20px!important}.lux-cta b{font-size:23px!important;font-weight:500!important}
+.cinema-index{right:16px!important;bottom:13px!important;color:rgba(255,255,255,.24)!important}
+/* Fuel card: compact arrow, no colored square. */
+.fuel-arrow{width:auto!important;height:auto!important;border:0!important;background:none!important;border-radius:0!important;font-size:23px!important;color:#d7a55e!important;padding:0!important;line-height:1!important;transition:transform .2s ease!important}
+.fuel-card-clickable:active .fuel-arrow{transform:translateX(3px)!important}
+/* Unified navigation */
+.nav button.active .navicon{color:#f0c67d!important;background:rgba(215,165,94,.10)!important;border-color:rgba(215,165,94,.20)!important;box-shadow:0 7px 20px rgba(215,165,94,.10)!important}
+.nav button.active:after{background:#d7a55e!important;box-shadow:0 0 14px rgba(215,165,94,.45)!important}
+.nav button.active{color:#f5f3ee!important}
+/* Unified screen surfaces */
+.screen .card,.screen .hero,.screen .workoutHero,.screen .settingsHero,.screen .metric{background:linear-gradient(145deg,#101419,#0d1115)!important;border-color:rgba(255,255,255,.075)!important}
+@media(max-width:520px){
+ .cinema-card{min-height:455px!important}
+ .cinema-card::before{inset:0 0 0 46%!important;background-position:center right!important}
+ .cinema-content{min-height:455px!important;padding:30px 25px 104px!important}
+ .cinema-card h2{width:62%!important;font-size:33px!important;letter-spacing:-1.65px!important}
+ .cinema-meta{width:64%!important;font-size:11px!important}
+ .cinema-focus{width:63%!important;font-size:11px!important}
+ .lux-cta{width:280px!important;height:57px!important;min-height:57px!important;bottom:24px!important}
+}
+@media(max-width:390px){
+ .cinema-card{min-height:430px!important}
+ .cinema-card::before{inset:0 0 0 47%!important}
+ .cinema-content{min-height:430px!important;padding:28px 21px 98px!important}
+ .cinema-card h2{width:65%!important;font-size:30px!important}
+ .cinema-meta{width:68%!important;font-size:10.5px!important}
+ .cinema-focus{width:65%!important;font-size:10.5px!important}
+ .lux-cta{width:265px!important;height:54px!important;min-height:54px!important;bottom:22px!important;font-size:13px!important}
+}
+</style>
 </head>
 <body>
 <canvas id="ambientCanvas" aria-hidden="true"></canvas>
@@ -629,7 +707,7 @@ body{letter-spacing:-.01em}
   <header class="lux-header reveal">
     <div>
       <div class="brandline"><span class="brand-dot"></span> MY ROUTINE</div>
-      <h1 id="greeting">Добро утро.</h1>
+      <h1 id="greeting">Good morning.</h1>
       <p id="v133Date" class="lux-date">Thursday · 8 October</p>
     </div>
     <button class="lux-icon" aria-label="Today"><span class="header-glyph">✦</span><i></i></button>
@@ -640,25 +718,25 @@ body{letter-spacing:-.01em}
     <div class="cinema-orb"></div>
     <div class="cinema-content">
       <div class="eyebrow gold">TODAY · TRAINING</div>
-      <h2 id="v133WorkoutName">Гърди, гръб, рамо и ръце</h2>
+      <h2 id="v133WorkoutName">Chest, Back, Shoulders & Arms</h2>
       <div class="cinema-meta"><span id="v133WorkoutMeta">19:00 · ~60 min</span><i></i><span>1–2 RIR</span><em class="live-dot"><b></b> READY</em></div>
-      <p class="cinema-focus" id="v133WorkoutFocus">Гърди · гръб · рамо · бицепс · трицепс</p>
-      <button class="lux-cta" onclick="show('workout',document.querySelector('.nav button:nth-child(3)'))"><span class="cta-main"><svg class="cta-dumbbell" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6M7 7v10M10 10h4M14 10v4M17 7v10M20 9v6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Започни тренировка</span></span><b aria-hidden="true">→</b></button>
+      <p class="cinema-focus" id="v133WorkoutFocus">Chest · Back · Shoulders · Biceps · Triceps</p>
+      <button class="lux-cta" onclick="show('workout',document.querySelector('.nav button:nth-child(3)'))"><span class="cta-main"><svg class="cta-dumbbell" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6M7 7v10M10 10h4M14 10v4M17 7v10M20 9v6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Start workout</span></span><b aria-hidden="true">→</b></button>
     </div>
     <div class="cinema-index">01</div>
   </section>
 
   <section class="lux-section reveal" style="--delay:.09s">
-    <div class="lux-section-head"><div><span>FUEL</span><h3>Предстоящо хранене</h3></div></div>
-    <button class="fuel-card fuel-card-clickable" onclick="show('nutrition',document.querySelector('.nav button:nth-child(2)'))" aria-label="Отвори храненето">
+    <div class="lux-section-head"><div><span>FUEL</span><h3>Upcoming meal</h3></div></div>
+    <button class="fuel-card fuel-card-clickable" onclick="show('nutrition',document.querySelector('.nav button:nth-child(2)'))" aria-label="Open nutrition">
       <div class="fuel-art"><span id="todayMealIndex">03</span><small id="todayMealLabel">NEXT MEAL</small></div>
-      <div class="fuel-copy"><strong id="todayMealName">Междинно</strong><span id="todayMealTime">16:30 · ~350 kcal</span><small id="todayMealDesc">200 г кисело мляко + банан + 20–25 г ядки</small></div>
+      <div class="fuel-copy"><strong id="todayMealName">Snack</strong><span id="todayMealTime">16:30 · ~350 kcal</span><small id="todayMealDesc">200 g yogurt + banana + 20–25 g nuts</small></div>
       <div class="fuel-arrow" aria-hidden="true">→</div>
     </button>
   </section>
 
   <section class="lux-section reveal" style="--delay:.14s">
-    <div class="lux-section-head"><div><span>COACH</span><h3>Как си днес?</h3></div><span class="micro-status" id="v133Recovery">GOOD</span></div>
+    <div class="lux-section-head"><div><span>COACH</span><h3>How are you today?</h3></div><span class="micro-status" id="v133Recovery">GOOD</span></div>
     <div class="coach-lux">
       <div class="coach-ring-wrap"><div class="coach-ring" id="todayScoreRing"><div><b id="v133CoachScore">—</b><small id="v133CoachState">READY</small></div></div></div>
       <div class="coach-lux-copy"><div class="coach-line"><span>Recovery</span><b id="v133Recovery2">Good</b></div><div class="coach-line"><span>Consistency</span><b id="v133Consistency">—%</b></div><p id="v133Insight">Analyzing your recent training and recovery…</p></div>
@@ -666,7 +744,7 @@ body{letter-spacing:-.01em}
   </section>
 
   <section class="lux-section reveal" style="--delay:.19s">
-    <div class="lux-section-head"><div><span>TODAY</span><h3>Показатели</h3></div></div>
+    <div class="lux-section-head"><div><span>TODAY</span><h3>Metrics</h3></div></div>
     <div class="lux-metrics">
       <div class="lux-metric protein"><span class="metric-glyph">P</span><small>PROTEIN</small><strong id="v133Protein">0 / 150 g</strong><i><em id="v133ProteinBar"></em></i><small class="metric-percent" id="v133ProteinPct">0%</small></div>
       <div class="lux-metric water"><span class="metric-glyph">W</span><small>WATER</small><strong id="v133Water">0.0 / 2.7 L</strong><i><em id="v133WaterBar"></em></i><small class="metric-percent" id="v133WaterPct">0%</small></div>
@@ -675,7 +753,7 @@ body{letter-spacing:-.01em}
   </section>
 
   <section class="lux-section reveal" style="--delay:.24s">
-    <div class="lux-section-head"><div><span>THIS WEEK</span><h3>Твоят ритъм</h3></div><button onclick="show('progress')">Details →</button></div>
+    <div class="lux-section-head"><div><span>THIS WEEK</span><h3>Your rhythm</h3></div><button onclick="show('progress')">Details →</button></div>
     <div class="week-lux">
       <div class="week-bars">
         <div><b id="v133WeekTraining">0 / 4</b><span>Training</span><i><em style="width:0%"></em></i></div>
@@ -688,7 +766,7 @@ body{letter-spacing:-.01em}
   </section>
 
   <section class="lux-section reveal" style="--delay:.29s">
-    <div class="lux-section-head"><div><span>PROGRESS</span><h3>Текуща форма</h3></div><button onclick="show('progress')">View all →</button></div>
+    <div class="lux-section-head"><div><span>PROGRESS</span><h3>Current form</h3></div><button onclick="show('progress')">View all →</button></div>
     <div class="progress-lux">
       <div><small>WEIGHT</small><strong id="v133Weight">— kg</strong><span id="v133WeightChange">No change recorded</span></div><span class="progress-badge" id="v133WeightBadge">TREND</span>
       <svg viewBox="0 0 360 88" preserveAspectRatio="none"><defs><linearGradient id="sparkFill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#d6a45b" stop-opacity=".26"/><stop offset="1" stop-color="#d6a45b" stop-opacity="0"/></linearGradient></defs><path class="spark-area" d="M0,70 C40,58 55,64 90,50 S145,59 180,38 S240,49 270,30 S325,38 360,18 L360,88 L0,88 Z"/><polyline id="v133Spark" points="0,70 40,58 90,50 145,59 180,38 240,49 270,30 325,38 360,18"/></svg>
@@ -701,39 +779,39 @@ body{letter-spacing:-.01em}
 </section>
 
 <section id="nutrition" class="screen">
-<div class="top"><div><div class="eyebrow">NUTRITION</div><div class="title">Хранене</div></div></div>
-<div class="card"><div class="sectionhead"><h3>Дневна цел</h3><span class="pill">MUSCLE GAIN</span></div><div class="grid">
+<div class="top"><div><div class="eyebrow">NUTRITION</div><div class="title">Nutrition</div></div></div>
+<div class="card"><div class="sectionhead"><h3>Daily target</h3><span class="pill">MUSCLE GAIN</span></div><div class="grid">
 <div class="metric"><div class="num">2700</div><div class="label">kcal</div></div>
 <div class="metric"><div class="num"><span id="nutritionProtein">0</span> g</div><div class="label">protein / 150 g</div></div>
 <div class="metric"><div class="num"><span id="nutritionWater">0.0</span> L</div><div class="label">water / 2.7 L</div></div>
-<div class="metric"><div class="num" id="mealsDone">0/6</div><div class="label">хранения</div></div></div></div>
-<div class="card"><div class="sectionhead"><h3>Вода</h3><span class="small">250 ml</span></div><div class="progress"><div class="fill" id="waterBigFill"></div></div><button class="cta" style="margin-top:11px" onclick="addWater()">+250 ml вода</button></div>
-<div class="card"><h3>План по часове</h3><div id="fullMeals"></div></div>
-<div class="card"><h3>Корекция на калориите</h3><div id="calorieAdvice" class="notice">Събираме поне 2–3 седмици данни за теглото, преди да правим промени.</div></div>
+<div class="metric"><div class="num" id="mealsDone">0/6</div><div class="label">meals</div></div></div></div>
+<div class="card"><div class="sectionhead"><h3>Water</h3><span class="small">250 ml</span></div><div class="progress"><div class="fill" id="waterBigFill"></div></div><button class="cta" style="margin-top:11px" onclick="addWater()">+250 ml water</button></div>
+<div class="card"><h3>Daily schedule</h3><div id="fullMeals"></div></div>
+<div class="card"><h3>Calorie adjustment</h3><div id="calorieAdvice" class="notice">Collect at least 2–3 weeks of weight data before making changes.</div></div>
 </section>
 
 <section id="workout" class="screen">
-<div class="top"><div><div class="eyebrow">TRAINING</div><div class="title">Тренировка</div></div></div>
+<div class="top"><div><div class="eyebrow">TRAINING</div><div class="title">Workout</div></div></div>
 <div class="dayrow" id="days"></div><div id="workoutContent"></div>
 </section>
 
 <section id="sleep" class="screen">
-<div class="top"><div><div class="eyebrow">RECOVERY</div><div class="title">Сън</div></div></div>
-<div class="hero"><span class="pill">SLEEP PLAN</span><h2>Цел: 7 ч 30 мин</h2><p>Следим реалния сън и 7-дневната средна стойност.</p></div>
-<div class="sleepbox"><div class="card"><div class="sleepicon">☀</div><div class="small">Ставане</div><div class="sleepbig">08:00</div></div><div class="card"><div class="sleepicon">☾</div><div class="small">Лягане</div><div class="sleepbig">00:30</div></div></div>
-<div class="card"><div class="sectionhead"><h3>Сън тази седмица</h3><span class="pill" id="sleepScore">—</span></div><p class="small">Въвеждай реалните часове сутрин.</p><div class="weightrow"><input id="sleepInput" type="number" step="0.1" min="0" max="12" placeholder="напр. 6.8"><button onclick="addSleep()">Запиши</button></div><div class="history" id="sleepHistory"></div></div>
-<div class="card"><h3>Вечерен план</h3><div class="meal"><div class="mealhead"><b>22:30</b><span class="small">Последно хранене при глад</span></div></div><div class="meal"><div class="mealhead"><b>23:30</b><span class="small">Намали светлината и екраните</span></div></div><div class="meal"><div class="mealhead"><b>00:00</b><span class="small">Спокойно време</span></div></div><div class="meal"><div class="mealhead"><b>00:30</b><span class="small">Лягане</span></div></div></div>
-<div class="card"><div class="notice">Постоянният час на ставане е най-силният anchor. Изместваме режима постепенно.</div></div>
+<div class="top"><div><div class="eyebrow">RECOVERY</div><div class="title">Sleep</div></div></div>
+<div class="hero"><span class="pill">SLEEP PLAN</span><h2>Target: 7 h 30 min</h2><p>Track actual sleep and the 7-day average.</p></div>
+<div class="sleepbox"><div class="card"><div class="sleepicon">☀</div><div class="small">Wake-up</div><div class="sleepbig">08:00</div></div><div class="card"><div class="sleepicon">☾</div><div class="small">Bedtime</div><div class="sleepbig">00:30</div></div></div>
+<div class="card"><div class="sectionhead"><h3>Sleep this week</h3><span class="pill" id="sleepScore">—</span></div><p class="small">Enter your actual sleep time each morning.</p><div class="weightrow"><input id="sleepInput" type="number" step="0.1" min="0" max="12" placeholder="e.g. 6.8"><button onclick="addSleep()">Save</button></div><div class="history" id="sleepHistory"></div></div>
+<div class="card"><h3>Evening plan</h3><div class="meal"><div class="mealhead"><b>22:30</b><span class="small">Last meal if hungry</span></div></div><div class="meal"><div class="mealhead"><b>23:30</b><span class="small">Dim lights and screens</span></div></div><div class="meal"><div class="mealhead"><b>00:00</b><span class="small">Wind-down time</span></div></div><div class="meal"><div class="mealhead"><b>00:30</b><span class="small">Bedtime</span></div></div></div>
+<div class="card"><div class="notice">A consistent wake time is the strongest anchor. Shift the schedule gradually.</div></div>
 </section>
 
 <section id="settings" class="screen">
-<div class="top"><div><div class="eyebrow">SETTINGS</div><div class="title">Настройки</div></div></div>
-<div class="settingsHero"><div class="settingsIcon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8.6a3.4 3.4 0 1 0 0 6.8 3.4 3.4 0 0 0 0-6.8Zm0-5 .8 2.1 2 .8 2-1.1 1.5 1.5-1.1 2 .8 2.1 2.1.8v2.1l-2.1.8-.8 2 1.1 2-1.5 1.5-2-1.1-2 .8-.8 2.1H10l-.8-2.1-2-.8-2 1.1-1.5-1.5 1.1-2-.8-2.1L3.9 12l2.1-.8.8-2-1.1-2 1.5-1.5 2 1.1 2-.8L10 3.6Z"/></svg></div><div><div class="pill">MY ROUTINE</div><h2>Всичко на едно място.</h2><p>Известия, напомняния и настройки на приложението.</p></div></div>
-<div class="sectionTitle"><h3>Известия</h3><span>NOTIFICATIONS</span></div>
-<div class="card settingsCard"><div class="setting"><div><b>Push notifications</b><div class="small">Напомняния за следващото действие.</div></div><button class="toggle" id="notifyToggle" onclick="toggleNotifications()"><i></i></button></div><div class="setting"><div><b>Автоматични напомняния</b><div class="small">Използват локалните часове в приложението.</div></div><button class="toggle on" id="reminderToggle" onclick="toggleReminderSetting()"><i></i></button></div></div>
-<div class="sectionTitle"><h3>Приложение</h3><span>APP</span></div>
-<div class="card settingsCard"><div class="setting"><div><b>Версия</b><div class="small">Автоматичните обновявания са активни.</div></div><span class="versionBadge" id="appVersion">V14.1 • 2026.10.08</span></div><div class="setting"><div><b>Последна проверка</b><div class="small">Update механизмът проверява при отваряне и периодично.</div></div><span class="statusDot">●</span></div></div>
-<div class="card settingsCard"><div class="notice">Ако има нова версия, ще видиш банер „Нова версия е налична“ и приложението ще се обнови с един бутон.</div></div>
+<div class="top"><div><div class="eyebrow">SETTINGS</div><div class="title">Settings</div></div></div>
+<div class="settingsHero"><div class="settingsIcon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8.6a3.4 3.4 0 1 0 0 6.8 3.4 3.4 0 0 0 0-6.8Zm0-5 .8 2.1 2 .8 2-1.1 1.5 1.5-1.1 2 .8 2.1 2.1.8v2.1l-2.1.8-.8 2 1.1 2-1.5 1.5-2-1.1-2 .8-.8 2.1H10l-.8-2.1-2-.8-2 1.1-1.5-1.5 1.1-2-.8-2.1L3.9 12l2.1-.8.8-2-1.1-2 1.5-1.5 2 1.1 2-.8L10 3.6Z"/></svg></div><div><div class="pill">MY ROUTINE</div><h2>Everything in one place.</h2><p>Notifications, reminders and app settings.</p></div></div>
+<div class="sectionTitle"><h3>Notifications</h3><span>NOTIFICATIONS</span></div>
+<div class="card settingsCard"><div class="setting"><div><b>Push notifications</b><div class="small">Reminders for the next action.</div></div><button class="toggle" id="notifyToggle" onclick="toggleNotifications()"><i></i></button></div><div class="setting"><div><b>Automatic reminders</b><div class="small">Uses the local times in the app.</div></div><button class="toggle on" id="reminderToggle" onclick="toggleReminderSetting()"><i></i></button></div></div>
+<div class="sectionTitle"><h3>App</h3><span>APP</span></div>
+<div class="card settingsCard"><div class="setting"><div><b>Version</b><div class="small">Automatic updates are active.</div></div><span class="versionBadge" id="appVersion">V14.2.5 • 2026.10.08</span></div><div class="setting"><div><b>Last checked</b><div class="small">The update system checks on launch and periodically.</div></div><span class="statusDot">●</span></div></div>
+<div class="card settingsCard"><div class="notice">If a new version is available, you will see an update banner and can update with one tap.</div></div>
 </section>
 
 <section id="progress" class="screen"></section>
@@ -742,53 +820,53 @@ body{letter-spacing:-.01em}
 
 <nav class="nav">
 <button class="active" onclick="show('general',this)"><span class="navicon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11.2 12 4l8 7.2V20a1 1 0 0 1-1 1h-5v-5h-4v5H5a1 1 0 0 1-1-1z"/></svg></span><b>Today</b></button>
-<button onclick="show('nutrition',this)"><span class="navicon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4v8m0-8v8M4 8h6M5 4v3m4-3v3M16 4v7m0 0c0 2-1.2 3-3 3m3-3c0 2 1.2 3 3 3M16 14v7"/></svg></span><b>Хранене</b></button>
-<button onclick="show('workout',this)"><span class="navicon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9v6m3-8v10m8-10v10m3-8v6M3 10v4m18-4v4M8 12h8"/></svg></span><b>Тренировка</b></button>
-<button onclick="show('sleep',this)"><span class="navicon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.2A8.7 8.7 0 0 1 9.8 4a8.7 8.7 0 1 0 10.2 10.2Z"/></svg></span><b>Сън</b></button>
-<button onclick="show('settings',this)"><span class="navicon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8.8a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 0 0 0-6.4Zm0-5 .8 2.1 2 .8 2-1.1 1.5 1.5-1.1 2 .8 2 2.1.8v2.1l-2.1.8-.8 2 1.1 2-1.5 1.5-2-1.1-2 .8-.8 2.1H10l-.8-2.1-2-.8-2 1.1-1.5-1.5 1.1-2-.8-2.1L3.9 12l2.1-.8.8-2-1.1-2 1.5-1.5 2 1.1 2-.8L10 3.8Z"/></svg></span><b>Настройки</b></button>
+<button onclick="show('nutrition',this)"><span class="navicon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4v8m0-8v8M4 8h6M5 4v3m4-3v3M16 4v7m0 0c0 2-1.2 3-3 3m3-3c0 2 1.2 3 3 3M16 14v7"/></svg></span><b>Nutrition</b></button>
+<button onclick="show('workout',this)"><span class="navicon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9v6m3-8v10m8-10v10m3-8v6M3 10v4m18-4v4M8 12h8"/></svg></span><b>Workout</b></button>
+<button onclick="show('sleep',this)"><span class="navicon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.2A8.7 8.7 0 0 1 9.8 4a8.7 8.7 0 1 0 10.2 10.2Z"/></svg></span><b>Sleep</b></button>
+<button onclick="show('settings',this)"><span class="navicon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8.8a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 0 0 0-6.4Zm0-5 .8 2.1 2 .8 2-1.1 1.5 1.5-1.1 2 .8 2 2.1.8v2.1l-2.1.8-.8 2 1.1 2-1.5 1.5-2-1.1-2 .8-.8 2.1H10l-.8-2.1-2-.8-2 1.1-1.5-1.5 1.1-2-.8-2.1L3.9 12l2.1-.8.8-2-1.1-2 1.5-1.5 2 1.1 2-.8L10 3.8Z"/></svg></span><b>Settings</b></button>
 </nav>
 <div id="toast" class="toast"></div>
 
 <script>
 const workouts={
-"Понеделник":{title:"Гърди, гръб, рамо и ръце",focus:"Гърди • гръб • рамо • бицепс • трицепс",ex:[["Dumbbell Bench Press","4 × 6–10","120 sec","Гърди"],["One-Arm Dumbbell Row","4 × 8–12","90 sec","Гръб"],["Dumbbell Shoulder Press","3 × 8–12","90 sec","Рамо"],["Lateral Raise","3 × 12–15","60 sec","Средно рамо"],["Dumbbell Curl","3 × 10–12","60 sec","Бицепс"],["Overhead Triceps Extension","3 × 10–12","60 sec","Трицепс"]]},
-"Вторник":{title:"Крака, седалище и корем",focus:"Крака • задно бедро • седалище • прасец • корем",ex:[["Goblet Squat","4 × 8–12","120 sec","Крака"],["Romanian Deadlift","4 × 8–12","120 sec","Задно бедро"],["Bulgarian Split Squat","3 × 8–10/крак","90 sec","Крака"],["Calf Raises","4 × 12–15","60 sec","Прасец"],["Abs","3 серии","60 sec","Корем"]]},
-"Четвъртък":{title:"Гърди, гръб, рамо и ръце",focus:"Горни гърди • гръб • рамо • бицепс • трицепс",ex:[["Incline Dumbbell Press","4 × 8–12","120 sec","Горни гърди"],["Dumbbell Row","4 × 8–12","90 sec","Гръб"],["Arnold Press","3 × 8–12","90 sec","Рамо"],["Rear Delt Fly","3 × 12–15","60 sec","Задно рамо"],["Hammer Curl","3 × 10–12","60 sec","Бицепс"],["Triceps Kickback","3 × 12–15","60 sec","Трицепс"]]},
-"Събота":{title:"Крака, седалище, прасец и корем",focus:"Крака • задно бедро • седалище • прасец • корем",ex:[["Dumbbell Squat","4 × 8–12","120 sec","Крака"],["Dumbbell Romanian Deadlift","4 × 8–12","120 sec","Задно бедро"],["Reverse Lunge","3 × 10/крак","90 sec","Крака"],["Calf Raises","4 × 12–15","60 sec","Прасец"],["Abs","3 серии","60 sec","Корем"]]}
+"Monday":{title:"Chest, Back, Shoulders & Arms",focus:"Chest • Back • Shoulders • Biceps • Triceps",ex:[["Dumbbell Bench Press","4 × 6–10","120 sec","Chest"],["One-Arm Dumbbell Row","4 × 8–12","90 sec","Back"],["Dumbbell Shoulder Press","3 × 8–12","90 sec","Shoulders"],["Lateral Raise","3 × 12–15","60 sec","Lateral delts"],["Dumbbell Curl","3 × 10–12","60 sec","Biceps"],["Overhead Triceps Extension","3 × 10–12","60 sec","Triceps"]]},
+"Tuesday":{title:"Legs, Glutes & Core",focus:"Legs • Hamstrings • Glutes • Calves • Core",ex:[["Goblet Squat","4 × 8–12","120 sec","Legs"],["Romanian Deadlift","4 × 8–12","120 sec","Hamstrings"],["Bulgarian Split Squat","3 × 8–10/leg","90 sec","Legs"],["Calf Raises","4 × 12–15","60 sec","Calves"],["Abs","3 sets","60 sec","Core"]]},
+"Thursday":{title:"Chest, Back, Shoulders & Arms",focus:"Upper Chest • Back • Shoulders • Biceps • Triceps",ex:[["Incline Dumbbell Press","4 × 8–12","120 sec","Upper chest"],["Dumbbell Row","4 × 8–12","90 sec","Back"],["Arnold Press","3 × 8–12","90 sec","Shoulders"],["Rear Delt Fly","3 × 12–15","60 sec","Rear delts"],["Hammer Curl","3 × 10–12","60 sec","Biceps"],["Triceps Kickback","3 × 12–15","60 sec","Triceps"]]},
+"Saturday":{title:"Legs, Glutes, Calves & Core",focus:"Legs • Hamstrings • Glutes • Calves • Core",ex:[["Dumbbell Squat","4 × 8–12","120 sec","Legs"],["Dumbbell Romanian Deadlift","4 × 8–12","120 sec","Hamstrings"],["Reverse Lunge","3 × 10/leg","90 sec","Legs"],["Calf Raises","4 × 12–15","60 sec","Calves"],["Abs","3 sets","60 sec","Core"]]}
 };
-const meals=[["08:20","Закуска","3 яйца + 2 филии пълнозърнест хляб + 200 г кисело мляко + 1 банан","~600 kcal","35–40 g protein",38,600],["12:30","Обяд","180 г пилешко + 250–300 г сварен ориз + зеленчуци + 10 г зехтин","~650–700 kcal","~50 g protein",50,680],["16:30","Междинно","200 г кисело мляко + банан + 20–25 г ядки","~350 kcal","15–20 g protein",18,350],["18:30","Преди тренировка","1 банан + 2–3 оризовки + 20–25 г протеин","~250 kcal","20–25 g protein",22,250],["20:30","Вечеря","180–200 г месо/риба + 300 г картофи или 250–300 г ориз + салата","~650–750 kcal","40–50 g protein",45,700],["22:30","При глад","150–200 г извара или кисело мляко","~150–250 kcal","20–30 g protein",25,200]];
-const days=["Понеделник","Вторник","Сряда","Четвъртък","Петък","Събота","Неделя"], dayIndex={"Неделя":0,"Понеделник":1,"Вторник":2,"Сряда":3,"Четвъртък":4,"Петък":5,"Събота":6}, short={"Понеделник":"Пн","Вторник":"Вт","Сряда":"Ср","Четвъртък":"Чт","Петък":"Пт","Събота":"Сб","Неделя":"Нд"};
-const todayName=Object.keys(dayIndex).find(k=>dayIndex[k]===new Date().getDay())||"Понеделник";let selected=todayName;
+const meals=[["08:20","Breakfast","3 eggs + 2 slices whole-grain bread + 200 g yogurt + 1 banana","~600 kcal","35–40 g protein",38,600],["12:30","Lunch","180 g chicken + 250–300 g cooked rice + vegetables + 10 g olive oil","~650–700 kcal","~50 g protein",50,680],["16:30","Snack","200 g yogurt + banana + 20–25 g nuts","~350 kcal","15–20 g protein",18,350],["18:30","Pre-workout","1 banana + 2–3 rice cakes + 20–25 g protein","~250 kcal","20–25 g protein",22,250],["20:30","Dinner","180–200 g meat/fish + 300 g potatoes or 250–300 g rice + salad","~650–750 kcal","40–50 g protein",45,700],["22:30","If hungry","150–200 g cottage cheese or yogurt","~150–250 kcal","20–30 g protein",25,200]];
+const days=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], dayIndex={"Sunday":0,"Monday":1,"Tuesday":2,"Wednesday":3,"Thursday":4,"Friday":5,"Saturday":6}, short={"Monday":"Mon","Tuesday":"Tue","Wednesday":"Wed","Thursday":"Thu","Friday":"Fri","Saturday":"Sat","Sunday":"Sun"};
+const todayName=Object.keys(dayIndex).find(k=>dayIndex[k]===new Date().getDay())||"Monday";let selected=todayName;
 const todayKey=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`}, read=(k,f)=>{try{return JSON.parse(localStorage.getItem(k))??f}catch{return f}}, store=(k,v)=>localStorage.setItem(k,JSON.stringify(v));
 function toast(t){const e=document.getElementById("toast");e.textContent=t;e.classList.add("show");setTimeout(()=>e.classList.remove("show"),2200)}
 function show(id,btn){document.querySelectorAll(".screen").forEach(s=>{s.classList.remove("active");s.classList.remove("screen-lux")});const active=document.getElementById(id);active.classList.add("active","screen-lux");document.body.dataset.screen=id;document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("active"));if(btn)btn.classList.add("active");else if(["general","nutrition","workout","sleep","settings"].includes(id))document.querySelectorAll(".nav button")[["general","nutrition","workout","sleep","settings"].indexOf(id)].classList.add("active");if(id==="workout")renderWorkout();if(id==="nutrition")renderMeals();if(id==="progress")renderProgressPage();if(id==="settings")renderNotificationUI();window.scrollTo({top:0,behavior:"smooth"})}
-function formatDate(){const d=new Date(),m=["Яну","Фев","Мар","Апр","Май","Юни","Юли","Авг","Сеп","Окт","Ное","Дек"],n=["Неделя","Понеделник","Вторник","Сряда","Четвъртък","Петък","Събота"];return`${n[d.getDay()]} • ${String(d.getDate()).padStart(2,"0")} ${m[d.getMonth()]}`}
-function greeting(){const h=new Date().getHours();return h>=5&&h<12?"Добро утро.":h>=12&&h<18?"Добър ден.":h>=18&&h<23?"Добър вечер.":"Лека нощ."}
+function formatDate(){const d=new Date(),m=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],n=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];return`${n[d.getDay()]} • ${String(d.getDate()).padStart(2,"0")} ${m[d.getMonth()]}`}
+function greeting(){const h=new Date().getHours();return h>=5&&h<12?"Good morning.":h>=12&&h<18?"Good afternoon.":h>=18&&h<23?"Good evening.":"Good night."}
 function nowMin(){const d=new Date();return d.getHours()*60+d.getMinutes()}function tmin(t){const [h,m]=t.split(":").map(Number);return h*60+m}
-function focus(){const w=workouts[todayName];if(w)return["ТРЕНИРОВКА",`Днес имаш ${w.title}: ${w.focus.toLowerCase()}. Целта е 1–2 RIR и постепенно прогресиране.`];return["ВЪЗСТАНОВЯВАНЕ","По-лек ден: разходка, мобилност, храна и възстановяване."]}
-function tasksData(){return[["ХРАНЕНЕ","Всички хранения за деня"],["ТРЕНИРОВКА",workouts[todayName]?workouts[todayName].title:"Разходка / мобилност"]]}
+function focus(){const w=workouts[todayName];if(w)return["WORKOUT",`Today: ${w.title}: ${w.focus.toLowerCase()}. Target 1–2 RIR with steady progression.`];return["RECOVERY","Lighter day: walk, mobility, food and recovery."]}
+function tasksData(){return[["NUTRITION","All meals for today"],["WORKOUT",workouts[todayName]?workouts[todayName].title:"Walk / Mobility"]]}
 function state(){let s=read("daily",{date:todayKey(),tasks:{},meals:{},water:0,protein:0,kcal:0});if(s.date!==todayKey())s={date:todayKey(),tasks:{},meals:{},water:0,protein:0,kcal:0};return s}function saveState(s){store("daily",s)}
-function currentNext(){const t=nowMin(),w=workouts[todayName];const items=[["12:30","Хранене"],["18:30","Предтренировъчно хранене"],...(w?[["19:00",w.title]]:[])];const a=items.filter(x=>tmin(x[0])>=t);return a[0]?{time:a[0][0],label:a[0][1],i:null}:{time:null,label:null,i:null}}
-function renderGeneral(){document.getElementById("todayLabel").textContent=formatDate();document.getElementById("greeting").textContent=greeting();const w=workouts[todayName];document.getElementById("todayPlanTitle").textContent="Днешният план";document.getElementById("todayPlanDesc").textContent=w?`Хранене + ${w.title}`:"Хранене + възстановяване";const s=state(),td=tasksData(),done=td.filter((_,i)=>s.tasks[i]).length;document.getElementById("tasks").innerHTML=`<label class="task"><input class="check" type="checkbox" ${s.tasks[0]?"checked":""} onchange="toggleTask(0,this.checked)"><div style="flex:1"><div class="time">ХРАНЕНЕ</div><div class="${s.tasks[0]?"done":""}">Всички хранения за деня</div><div class="planMeals">${meals.map(m=>`<div class="planMeal"><span class="mealTime">${m[0]}</span><div style="flex:1"><b>${m[1]}</b><div class="small">${m[2]}</div></div><span class="mealKcal">${m[3]}</span></div>`).join("")}</div></div></label><label class="task"><input class="check" type="checkbox" ${s.tasks[1]?"checked":""} onchange="toggleTask(1,this.checked)"><div><div class="time">ТРЕНИРОВКА</div><div class="${s.tasks[1]?"done":""}">${workouts[todayName]?workouts[todayName].title:"Разходка / мобилност"}</div>${workouts[todayName]?`<div class="small">${workouts[todayName].focus}</div>`:""}</div></label>`;document.getElementById("doneCount").textContent=`${done}/${td.length}`;document.getElementById("activitySummary").textContent=`${done} от ${td.length}`;const p=Math.min(150,s.protein),water=Math.min(2.7,s.water);document.getElementById("proteinNow").textContent=Math.round(p);document.getElementById("proteinFill").style.width=`${p/150*100}%`;document.getElementById("waterNow").textContent=water.toFixed(2);document.getElementById("waterFill").style.width=`${water/2.7*100}%`;const ws=read("weights",[]);if(ws.length)document.getElementById("generalWeight").textContent=Number(ws.at(-1).v).toFixed(1);renderProgressMini();renderWeight();renderWeeklyReview();renderNotificationUI();if(window.renderV133) window.renderV133()}
-function completeNext(){const n=currentNext();if(n.i==null)return;toggleTask(n.i,true);toast("Готово ✓")}
+function currentNext(){const t=nowMin(),w=workouts[todayName];const items=[["12:30","Nutrition"],["18:30","Pre-workout meal"],...(w?[["19:00",w.title]]:[])];const a=items.filter(x=>tmin(x[0])>=t);return a[0]?{time:a[0][0],label:a[0][1],i:null}:{time:null,label:null,i:null}}
+function renderGeneral(){document.getElementById("todayLabel").textContent=formatDate();document.getElementById("greeting").textContent=greeting();const w=workouts[todayName];document.getElementById("todayPlanTitle").textContent="Today’s plan";document.getElementById("todayPlanDesc").textContent=w?`Nutrition + ${w.title}`:"Nutrition + recovery";const s=state(),td=tasksData(),done=td.filter((_,i)=>s.tasks[i]).length;document.getElementById("tasks").innerHTML=`<label class="task"><input class="check" type="checkbox" ${s.tasks[0]?"checked":""} onchange="toggleTask(0,this.checked)"><div style="flex:1"><div class="time">NUTRITION</div><div class="${s.tasks[0]?"done":""}">All meals for today</div><div class="planMeals">${meals.map(m=>`<div class="planMeal"><span class="mealTime">${m[0]}</span><div style="flex:1"><b>${m[1]}</b><div class="small">${m[2]}</div></div><span class="mealKcal">${m[3]}</span></div>`).join("")}</div></div></label><label class="task"><input class="check" type="checkbox" ${s.tasks[1]?"checked":""} onchange="toggleTask(1,this.checked)"><div><div class="time">WORKOUT</div><div class="${s.tasks[1]?"done":""}">${workouts[todayName]?workouts[todayName].title:"Walk / Mobility"}</div>${workouts[todayName]?`<div class="small">${workouts[todayName].focus}</div>`:""}</div></label>`;document.getElementById("doneCount").textContent=`${done}/${td.length}`;document.getElementById("activitySummary").textContent=`${done} of ${td.length}`;const p=Math.min(150,s.protein),water=Math.min(2.7,s.water);document.getElementById("proteinNow").textContent=Math.round(p);document.getElementById("proteinFill").style.width=`${p/150*100}%`;document.getElementById("waterNow").textContent=water.toFixed(2);document.getElementById("waterFill").style.width=`${water/2.7*100}%`;const ws=read("weights",[]);if(ws.length)document.getElementById("generalWeight").textContent=Number(ws.at(-1).v).toFixed(1);renderProgressMini();renderWeight();renderWeeklyReview();renderNotificationUI();if(window.renderV133) window.renderV133()}
+function completeNext(){const n=currentNext();if(n.i==null)return;toggleTask(n.i,true);toast("Done ✓")}
 function toggleTask(i,v){const s=state();s.tasks[i]=v;archiveToday();saveState(s);renderGeneral()}
 function renderMeals(){const s=state();document.getElementById("fullMeals").innerHTML=meals.map((m,i)=>`<div class="meal"><div class="mealrow"><input class="mealcheck" type="checkbox" ${s.meals[i]?"checked":""} onchange="toggleMeal(${i},this.checked)"><div style="flex:1"><div class="mealhead"><div class="mealname">${m[0]} · ${m[1]}</div><div class="kcal">${m[3]}</div></div><div class="small" style="margin-top:5px">${m[2]}</div><div class="tags"><span class="tag">${m[4]}</span></div></div></div></div>`).join("");const p=Math.min(150,s.protein),w=Math.min(2.7,s.water),d=meals.filter((_,i)=>s.meals[i]).length;document.getElementById("nutritionProtein").textContent=Math.round(p);document.getElementById("nutritionWater").textContent=w.toFixed(2);document.getElementById("mealsDone").textContent=`${d}/${meals.length}`;document.getElementById("waterBigFill").style.width=`${w/2.7*100}%`;renderCalorieAdvice()}
 function toggleMeal(i,v){const s=state();s.meals[i]=v;s.protein=Math.max(0,s.protein+(v?meals[i][5]:-meals[i][5]));s.kcal=Math.max(0,s.kcal+(v?meals[i][6]:-meals[i][6]));saveState(s);archiveToday();renderMeals();renderGeneral()}
-function addWater(){const s=state();s.water=Math.min(5,Number((s.water+.25).toFixed(2)));saveState(s);archiveToday();renderMeals();renderGeneral();toast("Вода +250 ml 💧")}
-function renderCalorieAdvice(){const a=read("weights",[]);if(a.length<4){document.getElementById("calorieAdvice").textContent="Събираме поне 2–3 седмици данни за теглото, преди да правим промени.";return}const recent=a.slice(-7).map(x=>Number(x.v)),diff=recent.at(-1)-recent[0];document.getElementById("calorieAdvice").textContent=Math.abs(diff)<.1?"Трендът е почти равен. Ако това се запази, вероятно ще добавим малък калориен излишък.":diff<.2?"Покачването е под целта 0.2–0.4 kg/седм. При достатъчна последователност може да увеличим с ~100–150 kcal.":diff>.5?"Покачването е бързо. Следим още няколко измервания преди да намаляваме калориите.":"Трендът е в целевия диапазон. Запази приема."}
+function addWater(){const s=state();s.water=Math.min(5,Number((s.water+.25).toFixed(2)));saveState(s);archiveToday();renderMeals();renderGeneral();toast("+250 ml water 💧")}
+function renderCalorieAdvice(){const a=read("weights",[]);if(a.length<4){document.getElementById("calorieAdvice").textContent="Collect at least 2–3 weeks of weight data before making changes.";return}const recent=a.slice(-7).map(x=>Number(x.v)),diff=recent.at(-1)-recent[0];document.getElementById("calorieAdvice").textContent=Math.abs(diff)<.1?"The trend is nearly flat. If this continues, we may add a small calorie surplus.":diff<.2?"Gain is below the 0.2–0.4 kg/week target. With consistent tracking, we may add ~100–150 kcal.":diff>.5?"Gain is fast. We will watch a few more measurements before reducing calories.":"Trend is within the target range. Keep intake steady."}
 function renderDays(){document.getElementById("days").innerHTML=days.map(d=>`<button class="day ${d===selected?"active":""}" onclick="selected='${d}';renderWorkout()">${short[d]}<strong>${d===selected?"●":""}</strong></button>`).join("")}
 function parseRange(x){const m=x.match(/(\d+)\s*[×x]\s*(\d+)[–-](\d+)/);return m?{sets:+m[1],lo:+m[2],hi:+m[3]}:null}
 function exerciseHistory(name){return read("exerciseHistory",{})[name]||[]}
 function progression(name,range){
  const h=exerciseHistory(name),last=h.at(-1);
- if(!last||!last.kg)return{label:"START",cls:"badgehold",target:`${range.lo}–${range.hi} reps`,reason:"Няма предишен запис. Избери тежест, с която остават около 2–3 RIR.",last:null};
+ if(!last||!last.kg)return{label:"START",cls:"badgehold",target:`${range.lo}–${range.hi} reps`,reason:"No previous log. Choose a weight that leaves about 2–3 RIR.",last:null};
  const kg=+last.kg||0,reps=+last.reps||0,rir=last.rir===""?2:+last.rir;
  const inc=/Raise|Curl|Kickback|Abs/i.test(name)?1:2;
- let next=kg,label="HOLD",cls="badgehold",reason=`Запази ${kg} kg и се стреми към още 1 повторение.`;
- if(reps>=range.hi&&rir>=1){next=kg+inc;label="INCREASE";cls="badgeup";reason=`Горната граница е постигната с RIR ${rir}. Следващата цел е +${inc} kg.`}
- else if(rir<=0){label="HOLD";reason="Последната серия е била до отказ. Не увеличавай още; стабилизирай 1–2 RIR."}
- else if(reps<range.lo){label="REDUCE";cls="badgedown";next=Math.max(kg-inc,kg);reason=`Под минималните ${range.lo} reps. Запази или намали леко тежестта.`}
- else{label="PROGRESS";cls="badgeup";reason=`В диапазона си. Днес целта е ${Math.min(range.hi,reps+1)} reps с RIR 1–2.`}
+ let next=kg,label="HOLD",cls="badgehold",reason=`Keep ${kg} kg and aim for one more rep.`;
+ if(reps>=range.hi&&rir>=1){next=kg+inc;label="INCREASE";cls="badgeup";reason=`Top of the rep range reached with RIR ${rir}. Next target: +${inc} kg.`}
+ else if(rir<=0){label="HOLD";reason="The last set reached failure. Do not increase yet; stabilize at 1–2 RIR."}
+ else if(reps<range.lo){label="REDUCE";cls="badgedown";next=Math.max(kg-inc,kg);reason=`Below the minimum ${range.lo} reps. Keep or slightly reduce the load.`}
+ else{label="PROGRESS";cls="badgeup";reason=`Within range. Today target: ${Math.min(range.hi,reps+1)} reps with RIR 1–2.`}
  return{label,cls,target:`${next} kg × ${range.lo}–${range.hi}`,reason,last};
 }
 function exercisePB(name){
@@ -797,35 +875,35 @@ function exercisePB(name){
 }
 function renderWorkout(){
  renderDays();const w=workouts[selected];
- if(!w){document.getElementById("workoutContent").innerHTML=`<div class="card"><h3>Почивен ден</h3><p class="small">Разходка, мобилност и възстановяване.</p></div>`;return}
+ if(!w){document.getElementById("workoutContent").innerHTML=`<div class="card"><h3>Rest day</h3><p class="small">Walk, mobility and recovery.</p></div>`;return}
  const all=Object.values(read("exerciseHistory",{})).flat(),improved=all.length;
- document.getElementById("workoutContent").innerHTML=`<div class="workoutHero"><span class="pill">${selected.toUpperCase()}</span><h2 style="font-size:25px;margin:10px 0 5px">${w.title}</h2><p class="small">${w.focus} • ~50–60 мин</p><div class="coachsummary"><div class="coachstat"><b>${w.ex.length}</b><span>упражнения</span></div><div class="coachstat"><b>${improved}</b><span>записи</span></div><div class="coachstat"><b>1–2</b><span>цел RIR</span></div></div><button class="cta" style="margin-top:12px" onclick="startSession()">Започни workout →</button></div><div class="card"><div class="sectionhead"><h3>Coach Plan</h3><span class="pill">SMART</span></div><p class="small">Приложението използва последното изпълнение, reps и RIR, за да предложи следващата стъпка.</p>${w.ex.map((e,i)=>{const r=parseRange(e[1])||{lo:8,hi:12},p=progression(e[0],r),pb=exercisePB(e[0]);return`<div class="exercise"><div class="exname">${i+1}. ${e[0]}</div><div class="exmeta"><span>${e[1]}</span><span>Почивка ${e[2]}</span><span>${e[3]}</span></div><div class="coachbox"><div class="coachlabel">${p.label}</div><div class="coachtarget ${p.cls}">${p.target}</div><div class="coachreason">${p.reason}</div>${p.last?`<div class="small" style="margin-top:6px">Последно: ${p.last.kg} kg × ${p.last.reps} • RIR ${p.last.rir}</div>`:""}${pb?`<div class="pb">🏆 Най-добър обем: ${pb.kg} kg × ${pb.reps}</div>`:""}</div><div class="small" style="margin-top:7px">${e[4]}</div><div class="loggrid"><input placeholder="kg" id="w${i}"><input placeholder="reps" id="r${i}"><input placeholder="RIR" id="rir${i}"></div></div>`}).join("")}</div>`
+ document.getElementById("workoutContent").innerHTML=`<div class="workoutHero"><span class="pill">${selected.toUpperCase()}</span><h2 style="font-size:25px;margin:10px 0 5px">${w.title}</h2><p class="small">${w.focus} • ~50–60 min</p><div class="coachsummary"><div class="coachstat"><b>${w.ex.length}</b><span>exercises</span></div><div class="coachstat"><b>${improved}</b><span>logs</span></div><div class="coachstat"><b>1–2</b><span>target RIR</span></div></div><button class="cta" style="margin-top:12px" onclick="startSession()">Start workout →</button></div><div class="card"><div class="sectionhead"><h3>Coach Plan</h3><span class="pill">SMART</span></div><p class="small">The app uses your last performance, reps and RIR to suggest the next step.</p>${w.ex.map((e,i)=>{const r=parseRange(e[1])||{lo:8,hi:12},p=progression(e[0],r),pb=exercisePB(e[0]);return`<div class="exercise"><div class="exname">${i+1}. ${e[0]}</div><div class="exmeta"><span>${e[1]}</span><span>Rest ${e[2]}</span><span>${e[3]}</span></div><div class="coachbox"><div class="coachlabel">${p.label}</div><div class="coachtarget ${p.cls}">${p.target}</div><div class="coachreason">${p.reason}</div>${p.last?`<div class="small" style="margin-top:6px">Last: ${p.last.kg} kg × ${p.last.reps} • RIR ${p.last.rir}</div>`:""}${pb?`<div class="pb">🏆 Best volume: ${pb.kg} kg × ${pb.reps}</div>`:""}</div><div class="small" style="margin-top:7px">${e[4]}</div><div class="loggrid"><input placeholder="kg" id="w${i}"><input placeholder="reps" id="r${i}"><input placeholder="RIR" id="rir${i}"></div></div>`}).join("")}</div>`
 }
-function startSession(){const w=workouts[selected];document.getElementById("session").innerHTML=`<div class="top"><div><div class="eyebrow">${selected}</div><div class="title">${w.title}</div></div></div><div class="card"><div class="small">REST TIMER</div><div class="timer" id="timer">01:30</div><button class="timerbtn" onclick="startTimer()">Започни 90 сек почивка</button></div><div class="card"><h3>Правило за прогресия</h3><div class="notice">Горната граница + RIR 1–2 → увеличаваме. Под долната граница или RIR 0 → задържаме тежестта. Целта е постоянен прогрес с добра техника.</div></div><div class="card"><button class="cta" onclick="finishWorkout()">Завърши тренировката ✓</button></div>`;show("session")}
-let timerId;function startTimer(){clearInterval(timerId);let n=90,e=document.getElementById("timer");timerId=setInterval(()=>{n--;e.textContent=`${String(Math.floor(n/60)).padStart(2,"0")}:${String(n%60).padStart(2,"0")}`;if(n<=0){clearInterval(timerId);navigator.vibrate?.([200,100,200]);toast("Почивката приключи")}},1000)}
+function startSession(){const w=workouts[selected];document.getElementById("session").innerHTML=`<div class="top"><div><div class="eyebrow">${selected}</div><div class="title">${w.title}</div></div></div><div class="card"><div class="small">REST TIMER</div><div class="timer" id="timer">01:30</div><button class="timerbtn" onclick="startTimer()">Start 90 sec rest</button></div><div class="card"><h3>Progression rule</h3><div class="notice">Top of the range + RIR 1–2 → increase. Below the lower range or RIR 0 → hold the load. Aim for steady progress with good technique.</div></div><div class="card"><button class="cta" onclick="finishWorkout()">Finish workout ✓</button></div>`;show("session")}
+let timerId;function startTimer(){clearInterval(timerId);let n=90,e=document.getElementById("timer");timerId=setInterval(()=>{n--;e.textContent=`${String(Math.floor(n/60)).padStart(2,"0")}:${String(n%60).padStart(2,"0")}`;if(n<=0){clearInterval(timerId);navigator.vibrate?.([200,100,200]);toast("Rest complete")}},1000)}
 function finishWorkout(){
  const w=workouts[selected],h=read("exerciseHistory",{}),date=todayKey();let saved=0,improved=0;
  w.ex.forEach((e,i)=>{const kg=document.getElementById("w"+i)?.value,reps=document.getElementById("r"+i)?.value,rir=document.getElementById("rir"+i)?.value;if(kg||reps||rir){const prev=exerciseHistory(e[0]).at(-1);h[e[0]]=h[e[0]]||[];h[e[0]].push({date,kg,reps,rir,title:w.title});saved++;if(prev&&(Number(kg)*Number(reps))>(Number(prev.kg)*Number(prev.reps)))improved++;}});
  store("exerciseHistory",h);const arr=read("workouts",[]);arr.push({date,title:w.title});store("workouts",arr);const st=state();st.tasks[1]=true;saveState(st);
- document.getElementById("session").innerHTML=`<div class="top"><div><div class="eyebrow">WORKOUT COMPLETE</div><div class="title">Готово. 💪</div></div></div><div class="hero"><span class="pill">SESSION SAVED</span><h2>${w.title}</h2><p>Записани упражнения: ${saved}. Подобрения спрямо предишния запис: ${improved}.</p></div><div class="card"><div class="notice">${improved?"🟢 Има прогрес спрямо последния запис. Следващата тренировка ще използва новите данни.":"Тренировката е записана. Следващия път се стреми към още 1 повторение или по-стабилен RIR."}</div></div><div class="card"><button class="cta" onclick="show('general');renderGeneral()">Към General →</button></div>`;
+ document.getElementById("session").innerHTML=`<div class="top"><div><div class="eyebrow">WORKOUT COMPLETE</div><div class="title">Done. 💪</div></div></div><div class="hero"><span class="pill">SESSION SAVED</span><h2>${w.title}</h2><p>Exercises logged: ${saved}. Improvements vs. previous: ${improved}.</p></div><div class="card"><div class="notice">${improved?"🟢 Progress vs. the last log. The next workout will use the new data.":"Workout saved. Next time aim for one more rep or a steadier RIR."}</div></div><div class="card"><button class="cta" onclick="show('general');renderGeneral()">Back to General →</button></div>`;
  show("session");
 }
 function weekStart(){const d=new Date(),diff=(d.getDay()+6)%7;d.setDate(d.getDate()-diff);d.setHours(0,0,0,0);return d}
 function archiveToday(){const s=state(),td=tasksData(),hist=read("dailyHistory",{});hist[todayKey()]={protein:s.protein||0,water:s.water||0,kcal:s.kcal||0,done:td.filter((_,i)=>s.tasks[i]).length,total:td.length};store("dailyHistory",hist)}
 function weekStats(){archiveToday();const start=weekStart(),hist=read("dailyHistory",{}),w=read("workouts",[]);let pd=0,wd=0,done=0,total=0;for(let i=0;i<7;i++){const d=new Date(start);d.setDate(start.getDate()+i);if(d>new Date())continue;const x=hist[d.toISOString().slice(0,10)];if(x){if(x.protein>=120)pd++;if(x.water>=2.4)wd++;done+=x.done||0;total+=x.total||8}}const wc=w.filter(x=>new Date(x.date)>=start).length;const score=Math.round((Math.min(wc,4)/4*.35+pd/7*.25+wd/7*.2+(total?done/total:0)*.2)*100);return{pd,wd,done,total,wc,score}}
 function renderProgressMini(){const s=weekStats();document.getElementById("weekWorkouts").textContent=`${Math.min(s.wc,4)}/4`;document.getElementById("weekProtein").textContent=`${s.pd}/7`;document.getElementById("weekWater").textContent=`${s.wd}/7`;document.getElementById("weekTasks").textContent=`${s.total?Math.round(s.done/s.total*100):0}%`;document.getElementById("scorePill").textContent=`${s.score}%`}
-function renderWeight(){const a=read("weights",[]);document.getElementById("weightHistory").innerHTML=a.slice(-7).reverse().map(x=>`<div class="historyrow"><span>${x.date}</span><b>${(+x.v).toFixed(1)} kg</b></div>`).join("");if(a.length>1){const first=+a[Math.max(0,a.length-7)].v,last=+a.at(-1).v;document.getElementById("weightTrend").textContent=`Тренд: ${last-first>=0?"+":""}${(last-first).toFixed(1)} kg за последните записи.`}else document.getElementById("weightTrend").textContent="Записвай теглото по едно и също време за по-надежден тренд."}
-function addWeight(){const v=+document.getElementById("weightInput").value;if(!v)return;const a=read("weights",[]);a.push({date:todayKey(),v});store("weights",a);document.getElementById("weightInput").value="";renderGeneral();toast("Теглото е записано")}
-function weeklyReviewText(s){if(s.score>=85)return"Отлична седмица. Запази темпото и не променяй излишно неща, които работят.";if(s.score>=70)return"Добра седмица. Избери една слабост за подобрение, вместо да променяш всичко наведнъж.";if(s.score>=50)return"Има добра основа, но постоянството куца. Приоритет: тренировки, протеин и сън.";return"Фокусирай се върху основите. Малки ежедневни действия ще дадат по-голям резултат от резки промени."}
+function renderWeight(){const a=read("weights",[]);document.getElementById("weightHistory").innerHTML=a.slice(-7).reverse().map(x=>`<div class="historyrow"><span>${x.date}</span><b>${(+x.v).toFixed(1)} kg</b></div>`).join("");if(a.length>1){const first=+a[Math.max(0,a.length-7)].v,last=+a.at(-1).v;document.getElementById("weightTrend").textContent=`Trend: ${last-first>=0?"+":""}${(last-first).toFixed(1)} kg across recent logs.`}else document.getElementById("weightTrend").textContent="Log your weight at the same time for a more reliable trend."}
+function addWeight(){const v=+document.getElementById("weightInput").value;if(!v)return;const a=read("weights",[]);a.push({date:todayKey(),v});store("weights",a);document.getElementById("weightInput").value="";renderGeneral();toast("Weight saved")}
+function weeklyReviewText(s){if(s.score>=85)return"Excellent week. Keep the pace and avoid changing what already works.";if(s.score>=70)return"Good week. Pick one weakness to improve instead of changing everything at once.";if(s.score>=50)return"Good foundation, but consistency is slipping. Priority: training, protein and sleep.";return"Focus on the basics. Small daily actions beat drastic changes."}
 function renderWeeklyReview(){const s=weekStats();document.getElementById("reviewScore").textContent=`${s.score}%`;document.getElementById("weeklyReview").textContent=weeklyReviewText(s)}
-function renderProgressPage(){const s=weekStats();document.getElementById("progress").innerHTML=`<div class="top"><div><div class="eyebrow">ANALYTICS</div><div class="title">Progress</div></div></div><div class="hero"><span class="pill">WEEKLY SCORE</span><h2>${s.score}% consistency</h2><p>${weeklyReviewText(s)}</p></div><div class="grid"><div class="metric"><div class="num">${s.wc}</div><div class="label">тренировки</div></div><div class="metric"><div class="num">${s.pd}/7</div><div class="label">protein days</div></div><div class="metric"><div class="num">${s.wd}/7</div><div class="label">water days</div></div><div class="metric"><div class="num">${s.total?Math.round(s.done/s.total*100):0}%</div><div class="label">tasks</div></div></div><div class="card"><h3>Тегло</h3>${weightChart()}</div><div class="card"><h3>Personal Bests</h3>${pbs()}</div><div class="card"><h3>Какво да гледаш</h3><div class="notice">Не преследвай максимума всяка тренировка. Търсим стабилни повторения, RIR 1–2 и постепенно увеличение на работната тежест.</div></div>`}
-function weightChart(){const a=read("weights",[]).slice(-14);if(!a.length)return`<div class="small">Все още няма достатъчно данни.</div>`;const vals=a.map(x=>+x.v),min=Math.min(...vals),max=Math.max(...vals),span=max-min||1;return`<div class="chart"><div class="bars">${a.map((x,i)=>`<div class="barcol"><div class="bar" style="height:${15+(+x.v-min)/span*100}px"></div><div class="barlabel">${x.date.slice(5)}</div></div>`).join("")}</div></div><div class="small" style="margin-top:8px">Последно: ${vals.at(-1).toFixed(1)} kg • диапазон ${min.toFixed(1)}–${max.toFixed(1)} kg</div>`}
-function pbs(){const h=read("exerciseHistory",{}),rows=[];Object.entries(h).forEach(([name,a])=>a.forEach(x=>{if(x.kg&&x.reps){const score=+x.kg*+x.reps;const old=rows.find(r=>r.name===name);if(!old||score>old.score)rows.splice(rows.indexOf(old),old?1:0,{name,score,kg:x.kg,reps:x.reps,date:x.date})}}));return rows.slice(0,20).map(x=>`<div class="pb"><b>${x.name}</b><span>${x.kg} kg × ${x.reps}<br>${x.date}</span></div>`).join("")||`<div class="small">Запиши първите си тренировки, за да се появят PBs.</div>`}
-function addSleep(){const v=+document.getElementById("sleepInput").value;if(!v)return;const a=read("sleep",[]);a.push({date:todayKey(),v});store("sleep",a);document.getElementById("sleepInput").value="";renderSleep();toast("Сънят е записан")}
-function renderSleep(){const a=read("sleep",[]),l=a.slice(-7),avg=l.length?l.reduce((s,x)=>s+x.v,0)/l.length:0;document.getElementById("sleepScore").textContent=avg?`${avg.toFixed(1)} h avg`:"Няма данни";document.getElementById("sleepHistory").innerHTML=l.reverse().map(x=>`<div class="historyrow"><span>${x.date}</span><b>${(+x.v).toFixed(1)} h</b></div>`).join("")}
+function renderProgressPage(){const s=weekStats();document.getElementById("progress").innerHTML=`<div class="top"><div><div class="eyebrow">ANALYTICS</div><div class="title">Progress</div></div></div><div class="hero"><span class="pill">WEEKLY SCORE</span><h2>${s.score}% consistency</h2><p>${weeklyReviewText(s)}</p></div><div class="grid"><div class="metric"><div class="num">${s.wc}</div><div class="label">workouts</div></div><div class="metric"><div class="num">${s.pd}/7</div><div class="label">protein days</div></div><div class="metric"><div class="num">${s.wd}/7</div><div class="label">water days</div></div><div class="metric"><div class="num">${s.total?Math.round(s.done/s.total*100):0}%</div><div class="label">tasks</div></div></div><div class="card"><h3>Weight</h3>${weightChart()}</div><div class="card"><h3>Personal Bests</h3>${pbs()}</div><div class="card"><h3>What to watch</h3><div class="notice">Do not chase a max every workout. Aim for stable reps, 1–2 RIR and gradual load increases.</div></div>`}
+function weightChart(){const a=read("weights",[]).slice(-14);if(!a.length)return`<div class="small">Not enough data yet.</div>`;const vals=a.map(x=>+x.v),min=Math.min(...vals),max=Math.max(...vals),span=max-min||1;return`<div class="chart"><div class="bars">${a.map((x,i)=>`<div class="barcol"><div class="bar" style="height:${15+(+x.v-min)/span*100}px"></div><div class="barlabel">${x.date.slice(5)}</div></div>`).join("")}</div></div><div class="small" style="margin-top:8px">Last: ${vals.at(-1).toFixed(1)} kg • range ${min.toFixed(1)}–${max.toFixed(1)} kg</div>`}
+function pbs(){const h=read("exerciseHistory",{}),rows=[];Object.entries(h).forEach(([name,a])=>a.forEach(x=>{if(x.kg&&x.reps){const score=+x.kg*+x.reps;const old=rows.find(r=>r.name===name);if(!old||score>old.score)rows.splice(rows.indexOf(old),old?1:0,{name,score,kg:x.kg,reps:x.reps,date:x.date})}}));return rows.slice(0,20).map(x=>`<div class="pb"><b>${x.name}</b><span>${x.kg} kg × ${x.reps}<br>${x.date}</span></div>`).join("")||`<div class="small">Log your first workouts to see Personal Bests.</div>`}
+function addSleep(){const v=+document.getElementById("sleepInput").value;if(!v)return;const a=read("sleep",[]);a.push({date:todayKey(),v});store("sleep",a);document.getElementById("sleepInput").value="";renderSleep();toast("Sleep saved")}
+function renderSleep(){const a=read("sleep",[]),l=a.slice(-7),avg=l.length?l.reduce((s,x)=>s+x.v,0)/l.length:0;document.getElementById("sleepScore").textContent=avg?`${avg.toFixed(1)} h avg`:"No data";document.getElementById("sleepHistory").innerHTML=l.reverse().map(x=>`<div class="historyrow"><span>${x.date}</span><b>${(+x.v).toFixed(1)} h</b></div>`).join("")}
 function renderNotificationUI(){const on=read("notificationsEnabled",false),rem=read("remindersEnabled",true);document.getElementById("notifyToggle").classList.toggle("on",on);document.getElementById("reminderToggle").classList.toggle("on",rem)}
-async function toggleNotifications(){if(!("Notification"in window)){toast("Този браузър не поддържа notifications");return}if(Notification.permission==="denied"){toast("Notifications са блокирани от браузъра");return}const p=await Notification.requestPermission();if(p==="granted"){store("notificationsEnabled",true);toast("Notifications са включени ✓")}else{store("notificationsEnabled",false);toast("Notifications не са разрешени")}renderNotificationUI()}
-function toggleReminderSetting(){store("remindersEnabled",!read("remindersEnabled",true));renderNotificationUI();toast(read("remindersEnabled",true)?"Напомнянията са включени":"Напомнянията са изключени")}
+async function toggleNotifications(){if(!("Notification"in window)){toast("This browser does not support notifications");return}if(Notification.permission==="denied"){toast("Notifications are blocked by the browser");return}const p=await Notification.requestPermission();if(p==="granted"){store("notificationsEnabled",true);toast("Notifications enabled ✓")}else{store("notificationsEnabled",false);toast("Notifications were not granted")}renderNotificationUI()}
+function toggleReminderSetting(){store("remindersEnabled",!read("remindersEnabled",true));renderNotificationUI();toast(read("remindersEnabled",true)?"Reminders are enabled":"Reminders are disabled")}
 function notifyIfDue(){if(!read("notificationsEnabled",false)||!read("remindersEnabled",true)||!("Notification"in window)||Notification.permission!=="granted")return;const n=currentNext();if(!n.time)return;const key=todayKey()+"-"+n.time;if(Math.abs(nowMin()-tmin(n.time))>1)return;if(read("lastNotification","")===key)return;new Notification("My Routine",{body:`${n.time} — ${n.label}`});store("lastNotification",key)}
 document.body.dataset.screen="general";document.getElementById("general")?.classList.add("screen-lux");renderGeneral();renderMeals();renderWorkout();renderSleep();setInterval(()=>{renderGeneral();notifyIfDue()},60000);
 </script>
@@ -833,7 +911,7 @@ document.body.dataset.screen="general";document.getElementById("general")?.class
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', async () => {
     try {
-      const registration = await navigator.serviceWorker.register('./sw.js?v=14.2.4', {updateViaCache:'none'});
+      const registration = await navigator.serviceWorker.register('./sw.js?v=14.2.5', {updateViaCache:'none'});
 
       const showUpdate = () => {
         if (document.getElementById('updateBanner')) return;
@@ -842,10 +920,10 @@ if ('serviceWorker' in navigator) {
         banner.innerHTML = `
           <div class="updateIcon">↻</div>
           <div class="updateCopy">
-            <strong>Нова версия е налична</strong>
-            <span>My Routine е готов за обновяване.</span>
+            <strong>New version available</strong>
+            <span>My Routine is ready to update.</span>
           </div>
-          <button id="updateNow">Обнови</button>
+          <button id="updateNow">Update</button>
         `;
         document.body.appendChild(banner);
 
@@ -923,14 +1001,14 @@ if ('serviceWorker' in navigator) {
   $('v133CoachState').textContent=score>=72?'READY':score>=55?'CONTROL':'RECOVER';
   const rec=score>=72?'Good':score>=55?'Moderate':'Low'; $('v133Recovery').textContent=rec.toUpperCase(); $('v133Recovery2').textContent=rec;
   $('v133Consistency').textContent=consistency+'%'; $('v133CoachSessions').textContent=training+' / 4';
-  $('v133Insight').textContent=score>=72?'Тялото ти е готово за нормална тренировъчна интензивност.':score>=55?'Дръж 1–2 RIR и остави качеството преди обема.':'Днес възстановяването е приоритет. Намали интензивността при нужда.';
+  $('v133Insight').textContent=score>=72?'Your body is ready for normal training intensity.':score>=55?'Keep 1–2 RIR and prioritize quality over volume.':'Recovery is the priority today. Reduce intensity if needed.';
  }
  function render(){
   if(!$('v133Date'))return;
   const d=new Date(), dn=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'], mn=['January','February','March','April','May','June','July','August','September','October','November','December'];
   $('v133Date').textContent=dn[d.getDay()]+' · '+d.getDate()+' '+mn[d.getMonth()];
-  const p={Monday:['Гърди, гръб, рамо и ръце','19:00 · ~60 min','Гърди · гръб · рамо · бицепс · трицепс'],Tuesday:['Крака, седалище и корем','19:00 · ~60 min','Крака · задно бедро · седалище · прасец · корем'],Thursday:['Гърди, гръб, рамо и ръце','19:00 · ~60 min','Горни гърди · гръб · рамо · бицепс · трицепс'],Saturday:['Крака, седалище, прасец и корем','19:00 · ~60 min','Крака · задно бедро · седалище · прасец · корем']};
-  const plan=p[dn[d.getDay()]]||['Възстановяване','Разходка · мобилност · почивка','Разходка · мобилност · леко възстановяване'];
+  const p={Monday:['Chest, Back, Shoulders & Arms','19:00 · ~60 min','Chest · Back · Shoulders · Biceps · Triceps'],Tuesday:['Legs, Glutes & Core','19:00 · ~60 min','Legs · Hamstrings · Glutes · Calves · Core'],Thursday:['Chest, Back, Shoulders & Arms','19:00 · ~60 min','Upper Chest · Back · Shoulders · Biceps · Triceps'],Saturday:['Legs, Glutes, Calves & Core','19:00 · ~60 min','Legs · Hamstrings · Glutes · Calves · Core']};
+  const plan=p[dn[d.getDay()]]||['Recovery','Walk · mobility · rest','Walk · mobility · light recovery'];
   $('v133WorkoutName').textContent=plan[0]; $('v133WorkoutMeta').textContent=plan[1]; $('v133WorkoutFocus').textContent=plan[2];
   const daily=typeof state==='function'?state():{protein:0,water:0,meals:{}}; const protein=Number(daily.protein)||0,water=Number(daily.water)||0;
   $('v133Protein').textContent=Math.round(protein)+' / 150 g'; $('v133Water').textContent=water.toFixed(1)+' / 2.7 L';
@@ -948,7 +1026,7 @@ if ('serviceWorker' in navigator) {
   const pPct=Math.round(Math.min(1,protein/150)*100), wPct=Math.round(Math.min(1,water/2.7)*100), sPct=sleep?Math.round(Math.min(1,sleep/8)*100):null;
   if($('v133ProteinPct'))$('v133ProteinPct').textContent=pPct+'%'; if($('v133WaterPct'))$('v133WaterPct').textContent=wPct+'%'; if($('v133SleepPct'))$('v133SleepPct').textContent=sPct===null?'—':sPct+'%';
   if($('v133WeightBadge'))$('v133WeightBadge').textContent=start&&weight?(weight-start>=0?'+'+((weight-start).toFixed(1))+' KG':'−'+Math.abs(weight-start).toFixed(1)+' KG'):'TREND';
-  const namesBG=['Неделя','Понеделник','Вторник','Сряда','Четвъртък','Петък','Събота'],monthsBG=['Януари','Февруари','Март','Април','Май','Юни','Юли','Август','Септември','Октомври','Ноември','Декември'];
+  const namesBG=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],monthsBG=['January','February','March','April','May','June','July','August','September','October','November','December'];
   $('v133Date').textContent=namesBG[d.getDay()]+' · '+d.getDate()+' '+monthsBG[d.getMonth()];
   // Upcoming meal: show the next planned meal based on local time.
   if(typeof meals!=='undefined' && meals.length){
