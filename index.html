@@ -100,32 +100,96 @@ body{padding-bottom:98px}button,input{font:inherit}button{cursor:pointer}
 </style>
 <style>
 </style>
+<script>
+(function(){
+  try{
+    const dayKey = new Date().toISOString().slice(0,10);
+    if(localStorage.getItem('myRoutineV13_3_dailyReset') !== dayKey){
+      localStorage.setItem('myRoutineV13_3_dailyReset', dayKey);
+      ['proteinToday','todayProtein','waterToday','todayWater'].forEach(k=>localStorage.setItem(k,'0'));
+    }
+  }catch(e){}
+})();
+</script>
+<style id="v13-3-general-redesign">
+.general-v133{display:grid;gap:16px;padding-bottom:18px}
+.v133-label{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;opacity:.58;margin-bottom:9px}
+.v133-hero{position:relative;overflow:hidden;padding:22px;border-radius:28px;background:linear-gradient(145deg,rgba(255,255,255,.16),rgba(255,255,255,.055));border:1px solid rgba(255,255,255,.13);box-shadow:0 18px 50px rgba(0,0,0,.20)}
+.v133-date{font-size:13px;opacity:.58;margin-bottom:16px}
+.v133-workout{display:flex;align-items:center;gap:14px;margin:7px 0 17px}
+.v133-icon{width:48px;height:48px;display:grid;place-items:center;border-radius:16px;background:rgba(113,245,190,.11);border:1px solid rgba(113,245,190,.17);font-size:23px;flex:none}
+.v133-workout h2{margin:0 0 5px;font-size:22px;line-height:1.12}.v133-workout p{margin:0;font-size:13px;opacity:.58}
+.v133-divider{height:1px;background:rgba(255,255,255,.09);margin:4px 0 16px}
+.v133-nutrition{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.v133-nutrition strong{font-size:15px}.v133-nutrition span{display:block;font-size:12px;opacity:.55;margin-top:3px}
+.v133-link{border:0;background:transparent;color:inherit;font-weight:750;font-size:12px;opacity:.75;padding:8px 0}
+.v133-coach{padding:20px;border-radius:26px;background:linear-gradient(145deg,rgba(255,255,255,.12),rgba(255,255,255,.045));border:1px solid rgba(255,255,255,.10)}
+.v133-coach-top{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.v133-score{display:flex;align-items:center;gap:13px}.v133-score-num{font-size:42px;font-weight:850;letter-spacing:-.05em;line-height:1}.v133-score-state{font-size:12px;font-weight:800;letter-spacing:.1em;opacity:.7}
+.v133-coach-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:17px}
+.v133-stat{padding:12px 13px;border-radius:17px;background:rgba(0,0,0,.10);border:1px solid rgba(255,255,255,.06)}
+.v133-stat span{display:block;font-size:11px;opacity:.5;margin-bottom:4px}.v133-stat strong{font-size:14px}
+.v133-insight{margin:15px 0 0;font-size:13px;line-height:1.45;opacity:.68}
+.v133-metrics{display:grid;gap:10px}.v133-metric{padding:15px 16px;border-radius:20px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.08)}
+.v133-metric-head{display:flex;justify-content:space-between;align-items:center;gap:10px}.v133-metric-head span{font-size:13px;opacity:.65}.v133-metric-head strong{font-size:13px}
+.v133-bar{height:7px;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden;margin-top:9px}.v133-bar i{display:block;height:100%;width:0;border-radius:999px;background:linear-gradient(90deg,#70f0bd,#a4f8d3);transition:width .7s}
+.v133-week-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.v133-week-card{padding:15px;border-radius:20px;background:rgba(255,255,255,.065);border:1px solid rgba(255,255,255,.075)}
+.v133-week-card span{display:block;font-size:11px;opacity:.5;margin-bottom:5px}.v133-week-card strong{font-size:20px}.v133-week-card small{display:block;margin-top:3px;font-size:11px;opacity:.45}
+.v133-consistency{margin-top:11px;padding:16px;border-radius:20px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.075)}
+.v133-consistency-head{display:flex;justify-content:space-between;align-items:center}.v133-consistency-head span{font-size:12px;opacity:.55}.v133-consistency-head strong{font-size:18px}
+.v133-progress{margin-top:10px;height:7px;border-radius:99px;background:rgba(255,255,255,.08);overflow:hidden}.v133-progress i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,#70f0bd,#9de8ff);transition:width .8s}
+.v133-progress-card{padding:19px 20px;border-radius:24px;background:linear-gradient(145deg,rgba(255,255,255,.10),rgba(255,255,255,.045));border:1px solid rgba(255,255,255,.09)}
+.v133-weight-row{display:flex;justify-content:space-between;align-items:end;gap:14px}.v133-weight{font-size:30px;font-weight:850;letter-spacing:-.04em}.v133-change{font-size:12px;opacity:.58;text-align:right}
+.v133-spark{width:100%;height:52px;margin:13px 0 4px;opacity:.9}.v133-spark polyline{fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.v133-section-title{font-size:16px;font-weight:800;margin:2px 0 0}
+@media(min-width:700px){.general-v133{grid-template-columns:1.25fr .75fr}.v133-hero{grid-column:1/-1}}
+</style>
 </head>
 <body>
 <div class="app">
 <section id="general" class="screen active">
-<div class="top"><div><div class="eyebrow" id="todayLabel">Днес</div><div class="title" id="greeting">Добър ден.</div></div></div>
-<div class="hero"><span class="pill">GENERAL</span><h2 id="todayPlanTitle">Днешният план</h2><p id="todayPlanDesc">Хранене + тренировка</p></div>
-<div class="sectionTitle"><h3>Adaptive Coach</h3><span>LIVE INSIGHT</span></div>
-<div class="coachScore" id="coachScore">
-  <div class="scoreRing" id="coachRing" style="--score:72%"><b id="coachScoreNum">72</b></div>
-  <div style="min-width:0;flex:1">
-    <div style="font-size:16px;font-weight:800;letter-spacing:-.4px" id="coachState">Ready to train</div>
-    <div style="font-size:10px;color:#87918c;margin-top:3px" id="coachReason">Your current signals support a productive session.</div>
-    <div class="coachMini"><div><small>TRAINING</small><strong id="coachTraining">Start week</strong></div><div><small>RECOVERY</small><strong id="coachRecovery">Good</strong></div><div><small>CONSISTENCY</small><strong id="coachConsistency">—</strong></div></div>
+<div class="general-v133">
+  <div class="v133-hero">
+    <div class="v133-label">TODAY</div>
+    <div class="v133-date" id="v133Date">Thursday · 8 October</div>
+    <div class="v133-workout"><div class="v133-icon">🏋️</div><div><h2 id="v133WorkoutName">Гърди, гръб, рамо и ръце</h2><p id="v133WorkoutMeta">19:00 · ~60 min</p></div></div>
+    <button class="cta" onclick="show('workout',document.querySelector('.nav button:nth-child(3)'))">Започни тренировка →</button>
+    <div class="v133-divider"></div>
+    <div class="v133-nutrition"><div><strong>🍽️ 6 хранения</strong><span>2700 kcal · 145–165 g protein</span></div><button class="v133-link" onclick="show('nutrition',document.querySelector('.nav button:nth-child(2)'))">Виж храненето →</button></div>
+  </div>
+
+  <div class="v133-coach">
+    <div class="v133-label">ADAPTIVE COACH</div>
+    <div class="v133-coach-top"><div class="v133-score"><div class="v133-score-num" id="v133CoachScore">—</div><div class="v133-score-state" id="v133CoachState">READY</div></div><button class="v133-link" onclick="show('workout',document.querySelector('.nav button:nth-child(3)'))">View Coach →</button></div>
+    <div class="v133-coach-stats"><div class="v133-stat"><span>Recovery</span><strong id="v133Recovery">Good</strong></div><div class="v133-stat"><span>Consistency</span><strong id="v133Consistency">—%</strong></div></div>
+    <p class="v133-insight" id="v133Insight">Analyzing your recent training and recovery…</p>
+  </div>
+
+  <div class="v133-metrics">
+    <div class="v133-section-title">TODAY'S METRICS</div>
+    <div class="v133-metric"><div class="v133-metric-head"><span>Protein</span><strong id="v133Protein">0 / 155 g</strong></div><div class="v133-bar"><i id="v133ProteinBar"></i></div></div>
+    <div class="v133-metric"><div class="v133-metric-head"><span>Water</span><strong id="v133Water">0 / 2.8 L</strong></div><div class="v133-bar"><i id="v133WaterBar"></i></div></div>
+    <div class="v133-metric"><div class="v133-metric-head"><span>Sleep</span><strong id="v133Sleep">—</strong></div><div class="v133-bar"><i id="v133SleepBar"></i></div></div>
+  </div>
+
+  <div><div class="v133-section-title">THIS WEEK</div>
+    <div class="v133-week-grid" style="margin-top:10px">
+      <div class="v133-week-card"><span>Training</span><strong id="v133WeekTraining">0 / 4</strong><small>sessions</small></div>
+      <div class="v133-week-card"><span>Nutrition</span><strong id="v133WeekNutrition">0 / 7</strong><small>days</small></div>
+      <div class="v133-week-card"><span>Water</span><strong id="v133WeekWater">0 / 7</strong><small>days</small></div>
+      <div class="v133-week-card"><span>Sleep</span><strong id="v133WeekSleep">0 / 7</strong><small>days</small></div>
+    </div>
+    <div class="v133-consistency"><div class="v133-consistency-head"><span>Weekly consistency</span><strong id="v133WeekPercent">0%</strong></div><div class="v133-progress"><i id="v133WeekBar"></i></div></div>
+  </div>
+
+  <div><div class="v133-section-title">PROGRESS</div>
+    <div class="v133-progress-card" style="margin-top:10px">
+      <div class="v133-weight-row"><div><div class="v133-label">CURRENT WEIGHT</div><div class="v133-weight" id="v133Weight">— kg</div></div><div class="v133-change" id="v133WeightChange">No change recorded</div></div>
+      <svg class="v133-spark" viewBox="0 0 300 52" preserveAspectRatio="none"><polyline id="v133Spark" points="0,40 40,35 80,38 120,27 160,30 200,20 240,24 300,12"></polyline></svg>
+      <button class="v133-link" onclick="show('progress',document.querySelector('.nav button:nth-child(5)'))">View Progress →</button>
+    </div>
   </div>
 </div>
-<div class="insight"><div class="insightIcon">✦</div><p><strong>Coach insight</strong><br><span id="coachInsightText">Complete a few sessions and daily check-ins to unlock personalized recommendations.</span></p></div>
-<div class="grid">
-<div class="metric"><div class="num" id="generalWeight">72.0</div><div class="label">kg • текущо тегло</div></div>
-<div class="metric"><div class="num"><span id="proteinNow">0</span> g</div><div class="label">протеин • 150 g</div><div class="progress"><div class="fill" id="proteinFill"></div></div></div>
-<div class="metric"><div class="num"><span id="waterNow">0.0</span> L</div><div class="label">вода • 2.7 L</div><div class="progress"><div class="fill" id="waterFill"></div></div></div>
-<div class="metric"><div class="num" id="doneCount">0/2</div><div class="label">днес</div></div>
-</div>
-<div class="card"><div class="sectionhead"><h3>Днешният план</h3><span class="small" id="activitySummary">0 от 2</span></div><div id="tasks"></div></div>
-<div class="card"><div class="sectionhead"><h3>Тази седмица</h3><span class="pill" id="scorePill">—</span></div><div class="review"><div class="reviewbox"><b id="weekWorkouts">0/4</b><span>тренировки</span></div><div class="reviewbox"><b id="weekProtein">0/7</b><span>дни с протеин</span></div><div class="reviewbox"><b id="weekWater">0/7</b><span>дни с вода</span></div><div class="reviewbox"><b id="weekTasks">0%</b><span>задачи</span></div></div></div>
-<div class="card"><h3>Тегло</h3><div class="weightrow"><input id="weightInput" type="number" step="0.1" min="30" max="200" placeholder="72.0"><button onclick="addWeight()">Запиши</button></div><div class="small" id="weightTrend" style="margin-top:9px"></div><div class="history" id="weightHistory"></div></div>
-<div class="card"><div class="sectionhead"><h3>Weekly Review</h3><span class="pill" id="reviewScore">—</span></div><div id="weeklyReview" class="small">Събиране на данни…</div><button class="cta secondary" style="margin-top:12px" onclick="show('progress')">Виж пълния Progress →</button></div>
 </section>
 
 <section id="nutrition" class="screen">
@@ -332,6 +396,27 @@ if ('serviceWorker' in navigator) {
   q('coachInsightText').textContent=insight;
  }
  window.addEventListener('load',()=>{setTimeout(coach,100);setTimeout(coach,700)});
+})();
+</script>
+<script id="v13-3-general-logic">
+(function(){
+function n(keys,f=0){for(const k of keys){const v=localStorage.getItem(k);if(v!==null&&v!==''&&!isNaN(Number(v)))return Number(v)}return f}
+function render(){
+ const $=id=>document.getElementById(id); if(!$('v133Date'))return;
+ const d=new Date(), days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'], months=['January','February','March','April','May','June','July','August','September','October','November','December'];
+ $('v133Date').textContent=days[d.getDay()]+' · '+d.getDate()+' '+months[d.getMonth()];
+ const p={Monday:['Гърди, гръб, рамо и ръце','19:00 · ~60 min'],Tuesday:['Крака, седалище и корем','19:00 · ~60 min'],Thursday:['Гърди, гръб, рамо и ръце','19:00 · ~60 min'],Saturday:['Крака, седалище, прасец и корем','19:00 · ~60 min']};
+ const plan=p[days[d.getDay()]]||['Възстановяване','Разходка · мобилност · почивка']; $('v133WorkoutName').textContent=plan[0]; $('v133WorkoutMeta').textContent=plan[1];
+ const protein=n(['proteinToday','todayProtein','protein']), rawWater=n(['waterToday','todayWater','water']), water=rawWater>=10?rawWater/1000:rawWater, sleep=n(['sleepToday','todaySleep','sleepHours']);
+ $('v133Protein').textContent=Math.round(protein)+' / 155 g'; $('v133Water').textContent=water.toFixed(1)+' / 2.8 L'; $('v133ProteinBar').style.width=Math.min(100,protein/155*100)+'%'; $('v133WaterBar').style.width=Math.min(100,water/2.8*100)+'%';
+ $('v133Sleep').textContent=sleep?sleep.toFixed(1)+' h':'Not logged'; $('v133SleepBar').style.width=sleep?Math.min(100,sleep/8*100)+'%':'0%';
+ let h=[];try{h=JSON.parse(localStorage.getItem('workoutHistory')||'[]')}catch(e){} const week=Date.now()-7*86400000, recent=h.filter(x=>new Date(x.date||x.timestamp||0).getTime()>=week), training=Math.min(4,recent.length), consistency=Math.round(training/4*100), score=Math.round(training/4*55+(sleep?Math.min(100,sleep/8*100)*.45:50));
+ $('v133CoachScore').textContent=score; $('v133Consistency').textContent=consistency+'%'; $('v133Recovery').textContent=score>=75?'Good':score>=55?'Moderate':'Low'; $('v133CoachState').textContent=score>=75?'READY':score>=55?'CONTROL':'RECOVER'; $('v133Insight').textContent=score>=75?"You're ready for normal training intensity.":score>=55?"Keep the intensity controlled and prioritize recovery.":"Recovery is the priority today. Keep training light if needed.";
+ const pd=protein>=145?1:0, wd=water>=2.8?1:0, sd=sleep>=7?1:0, pct=Math.round(training/4*35+pd/7*25+wd/7*20+sd/7*20);
+ $('v133WeekTraining').textContent=training+' / 4'; $('v133WeekNutrition').textContent=pd+' / 7'; $('v133WeekWater').textContent=wd+' / 7'; $('v133WeekSleep').textContent=sd+' / 7'; $('v133WeekPercent').textContent=pct+'%'; $('v133WeekBar').style.width=pct+'%';
+ const weight=n(['currentWeight','weight']); const start=n(['startingWeight','initialWeight']); $('v133Weight').textContent=weight?weight.toFixed(1)+' kg':'— kg'; $('v133WeightChange').textContent=start&&weight?((weight-start>=0?'+':'')+(weight-start).toFixed(1)+' kg since start'):'No change recorded';
+}
+window.renderV133=render; document.addEventListener('DOMContentLoaded',render); setTimeout(render,300); setTimeout(render,1000);
 })();
 </script>
 </body>
