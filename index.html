@@ -903,7 +903,7 @@ body{background:#07090b;color:#f5f3ee}
   .lux-cta{width:80%!important;height:47px!important;min-height:47px!important;bottom:14px!important;font-size:12px!important}
 }
 
-/* V14.5.3 — unified responsive normalization */
+/* V14.5.4 — unified responsive normalization */
 *,*::before,*::after{box-sizing:border-box}
 html,body{width:100%;max-width:100%;overflow-x:hidden}
 body{margin:0}
@@ -950,6 +950,31 @@ button:disabled{cursor:default}
  .set-check{width:36px;min-width:36px}
 }
 
+
+/* V14.5.4 — unified premium controls + compact day switcher */
+#workout #days{width:100%;margin:4px 0 14px;}
+#workout .day-switcher{width:100%;display:grid;grid-template-columns:46px minmax(0,1fr) 46px;align-items:center;gap:8px;min-height:58px;padding:5px;border:1px solid rgba(255,255,255,.075);border-radius:18px;background:rgba(255,255,255,.025);box-shadow:0 10px 30px rgba(0,0,0,.14);}
+#workout .daynav{appearance:none;-webkit-appearance:none;width:40px;height:40px;padding:0;margin:0;border:1px solid rgba(215,165,94,.18);border-radius:12px;background:rgba(215,165,94,.055);color:#d7a55e;display:grid;place-items:center;justify-self:center;cursor:pointer;touch-action:manipulation;transition:transform .16s ease,background .16s ease,border-color .16s ease;}
+#workout .daynav span{font-size:25px;line-height:1;font-weight:300;transform:translateY(-1px);}
+#workout .daynav:active{transform:scale(.92);background:rgba(215,165,94,.12);border-color:rgba(215,165,94,.32);}
+#workout .daycurrent{min-width:0;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.1;padding:2px 4px;}
+#workout .daylabel{font-size:8px;line-height:1;text-transform:uppercase;letter-spacing:1.7px;color:#d7a55e;font-weight:900;margin-bottom:5px;}
+#workout .dayname{display:block;max-width:100%;font-size:16px;line-height:1.1;color:#f3f1ec;font-weight:850;letter-spacing:-.2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+#workout .daydate{font-size:9px;color:#737c84;margin-top:4px;white-space:nowrap;}
+/* One visual language for primary actions */
+#workout .start-workout,.cta,.lux-cta{border-radius:15px;min-height:52px;padding:13px 18px;font-weight:900;letter-spacing:-.1px;display:flex;align-items:center;justify-content:center;gap:10px;}
+#workout .start-workout{width:100%;margin-top:2px;}
+#workout .workout-overview{padding:22px;border-radius:24px;}
+#workout .overview-stats{gap:7px;margin:18px 0 13px;}
+#workout .overview-stat{min-width:0;text-align:center;padding:11px 7px;}
+#workout .overview-stat b,#workout .overview-stat span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+#workout .exercise-list{width:100%;max-width:100%;padding:0 13px;border-radius:22px;}
+#workout .exercise-row{grid-template-columns:32px minmax(0,1fr) 20px;gap:10px;padding:16px 0;}
+#workout .exercise-name{overflow-wrap:anywhere;}
+#workout .exercise-sub{min-width:0;}
+#workout .exercise-sub span,#workout .exercise-sub b{min-width:0;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+#workout .exercise-last{max-width:100%;}
+@media(max-width:390px){#workout .day-switcher{grid-template-columns:40px minmax(0,1fr) 40px;gap:5px;min-height:54px;border-radius:16px;}#workout .daynav{width:36px;height:36px;border-radius:11px;}#workout .daynav span{font-size:22px;}#workout .dayname{font-size:15px;}#workout .daydate{font-size:8px;}#workout .workout-overview{padding:18px;}#workout .overview-stat{padding:10px 4px;}#workout .overview-stat b{font-size:16px;}#workout .overview-stat span{font-size:8px;}#workout .exercise-list{padding:0 11px;}}
 </style>
 
 
@@ -1077,7 +1102,7 @@ button:disabled{cursor:default}
   <div class="tab-section-title"><span>NOTIFICATIONS</span><h2>Stay on track</h2></div>
   <div class="premium-panel settings-list"><div class="setting-row"><div><b>Push notifications</b><span>Training and routine reminders.</span></div><button class="toggle" id="notifyToggle" onclick="toggleNotifications()"><i></i></button></div><div class="setting-row"><div><b>Automatic reminders</b><span>Uses the local times in the app.</span></div><button class="toggle on" id="reminderToggle" onclick="toggleReminderSetting()"><i></i></button></div></div>
   <div class="tab-section-title"><span>APP</span><h2>System</h2></div>
-  <div class="premium-panel settings-list"><div class="setting-row"><div><b>Version</b><span>Automatic updates are active.</span></div><span class="status-badge" id="appVersion">V14.5.3 • 2026.10.08</span></div><div class="setting-row"><div><b>Update status</b><span>The app checks for updates on launch.</span></div><span class="live-status">● Live</span></div></div>
+  <div class="premium-panel settings-list"><div class="setting-row"><div><b>Version</b><span>Automatic updates are active.</span></div><span class="status-badge" id="appVersion">V14.5.4 • 2026.10.08</span></div><div class="setting-row"><div><b>Update status</b><span>The app checks for updates on launch.</span></div><span class="live-status">● Live</span></div></div>
   <div class="premium-panel settings-note"><span class="panel-kicker">UPDATE SYSTEM</span><p>If a new version is available, an update banner will appear automatically.</p></div>
 </div></section>
 
@@ -1135,11 +1160,11 @@ function toggleMeal(i,v){const s=state();s.meals[i]=v;s.protein=Math.max(0,s.pro
 function addWater(){const s=state();s.water=Math.min(5,Number((s.water+.25).toFixed(2)));saveState(s);archiveToday();renderMeals();renderGeneral();toast("+250 ml water 💧")}
 function renderCalorieAdvice(){const a=read("weights",[]);if(a.length<4){document.getElementById("calorieAdvice").textContent="Collect at least 2–3 weeks of weight data before making changes.";return}const recent=a.slice(-7).map(x=>Number(x.v)),diff=recent.at(-1)-recent[0];document.getElementById("calorieAdvice").textContent=Math.abs(diff)<.1?"The trend is nearly flat. If this continues, we may add a small calorie surplus.":diff<.2?"Gain is below the 0.2–0.4 kg/week target. With consistent tracking, we may add ~100–150 kcal.":diff>.5?"Gain is fast. We will watch a few more measurements before reducing calories.":"Trend is within the target range. Keep intake steady."}
 function renderDays(){
- const idx=days.indexOf(selected);
  const d=new Date();
  const todayName=days[(d.getDay()+6)%7];
  const dateText=d.toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'});
- document.getElementById("days").innerHTML=`<button class="daynav" aria-label="Previous day" onclick="changeDay(-1)">‹</button><div class="daycurrent"><div class="daylabel">${selected===todayName?'TODAY':'SELECTED DAY'}</div><div class="dayname">${selected}</div><div class="daydate">${selected===todayName?dateText:'Workout schedule'}</div></div><button class="daynav" aria-label="Next day" onclick="changeDay(1)">›</button>`;
+ const isToday=selected===todayName;
+ document.getElementById("days").innerHTML=`<div class="day-switcher"><button class="daynav" aria-label="Previous day" onclick="changeDay(-1)"><span>‹</span></button><div class="daycurrent"><span class="daylabel">${isToday?'TODAY':'DAY'}</span><strong class="dayname">${selected}</strong><span class="daydate">${isToday?dateText:'Workout schedule'}</span></div><button class="daynav" aria-label="Next day" onclick="changeDay(1)"><span>›</span></button></div>`;
 }
 function changeDay(step){
  const i=(days.indexOf(selected)+step+days.length)%days.length;
@@ -1204,7 +1229,7 @@ setInterval(()=>{renderGeneral();notifyIfDue()},60000);
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', async () => {
     try {
-      const registration = await navigator.serviceWorker.register('./sw.js?v=14.5.3', {updateViaCache:'none'});
+      const registration = await navigator.serviceWorker.register('./sw.js?v=14.5.4', {updateViaCache:'none'});
 
       const showUpdate = () => {
         if (document.getElementById('updateBanner')) return;
