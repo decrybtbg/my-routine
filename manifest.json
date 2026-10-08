@@ -1,7 +1,7 @@
 {
   "name": "My Routine",
   "short_name": "Routine",
-  "description": "Personal training, nutrition, daily routine and sleep planner.",
+  "description": "Personal daily routine, nutrition, training, progress and sleep coach.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
