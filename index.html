@@ -86,6 +86,14 @@ body{padding-bottom:98px}button,input{font:inherit}button{cursor:pointer}
 @media (min-width:700px){
   #updateBanner{left:auto;right:22px;max-width:390px}
 }
+
+<style>
+.coachScore{display:flex;align-items:center;gap:14px;padding:16px;border-radius:22px;background:linear-gradient(145deg,rgba(24,37,30,.92),rgba(12,19,16,.86));border:1px solid rgba(160,255,194,.15);box-shadow:0 18px 50px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.04)}
+.scoreRing{width:72px;height:72px;border-radius:50%;display:grid;place-items:center;flex:none;background:conic-gradient(#a0ffc2 var(--score,72%),rgba(255,255,255,.07) 0);position:relative}.scoreRing:after{content:"";position:absolute;inset:6px;border-radius:50%;background:#0b120e}.scoreRing b{position:relative;z-index:1;font-size:19px}
+.coachMini{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:10px}.coachMini>div{padding:9px;border-radius:14px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.055)}.coachMini small{display:block;color:#7e8984;font-size:9px;margin-bottom:3px}.coachMini strong{font-size:12px}
+.insight{display:flex;gap:10px;align-items:flex-start;padding:12px 13px;border-radius:17px;background:rgba(160,255,194,.045);border:1px solid rgba(160,255,194,.10);margin-top:10px}.insightIcon{width:27px;height:27px;display:grid;place-items:center;border-radius:9px;background:rgba(160,255,194,.10);flex:none}.insight p{margin:0;font-size:11px;line-height:1.45;color:#c1cac4}.insight strong{color:#f4faf6}
+.coachAction{width:100%;display:flex;justify-content:space-between;align-items:center;margin-top:12px;padding:13px 14px;border-radius:17px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.075);color:#fff;text-align:left;cursor:pointer;transition:.2s}.coachAction:active{transform:scale(.98)}.coachAction small{display:block;color:#818b87;font-size:9px;margin-bottom:3px}.coachAction strong{font-size:13px}.coachAction .arrow{font-size:18px;color:#a0ffc2}.sectionTitle{display:flex;align-items:center;justify-content:space-between;margin:22px 2px 9px}.sectionTitle h3{margin:0;font-size:14px}.sectionTitle span{font-size:9px;color:#707a76}
+</style>
 </style>
 </head>
 <body>
@@ -93,6 +101,18 @@ body{padding-bottom:98px}button,input{font:inherit}button{cursor:pointer}
 <section id="general" class="screen active">
 <div class="top"><div><div class="eyebrow" id="todayLabel">Днес</div><div class="title" id="greeting">Добър ден.</div></div><button class="iconbtn" onclick="refreshAll()">↻</button></div>
 <div class="hero"><span class="pill">GENERAL</span><h2 id="todayPlanTitle">Днешният план</h2><p id="todayPlanDesc">Зареждане…</p></div>
+<div class="sectionTitle"><h3>Adaptive Coach</h3><span>LIVE INSIGHT</span></div>
+<div class="coachScore" id="coachScore">
+  <div class="scoreRing" id="coachRing" style="--score:72%"><b id="coachScoreNum">72</b></div>
+  <div style="min-width:0;flex:1">
+    <div style="font-size:16px;font-weight:800;letter-spacing:-.4px" id="coachState">Ready to train</div>
+    <div style="font-size:10px;color:#87918c;margin-top:3px" id="coachReason">Your current signals support a productive session.</div>
+    <div class="coachMini"><div><small>TRAINING</small><strong id="coachTraining">Start week</strong></div><div><small>RECOVERY</small><strong id="coachRecovery">Good</strong></div><div><small>CONSISTENCY</small><strong id="coachConsistency">—</strong></div></div>
+  </div>
+</div>
+<div class="insight"><div class="insightIcon">✦</div><p><strong>Coach insight</strong><br><span id="coachInsightText">Complete a few sessions and daily check-ins to unlock personalized recommendations.</span></p></div>
+<button class="coachAction" id="coachAction"><span><small>NEXT ACTION</small><strong>Open today's plan</strong></span><span class="arrow">›</span></button>
+
 <div class="card"><div class="sectionhead"><h3>Сега</h3><span class="pill" id="statusPill">—</span></div><div class="next" id="nextAction"></div></div>
 <div class="grid">
 <div class="metric"><div class="num" id="generalWeight">72.0</div><div class="label">kg • текущо тегло</div></div>
@@ -221,7 +241,6 @@ function toggleReminderSetting(){store("remindersEnabled",!read("remindersEnable
 function notifyIfDue(){if(!read("notificationsEnabled",false)||!read("remindersEnabled",true)||!("Notification"in window)||Notification.permission!=="granted")return;const n=currentNext();const key=todayKey()+"-"+n.i+"-"+n.time;if(n.i==null)return;if(Math.abs(nowMin()-tmin(n.time))>1)return;if(read("lastNotification","")===key)return;new Notification("My Routine",{body:`${n.time} — ${n.label}`});store("lastNotification",key)}
 function refreshAll(){archiveToday();renderGeneral();renderMeals();renderWorkout();renderSleep();renderProgressPage()}
 renderGeneral();renderMeals();renderWorkout();renderSleep();setInterval(()=>{renderGeneral();notifyIfDue()},60000);
-if("serviceWorker"in navigator)window.addEventListener("load",async()=>{try{const reg=await navigator.serviceWorker.register("./sw.js",{updateViaCache:"none"});await reg.update();if(reg.waiting)reg.waiting.postMessage({type:"SKIP_WAITING"})}catch(e){console.warn(e)}});
 </script>
 <script>
 if ('serviceWorker' in navigator) {
@@ -276,5 +295,29 @@ if ('serviceWorker' in navigator) {
     }
   });
 }
-</script></body>
+</script>
+<script>
+(function(){
+ const R=(k,f)=>{try{let v=localStorage.getItem(k);return v===null?f:JSON.parse(v)}catch(e){return f}};
+ function coach(){
+  const q=id=>document.getElementById(id); if(!q('coachScoreNum'))return;
+  const w=R('workouts',[]),sl=R('sleep',[]),week=Date.now()-604800000;
+  const recent=w.filter(x=>{let t=new Date(x.date||0).getTime();return Number.isFinite(t)&&t>=week});
+  const consistency=Math.min(100,Math.round(recent.length/4*100));
+  const avg=sl.length?sl.slice(-7).reduce((a,x)=>a+(+x.v||0),0)/Math.min(7,sl.length):null;
+  const sleepScore=avg==null?72:Math.max(35,Math.min(100,avg/8*100));
+  const score=Math.max(35,Math.min(100,Math.round(Math.min(100,recent.length*25)*.38+sleepScore*.32+consistency*.30)));
+  q('coachScoreNum').textContent=score;q('coachRing').style.setProperty('--score',score+'%');
+  q('coachState').textContent=score>=72?'Ready to train':score>=55?'Train with control':'Take it easier';
+  q('coachReason').textContent=score>=72?'Your current signals support a productive session.':score>=55?'Keep 1–2 reps in reserve and focus on quality.':'Recovery signals are below your normal baseline.';
+  q('coachTraining').textContent=recent.length+'/4 sessions';q('coachRecovery').textContent=score>=72?'Good':score>=55?'Moderate':'Low';q('coachConsistency').textContent=consistency+'%';
+  let insight=recent.length>=3?'You are building a consistent training rhythm. Keep progressive overload controlled.':recent.length?'You have started the week. Prioritize the next planned session over extra volume.':'Your coach is ready. Complete your first session to start building a personal baseline.';
+  if(avg!==null&&avg<6.5)insight='Your logged sleep is below 6.5h on average. Prioritize recovery before pushing intensity.';
+  q('coachInsightText').textContent=insight;
+  const a=q('coachAction');if(a&&!a.dataset.bound){a.dataset.bound=1;a.onclick=()=>{let b=[...document.querySelectorAll('.nav button')].find(x=>/Тренировка|Workout/i.test(x.textContent));if(b)b.click()}}
+ }
+ window.addEventListener('load',()=>{setTimeout(coach,100);setTimeout(coach,700)});
+})();
+</script>
+</body>
 </html>
