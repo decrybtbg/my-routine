@@ -710,7 +710,6 @@ body{background:#07090b;color:#f5f3ee}
       <h1 id="greeting">Good morning.</h1>
       <p id="v133Date" class="lux-date">Thursday · 8 October</p>
     </div>
-    <button class="lux-icon" aria-label="Today"><span class="header-glyph">✦</span><i></i></button>
   </header>
 
   <section class="cinema-card reveal" style="--delay:.04s">
@@ -820,10 +819,10 @@ body{background:#07090b;color:#f5f3ee}
 
 <nav class="nav">
 <button class="active" onclick="show('general',this)"><span class="navicon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11.2 12 4l8 7.2V20a1 1 0 0 1-1 1h-5v-5h-4v5H5a1 1 0 0 1-1-1z"/></svg></span><b>Today</b></button>
-<button onclick="show('nutrition',this)"><span class="navicon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4v8m0-8v8M4 8h6M5 4v3m4-3v3M16 4v7m0 0c0 2-1.2 3-3 3m3-3c0 2 1.2 3 3 3M16 14v7"/></svg></span><b>Nutrition</b></button>
+<button onclick="show('nutrition',this)"><span class="navicon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7.5"/><path d="M8 4v6M6 4v4M10 4v4M8 10v10M16 4v16M14 4h4"/></svg></span><b>Nutrition</b></button>
 <button onclick="show('workout',this)"><span class="navicon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9v6m3-8v10m8-10v10m3-8v6M3 10v4m18-4v4M8 12h8"/></svg></span><b>Workout</b></button>
 <button onclick="show('sleep',this)"><span class="navicon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.2A8.7 8.7 0 0 1 9.8 4a8.7 8.7 0 1 0 10.2 10.2Z"/></svg></span><b>Sleep</b></button>
-<button onclick="show('settings',this)"><span class="navicon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8.8a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 0 0 0-6.4Zm0-5 .8 2.1 2 .8 2-1.1 1.5 1.5-1.1 2 .8 2 2.1.8v2.1l-2.1.8-.8 2 1.1 2-1.5 1.5-2-1.1-2 .8-.8 2.1H10l-.8-2.1-2-.8-2 1.1-1.5-1.5 1.1-2-.8-2.1L3.9 12l2.1-.8.8-2-1.1-2 1.5-1.5 2 1.1 2-.8L10 3.8Z"/></svg></span><b>Settings</b></button>
+<button onclick="show('settings',this)"><span class="navicon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/><circle cx="9" cy="6" r="2"/><circle cx="15" cy="12" r="2"/><circle cx="10" cy="18" r="2"/></svg></span><b>Settings</b></button>
 </nav>
 <div id="toast" class="toast"></div>
 
@@ -847,9 +846,21 @@ function focus(){const w=workouts[todayName];if(w)return["WORKOUT",`Today: ${w.t
 function tasksData(){return[["NUTRITION","All meals for today"],["WORKOUT",workouts[todayName]?workouts[todayName].title:"Walk / Mobility"]]}
 function state(){let s=read("daily",{date:todayKey(),tasks:{},meals:{},water:0,protein:0,kcal:0});if(s.date!==todayKey())s={date:todayKey(),tasks:{},meals:{},water:0,protein:0,kcal:0};return s}function saveState(s){store("daily",s)}
 function currentNext(){const t=nowMin(),w=workouts[todayName];const items=[["12:30","Nutrition"],["18:30","Pre-workout meal"],...(w?[["19:00",w.title]]:[])];const a=items.filter(x=>tmin(x[0])>=t);return a[0]?{time:a[0][0],label:a[0][1],i:null}:{time:null,label:null,i:null}}
-function renderGeneral(){document.getElementById("todayLabel").textContent=formatDate();document.getElementById("greeting").textContent=greeting();const w=workouts[todayName];document.getElementById("todayPlanTitle").textContent="Today’s plan";document.getElementById("todayPlanDesc").textContent=w?`Nutrition + ${w.title}`:"Nutrition + recovery";const s=state(),td=tasksData(),done=td.filter((_,i)=>s.tasks[i]).length;document.getElementById("tasks").innerHTML=`<label class="task"><input class="check" type="checkbox" ${s.tasks[0]?"checked":""} onchange="toggleTask(0,this.checked)"><div style="flex:1"><div class="time">NUTRITION</div><div class="${s.tasks[0]?"done":""}">All meals for today</div><div class="planMeals">${meals.map(m=>`<div class="planMeal"><span class="mealTime">${m[0]}</span><div style="flex:1"><b>${m[1]}</b><div class="small">${m[2]}</div></div><span class="mealKcal">${m[3]}</span></div>`).join("")}</div></div></label><label class="task"><input class="check" type="checkbox" ${s.tasks[1]?"checked":""} onchange="toggleTask(1,this.checked)"><div><div class="time">WORKOUT</div><div class="${s.tasks[1]?"done":""}">${workouts[todayName]?workouts[todayName].title:"Walk / Mobility"}</div>${workouts[todayName]?`<div class="small">${workouts[todayName].focus}</div>`:""}</div></label>`;document.getElementById("doneCount").textContent=`${done}/${td.length}`;document.getElementById("activitySummary").textContent=`${done} of ${td.length}`;const p=Math.min(150,s.protein),water=Math.min(2.7,s.water);document.getElementById("proteinNow").textContent=Math.round(p);document.getElementById("proteinFill").style.width=`${p/150*100}%`;document.getElementById("waterNow").textContent=water.toFixed(2);document.getElementById("waterFill").style.width=`${water/2.7*100}%`;const ws=read("weights",[]);if(ws.length)document.getElementById("generalWeight").textContent=Number(ws.at(-1).v).toFixed(1);renderProgressMini();renderWeight();renderWeeklyReview();renderNotificationUI();if(window.renderV133) window.renderV133()}
-function completeNext(){const n=currentNext();if(n.i==null)return;toggleTask(n.i,true);toast("Done ✓")}
-function toggleTask(i,v){const s=state();s.tasks[i]=v;archiveToday();saveState(s);renderGeneral()}
+function renderGeneral(){
+  const g=document.getElementById("greeting");
+  if(g) g.textContent=greeting();
+  const date=document.getElementById("v133Date");
+  if(date) date.textContent=formatDate();
+  const s=state();
+  const p=Math.min(150,Number(s.protein)||0), water=Math.min(2.7,Number(s.water)||0);
+  const set=(id,val)=>{const el=document.getElementById(id);if(el)el.textContent=val};
+  const fill=(id,val)=>{const el=document.getElementById(id);if(el)el.style.width=val};
+  set("proteinNow",Math.round(p)); fill("proteinFill",`${p/150*100}%`);
+  set("waterNow",water.toFixed(2)); fill("waterFill",`${water/2.7*100}%`);
+  const ws=read("weights",[]); if(ws.length)set("generalWeight",Number(ws.at(-1).v).toFixed(1));
+  if(typeof renderV133==='function') renderV133();
+}
+
 function renderMeals(){const s=state();document.getElementById("fullMeals").innerHTML=meals.map((m,i)=>`<div class="meal"><div class="mealrow"><input class="mealcheck" type="checkbox" ${s.meals[i]?"checked":""} onchange="toggleMeal(${i},this.checked)"><div style="flex:1"><div class="mealhead"><div class="mealname">${m[0]} · ${m[1]}</div><div class="kcal">${m[3]}</div></div><div class="small" style="margin-top:5px">${m[2]}</div><div class="tags"><span class="tag">${m[4]}</span></div></div></div></div>`).join("");const p=Math.min(150,s.protein),w=Math.min(2.7,s.water),d=meals.filter((_,i)=>s.meals[i]).length;document.getElementById("nutritionProtein").textContent=Math.round(p);document.getElementById("nutritionWater").textContent=w.toFixed(2);document.getElementById("mealsDone").textContent=`${d}/${meals.length}`;document.getElementById("waterBigFill").style.width=`${w/2.7*100}%`;renderCalorieAdvice()}
 function toggleMeal(i,v){const s=state();s.meals[i]=v;s.protein=Math.max(0,s.protein+(v?meals[i][5]:-meals[i][5]));s.kcal=Math.max(0,s.kcal+(v?meals[i][6]:-meals[i][6]));saveState(s);archiveToday();renderMeals();renderGeneral()}
 function addWater(){const s=state();s.water=Math.min(5,Number((s.water+.25).toFixed(2)));saveState(s);archiveToday();renderMeals();renderGeneral();toast("+250 ml water 💧")}
