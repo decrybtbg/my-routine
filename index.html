@@ -968,18 +968,18 @@ button:disabled{cursor:default}
 #workout .exercise-last{max-width:100%;}
 @media(max-width:390px){#workout #workout #workout #workout #workout .workout-overview{padding:18px;}#workout .overview-stat{padding:10px 4px;}#workout .overview-stat b{font-size:16px;}#workout .overview-stat span{font-size:8px;}#workout .exercise-list{padding:0 11px;}}
 
-/* V14.5.6 — minimal day selector. Single source of truth; no legacy day styles. */
+/* V14.5.7 — minimal day selector. Single source of truth; no legacy day styles. */
 #workout #days{width:100%;margin:2px 0 15px;min-width:0}
 #workout .day-switcher{display:grid;grid-template-columns:36px minmax(0,1fr) 36px;align-items:center;gap:8px;width:100%;min-height:56px;padding:0;margin:0;background:transparent;border:0;box-shadow:none;overflow:visible}
 #workout .daynav{appearance:none;-webkit-appearance:none;width:36px;height:36px;min-width:36px;padding:0;margin:0;border:0;border-radius:50%;background:transparent;color:#737b82;display:grid;place-items:center;justify-self:center;font-size:28px;font-weight:300;line-height:1;cursor:pointer;touch-action:manipulation;transition:color .16s ease,transform .16s ease,background .16s ease}
 #workout .daynav span{display:block;font-size:28px;font-weight:300;line-height:1;transform:translateY(-1px)}
 #workout .daynav:hover{color:var(--gold-hi);background:rgba(214,164,91,.055)}
 #workout .daynav:active{transform:scale(.88);color:var(--gold-hi);background:rgba(214,164,91,.09)}
-#workout .daycurrent{min-width:0;width:100%;padding:2px 8px;margin:0;border:0;border-radius:0;background:transparent;box-shadow:none;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;line-height:1.1;overflow:hidden}
-#workout .daylabel{display:block;font-size:9px;line-height:1;text-transform:uppercase;letter-spacing:1.8px;color:var(--gold-hi);font-weight:900;margin:0 0 5px;white-space:nowrap}
-#workout .dayname{display:block;max-width:100%;font-size:19px;line-height:1.15;color:#f3f1ec;font-weight:850;letter-spacing:-.25px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-#workout .daydate{display:block;max-width:100%;font-size:10px;line-height:1.15;color:#737c84;margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-@media(max-width:390px){#workout .day-switcher{grid-template-columns:34px minmax(0,1fr) 34px;gap:6px;min-height:54px}#workout .daynav{width:34px;height:34px;min-width:34px}#workout .daynav span{font-size:25px}#workout .dayname{font-size:18px}#workout .daydate{font-size:9px}}
+#workout .daycurrent{min-width:0;width:100%;max-width:220px;justify-self:center;padding:3px 14px 4px;margin:0;border:0;border-radius:0;background:transparent;box-shadow:none;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;line-height:1.1;overflow:hidden}
+#workout .daylabel{display:block;font-size:8px;line-height:1;text-transform:uppercase;letter-spacing:1.7px;color:var(--gold-hi);font-weight:900;margin:0 0 6px;white-space:nowrap}
+#workout .dayname{display:block;width:100%;max-width:100%;font-size:18px;line-height:1.18;color:#f3f1ec;font-weight:850;letter-spacing:-.15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#workout .daydate{display:block;width:100%;max-width:100%;font-size:10px;line-height:1.2;color:#737c84;margin-top:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media(max-width:390px){#workout .day-switcher{grid-template-columns:32px minmax(0,1fr) 32px;gap:5px;min-height:54px}#workout .daynav{width:32px;height:32px;min-width:32px}#workout .daynav span{font-size:24px}#workout .daycurrent{max-width:190px;padding-left:10px;padding-right:10px}#workout .dayname{font-size:17px}#workout .daydate{font-size:9px}}
 </style>
 
 
@@ -1107,7 +1107,7 @@ button:disabled{cursor:default}
   <div class="tab-section-title"><span>NOTIFICATIONS</span><h2>Stay on track</h2></div>
   <div class="premium-panel settings-list"><div class="setting-row"><div><b>Push notifications</b><span>Training and routine reminders.</span></div><button class="toggle" id="notifyToggle" onclick="toggleNotifications()"><i></i></button></div><div class="setting-row"><div><b>Automatic reminders</b><span>Uses the local times in the app.</span></div><button class="toggle on" id="reminderToggle" onclick="toggleReminderSetting()"><i></i></button></div></div>
   <div class="tab-section-title"><span>APP</span><h2>System</h2></div>
-  <div class="premium-panel settings-list"><div class="setting-row"><div><b>Version</b><span>Automatic updates are active.</span></div><span class="status-badge" id="appVersion">V14.5.6 • 2026.10.08</span></div><div class="setting-row"><div><b>Update status</b><span>The app checks for updates on launch.</span></div><span class="live-status">● Live</span></div></div>
+  <div class="premium-panel settings-list"><div class="setting-row"><div><b>Version</b><span>Automatic updates are active.</span></div><span class="status-badge" id="appVersion">V14.5.7 • 2026.10.08</span></div><div class="setting-row"><div><b>Update status</b><span>The app checks for updates on launch.</span></div><span class="live-status">● Live</span></div></div>
   <div class="premium-panel settings-note"><span class="panel-kicker">UPDATE SYSTEM</span><p>If a new version is available, an update banner will appear automatically.</p></div>
 </div></section>
 
@@ -1234,7 +1234,7 @@ setInterval(()=>{renderGeneral();notifyIfDue()},60000);
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', async () => {
     try {
-      const registration = await navigator.serviceWorker.register('./sw.js?v=14.5.6', {updateViaCache:'none'});
+      const registration = await navigator.serviceWorker.register('./sw.js?v=14.5.7', {updateViaCache:'none'});
 
       const showUpdate = () => {
         if (document.getElementById('updateBanner')) return;
