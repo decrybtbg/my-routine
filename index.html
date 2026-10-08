@@ -984,6 +984,189 @@ button:disabled{cursor:default}
 /* V14.6.0 — workout exercise details and logging */
 .section-head{display:flex;align-items:center;justify-content:space-between;gap:10px}.ghost-small{background:transparent;border:0;color:#d6a45b;font-size:10px;font-weight:800;padding:4px 0}.last-session-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin-bottom:8px}.last-session-grid>div{padding:9px;border-radius:10px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.05)}.last-session-grid span,.last-session-grid em{display:block;font-size:8px;color:#747d84;font-style:normal}.last-session-grid b{display:block;font-size:12px;margin:3px 0}.sheet-last small{font-size:8px;color:#747d84}.set-check.done{background:#d6a45b!important;color:#111!important;border-color:#d6a45b!important;transform:scale(1.03)}
 @media(max-width:390px){.last-session-grid{grid-template-columns:1fr}.sheet-actions{position:sticky;bottom:0;padding-bottom:max(4px,env(safe-area-inset-bottom))}}
+
+/* =========================================================
+   V14.6.1 — WORKOUT UI POLISH
+   Final Workout-specific visual layer. No layout changes to
+   the existing logging/details logic.
+   ========================================================= */
+#workout .day-switcher{
+  margin:0 0 18px;
+  min-height:64px;
+  display:grid;
+  grid-template-columns:44px minmax(0,1fr) 44px;
+  align-items:center;
+  gap:10px;
+}
+#workout .daynav{
+  width:44px;height:44px;border-radius:14px;
+  border:1px solid rgba(255,255,255,.075);
+  background:linear-gradient(145deg,#151a20,#0d1115);
+  color:#b9bec2;font-size:25px;line-height:1;
+  display:grid;place-items:center;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.035);
+  transition:transform .18s,border-color .18s,color .18s;
+}
+#workout .daynav:active{transform:scale(.94)}
+#workout .daycurrent{
+  min-width:0;text-align:center;
+  display:flex;flex-direction:column;align-items:center;
+}
+#workout .daylabel{
+  font-size:8px;letter-spacing:2px;color:var(--gold-hi);
+  font-weight:900;text-transform:uppercase;
+}
+#workout .dayname{
+  margin-top:4px;font-size:20px;line-height:1.1;
+  letter-spacing:-.55px;color:#f1f2f0;font-weight:820;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;
+}
+#workout .daydate{
+  margin-top:4px;font-size:9px;color:#687178;
+  letter-spacing:.3px;
+}
+
+#workout .workout-overview{
+  position:relative;overflow:hidden;
+  padding:22px;border-radius:26px;
+  background:
+    radial-gradient(380px 190px at 100% 0%,rgba(214,164,91,.10),transparent 65%),
+    linear-gradient(145deg,#151a1f,#0b0f13 78%);
+  border:1px solid rgba(255,255,255,.075);
+  box-shadow:0 24px 70px rgba(0,0,0,.30),inset 0 1px 0 rgba(255,255,255,.035);
+}
+#workout .workout-overview .eyebrow{
+  color:#d8ae70;font-size:8px;letter-spacing:1.8px;
+}
+#workout .workout-overview h2{
+  margin:8px 0 5px;font-size:31px;line-height:1;
+  letter-spacing:-1.4px;font-weight:850;
+}
+#workout .workout-overview>p{
+  margin:0;color:#899198;font-size:11px;line-height:1.5;
+}
+#workout .overview-stats{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:8px;margin:18px 0 16px;
+}
+#workout .overview-stat{
+  min-width:0;padding:11px 8px;border-radius:14px;
+  background:rgba(255,255,255,.028);
+  border:1px solid rgba(255,255,255,.05);
+  text-align:center;
+}
+#workout .overview-stat b{
+  display:block;font-size:15px;color:#eee;
+  letter-spacing:-.25px;
+}
+#workout .overview-stat span{
+  display:block;margin-top:4px;font-size:8px;
+  letter-spacing:1px;text-transform:uppercase;color:#69727a;
+}
+#workout .start-workout{
+  min-height:50px;font-size:15px;
+  letter-spacing:-.15px;
+}
+
+#workout .workout-section-label{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:26px 2px 10px;
+}
+#workout .workout-section-label span{
+  font-size:8px;letter-spacing:2px;color:#69727a;font-weight:900;
+}
+#workout .workout-section-label strong{
+  font-size:9px;color:#737c83;font-weight:700;
+}
+
+#workout .exercise-list{
+  overflow:hidden;
+  border-top:1px solid rgba(255,255,255,.055);
+}
+#workout .exercise-row{
+  display:grid;
+  grid-template-columns:38px minmax(0,1fr) 22px;
+  gap:13px;align-items:center;
+  min-height:82px;padding:15px 2px;
+  border-bottom:1px solid rgba(255,255,255,.055);
+  cursor:pointer;
+  transition:background .18s,transform .18s;
+}
+#workout .exercise-row:last-child{border-bottom:0}
+#workout .exercise-row:active{
+  transform:scale(.992);
+  background:rgba(214,164,91,.025);
+}
+#workout .exercise-index{
+  width:36px;height:36px;border-radius:12px;
+  display:grid;place-items:center;
+  background:rgba(214,164,91,.075);
+  border:1px solid rgba(214,164,91,.13);
+  color:#d9ae70;font-size:9px;font-weight:900;
+}
+#workout .exercise-main{min-width:0}
+#workout .exercise-name{
+  font-size:17px;line-height:1.15;
+  letter-spacing:-.35px;font-weight:800;color:#f0f1ef;
+  white-space:normal;
+}
+#workout .exercise-sub{
+  display:flex;flex-wrap:wrap;gap:5px 7px;
+  margin-top:7px;color:#737c83;font-size:9px;line-height:1.3;
+}
+#workout .exercise-sub b{color:#aeb5ba;font-weight:750}
+#workout .exercise-last{
+  margin-top:7px;font-size:9px;color:#5e676e;
+  line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+#workout .exercise-last.has-log{color:#b18a54}
+#workout .exercise-arrow{
+  color:#737b82;font-size:23px;font-weight:300;
+  text-align:right;transition:color .18s,transform .18s;
+}
+#workout .exercise-row:active .exercise-arrow{
+  color:var(--gold-hi);transform:translateX(2px);
+}
+#workout .workout-note{
+  margin:15px 2px 4px;text-align:center;
+  color:#555e65;font-size:7px;letter-spacing:1.25px;
+  line-height:1.6;
+}
+
+/* Exercise details: tighter and more premium */
+#exerciseSheet .exercise-sheet-panel{
+  padding:10px 18px calc(24px + env(safe-area-inset-bottom));
+}
+#exerciseSheet .sheet-title{
+  font-size:27px;letter-spacing:-.9px;
+}
+#exerciseSheet .sheet-info>div{
+  background:rgba(255,255,255,.028);
+  border-color:rgba(255,255,255,.055);
+}
+#exerciseSheet .sheet-instruction{
+  background:linear-gradient(145deg,rgba(214,164,91,.10),rgba(255,255,255,.018));
+  border-color:rgba(214,164,91,.14);
+}
+#exerciseSheet .set-row input{
+  min-width:0;font-size:16px!important;
+}
+#exerciseSheet .set-check{
+  transition:background .18s,border-color .18s,color .18s,transform .18s;
+}
+#exerciseSheet .set-check:active{transform:scale(.92)}
+#exerciseSheet .ghost-small{
+  border:0;background:transparent;color:#d7a960;
+  font-size:9px;font-weight:800;letter-spacing:.25px;
+  padding:5px 0;
+}
+@media(max-width:390px){
+  #workout .exercise-row{grid-template-columns:34px minmax(0,1fr) 18px;gap:10px}
+  #workout .exercise-index{width:34px;height:34px}
+  #workout .exercise-name{font-size:16px}
+  #workout .workout-overview{padding:20px}
+}
+
 </style>
 
 
@@ -1111,7 +1294,7 @@ button:disabled{cursor:default}
   <div class="tab-section-title"><span>NOTIFICATIONS</span><h2>Stay on track</h2></div>
   <div class="premium-panel settings-list"><div class="setting-row"><div><b>Push notifications</b><span>Training and routine reminders.</span></div><button class="toggle" id="notifyToggle" onclick="toggleNotifications()"><i></i></button></div><div class="setting-row"><div><b>Automatic reminders</b><span>Uses the local times in the app.</span></div><button class="toggle on" id="reminderToggle" onclick="toggleReminderSetting()"><i></i></button></div></div>
   <div class="tab-section-title"><span>APP</span><h2>System</h2></div>
-  <div class="premium-panel settings-list"><div class="setting-row"><div><b>Version</b><span>Automatic updates are active.</span></div><span class="status-badge" id="appVersion">V14.6.0 • 2026.10.08</span></div><div class="setting-row"><div><b>Update status</b><span>The app checks for updates on launch.</span></div><span class="live-status">● Live</span></div></div>
+  <div class="premium-panel settings-list"><div class="setting-row"><div><b>Version</b><span>Automatic updates are active.</span></div><span class="status-badge" id="appVersion">V14.6.1 • 2026.10.08</span></div><div class="setting-row"><div><b>Update status</b><span>The app checks for updates on launch.</span></div><span class="live-status">● Live</span></div></div>
   <div class="premium-panel settings-note"><span class="panel-kicker">UPDATE SYSTEM</span><p>If a new version is available, an update banner will appear automatically.</p></div>
 </div></section>
 
@@ -1240,7 +1423,7 @@ setInterval(()=>{renderGeneral();notifyIfDue()},60000);
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', async () => {
     try {
-      const registration = await navigator.serviceWorker.register('./sw-v14-6.js?v=14.6.0', {updateViaCache:'none'});
+      const registration = await navigator.serviceWorker.register('./sw-v14-6.js?v=14.6.1', {updateViaCache:'none'});
 
       const showUpdate = () => {
         if (document.getElementById('updateBanner')) return;
