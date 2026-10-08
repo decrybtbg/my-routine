@@ -88,7 +88,6 @@ body{padding-bottom:98px}button,input{font:inherit}button{cursor:pointer}
   #updateBanner{left:auto;right:22px;max-width:390px}
 }
 
-<style>
 .coachScore{display:flex;align-items:center;gap:14px;padding:16px;border-radius:22px;background:linear-gradient(145deg,rgba(24,37,30,.92),rgba(12,19,16,.86));border:1px solid rgba(160,255,194,.15);box-shadow:0 18px 50px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.04)}
 .scoreRing{width:72px;height:72px;border-radius:50%;display:grid;place-items:center;flex:none;background:conic-gradient(#a0ffc2 var(--score,72%),rgba(255,255,255,.07) 0);position:relative}.scoreRing:after{content:"";position:absolute;inset:6px;border-radius:50%;background:#0b120e}.scoreRing b{position:relative;z-index:1;font-size:19px}
 .coachMini{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:10px}.coachMini>div{padding:9px;border-radius:14px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.055)}.coachMini small{display:block;color:#7e8984;font-size:9px;margin-bottom:3px}.coachMini strong{font-size:12px}
@@ -903,7 +902,7 @@ body{background:#07090b;color:#f5f3ee}
   .lux-cta{width:80%!important;height:47px!important;min-height:47px!important;bottom:14px!important;font-size:12px!important}
 }
 
-/* V14.5.4 — unified responsive normalization */
+/* V14.5.5 — unified responsive normalization */
 *,*::before,*::after{box-sizing:border-box}
 html,body{width:100%;max-width:100%;overflow-x:hidden}
 body{margin:0}
@@ -951,7 +950,7 @@ button:disabled{cursor:default}
 }
 
 
-/* V14.5.4 — unified premium controls + compact day switcher */
+/* V14.5.5 — unified premium controls + compact day switcher */
 #workout #days{width:100%;margin:4px 0 14px;}
 #workout .day-switcher{width:100%;display:grid;grid-template-columns:46px minmax(0,1fr) 46px;align-items:center;gap:8px;min-height:58px;padding:5px;border:1px solid rgba(255,255,255,.075);border-radius:18px;background:rgba(255,255,255,.025);box-shadow:0 10px 30px rgba(0,0,0,.14);}
 #workout .daynav{appearance:none;-webkit-appearance:none;width:40px;height:40px;padding:0;margin:0;border:1px solid rgba(215,165,94,.18);border-radius:12px;background:rgba(215,165,94,.055);color:#d7a55e;display:grid;place-items:center;justify-self:center;cursor:pointer;touch-action:manipulation;transition:transform .16s ease,background .16s ease,border-color .16s ease;}
@@ -1102,7 +1101,7 @@ button:disabled{cursor:default}
   <div class="tab-section-title"><span>NOTIFICATIONS</span><h2>Stay on track</h2></div>
   <div class="premium-panel settings-list"><div class="setting-row"><div><b>Push notifications</b><span>Training and routine reminders.</span></div><button class="toggle" id="notifyToggle" onclick="toggleNotifications()"><i></i></button></div><div class="setting-row"><div><b>Automatic reminders</b><span>Uses the local times in the app.</span></div><button class="toggle on" id="reminderToggle" onclick="toggleReminderSetting()"><i></i></button></div></div>
   <div class="tab-section-title"><span>APP</span><h2>System</h2></div>
-  <div class="premium-panel settings-list"><div class="setting-row"><div><b>Version</b><span>Automatic updates are active.</span></div><span class="status-badge" id="appVersion">V14.5.4 • 2026.10.08</span></div><div class="setting-row"><div><b>Update status</b><span>The app checks for updates on launch.</span></div><span class="live-status">● Live</span></div></div>
+  <div class="premium-panel settings-list"><div class="setting-row"><div><b>Version</b><span>Automatic updates are active.</span></div><span class="status-badge" id="appVersion">V14.5.5 • 2026.10.08</span></div><div class="setting-row"><div><b>Update status</b><span>The app checks for updates on launch.</span></div><span class="live-status">● Live</span></div></div>
   <div class="premium-panel settings-note"><span class="panel-kicker">UPDATE SYSTEM</span><p>If a new version is available, an update banner will appear automatically.</p></div>
 </div></section>
 
@@ -1229,7 +1228,7 @@ setInterval(()=>{renderGeneral();notifyIfDue()},60000);
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', async () => {
     try {
-      const registration = await navigator.serviceWorker.register('./sw.js?v=14.5.4', {updateViaCache:'none'});
+      const registration = await navigator.serviceWorker.register('./sw.js?v=14.5.5', {updateViaCache:'none'});
 
       const showUpdate = () => {
         if (document.getElementById('updateBanner')) return;
