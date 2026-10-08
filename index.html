@@ -39,7 +39,54 @@ body{padding-bottom:98px}button,input{font:inherit}button{cursor:pointer}
 .toast{position:fixed;z-index:50;left:50%;bottom:95px;transform:translateX(-50%) translateY(15px);background:#f4f6f8;color:#0b0d10;padding:11px 15px;border-radius:13px;font-size:12px;font-weight:800;opacity:0;pointer-events:none;transition:.25s;max-width:90%;text-align:center}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 .modal{position:fixed;inset:0;z-index:40;background:#0009;display:none;align-items:end}.modal.show{display:flex}.sheet{width:100%;background:var(--surface);border-radius:25px 25px 0 0;padding:20px 17px calc(20px + env(safe-area-inset-bottom));max-height:85vh;overflow:auto}
 @media(min-width:620px){.grid{grid-template-columns:repeat(4,1fr)}}
-.coachbox{background:linear-gradient(145deg,#18231d,#111814);border:1px solid #294033;border-radius:18px;padding:13px;margin-top:10px}.coachlabel{font-size:10px;letter-spacing:1.1px;text-transform:uppercase;color:var(--green);font-weight:900}.coachtarget{font-size:18px;font-weight:900;margin-top:4px}.coachreason{font-size:11px;color:#aeb8b2;margin-top:4px;line-height:1.4}.badgeup{color:var(--green)}.badgehold{color:var(--orange)}.badgedown{color:var(--red)}.pb{font-size:11px;color:#ffd88a;font-weight:850;margin-top:6px}.coachsummary{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:10px}.coachstat{background:var(--surface2);border-radius:12px;padding:10px}.coachstat b{display:block;font-size:16px}.coachstat span{font-size:10px;color:var(--muted)}</style>
+.coachbox{background:linear-gradient(145deg,#18231d,#111814);border:1px solid #294033;border-radius:18px;padding:13px;margin-top:10px}.coachlabel{font-size:10px;letter-spacing:1.1px;text-transform:uppercase;color:var(--green);font-weight:900}.coachtarget{font-size:18px;font-weight:900;margin-top:4px}.coachreason{font-size:11px;color:#aeb8b2;margin-top:4px;line-height:1.4}.badgeup{color:var(--green)}.badgehold{color:var(--orange)}.badgedown{color:var(--red)}.pb{font-size:11px;color:#ffd88a;font-weight:850;margin-top:6px}.coachsummary{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:10px}.coachstat{background:var(--surface2);border-radius:12px;padding:10px}.coachstat b{display:block;font-size:16px}.coachstat span{font-size:10px;color:var(--muted)}
+/* ===== UPDATE BANNER ===== */
+#updateBanner{
+  position:fixed;
+  z-index:9999;
+  left:14px;
+  right:14px;
+  bottom:calc(92px + env(safe-area-inset-bottom));
+  display:flex;
+  align-items:center;
+  gap:11px;
+  padding:11px 12px;
+  border:1px solid rgba(160,255,194,.20);
+  border-radius:18px;
+  background:rgba(17,23,21,.92);
+  color:#f6faf7;
+  box-shadow:0 18px 55px rgba(0,0,0,.42),0 0 35px rgba(84,231,155,.08);
+  backdrop-filter:blur(24px) saturate(1.25);
+  -webkit-backdrop-filter:blur(24px) saturate(1.25);
+  animation:updateIn .45s cubic-bezier(.2,.8,.2,1) both;
+}
+#updateBanner .updateIcon{
+  width:35px;height:35px;display:grid;place-items:center;flex:none;
+  border-radius:12px;
+  color:#0a1710;
+  background:#a0ffc2;
+  font-size:20px;font-weight:800;
+  box-shadow:0 0 22px rgba(84,231,155,.18);
+}
+#updateBanner .updateCopy{display:flex;flex-direction:column;min-width:0;flex:1}
+#updateBanner .updateCopy strong{font-size:13px;letter-spacing:-.1px}
+#updateBanner .updateCopy span{font-size:10px;color:#8e9a93;margin-top:2px}
+#updateBanner button{
+  border:0;border-radius:12px;padding:9px 12px;
+  background:#a0ffc2;color:#08120c;font-weight:800;font-size:11px;
+  cursor:pointer;white-space:nowrap;
+  box-shadow:0 6px 18px rgba(84,231,155,.12);
+  transition:transform .18s,filter .18s;
+}
+#updateBanner button:active{transform:scale(.94);filter:brightness(.92)}
+@keyframes updateIn{
+  from{opacity:0;transform:translateY(18px) scale(.97)}
+  to{opacity:1;transform:none}
+}
+@media (min-width:700px){
+  #updateBanner{left:auto;right:22px;max-width:390px}
+}
+</style>
 </head>
 <body>
 <div class="app">
@@ -176,5 +223,58 @@ function refreshAll(){archiveToday();renderGeneral();renderMeals();renderWorkout
 renderGeneral();renderMeals();renderWorkout();renderSleep();setInterval(()=>{renderGeneral();notifyIfDue()},60000);
 if("serviceWorker"in navigator)window.addEventListener("load",async()=>{try{const reg=await navigator.serviceWorker.register("./sw.js",{updateViaCache:"none"});await reg.update();if(reg.waiting)reg.waiting.postMessage({type:"SKIP_WAITING"})}catch(e){console.warn(e)}});
 </script>
-</body>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', async () => {
+    try {
+      const registration = await navigator.serviceWorker.register('./sw.js');
+
+      const showUpdate = () => {
+        if (document.getElementById('updateBanner')) return;
+        const banner = document.createElement('div');
+        banner.id = 'updateBanner';
+        banner.innerHTML = `
+          <div class="updateIcon">↻</div>
+          <div class="updateCopy">
+            <strong>Нова версия е налична</strong>
+            <span>My Routine е готов за обновяване.</span>
+          </div>
+          <button id="updateNow">Обнови</button>
+        `;
+        document.body.appendChild(banner);
+
+        document.getElementById('updateNow').onclick = () => {
+          const worker = registration.waiting;
+          if (worker) worker.postMessage({ type: 'SKIP_WAITING' });
+          else window.location.reload();
+        };
+      };
+
+      if (registration.waiting) showUpdate();
+
+      registration.addEventListener('updatefound', () => {
+        const worker = registration.installing;
+        if (!worker) return;
+        worker.addEventListener('statechange', () => {
+          if (worker.state === 'installed' && navigator.serviceWorker.controller) {
+            showUpdate();
+          }
+        });
+      });
+
+      navigator.serviceWorker.addEventListener('controllerchange', () => {
+        if (!window.__myRoutineReloading) {
+          window.__myRoutineReloading = true;
+          window.location.reload();
+        }
+      });
+
+      // Check periodically while the app is open.
+      setInterval(() => registration.update().catch(() => {}), 5 * 60 * 1000);
+    } catch (e) {
+      console.warn('Service worker registration failed', e);
+    }
+  });
+}
+</script></body>
 </html>
