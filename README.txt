@@ -1,13 +1,14 @@
-My Routine — Premium V11 Update System
+My Routine — V12 Adaptive Coach
 
-Includes:
-- Premium V11 visual design
-- Automatic Service Worker update detection
-- "Нова версия е налична" in-app update banner
-- One-tap update/reload
-- Immediate activation of the waiting service worker
-- Automatic update check every 5 minutes while the app is open
+Major upgrade:
+- Adaptive Coach card on General dashboard
+- Readiness score based on locally stored training/recovery signals
+- Training consistency insight
+- Recovery status
+- Coach insight
+- Next Action shortcut
+- Premium V11 visual system retained
+- Automatic Service Worker update system retained
+- Local-only data; no account or external backend required
 
-Recommended GitHub Pages deployment:
-Upload/replace the files in the repository, wait for Pages to publish, then open the app.
-After a new deployment, the app can detect the new service worker and offer the update automatically.
+Deploy all files to the same GitHub Pages location as V11.
