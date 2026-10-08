@@ -8,7 +8,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>My Routine</title>
 <link rel="manifest" href="manifest.json">
-<style>
+<style id="my-routine-unified-css">
 :root{--bg:#0b0d10;--surface:#15181d;--surface2:#1c2027;--line:#2a3038;--text:#f5f7fa;--muted:#929aa6;--green:#d7a55e;--green2:#f0c67d;--orange:#ffb86b;--blue:#7db7ff;--red:#ff7d88;--purple:#b99cff}
 *{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif}
 body{padding-bottom:98px}button,input{font:inherit}button{cursor:pointer}
@@ -286,8 +286,7 @@ body{padding-bottom:98px}button,input{font:inherit}button{cursor:pointer}
 
 @media(max-width:420px){.dayrow{grid-template-columns:42px minmax(0,1fr) 42px;gap:7px;padding:7px 8px}.daynav{width:42px;height:42px}.daycurrent .dayname{font-size:17px}.workoutHero{padding:16px}.card{padding:15px}.exname{font-size:15px;line-height:1.3}.exmeta span{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.loggrid{grid-template-columns:repeat(3,minmax(0,1fr))}.loggrid input{min-width:0;font-size:16px}}
 .exercise,.card,.workoutHero,.sessionExercise{min-width:0;overflow:hidden}.exname,.small,.exercise p,.card p{overflow-wrap:anywhere;word-break:normal}.exmeta{min-width:0}.exmeta span{min-width:0}
-</style>
-<style id="luxury-system">
+
 :root{--bg:#07090b;--bg2:#0b0e11;--panel:#101419;--panel2:#14191f;--line:rgba(255,255,255,.075);--text:#f5f3ee;--muted:#858d96;--gold:#d7a55e;--gold2:#f0c67d;--green:#d7a55e;--blue:#65b9ee;--purple:#9c82e9;--orange:#e99a55}
 html{background:var(--bg);scroll-behavior:smooth}body{background:radial-gradient(circle at 50% -15%,rgba(215,165,94,.10),transparent 34%),linear-gradient(180deg,#07090b,#090c0f 55%,#06080a);overflow-x:hidden}
 body:before{content:"";position:fixed;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 0 45%,rgba(255,255,255,.012) 50%,transparent 55%);mix-blend-mode:screen;z-index:-1}
@@ -305,8 +304,7 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;background:lin
 .reveal{opacity:0;transform:translateY(14px);animation:reveal .7s cubic-bezier(.22,.8,.24,1) forwards;animation-delay:var(--delay,0s)}@keyframes reveal{to{opacity:1;transform:none}}@keyframes screenIn{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}@keyframes cinemaPulse{0%,100%{transform:scale(1);opacity:.85}50%{transform:scale(1.05);opacity:1}}@keyframes orbFloat{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(-15px,12px,0)}}
 @media(max-width:520px){.app{padding-left:15px;padding-right:15px}.lux-header h1{font-size:31px}.cinema-card{min-height:315px}.cinema-content{padding:25px 20px}.cinema-content h2{font-size:29px}.coach-lux{gap:13px}.coach-ring{width:94px;height:94px}.coach-ring b{font-size:25px}.lux-metric{padding:11px;min-height:115px}.lux-metric strong{font-size:12px}.week-bars{gap:7px}.week-bars>div b{font-size:12px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
-</style>
-<style id="v14-1-polish">
+
 :root{
   --bg:#07090b;--ink:#f5f0e8;--sub:#a1a6aa;--faint:#676e74;--gold:#d6a45b;--gold-hi:#f3cc8e;
   --green:#79dca2;--blue:#64b7ff;--purple:#a98cff;--line:rgba(255,255,255,.075);
@@ -563,9 +561,6 @@ body{letter-spacing:-.01em}
   .screen.active .top,.screen.active .card,.screen.active .hero,.screen.active .workoutHero,.screen.active .settingsHero,.screen.active .dayrow{animation:none!important}
 }
 
-</style>
-
-<style id="v14-2-4-today-hero-fix">
 /* V14.2.4 — Today hero: proper cinematic image zone + clean text hierarchy */
 .cinema-card{
   min-height:390px;
@@ -676,16 +671,11 @@ body{letter-spacing:-.01em}
   .lux-cta{max-width:178px;height:43px;min-height:43px;font-size:11.5px}
   .cta-dumbbell{width:17px;height:17px}
 }
-</style>
 
-
-<style id="v14-2-4-fuel-tone">
 /* Keep Today fuel card in the same champagne/charcoal language. */
 .fuel-art{background:radial-gradient(circle at 80% 25%,rgba(215,165,94,.18),transparent 30%),linear-gradient(145deg,#241d13,#0c1013)!important;border-color:rgba(215,165,94,.16)!important}
 .fuel-art span{color:#f0cf96!important}.fuel-art small{color:#8f8068!important}.fuel-arrow{font-size:18px!important;color:#d8ad69!important;padding:4px 6px!important}
-</style>
 
-<style id="v14-2-5-final-system">
 /* V14.2.5 — Final Today composition + English unified system */
 :root{--accent:#d7a55e;--accent-hi:#f0c67d;--positive:#72d7a0;}
 body{background:#07090b;color:#f5f3ee}
@@ -761,7 +751,216 @@ body{background:#07090b;color:#f5f3ee}
  .cinema-focus{width:65%!important;font-size:10.5px!important}
  .lux-cta{width:265px!important;height:54px!important;min-height:54px!important;bottom:22px!important;font-size:13px!important}
 }
+
+/* V14.2.8 — compact Today hero, full-bleed cinematic image, seamless text transition */
+.cinema-card{
+  min-height:352px!important;
+  height:352px!important;
+  margin-bottom:0!important;
+  position:relative!important;
+  overflow:hidden!important;
+  border-radius:27px!important;
+  isolation:isolate!important;
+  background:#090d10 url('./dumbbell-hero.png') 68% center / cover no-repeat!important;
+  border:1px solid rgba(215,165,94,.24)!important;
+  box-shadow:0 24px 65px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.06)!important;
+}
+/* One continuous overlay: no hard vertical split. */
+.cinema-card::before{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  z-index:0!important;
+  background:linear-gradient(90deg,
+    rgba(7,10,12,.98) 0%,
+    rgba(7,10,12,.94) 22%,
+    rgba(7,10,12,.78) 40%,
+    rgba(7,10,12,.48) 58%,
+    rgba(7,10,12,.18) 76%,
+    rgba(7,10,12,.04) 100%)!important;
+  transform:none!important;
+  animation:none!important;
+}
+.cinema-card::after{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  z-index:1!important;
+  pointer-events:none!important;
+  background:linear-gradient(180deg,rgba(5,8,10,.04) 45%,rgba(5,8,10,.16) 72%,rgba(5,8,10,.58) 100%)!important;
+}
+.cinema-noise,.cinema-orb{display:none!important}
+.cinema-content{
+  position:relative!important;
+  z-index:3!important;
+  width:100%!important;
+  max-width:none!important;
+  min-height:352px!important;
+  height:352px!important;
+  padding:24px 22px 78px!important;
+  box-sizing:border-box!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:flex-start!important;
+  justify-content:flex-start!important;
+  text-align:left!important;
+}
+.cinema-card .eyebrow{
+  margin:0!important;
+  font-size:9px!important;
+  letter-spacing:2.1px!important;
+  color:#f0c67d!important;
+}
+.cinema-card h2{
+  width:min(78%,285px)!important;
+  max-width:none!important;
+  margin:13px 0 11px!important;
+  font-size:30px!important;
+  line-height:1.02!important;
+  letter-spacing:-1.45px!important;
+  text-wrap:balance!important;
+}
+.cinema-meta{
+  width:auto!important;
+  max-width:78%!important;
+  display:flex!important;
+  flex-wrap:wrap!important;
+  gap:5px 8px!important;
+  font-size:10.5px!important;
+  color:#d6d0c6!important;
+}
+.cinema-focus{
+  width:min(72%,260px)!important;
+  max-width:none!important;
+  margin:11px 0 0!important;
+  font-size:10.5px!important;
+  line-height:1.42!important;
+  color:#aaa59e!important;
+}
+.live-dot b{background:var(--gold)!important;box-shadow:0 0 9px rgba(215,165,94,.35)!important}
+.lux-cta{
+  position:absolute!important;
+  z-index:4!important;
+  left:50%!important;
+  bottom:16px!important;
+  transform:translateX(-50%)!important;
+  width:min(78%,270px)!important;
+  max-width:none!important;
+  height:50px!important;
+  min-height:50px!important;
+  margin:0!important;
+  padding:0 15px!important;
+  border-radius:15px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  gap:12px!important;
+  font-size:13px!important;
+}
+.lux-cta .cta-main{gap:9px!important}.cta-dumbbell{width:18px!important;height:18px!important}.lux-cta b{font-size:21px!important;font-weight:500!important}
+.cinema-index{z-index:4!important;right:14px!important;bottom:10px!important;font-size:9px!important}
+/* Compact Today spacing so the dashboard does not become a long stack. */
+#general .lux-section{margin-top:19px!important}
+#general .lux-section-head{margin-bottom:8px!important}
+#general .lux-section-head h3{font-size:18px!important}
+#general .fuel-card{min-height:96px!important;padding:10px!important;border-radius:20px!important;gap:11px!important}
+#general .fuel-art{width:76px!important;height:74px!important;border-radius:15px!important}
+#general .fuel-art span{font-size:26px!important}
+#general .fuel-copy strong{font-size:18px!important}
+#general .fuel-copy span{font-size:11px!important}
+#general .fuel-copy small{font-size:8px!important;line-height:1.25!important}
+#general .coach-lux{padding:13px!important;border-radius:20px!important}
+#general .coach-ring{width:78px!important;height:78px!important}
+#general .coach-ring b{font-size:22px!important}
+#general .coach-line{padding:5px 0!important;font-size:9.5px!important}
+#general .coach-lux-copy p{font-size:9px!important;margin:6px 0 0!important}
+#general .lux-metric{min-height:104px!important;padding:10px!important;border-radius:17px!important}
+#general .metric-glyph{width:24px!important;height:24px!important;margin-bottom:10px!important}
+#general .lux-metric small{font-size:7px!important}
+#general .lux-metric strong{font-size:11.5px!important}
+#general .lux-metric i{margin-top:8px!important}
+#general .week-lux,#general .progress-lux{padding:13px!important;border-radius:20px!important}
+#general .week-bars{gap:7px!important}
+#general .week-bars>div b{font-size:11px!important}
+#general .week-bars>div span{font-size:7px!important}
+#general .progress-lux strong{font-size:27px!important}
+#general .progress-lux svg{height:70px!important}
+#general .lux-divider,#general .closing-note{display:none!important}
+@media(max-width:520px){
+  .cinema-card{min-height:348px!important;height:348px!important;border-radius:26px!important;background-position:69% center!important}
+  .cinema-content{min-height:348px!important;height:348px!important;padding:23px 21px 72px!important}
+  .cinema-card h2{width:76%!important;font-size:29px!important;letter-spacing:-1.4px!important;margin:12px 0 10px!important}
+  .cinema-meta{max-width:78%!important;font-size:10px!important}
+  .cinema-focus{width:70%!important;font-size:10px!important;margin-top:10px!important}
+  .lux-cta{width:78%!important;height:49px!important;min-height:49px!important;bottom:15px!important;font-size:12.5px!important}
+}
+@media(max-width:390px){
+  .cinema-card{min-height:336px!important;height:336px!important;background-position:70% center!important}
+  .cinema-content{min-height:336px!important;height:336px!important;padding:22px 19px 68px!important}
+  .cinema-card h2{width:74%!important;font-size:27px!important}
+  .cinema-meta{font-size:9.5px!important}
+  .cinema-focus{font-size:9.5px!important}
+  .lux-cta{width:80%!important;height:47px!important;min-height:47px!important;bottom:14px!important;font-size:12px!important}
+}
+
+/* V14.5.3 — unified responsive normalization */
+*,*::before,*::after{box-sizing:border-box}
+html,body{width:100%;max-width:100%;overflow-x:hidden}
+body{margin:0}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer;-webkit-tap-highlight-color:transparent}
+button:disabled{cursor:default}
+.app,.screen,.screen.active,.screen-lux,.premium-panel,.card,.hero,.workout-overview,.exercise-list,.exercise-row,.exercise-main,.exercise-name,.exercise-sub,.exercise-last,.sheet,.sheet-instruction,.sheet-section,.set-row,.set-header{min-width:0;max-width:100%}
+.screen{width:100%;overflow:visible}
+.card,.premium-panel,.workout-overview,.exercise-list,.exercise-row{overflow:hidden}
+.exercise-row{display:grid;grid-template-columns:34px minmax(0,1fr) 28px;align-items:center;gap:11px;width:100%}
+.exercise-main{overflow:hidden}
+.exercise-name{white-space:normal;overflow-wrap:anywhere;word-break:break-word;line-height:1.25}
+.exercise-sub{display:flex;flex-wrap:wrap;gap:5px;align-items:center;min-width:0;line-height:1.3}
+.exercise-sub span,.exercise-sub b{max-width:100%;overflow-wrap:anywhere}
+.exercise-last{white-space:normal;overflow-wrap:anywhere;line-height:1.35}
+.overview-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));width:100%}
+.overview-stat{min-width:0;overflow:hidden}
+.overview-stat b,.overview-stat span{overflow-wrap:anywhere}
+.dayrow{display:grid!important;grid-template-columns:42px minmax(0,1fr) 42px!important;align-items:center;width:100%;gap:10px;overflow:visible!important;padding:0!important;margin:0 0 16px}
+.daynav{width:42px!important;height:42px!important;min-width:42px!important;padding:0!important;border-radius:14px!important;display:grid!important;place-items:center!important;line-height:1!important;flex:none!important}
+.daycurrent{min-width:0!important;width:100%;text-align:center;padding:10px 8px;border:1px solid var(--line);border-radius:17px;background:linear-gradient(145deg,#11161a,#0c1014);overflow:hidden}
+.daylabel{font-size:8px;letter-spacing:1.8px;font-weight:900;color:var(--gold-hi);white-space:nowrap}
+.dayname{margin-top:4px;font-size:18px;font-weight:900;line-height:1.15;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.daydate{margin-top:4px;font-size:9px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.daynav:active{transform:scale(.94)}
+.set-header,.set-row{display:grid;grid-template-columns:32px minmax(0,1fr) minmax(0,1fr) minmax(0,1fr) 40px;gap:7px;align-items:center;width:100%}
+.set-row input{width:100%;min-width:0!important;font-size:16px!important}
+.set-check{width:40px;min-width:40px}
+.sheet-info{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));width:100%}
+.sheet-info>div{min-width:0;overflow:hidden}
+.sheet-info b,.sheet-info span{overflow-wrap:anywhere}
+@media(max-width:420px){
+ .app{padding-left:14px!important;padding-right:14px!important}
+ .overview-stats{gap:5px}
+ .overview-stat{padding-left:5px!important;padding-right:5px!important}
+ .dayrow{grid-template-columns:40px minmax(0,1fr) 40px!important;gap:8px}
+ .daynav{width:40px!important;min-width:40px!important;height:40px!important}
+ .daycurrent{padding:9px 6px}
+ .dayname{font-size:17px}
+ .exercise-row{grid-template-columns:30px minmax(0,1fr) 24px;gap:9px}
+ .exercise-index{font-size:10px}
+ .exercise-arrow{width:24px}
+ .set-header,.set-row{grid-template-columns:25px minmax(0,1fr) minmax(0,1fr) minmax(0,1fr) 36px;gap:5px}
+ .set-check{width:36px;min-width:36px}
+}
+
 </style>
+
+
+
+
+
+
+
+
+
+
 </head>
 <body>
 <canvas id="ambientCanvas" aria-hidden="true"></canvas>
@@ -878,7 +1077,7 @@ body{background:#07090b;color:#f5f3ee}
   <div class="tab-section-title"><span>NOTIFICATIONS</span><h2>Stay on track</h2></div>
   <div class="premium-panel settings-list"><div class="setting-row"><div><b>Push notifications</b><span>Training and routine reminders.</span></div><button class="toggle" id="notifyToggle" onclick="toggleNotifications()"><i></i></button></div><div class="setting-row"><div><b>Automatic reminders</b><span>Uses the local times in the app.</span></div><button class="toggle on" id="reminderToggle" onclick="toggleReminderSetting()"><i></i></button></div></div>
   <div class="tab-section-title"><span>APP</span><h2>System</h2></div>
-  <div class="premium-panel settings-list"><div class="setting-row"><div><b>Version</b><span>Automatic updates are active.</span></div><span class="status-badge" id="appVersion">V14.5.2 • 2026.10.08</span></div><div class="setting-row"><div><b>Update status</b><span>The app checks for updates on launch.</span></div><span class="live-status">● Live</span></div></div>
+  <div class="premium-panel settings-list"><div class="setting-row"><div><b>Version</b><span>Automatic updates are active.</span></div><span class="status-badge" id="appVersion">V14.5.3 • 2026.10.08</span></div><div class="setting-row"><div><b>Update status</b><span>The app checks for updates on launch.</span></div><span class="live-status">● Live</span></div></div>
   <div class="premium-panel settings-note"><span class="panel-kicker">UPDATE SYSTEM</span><p>If a new version is available, an update banner will appear automatically.</p></div>
 </div></section>
 
@@ -946,7 +1145,7 @@ function changeDay(step){
  const i=(days.indexOf(selected)+step+days.length)%days.length;
  selected=days[i];
  renderWorkout();
-}" onclick="selected='${d}';renderWorkout()">${short[d]}</button>`).join("")}
+}
 function parseRange(x){const m=x.match(/(\d+)\s*[×x]\s*(\d+)[–-](\d+)/);return m?{sets:+m[1],lo:+m[2],hi:+m[3]}:null}
 function exerciseHistory(name){return read("exerciseHistory",{})[name]||[]}
 function exercisePB(name){const h=exerciseHistory(name);return h.reduce((b,x)=>{const v=(+x.kg||0)*(+x.reps||0);return v>(b?.score||0)?{kg:x.kg,reps:x.reps,score:v,date:x.date}:b},null)}
@@ -1005,7 +1204,7 @@ setInterval(()=>{renderGeneral();notifyIfDue()},60000);
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', async () => {
     try {
-      const registration = await navigator.serviceWorker.register('./sw.js?v=14.5.2', {updateViaCache:'none'});
+      const registration = await navigator.serviceWorker.register('./sw.js?v=14.5.3', {updateViaCache:'none'});
 
       const showUpdate = () => {
         if (document.getElementById('updateBanner')) return;
@@ -1168,155 +1367,4 @@ if ('serviceWorker' in navigator) {
 </script>
 </body>
 </html>
-<style id="v14-2-8-today-rebuild">
-/* V14.2.8 — compact Today hero, full-bleed cinematic image, seamless text transition */
-.cinema-card{
-  min-height:352px!important;
-  height:352px!important;
-  margin-bottom:0!important;
-  position:relative!important;
-  overflow:hidden!important;
-  border-radius:27px!important;
-  isolation:isolate!important;
-  background:#090d10 url('./dumbbell-hero.png') 68% center / cover no-repeat!important;
-  border:1px solid rgba(215,165,94,.24)!important;
-  box-shadow:0 24px 65px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.06)!important;
-}
-/* One continuous overlay: no hard vertical split. */
-.cinema-card::before{
-  content:""!important;
-  position:absolute!important;
-  inset:0!important;
-  z-index:0!important;
-  background:linear-gradient(90deg,
-    rgba(7,10,12,.98) 0%,
-    rgba(7,10,12,.94) 22%,
-    rgba(7,10,12,.78) 40%,
-    rgba(7,10,12,.48) 58%,
-    rgba(7,10,12,.18) 76%,
-    rgba(7,10,12,.04) 100%)!important;
-  transform:none!important;
-  animation:none!important;
-}
-.cinema-card::after{
-  content:""!important;
-  position:absolute!important;
-  inset:0!important;
-  z-index:1!important;
-  pointer-events:none!important;
-  background:linear-gradient(180deg,rgba(5,8,10,.04) 45%,rgba(5,8,10,.16) 72%,rgba(5,8,10,.58) 100%)!important;
-}
-.cinema-noise,.cinema-orb{display:none!important}
-.cinema-content{
-  position:relative!important;
-  z-index:3!important;
-  width:100%!important;
-  max-width:none!important;
-  min-height:352px!important;
-  height:352px!important;
-  padding:24px 22px 78px!important;
-  box-sizing:border-box!important;
-  display:flex!important;
-  flex-direction:column!important;
-  align-items:flex-start!important;
-  justify-content:flex-start!important;
-  text-align:left!important;
-}
-.cinema-card .eyebrow{
-  margin:0!important;
-  font-size:9px!important;
-  letter-spacing:2.1px!important;
-  color:#f0c67d!important;
-}
-.cinema-card h2{
-  width:min(78%,285px)!important;
-  max-width:none!important;
-  margin:13px 0 11px!important;
-  font-size:30px!important;
-  line-height:1.02!important;
-  letter-spacing:-1.45px!important;
-  text-wrap:balance!important;
-}
-.cinema-meta{
-  width:auto!important;
-  max-width:78%!important;
-  display:flex!important;
-  flex-wrap:wrap!important;
-  gap:5px 8px!important;
-  font-size:10.5px!important;
-  color:#d6d0c6!important;
-}
-.cinema-focus{
-  width:min(72%,260px)!important;
-  max-width:none!important;
-  margin:11px 0 0!important;
-  font-size:10.5px!important;
-  line-height:1.42!important;
-  color:#aaa59e!important;
-}
-.live-dot b{background:var(--gold)!important;box-shadow:0 0 9px rgba(215,165,94,.35)!important}
-.lux-cta{
-  position:absolute!important;
-  z-index:4!important;
-  left:50%!important;
-  bottom:16px!important;
-  transform:translateX(-50%)!important;
-  width:min(78%,270px)!important;
-  max-width:none!important;
-  height:50px!important;
-  min-height:50px!important;
-  margin:0!important;
-  padding:0 15px!important;
-  border-radius:15px!important;
-  display:flex!important;
-  align-items:center!important;
-  justify-content:space-between!important;
-  gap:12px!important;
-  font-size:13px!important;
-}
-.lux-cta .cta-main{gap:9px!important}.cta-dumbbell{width:18px!important;height:18px!important}.lux-cta b{font-size:21px!important;font-weight:500!important}
-.cinema-index{z-index:4!important;right:14px!important;bottom:10px!important;font-size:9px!important}
-/* Compact Today spacing so the dashboard does not become a long stack. */
-#general .lux-section{margin-top:19px!important}
-#general .lux-section-head{margin-bottom:8px!important}
-#general .lux-section-head h3{font-size:18px!important}
-#general .fuel-card{min-height:96px!important;padding:10px!important;border-radius:20px!important;gap:11px!important}
-#general .fuel-art{width:76px!important;height:74px!important;border-radius:15px!important}
-#general .fuel-art span{font-size:26px!important}
-#general .fuel-copy strong{font-size:18px!important}
-#general .fuel-copy span{font-size:11px!important}
-#general .fuel-copy small{font-size:8px!important;line-height:1.25!important}
-#general .coach-lux{padding:13px!important;border-radius:20px!important}
-#general .coach-ring{width:78px!important;height:78px!important}
-#general .coach-ring b{font-size:22px!important}
-#general .coach-line{padding:5px 0!important;font-size:9.5px!important}
-#general .coach-lux-copy p{font-size:9px!important;margin:6px 0 0!important}
-#general .lux-metric{min-height:104px!important;padding:10px!important;border-radius:17px!important}
-#general .metric-glyph{width:24px!important;height:24px!important;margin-bottom:10px!important}
-#general .lux-metric small{font-size:7px!important}
-#general .lux-metric strong{font-size:11.5px!important}
-#general .lux-metric i{margin-top:8px!important}
-#general .week-lux,#general .progress-lux{padding:13px!important;border-radius:20px!important}
-#general .week-bars{gap:7px!important}
-#general .week-bars>div b{font-size:11px!important}
-#general .week-bars>div span{font-size:7px!important}
-#general .progress-lux strong{font-size:27px!important}
-#general .progress-lux svg{height:70px!important}
-#general .lux-divider,#general .closing-note{display:none!important}
-@media(max-width:520px){
-  .cinema-card{min-height:348px!important;height:348px!important;border-radius:26px!important;background-position:69% center!important}
-  .cinema-content{min-height:348px!important;height:348px!important;padding:23px 21px 72px!important}
-  .cinema-card h2{width:76%!important;font-size:29px!important;letter-spacing:-1.4px!important;margin:12px 0 10px!important}
-  .cinema-meta{max-width:78%!important;font-size:10px!important}
-  .cinema-focus{width:70%!important;font-size:10px!important;margin-top:10px!important}
-  .lux-cta{width:78%!important;height:49px!important;min-height:49px!important;bottom:15px!important;font-size:12.5px!important}
-}
-@media(max-width:390px){
-  .cinema-card{min-height:336px!important;height:336px!important;background-position:70% center!important}
-  .cinema-content{min-height:336px!important;height:336px!important;padding:22px 19px 68px!important}
-  .cinema-card h2{width:74%!important;font-size:27px!important}
-  .cinema-meta{font-size:9.5px!important}
-  .cinema-focus{font-size:9.5px!important}
-  .lux-cta{width:80%!important;height:47px!important;min-height:47px!important;bottom:14px!important;font-size:12px!important}
-}
-</style>
+
