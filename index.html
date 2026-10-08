@@ -1,0 +1,1616 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#0b0d10">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>My Routine</title>
+<link rel="manifest" href="manifest.json?v=14.6.3">
+<link rel="apple-touch-icon" href="apple-touch-icon-v1463.png">
+<style id="my-routine-unified-css">
+:root{--bg:#0b0d10;--surface:#15181d;--surface2:#1c2027;--line:#2a3038;--text:#f5f7fa;--muted:#929aa6;--green:#d7a55e;--green2:#f0c67d;--orange:#ffb86b;--blue:#7db7ff;--red:#ff7d88;--purple:#b99cff}
+*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif}
+body{padding-bottom:98px}button,input{font:inherit}button{cursor:pointer}
+.app{width:min(100%,780px);margin:auto;padding:calc(env(safe-area-inset-top) + 28px) 16px 30px}
+.screen{display:none}.screen.active{display:block}.top{display:flex;justify-content:space-between;align-items:center;padding:10px 2px 25px;min-height:120px}
+.eyebrow{text-transform:uppercase;letter-spacing:1.6px;color:var(--muted);font-size:11px;font-weight:850}.title{font-size:35px;font-weight:900;letter-spacing:-1.4px;margin-top:7px;line-height:1.04}
+.iconbtn{width:44px;height:44px;border-radius:15px;border:1px solid var(--line);background:var(--surface);color:var(--text);font-size:18px}
+.hero{background:linear-gradient(145deg,#18231d,#12171a);border:1px solid #294033;border-radius:26px;padding:19px;margin-bottom:12px}.hero h2{font-size:25px;margin:10px 0 6px}.hero p{color:#b9c2cc;margin:0 0 16px;line-height:1.45}
+.pill{display:inline-flex;padding:7px 10px;border-radius:99px;background:#22382a;color:var(--green);font-size:11px;font-weight:850;letter-spacing:.3px}.pill.blue{background:#19283a;color:var(--blue)}.pill.orange{background:#33271b;color:var(--orange)}.pill.red{background:#341e23;color:var(--red)}
+.cta{width:100%;border:0;border-radius:15px;padding:15px;background:var(--green);color:#07120b;font-weight:900;font-size:16px}.secondary{background:var(--surface2);color:var(--text);border:1px solid var(--line)}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.metric{background:var(--surface);border:1px solid var(--line);border-radius:19px;padding:15px}.metric .num{font-size:25px;font-weight:900}.metric .label{font-size:12px;color:var(--muted);margin-top:3px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:21px;padding:17px;margin:12px 0}.card h3{margin:0 0 12px;font-size:17px}.sectionhead{display:flex;justify-content:space-between;align-items:center;gap:12px}.small{font-size:12px;color:var(--muted);line-height:1.5}
+.progress{height:8px;background:#282e36;border-radius:99px;overflow:hidden;margin-top:8px}.fill{height:100%;background:var(--green);width:0;transition:.25s}
+.next{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center}.nexticon{width:44px;height:44px;border-radius:14px;background:#21372a;display:grid;place-items:center;font-size:21px}.nexttime{font-size:11px;color:var(--muted);font-weight:800}.nexttitle{font-size:16px;font-weight:850;margin-top:2px}.nextaction{border:1px solid var(--line);background:var(--surface2);color:var(--text);border-radius:11px;padding:9px 10px;font-size:11px;font-weight:850}
+.task{display:flex;gap:12px;padding:13px 0;border-bottom:1px solid var(--line)}.task:last-child{border:0}.check,.mealcheck{appearance:none;width:22px;height:22px;border:2px solid #5c6571;border-radius:7px;margin:1px 0 0;flex:0 0 auto}.check:checked,.mealcheck:checked{background:var(--green);border-color:var(--green)}.check:checked:after,.mealcheck:checked:after{content:"✓";display:block;color:#08130c;text-align:center;font-weight:900}.done{text-decoration:line-through;color:#727b86}.time{font-size:12px;color:var(--green);font-weight:850}
+.nav{position:fixed;z-index:20;bottom:0;left:0;right:0;padding:8px max(10px,env(safe-area-inset-right)) calc(8px + env(safe-area-inset-bottom)) max(10px,env(safe-area-inset-left));background:rgba(9,12,11,.88);border-top:1px solid rgba(255,255,255,.07);backdrop-filter:blur(24px) saturate(140%);display:flex;justify-content:center;gap:5px;box-shadow:0 -18px 45px rgba(0,0,0,.24)}.nav button{position:relative;flex:1;max-width:132px;background:transparent;border:0;color:#68716d;font-size:9px;font-weight:800;padding:4px 2px 5px;cursor:pointer;transition:transform .2s,color .2s}.nav button .navicon{width:36px;height:32px;margin:0 auto 4px;display:grid;place-items:center;border-radius:12px;font-size:18px;line-height:1;color:#77807c;background:rgba(255,255,255,.025);border:1px solid transparent;transition:.22s;box-shadow:inset 0 1px 0 rgba(255,255,255,.025)}.nav button b{font-weight:800}.nav button:active{transform:scale(.92)}.nav button.active{color:#f3faf6}.nav button.active .navicon{color:var(--green);background:rgba(160,255,194,.10);border-color:rgba(160,255,194,.18);box-shadow:0 7px 20px rgba(90,230,150,.10),inset 0 1px 0 rgba(255,255,255,.06);transform:translateY(-2px)}.nav button.active:after{content:"";position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:20px;height:3px;border-radius:99px;background:var(--green);box-shadow:0 0 14px rgba(160,255,194,.45)}
+.coachScore{position:relative;overflow:hidden;padding:18px;border-radius:26px;background:linear-gradient(145deg,rgba(27,43,35,.96),rgba(10,17,14,.96));border:1px solid rgba(160,255,194,.16);box-shadow:0 22px 55px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.05);animation:coachIn .55s ease both}.coachScore:before{content:"";position:absolute;width:150px;height:150px;right:-60px;top:-70px;background:radial-gradient(circle,rgba(160,255,194,.15),transparent 68%);pointer-events:none}.scoreRing{width:78px;height:78px;border-radius:50%;display:grid;place-items:center;flex:none;background:conic-gradient(var(--green) var(--score,72%),rgba(255,255,255,.065) 0);position:relative;box-shadow:0 0 0 1px rgba(160,255,194,.08),0 8px 30px rgba(90,230,150,.10)}.scoreRing:after{content:"";position:absolute;inset:7px;border-radius:50%;background:#0b120e}.scoreRing b{position:relative;z-index:1;font-size:20px}.coachMini{gap:6px;margin-top:12px}.coachMini>div{padding:10px 8px;border-radius:15px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.055)}.insight{margin-top:9px;background:linear-gradient(135deg,rgba(160,255,194,.055),rgba(255,255,255,.02));border-color:rgba(160,255,194,.12)}@keyframes coachIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}.settingsHero{display:flex;align-items:center;gap:15px;padding:20px;border-radius:26px;background:linear-gradient(145deg,rgba(25,38,31,.95),rgba(10,16,13,.95));border:1px solid rgba(160,255,194,.13);box-shadow:0 20px 50px rgba(0,0,0,.2)}.settingsHero h2{margin:8px 0 5px;font-size:23px;letter-spacing:-.6px}.settingsHero p{margin:0;color:#8d9892;font-size:11px;line-height:1.45}.settingsIcon{width:54px;height:54px;border-radius:18px;display:grid;place-items:center;font-size:24px;color:var(--green);background:rgba(160,255,194,.09);border:1px solid rgba(160,255,194,.16);box-shadow:0 10px 28px rgba(90,230,150,.08)}.settingsCard{padding:4px 15px}.settingsCard .setting{padding:15px 0}.versionBadge{font-size:10px;font-weight:900;color:var(--green);padding:7px 9px;border-radius:10px;background:rgba(160,255,194,.08);border:1px solid rgba(160,255,194,.13)}.statusDot{color:var(--green);font-size:12px;text-shadow:0 0 10px rgba(160,255,194,.5)}@media(max-width:420px){.nav button .navicon{width:33px;height:30px;font-size:17px}.nav button{font-size:8.5px}.coachScore{padding:16px;gap:11px}.scoreRing{width:70px;height:70px}.settingsHero{padding:17px}.settingsHero h2{font-size:21px}}
+
+.workoutHero{border-radius:23px;padding:18px;background:linear-gradient(145deg,#17261e,#15181d);border:1px solid #294133}.exercise{border-bottom:1px solid var(--line);padding:16px 0}.exercise:last-child{border:0}.exname{font-weight:850;font-size:16px}.exmeta{display:flex;gap:7px;margin-top:7px;flex-wrap:wrap}.exmeta span,.tag{background:var(--surface2);border-radius:8px;padding:6px 8px;font-size:11px;color:#cbd2da}
+.loggrid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:10px}.loggrid input,input[type=number],input[type=text]{width:100%;background:var(--surface2);border:1px solid var(--line);color:var(--text);border-radius:10px;padding:10px;text-align:center}
+.timer{font-size:34px;font-weight:900;text-align:center;margin:12px}.timerbtn{width:100%;padding:13px;border:1px solid var(--line);border-radius:13px;background:var(--surface2);color:var(--text);font-weight:800}
+.meal{padding:14px 0;border-bottom:1px solid var(--line)}.meal:last-child{border:0}.mealhead{display:flex;justify-content:space-between;gap:10px}.mealname{font-weight:850}.kcal{color:var(--orange);font-weight:800;white-space:nowrap}.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}.mealrow{display:flex;gap:11px}
+.sleepbox{display:grid;grid-template-columns:1fr 1fr;gap:10px}.sleepbig{font-size:30px;font-weight:900}.sleepicon{font-size:30px;margin-bottom:8px}.review{display:grid;grid-template-columns:1fr 1fr;gap:9px}.reviewbox{background:var(--surface2);border-radius:15px;padding:13px}.reviewbox b{font-size:19px}.reviewbox span{display:block;color:var(--muted);font-size:11px;margin-top:3px}
+.weightrow{display:grid;grid-template-columns:1fr auto;gap:8px}.weightrow button{border:0;background:var(--green);border-radius:12px;padding:0 15px;font-weight:900;color:#07120b}.history{max-height:190px;overflow:auto}.historyrow{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--line);font-size:12px}.historyrow:last-child{border:0}
+.notice{padding:11px 12px;border-left:3px solid var(--green);background:#121916;color:#c8d1ca;border-radius:0 10px 10px 0;font-size:12px;line-height:1.5}.notice.blue{border-left-color:var(--blue);background:#11171f}.notice.orange{border-left-color:var(--orange);background:#1c1711}
+.chart{width:100%;height:150px;background:var(--surface2);border-radius:16px;padding:10px}.bars{display:flex;align-items:end;height:100%;gap:7px}.barcol{flex:1;display:flex;flex-direction:column;align-items:center;height:100%;justify-content:end}.bar{width:100%;max-width:26px;background:var(--green);border-radius:7px 7px 2px 2px;min-height:3px}.barlabel{font-size:9px;color:var(--muted);margin-top:5px}
+.pb{display:flex;justify-content:space-between;gap:8px;padding:10px 0;border-bottom:1px solid var(--line)}.pb:last-child{border:0}.pb b{font-size:13px}.pb span{color:var(--muted);font-size:11px;text-align:right}
+.setting{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}.setting:last-child{border:0}.toggle{width:48px;height:28px;border-radius:99px;background:#333a44;border:0;padding:3px}.toggle i{display:block;width:22px;height:22px;background:#fff;border-radius:50%;transition:.2s}.toggle.on{background:var(--green)}.toggle.on i{transform:translateX(20px)}
+.toast{position:fixed;z-index:50;left:50%;bottom:95px;transform:translateX(-50%) translateY(15px);background:#f4f6f8;color:#0b0d10;padding:11px 15px;border-radius:13px;font-size:12px;font-weight:800;opacity:0;pointer-events:none;transition:.25s;max-width:90%;text-align:center}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.modal{position:fixed;inset:0;z-index:40;background:#0009;display:none;align-items:end}.modal.show{display:flex}.sheet{width:100%;background:var(--surface);border-radius:25px 25px 0 0;padding:20px 17px calc(20px + env(safe-area-inset-bottom));max-height:85vh;overflow:auto}
+@media(min-width:620px){.grid{grid-template-columns:repeat(4,1fr)}}
+.coachbox{background:linear-gradient(145deg,#18231d,#111814);border:1px solid #294033;border-radius:18px;padding:13px;margin-top:10px}.coachlabel{font-size:10px;letter-spacing:1.1px;text-transform:uppercase;color:var(--green);font-weight:900}.coachtarget{font-size:18px;font-weight:900;margin-top:4px}.coachreason{font-size:11px;color:#aeb8b2;margin-top:4px;line-height:1.4}.badgeup{color:var(--green)}.badgehold{color:var(--orange)}.badgedown{color:var(--red)}.pb{font-size:11px;color:#ffd88a;font-weight:850;margin-top:6px}.coachsummary{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:10px}.coachstat{background:var(--surface2);border-radius:12px;padding:10px}.coachstat b{display:block;font-size:16px}.coachstat span{font-size:10px;color:var(--muted)}
+/* ===== UPDATE BANNER ===== */
+#updateBanner{
+  position:fixed;
+  z-index:9999;
+  left:14px;
+  right:14px;
+  bottom:calc(92px + env(safe-area-inset-bottom));
+  display:flex;
+  align-items:center;
+  gap:11px;
+  padding:11px 12px;
+  border:1px solid rgba(160,255,194,.20);
+  border-radius:18px;
+  background:rgba(17,23,21,.92);
+  color:#f6faf7;
+  box-shadow:0 18px 55px rgba(0,0,0,.42),0 0 35px rgba(84,231,155,.08);
+  backdrop-filter:blur(24px) saturate(1.25);
+  -webkit-backdrop-filter:blur(24px) saturate(1.25);
+  animation:updateIn .45s cubic-bezier(.2,.8,.2,1) both;
+}
+#updateBanner .updateIcon{
+  width:35px;height:35px;display:grid;place-items:center;flex:none;
+  border-radius:12px;
+  color:#0a1710;
+  background:#a0ffc2;
+  font-size:20px;font-weight:800;
+  box-shadow:0 0 22px rgba(84,231,155,.18);
+}
+#updateBanner .updateCopy{display:flex;flex-direction:column;min-width:0;flex:1}
+#updateBanner .updateCopy strong{font-size:13px;letter-spacing:-.1px}
+#updateBanner .updateCopy span{font-size:10px;color:#8e9a93;margin-top:2px}
+#updateBanner button{
+  border:0;border-radius:12px;padding:9px 12px;
+  background:#a0ffc2;color:#08120c;font-weight:800;font-size:11px;
+  cursor:pointer;white-space:nowrap;
+  box-shadow:0 6px 18px rgba(84,231,155,.12);
+  transition:transform .18s,filter .18s;
+}
+#updateBanner button:active{transform:scale(.94);filter:brightness(.92)}
+@keyframes updateIn{
+  from{opacity:0;transform:translateY(18px) scale(.97)}
+  to{opacity:1;transform:none}
+}
+@media (min-width:700px){
+  #updateBanner{left:auto;right:22px;max-width:390px}
+}
+
+.coachScore{display:flex;align-items:center;gap:14px;padding:16px;border-radius:22px;background:linear-gradient(145deg,rgba(24,37,30,.92),rgba(12,19,16,.86));border:1px solid rgba(160,255,194,.15);box-shadow:0 18px 50px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.04)}
+.scoreRing{width:72px;height:72px;border-radius:50%;display:grid;place-items:center;flex:none;background:conic-gradient(#a0ffc2 var(--score,72%),rgba(255,255,255,.07) 0);position:relative}.scoreRing:after{content:"";position:absolute;inset:6px;border-radius:50%;background:#0b120e}.scoreRing b{position:relative;z-index:1;font-size:19px}
+.coachMini{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:10px}.coachMini>div{padding:9px;border-radius:14px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.055)}.coachMini small{display:block;color:#7e8984;font-size:9px;margin-bottom:3px}.coachMini strong{font-size:12px}
+.insight{display:flex;gap:10px;align-items:flex-start;padding:12px 13px;border-radius:17px;background:rgba(160,255,194,.045);border:1px solid rgba(160,255,194,.10);margin-top:10px}.insightIcon{width:27px;height:27px;display:grid;place-items:center;border-radius:9px;background:rgba(160,255,194,.10);flex:none}.insight p{margin:0;font-size:11px;line-height:1.45;color:#c1cac4}.insight strong{color:#f4faf6}
+.sectionTitle{display:flex;align-items:center;justify-content:space-between;margin:22px 2px 9px}.sectionTitle h3{margin:0;font-size:14px}.sectionTitle span{font-size:9px;color:#707a76}
+.planMeals{margin-top:12px;border-top:1px solid var(--line);padding-top:4px}.planMeal{display:flex;align-items:flex-start;gap:9px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.055)}.planMeal:last-child{border-bottom:0}.mealTime{font-size:10px;font-weight:850;color:var(--green);width:38px;flex:none;padding-top:2px}.planMeal b{font-size:12px}.planMeal .small{font-size:10px;line-height:1.35;margin-top:3px}.mealKcal{font-size:10px;color:var(--orange);font-weight:800;white-space:nowrap;padding-top:2px}
+.planMeals{margin-top:12px;border-top:1px solid var(--line);padding-top:4px}.planMeal{display:flex;align-items:flex-start;gap:9px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.055)}.planMeal:last-child{border-bottom:0}.mealTime{font-size:10px;font-weight:850;color:var(--green);width:38px;flex:none;padding-top:2px}.planMeal b{font-size:12px}.planMeal .small{font-size:10px;line-height:1.35;margin-top:3px}.mealKcal{font-size:10px;color:var(--orange);font-weight:800;white-space:nowrap;padding-top:2px}
+
+/* V13.4 Premium Today */
+.today-shell{padding:4px 0 18px}.today-topbar{display:flex;justify-content:space-between;align-items:center;padding:12px 3px 22px}.today-topbar h1{font-size:31px;line-height:1;margin:7px 0 6px;letter-spacing:-1.3px}.today-kicker,.today-label,.today-section-head span{font-size:9px;font-weight:900;letter-spacing:1.7px;color:#87918c}.today-date{font-size:12px;color:#727c77}.today-orb{width:46px;height:46px;border-radius:16px;display:grid;place-items:center;background:linear-gradient(145deg,rgba(170,255,202,.16),rgba(255,255,255,.035));border:1px solid rgba(170,255,202,.14);box-shadow:0 12px 30px rgba(65,190,120,.10),inset 0 1px 0 rgba(255,255,255,.10)}.today-orb span{color:var(--green);font-size:18px;text-shadow:0 0 18px rgba(140,240,176,.5)}.today-hero{position:relative;overflow:hidden;padding:20px;border-radius:30px;background:linear-gradient(145deg,#17251d 0%,#101714 55%,#0d1110 100%);border:1px solid rgba(160,255,194,.14);box-shadow:0 24px 65px rgba(0,0,0,.30),inset 0 1px 0 rgba(255,255,255,.06);animation:todayRise .55s ease both}.today-hero:after{content:"";position:absolute;right:-90px;top:-100px;width:260px;height:260px;background:radial-gradient(circle,rgba(140,240,176,.14),transparent 68%);pointer-events:none}.today-hero-glow{position:absolute;left:-90px;bottom:-130px;width:260px;height:220px;background:radial-gradient(circle,rgba(90,180,255,.07),transparent 68%);pointer-events:none}.today-hero-head,.today-hero-title,.today-hero-sub,.today-focus-card,.today-nutrition-card,.today-main-cta{position:relative;z-index:1}.today-status{margin-left:7px;font-size:8px;color:#9aa49f;padding:5px 7px;border-radius:8px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.06)}.today-hero-title{font-size:24px;font-weight:900;letter-spacing:-.8px;margin-top:13px}.today-hero-sub{font-size:11px;color:#909b95;margin-top:5px;margin-bottom:17px}.today-focus-card,.today-nutrition-card{display:grid;grid-template-columns:43px 1fr 32px;align-items:center;gap:11px;padding:12px;border-radius:18px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.065);margin-top:8px;backdrop-filter:blur(12px)}.today-focus-icon,.today-nutrition-icon{width:43px;height:43px;border-radius:14px;display:grid;place-items:center;font-size:20px;color:var(--green);background:rgba(140,240,176,.09);border:1px solid rgba(140,240,176,.12)}.today-nutrition-icon{color:#ffcf91;background:rgba(255,190,100,.08);border-color:rgba(255,190,100,.12)}.today-focus-copy span{display:block;font-size:8px;letter-spacing:1.2px;font-weight:900;color:#78837d;margin-bottom:3px}.today-focus-copy strong{display:block;font-size:14px;line-height:1.2}.today-focus-copy small{display:block;font-size:10px;color:#7f8984;margin-top:4px}.today-arrow{width:30px;height:30px;border-radius:10px;border:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.045);color:#b7c0bb;font-size:20px}.today-main-cta{width:100%;margin-top:12px;border:0;border-radius:16px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(135deg,#9bf5bc,#68dfa0);color:#07120b;font-size:14px;font-weight:900;box-shadow:0 12px 30px rgba(75,210,135,.16)}.today-main-cta b{font-size:18px}.today-section-head{display:flex;justify-content:space-between;align-items:end;margin:24px 2px 9px}.today-section-head div span{display:block}.today-section-head div strong{display:block;font-size:17px;letter-spacing:-.35px;margin-top:4px}.today-section-head button{border:0;background:none;color:#86dda8;font-size:10px;font-weight:850;padding:3px}.today-coach-card,.today-week-card,.today-progress-card{background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.032));border:1px solid rgba(255,255,255,.08);border-radius:24px;box-shadow:0 16px 45px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.045)}.today-coach-card{padding:15px}.today-coach-score{display:flex;align-items:center;gap:13px}.today-score-ring{--score:70%;width:68px;height:68px;border-radius:50%;display:grid;place-items:center;flex:none;background:conic-gradient(var(--green) var(--score),rgba(255,255,255,.07) 0);position:relative;box-shadow:0 0 25px rgba(100,230,150,.09)}.today-score-ring:after{content:"";position:absolute;inset:6px;border-radius:50%;background:#121816}.today-score-ring b{position:relative;z-index:1;font-size:18px}.today-coach-score strong{display:block;font-size:16px;margin-top:3px}.today-coach-score p{margin:4px 0 0;color:#89948e;font-size:10px;line-height:1.4}.today-coach-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:12px}.today-coach-stats div{padding:10px;border-radius:14px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.05)}.today-coach-stats span,.today-metric-card span,.today-week-grid span,.today-progress-card span{display:block;color:#737e78;font-size:9px}.today-coach-stats b{display:block;margin-top:3px;font-size:12px}.today-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.today-metric-card{position:relative;overflow:hidden;min-height:125px;padding:12px;border-radius:20px;background:linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.025));border:1px solid rgba(255,255,255,.075)}.metric-icon{width:30px;height:30px;border-radius:10px;display:grid;place-items:center;font-size:10px;font-weight:900;margin-bottom:14px;background:rgba(140,240,176,.09);color:var(--green);border:1px solid rgba(140,240,176,.12)}.water .metric-icon{color:#80bfff;background:rgba(100,170,255,.08);border-color:rgba(100,170,255,.12)}.sleep .metric-icon{color:#c3a6ff;background:rgba(170,130,255,.08);border-color:rgba(170,130,255,.12)}.today-metric-card .metric-copy strong{display:block;font-size:12px;margin-top:5px;white-space:nowrap}.metric-ring{height:3px;background:rgba(255,255,255,.07);border-radius:99px;position:absolute;left:12px;right:12px;bottom:12px;overflow:hidden}.metric-ring i{display:block;height:100%;width:0;background:var(--green);border-radius:99px;transition:width .5s ease}.water .metric-ring i{background:#80bfff}.sleep .metric-ring i{background:#c3a6ff}.today-week-card{padding:14px}.today-week-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}.today-week-grid div{padding:10px 5px;text-align:center;border-radius:14px;background:rgba(255,255,255,.035)}.today-week-grid b{display:block;font-size:14px}.today-week-grid span{margin-top:3px;font-size:8px}.today-week-progress{margin-top:13px}.today-week-progress>div{display:flex;justify-content:space-between;font-size:9px;color:#7d8882}.today-week-progress b{color:#b8c2bd}.today-week-progress>i{display:block;height:5px;border-radius:99px;background:rgba(255,255,255,.07);margin-top:7px;overflow:hidden}.today-week-progress em{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,#65d99b,#a6f6c4);transition:width .5s ease}.today-progress-card{padding:15px;display:grid;grid-template-columns:110px 1fr;gap:10px;align-items:center}.today-progress-card>div>span{letter-spacing:1.2px;font-weight:900}.today-progress-card strong{display:block;font-size:24px;letter-spacing:-.8px;margin-top:5px}.today-progress-card small{display:block;color:#7d8782;font-size:9px;margin-top:3px}.today-progress-card svg{width:100%;height:64px}.today-progress-card polyline{fill:none;stroke:var(--green);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 5px rgba(140,240,176,.25))}@keyframes todayRise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}@media(max-width:420px){.today-topbar h1{font-size:29px}.today-hero{padding:17px;border-radius:26px}.today-hero-title{font-size:22px}.today-focus-card,.today-nutrition-card{grid-template-columns:39px 1fr 30px}.today-focus-icon,.today-nutrition-icon{width:39px;height:39px}.today-metrics{gap:6px}.today-metric-card{padding:10px;min-height:119px}.today-metric-card .metric-copy strong{font-size:11px}.today-week-grid b{font-size:13px}.today-progress-card{grid-template-columns:100px 1fr}}
+
+/* V14.2.4 — Today composition + fuel refinement */
+.cinema-card{margin-left:auto;margin-right:auto;width:100%;}
+.cinema-content{text-align:center;display:flex;flex-direction:column;align-items:center;position:relative;z-index:2;}
+.cinema-card .eyebrow{margin-left:auto;margin-right:auto;}
+.cinema-card h2{max-width:560px;margin-left:auto;margin-right:auto;}
+.cinema-meta{justify-content:center;flex-wrap:wrap;}
+.cinema-focus{max-width:520px;margin-left:auto;margin-right:auto;}
+.hero-trust{justify-content:center;}
+.lux-cta{max-width:430px;justify-content:center;gap:24px;}
+.fuel-card-clickable{width:100%;font:inherit;color:inherit;text-align:left;cursor:pointer;}
+.fuel-card-clickable:active{transform:scale(.992);}
+.fuel-card-clickable .fuel-art{background:radial-gradient(circle at 65% 25%,rgba(225,181,111,.22),transparent 58%),linear-gradient(145deg,#1a1712,#11100e);border-color:rgba(224,181,111,.18);}
+.fuel-card-clickable .fuel-art span{color:#f0d19a;}
+.fuel-card-clickable .fuel-arrow{color:#d9b46f;border-color:rgba(224,181,111,.16);background:rgba(224,181,111,.06);}
+.fuel-card-clickable:hover{border-color:rgba(224,181,111,.22);box-shadow:0 18px 48px rgba(0,0,0,.22),0 0 28px rgba(224,181,111,.045);}
+@media(max-width:420px){.cinema-card{min-height:0}.cinema-content{padding-left:3px;padding-right:3px}.cinema-card h2{font-size:34px;line-height:1.02;letter-spacing:-1.45px}.cinema-meta{gap:8px 10px}.cinema-focus{font-size:12px;line-height:1.5}.hero-trust{gap:14px}.lux-cta{width:100%;max-width:390px}.fuel-copy strong{font-size:18px}.fuel-copy small{line-height:1.35}}
+
+/* V14.2.4 — Today composition refinement */
+.cinema-card{
+  min-height:350px;
+  background:
+    linear-gradient(90deg,rgba(8,12,15,.98) 0%,rgba(8,12,15,.94) 35%,rgba(8,12,15,.62) 58%,rgba(8,12,15,.12) 100%),
+    linear-gradient(180deg,rgba(7,10,12,.10),rgba(7,10,12,.42)),
+    url('./dumbbell-hero.jpg') right center/58% 100% no-repeat,
+    linear-gradient(145deg,#11171b 0%,#0b0f12 52%,#15100b 100%);
+}
+.cinema-content{max-width:100%;padding:29px 34px 27px;}
+.cinema-content h2{max-width:64%;font-size:33px;line-height:1.02;margin-top:14px;}
+.cinema-meta{max-width:72%;}
+.cinema-focus{max-width:70%;}
+.hero-trust{max-width:70%;}
+.lux-cta{width:min(78%,430px);max-width:none;min-height:56px;padding:13px 17px 13px 19px;}
+.cta-main{display:flex;align-items:center;gap:12px;}
+.cta-dumbbell{width:22px;height:22px;flex:none;}
+.fuel-card{padding:12px 18px 12px 12px;}
+.fuel-arrow{width:24px;height:24px;padding:0;display:grid;place-items:center;border:0!important;background:transparent!important;box-shadow:none!important;font-size:21px;color:#d9b46f;line-height:1;}
+.fuel-card-clickable:hover .fuel-arrow{transform:translateX(2px);}
+@media(max-width:520px){
+  .cinema-card{min-height:348px;background-size:62% 100%;}
+  .cinema-content{padding:28px 27px 25px;}
+  .cinema-content h2{max-width:68%;font-size:31px;letter-spacing:-1.35px;}
+  .cinema-meta{max-width:78%;font-size:11px;}
+  .cinema-focus{max-width:73%;font-size:11px;}
+  .hero-trust{max-width:76%;font-size:10px;}
+  .lux-cta{width:82%;min-height:55px;font-size:13px;}
+}
+@media(max-width:390px){
+  .cinema-card{min-height:340px;background-size:64% 100%;}
+  .cinema-content{padding:26px 23px 23px;}
+  .cinema-content h2{max-width:70%;font-size:29px;}
+  .cinema-meta{max-width:82%;gap:7px;font-size:10.5px;}
+  .cinema-focus{max-width:76%;font-size:10.5px;}
+  .hero-trust{max-width:80%;gap:11px;font-size:9px;}
+  .lux-cta{width:86%;min-height:53px;font-size:12.5px;}
+  .cta-dumbbell{width:20px;height:20px;}
+  .fuel-arrow{font-size:19px;}
+}
+
+
+/* ===== V14.2.7 FINAL TODAY HERO ===== */
+:root{--gold:#d6a45b;--gold2:#f3c77f;--gold-soft:rgba(214,164,91,.16);--green:#7fd7a1}
+.lux-header{position:relative!important;padding:12px 3px 24px!important}
+.lux-header h1{margin-top:7px!important}
+/* no decorative header orb */
+.cinema-card{
+  min-height:410px!important;
+  width:100%!important;
+  margin:0!important;
+  position:relative!important;
+  overflow:hidden!important;
+  border-radius:30px!important;
+  border:1px solid rgba(214,164,91,.25)!important;
+  background:#0b0f12 url('./dumbbell-hero.png') center right/cover no-repeat!important;
+  box-shadow:0 28px 80px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.07)!important;
+  isolation:isolate!important;
+}
+.cinema-card:before{
+  content:""!important;position:absolute!important;inset:0!important;z-index:0!important;
+  background:
+    linear-gradient(90deg,rgba(7,11,14,.99) 0%,rgba(7,11,14,.96) 20%,rgba(7,11,14,.78) 38%,rgba(7,11,14,.38) 61%,rgba(7,11,14,.08) 100%),
+    linear-gradient(0deg,rgba(7,11,14,.76) 0%,rgba(7,11,14,.08) 42%,rgba(7,11,14,.15) 100%)!important;
+  pointer-events:none!important;
+}
+.cinema-card:after{content:""!important;position:absolute!important;inset:0!important;z-index:0!important;background:radial-gradient(circle at 86% 22%,rgba(243,199,127,.10),transparent 28%),radial-gradient(circle at 50% 100%,rgba(214,164,91,.08),transparent 40%)!important;pointer-events:none!important}
+.cinema-noise,.cinema-orb{display:none!important}
+.cinema-content{
+  position:relative!important;z-index:2!important;width:100%!important;max-width:none!important;
+  min-height:410px!important;box-sizing:border-box!important;padding:28px 34px 104px!important;
+  text-align:left!important;display:block!important;
+}
+.cinema-content .eyebrow{text-align:left!important}
+.cinema-content h2{width:min(57%,350px)!important;max-width:none!important;font-size:34px!important;line-height:1.03!important;letter-spacing:-1.6px!important;margin:14px 0 16px!important;color:#f5f4f1!important}
+.cinema-meta{width:min(60%,360px)!important;display:flex!important;flex-wrap:wrap!important;gap:8px 11px!important;align-items:center!important;font-size:12px!important;color:#d2d0cb!important}
+.cinema-focus{width:min(56%,340px)!important;color:#a7a49e!important;font-size:12px!important;line-height:1.55!important;margin:15px 0 0!important}
+.lux-cta{
+  position:absolute!important;z-index:4!important;left:50%!important;bottom:22px!important;transform:translateX(-50%)!important;
+  width:min(72%,390px)!important;max-width:390px!important;min-height:60px!important;height:60px!important;
+  margin:0!important;padding:13px 20px!important;border-radius:17px!important;
+  display:flex!important;align-items:center!important;justify-content:space-between!important;gap:18px!important;
+  background:linear-gradient(110deg,#f2c77f,#d9a457)!important;color:#17110a!important;
+  box-shadow:0 14px 34px rgba(214,164,91,.24)!important;
+}
+.lux-cta .cta-main{display:flex!important;align-items:center!important;justify-content:center!important;gap:13px!important;flex:1!important;font-size:15px!important;font-weight:900!important}
+.lux-cta .cta-dumbbell{width:23px!important;height:23px!important;flex:none!important}
+.lux-cta>b{font-size:25px!important;line-height:1!important;font-weight:500!important}
+.cinema-index{z-index:3!important;right:18px!important;bottom:14px!important;color:rgba(255,255,255,.16)!important}
+/* unified gold instead of green on primary Today elements */
+.cinema-meta .live-dot{color:#aaa59c!important}
+.cinema-meta .live-dot b{background:var(--gold)!important;box-shadow:0 0 10px rgba(214,164,91,.35)!important}
+.nav button.active .navicon{color:var(--gold2)!important;background:rgba(214,164,91,.10)!important;border-color:rgba(214,164,91,.20)!important;box-shadow:0 7px 20px rgba(214,164,91,.10),inset 0 1px 0 rgba(255,255,255,.06)!important}
+.nav button.active:after{background:var(--gold2)!important;box-shadow:0 0 14px rgba(214,164,91,.45)!important}
+@media(max-width:520px){
+ .cinema-card{min-height:410px!important}
+ .cinema-content{min-height:410px!important;padding:27px 27px 102px!important}
+ .cinema-content h2{width:57%!important;font-size:32px!important;line-height:1.04!important}
+ .cinema-meta{width:58%!important;font-size:11.5px!important}
+ .cinema-focus{width:57%!important;font-size:11.5px!important}
+ .lux-cta{width:74%!important;min-height:60px!important;height:60px!important;bottom:21px!important}
+}
+@media(max-width:390px){
+ .cinema-card{min-height:395px!important}
+ .cinema-content{min-height:395px!important;padding:25px 23px 96px!important}
+ .cinema-content h2{width:59%!important;font-size:29px!important}
+ .cinema-meta{width:61%!important;font-size:10.8px!important}
+ .cinema-focus{width:59%!important;font-size:10.8px!important}
+ .lux-cta{width:78%!important;height:56px!important;min-height:56px!important}
+ .lux-cta .cta-main{font-size:14px!important}
+}
+
+
+/* V14.2.9 — Unified secondary tab system */
+.tab-shell{padding-top:4px}
+.tab-header{display:flex;justify-content:space-between;align-items:flex-start;padding:16px 2px 24px}
+.tab-kicker,.panel-kicker{font-size:8px;letter-spacing:2px;font-weight:900;color:#69727a}
+.tab-header h1{font-size:36px;line-height:1;letter-spacing:-1.7px;margin:8px 0 7px;color:#f2f1ed}
+.tab-header p{margin:0;color:#747d85;font-size:11px}
+.tab-orb{width:48px;height:48px;border-radius:16px;display:grid;place-items:center;color:var(--gold-hi);background:linear-gradient(145deg,rgba(214,164,91,.12),rgba(255,255,255,.025));border:1px solid rgba(214,164,91,.16);box-shadow:0 14px 35px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.05)}
+.tab-orb svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.55;stroke-linecap:round;stroke-linejoin:round}
+.premium-panel{background:linear-gradient(145deg,#11161b,#0c1014);border:1px solid rgba(255,255,255,.07);border-radius:24px;box-shadow:0 20px 55px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.025)}
+.tab-section-title{margin:27px 2px 11px}.tab-section-title span{font-size:8px;letter-spacing:2px;color:#626b73;font-weight:900}.tab-section-title h2{margin:5px 0 0;font-size:21px;letter-spacing:-.65px}
+.nutri-overview{padding:18px}.overview-top{display:flex;align-items:flex-start;justify-content:space-between}.overview-top strong{display:block;font-size:35px;letter-spacing:-1.7px;margin-top:5px}.overview-top strong small{font-size:12px;color:#7b848b;letter-spacing:0}.status-chip,.status-badge{font-size:8px;letter-spacing:1.2px;color:#dcb477;border:1px solid rgba(214,164,91,.18);background:rgba(214,164,91,.07);padding:7px 9px;border-radius:99px;font-weight:900}.nutri-stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:20px}.nutri-stat-grid>div{padding-top:12px;border-top:1px solid rgba(255,255,255,.055)}.nutri-stat-grid b{display:block;font-size:18px}.nutri-stat-grid span{display:block;color:#737c84;font-size:8px;margin-top:3px}.nutri-stat-grid i,.lux-progress{display:block;height:4px;background:#242a30;border-radius:99px;overflow:hidden;margin-top:10px}.nutri-stat-grid em,.lux-progress em{display:block;height:100%;width:0;border-radius:inherit;background:linear-gradient(90deg,#c9954f,#f0c67d);box-shadow:0 0 12px rgba(214,164,91,.18);transition:width 1s cubic-bezier(.2,.75,.2,1)}
+.meal-list{padding:4px 16px}.meal-list .meal{padding:15px 0;border-bottom:1px solid rgba(255,255,255,.055)}.meal-list .meal:last-child{border-bottom:0}.meal-list .mealrow{display:flex;align-items:center;gap:13px}.meal-list .mealcheck{width:18px;height:18px;accent-color:var(--gold);flex:none}.meal-list .mealhead{display:flex;justify-content:space-between;gap:12px}.meal-list .mealname{font-size:14px;font-weight:800}.meal-list .kcal{font-size:11px;color:#cfa768}.meal-list .small{color:#788188;font-size:10px}.meal-list .tag{font-size:8px;color:#929aa0;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.05);padding:4px 7px;border-radius:8px;display:inline-block;margin-top:7px}
+.hydration-card{padding:18px}.hydration-head{display:flex;justify-content:space-between;align-items:end}.hydration-head strong{display:block;font-size:27px;margin-top:5px}.hydration-head>b{font-size:12px;color:#c8a56f}.gold-btn{border:0;background:linear-gradient(105deg,#f0c67d,#d39a50);color:#171109;border-radius:13px;font-weight:900;box-shadow:0 12px 28px rgba(214,164,91,.18);transition:.2s}.gold-btn.compact{padding:11px 14px;margin-top:14px;display:flex;align-items:center;justify-content:space-between;gap:18px}.gold-btn.compact span{font-size:14px}.gold-btn.compact b{font-size:8px;letter-spacing:1.2px}.insight-card{padding:16px;margin-top:16px}.insight-card p{margin:8px 0 0;color:#8a9298;font-size:10px;line-height:1.5}
+#workoutContent{margin-top:15px}.workoutHero{padding:20px!important;border-radius:24px!important}.workoutHero .pill{font-size:8px;letter-spacing:1.5px}.workoutHero h2{font-size:27px!important}.coachsummary{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:17px}.coachstat{padding:10px;border-radius:13px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.05)}.coachstat b{display:block;font-size:17px}.coachstat span{font-size:8px;color:#737c83;margin-top:3px;display:block}.screen#workout .cta{width:auto;min-width:0;padding:12px 16px;border-radius:13px}.screen#workout .card{padding:17px;border-radius:23px}.screen#workout .exercise{padding:16px 0;border-bottom:1px solid rgba(255,255,255,.055)}.screen#workout .exercise:last-child{border-bottom:0}.screen#workout .exname{font-size:14px;font-weight:850}.screen#workout .exmeta{display:flex;gap:7px;flex-wrap:wrap;margin-top:7px}.screen#workout .exmeta span{font-size:8px;color:#747d84;border:1px solid rgba(255,255,255,.055);padding:5px 7px;border-radius:8px}.screen#workout .coachbox{margin-top:11px;padding:12px;border-radius:16px;background:linear-gradient(145deg,rgba(214,164,91,.055),rgba(255,255,255,.015));border:1px solid rgba(214,164,91,.10)}.screen#workout .coachlabel{font-size:8px;letter-spacing:1.4px;color:#7b848b}.screen#workout .coachtarget{font-size:17px;font-weight:900;color:#eac27e;margin-top:4px}.screen#workout .coachreason{font-size:9px;color:#7c858c;margin-top:4px;line-height:1.4}.screen#workout .loggrid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:10px}.screen#workout .loggrid input{min-width:0;background:#0c1115;border:1px solid rgba(255,255,255,.07);border-radius:11px;padding:10px;color:#eee}
+.sleep-hero{padding:19px;display:flex;justify-content:space-between;align-items:center}.sleep-hero strong{display:block;font-size:30px;letter-spacing:-1.2px;margin:7px 0}.sleep-hero p{font-size:10px;color:#7d858c;max-width:235px;line-height:1.45;margin:0}.sleep-score-ring{width:82px;height:82px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--gold2) 0%,rgba(255,255,255,.06) 0);box-shadow:0 0 35px rgba(214,164,91,.08);position:relative}.sleep-score-ring:after{content:"";position:absolute;inset:7px;border-radius:50%;background:#101419}.sleep-score-ring span,.sleep-score-ring small{position:relative;z-index:1}.sleep-score-ring span{font-size:17px;font-weight:900}.sleep-score-ring small{font-size:6px;letter-spacing:1.5px;color:#7b848b}.sleep-times{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}.sleep-times>div{padding:15px}.sleep-times span,.sleep-times small{display:block;font-size:8px;letter-spacing:1.3px;color:#69727a}.sleep-times strong{display:block;font-size:22px;margin:8px 0 4px}.sleep-log{padding:16px}.sleep-input-row{display:grid;grid-template-columns:1fr auto auto;gap:10px;align-items:end}.sleep-input-row p{margin:6px 0 0;color:#7a838a;font-size:9px}.sleep-input{display:flex;align-items:center;background:#0b1014;border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:0 9px}.sleep-input input{width:52px;border:0;background:transparent;color:#eee;padding:10px 2px;font-size:15px;outline:0}.sleep-input b{font-size:9px;color:#707981}.sleep-log .gold-btn{margin:0;padding:11px 14px}.timeline{padding:4px 16px}.timeline>div{display:flex;align-items:center;gap:16px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.055)}.timeline>div:last-child{border-bottom:0}.timeline b{width:46px;color:#d9ae6c;font-size:11px}.timeline span{font-size:10px;color:#808990}
+.settings-profile{padding:17px;display:flex;align-items:center;gap:13px}.profile-mark{width:50px;height:50px;border-radius:16px;display:grid;place-items:center;background:linear-gradient(145deg,#f0c67d,#bd8443);color:#171109;font-weight:950;letter-spacing:-.5px;box-shadow:0 12px 30px rgba(214,164,91,.16)}.settings-profile strong{display:block;font-size:15px;margin-top:5px}.settings-profile p{margin:4px 0 0;color:#7c858c;font-size:9px}.settings-list{padding:4px 16px}.setting-row{display:flex;justify-content:space-between;align-items:center;gap:15px;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.055)}.setting-row:last-child{border-bottom:0}.setting-row b{display:block;font-size:12px}.setting-row span:not(.status-badge):not(.live-status){display:block;color:#747d84;font-size:9px;margin-top:4px}.live-status{font-size:9px;color:#d8ae70}.settings-note{padding:15px}.settings-note p{margin:7px 0 0;color:#7c858c;font-size:9px;line-height:1.5}
+@media(max-width:420px){.tab-header{padding-bottom:19px}.tab-header h1{font-size:33px}.tab-orb{width:44px;height:44px}.nutri-stat-grid{gap:7px}.nutri-stat-grid b{font-size:16px}.sleep-hero strong{font-size:27px}.sleep-score-ring{width:72px;height:72px}.sleep-input-row{grid-template-columns:1fr auto}.sleep-input-row .gold-btn{grid-column:2;grid-row:1}.sleep-input{grid-column:2;grid-row:1}.sleep-input-row>div:first-child{grid-column:1;grid-row:1}}
+
+
+/* V14.4 workout redesign */
+
+#workout .workout-overview{position:relative;overflow:hidden;margin-top:14px;padding:24px;border-radius:28px;background:radial-gradient(circle at 88% 0,rgba(214,164,91,.18),transparent 35%),linear-gradient(145deg,#171b20,#0e1216 72%);border:1px solid rgba(255,255,255,.08);box-shadow:0 22px 55px rgba(0,0,0,.24)}
+#workout .workout-overview:after{content:"";position:absolute;width:180px;height:180px;border:1px solid rgba(214,164,91,.09);border-radius:50%;right:-90px;top:-90px;box-shadow:0 0 0 24px rgba(214,164,91,.025),0 0 0 48px rgba(214,164,91,.018)}
+#workout .workout-overview>*{position:relative;z-index:1}
+#workout .workout-overview h2{font-size:30px;line-height:1.05;letter-spacing:-1.3px;margin:9px 0 8px;color:#f5f5f3}
+#workout .workout-overview p{max-width:80%;color:#9da5ad;line-height:1.45;margin:0}
+#workout .overview-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:20px 0 15px}
+#workout .overview-stat{padding:12px;border-radius:15px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.055)}
+#workout .overview-stat b{display:block;font-size:18px;color:#eee;font-weight:850}.overview-stat span{display:block;margin-top:4px;font-size:9px;text-transform:uppercase;letter-spacing:.8px;color:#727b84}
+#workout .start-workout{background:linear-gradient(105deg,#f1c982,#d59b4e);color:#17110a;box-shadow:0 12px 30px rgba(214,164,91,.16);font-size:15px}
+#workout .workout-section-label{display:flex;justify-content:space-between;align-items:end;margin:26px 2px 10px}.workout-section-label span{font-size:10px;letter-spacing:1.5px;color:#727b84;font-weight:850}.workout-section-label strong{font-size:11px;color:#b9c0c6}
+#workout .exercise-list{background:linear-gradient(180deg,rgba(255,255,255,.025),rgba(255,255,255,.012));border:1px solid rgba(255,255,255,.065);border-radius:24px;padding:0 15px;overflow:hidden}
+#workout .exercise-row{display:grid;grid-template-columns:34px 1fr 24px;align-items:center;gap:12px;padding:17px 0;border-bottom:1px solid rgba(255,255,255,.055);cursor:pointer;transition:transform .18s ease,background .18s ease}
+#workout .exercise-row:last-child{border-bottom:0}.exercise-row:active{transform:scale(.985);background:rgba(255,255,255,.025)}
+#workout .exercise-index{width:34px;height:34px;border-radius:11px;display:grid;place-items:center;background:rgba(214,164,91,.09);border:1px solid rgba(214,164,91,.14);color:#d6a45b;font-size:10px;font-weight:900}
+#workout .exercise-main{min-width:0}.exercise-name{font-size:15px;font-weight:800;color:#f1f2f1;line-height:1.2}.exercise-sub{display:flex;gap:7px;flex-wrap:wrap;margin-top:6px;color:#707a83;font-size:9.5px}.exercise-sub b{color:#c8cdd1;font-size:10px}.exercise-last{margin-top:7px;font-size:9.5px;color:#8f989f;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.exercise-last.has-log{color:#d0a563}.exercise-arrow{font-size:24px;color:#616970;text-align:right}
+#workout .workout-note{margin:11px 4px 0;color:#6f7880;font-size:10px;line-height:1.5}
+.exercise-sheet{position:fixed;inset:0;z-index:80;background:rgba(4,6,8,.76);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);display:flex;align-items:flex-end;opacity:0;pointer-events:none;transition:opacity .22s ease}.exercise-sheet.open{opacity:1;pointer-events:auto}
+.exercise-sheet-panel{width:min(700px,100%);max-height:min(92vh,900px);overflow:auto;margin:auto auto 0;padding:12px 18px calc(28px + env(safe-area-inset-bottom));background:linear-gradient(180deg,#171b20 0%,#0c1014 72%);border:1px solid rgba(255,255,255,.09);border-bottom:0;border-radius:30px 30px 0 0;box-shadow:0 -30px 100px rgba(0,0,0,.55);overscroll-behavior:contain}
+.sheet-grab{width:42px;height:4px;border-radius:99px;background:#454d54;margin:0 auto 16px}.sheet-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}.sheet-kicker{font-size:9px;letter-spacing:1.5px;color:#d6a45b;font-weight:900}.sheet-title{font-size:25px;line-height:1.08;letter-spacing:-.7px;font-weight:850;margin-top:5px;color:#f3f4f3}.sheet-close{width:38px;height:38px;border-radius:12px;border:1px solid rgba(255,255,255,.08);background:#11161a;color:#aeb5bb;font-size:22px}
+.sheet-info{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:18px 0 12px}.sheet-info>div{padding:12px 9px;border-radius:15px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.055);text-align:center}.sheet-info b{display:block;font-size:16px;color:#eee}.sheet-info span{display:block;margin-top:3px;font-size:8px;text-transform:uppercase;letter-spacing:1px;color:#707980}
+.sheet-instruction{padding:15px 16px;border-radius:18px;background:linear-gradient(145deg,rgba(214,164,91,.12),rgba(214,164,91,.035));border:1px solid rgba(214,164,91,.16);color:#d9dde0;font-size:12px;line-height:1.55}.sheet-instruction strong{display:block;color:#f0c67d;font-size:10px;letter-spacing:1.1px;margin-bottom:6px}.sheet-section{margin-top:18px}.sheet-section>label{display:block;font-size:9px;letter-spacing:1.3px;color:#707980;font-weight:900;margin:0 0 8px}.sheet-last{padding:12px 13px;border-radius:14px;background:#11161a;border:1px solid rgba(255,255,255,.06);color:#b7bec4;font-size:11px;line-height:1.45}.sheet-last b{color:#eee}.sheet-last span{color:#666f76}
+.set-header{display:grid;grid-template-columns:34px 1fr 1fr 1fr 38px;gap:7px;align-items:center;margin-bottom:7px}.set-header span{text-align:center;font-size:8px;letter-spacing:.8px;color:#6f7880;font-weight:900}
+.set-row{display:grid;grid-template-columns:34px 1fr 1fr 1fr 38px;gap:7px;align-items:center;margin-bottom:7px}.set-row>span{font-size:10px;color:#777f86;text-align:center;font-weight:900}.set-row input{width:100%;min-width:0;height:44px;padding:10px 8px;border-radius:12px;border:1px solid rgba(255,255,255,.08);background:#090d10;color:#f2f2f2;font-size:16px!important;line-height:1;outline:none;-webkit-appearance:none;appearance:none;caret-color:#d6a45b}.set-row input:focus{border-color:rgba(214,164,91,.55);box-shadow:0 0 0 3px rgba(214,164,91,.08)}.set-check{width:38px;height:38px;border-radius:11px;border:1px solid rgba(255,255,255,.07);background:#0a0e11;color:#555f66;font-size:15px}.set-check.done{background:rgba(214,164,91,.12);border-color:rgba(214,164,91,.35);color:#e5b96e}
+.form-cue-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}.form-cue{padding:12px 13px;border-radius:14px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.055)}.form-cue span{display:block;font-size:8px;letter-spacing:1px;color:#6f7880;font-weight:900;margin-bottom:5px}.form-cue b{display:block;color:#cdd2d5;font-size:10px;line-height:1.4;font-weight:650}
+.rest-strip{display:flex;justify-content:space-between;padding:12px 14px;border-radius:14px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.05);margin-top:10px}.rest-strip span{font-size:9px;color:#737c84}.rest-strip b{font-size:12px;color:#d5d9dc}.sheet-actions{display:grid;grid-template-columns:1fr 1.35fr;gap:8px;margin-top:14px}.sheet-actions button{min-height:48px;padding:13px;border-radius:14px;border:1px solid rgba(255,255,255,.07);background:#10151a;color:#b9c0c5;font-weight:850}.sheet-actions .primary{background:linear-gradient(100deg,#f0c67d,#d69e52);color:#17110a;border:0}
+@media(max-width:430px){#workout .workout-overview{padding:21px;border-radius:24px}.overview-stats{gap:6px}.overview-stat{padding:10px 8px}.exercise-list{padding:0 12px}.exercise-row{grid-template-columns:32px 1fr 18px;gap:10px;padding:16px 0}.exercise-index{width:32px;height:32px}.exercise-name{font-size:14px}.sheet-title{font-size:22px}.form-cue-grid{grid-template-columns:1fr}.set-row,.set-header{grid-template-columns:28px 1fr 1fr 1fr 38px;gap:5px}}
+@media(min-width:700px){.general-v133{grid-template-columns:1.25fr .75fr}.v133-hero{grid-column:1/-1}}
+
+@media(max-width:420px){.workoutHero{padding:16px}.card{padding:15px}.exname{font-size:15px;line-height:1.3}.exmeta span{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.loggrid{grid-template-columns:repeat(3,minmax(0,1fr))}.loggrid input{min-width:0;font-size:16px}}
+.exercise,.card,.workoutHero,.sessionExercise{min-width:0;overflow:hidden}.exname,.small,.exercise p,.card p{overflow-wrap:anywhere;word-break:normal}.exmeta{min-width:0}.exmeta span{min-width:0}
+
+:root{--bg:#07090b;--bg2:#0b0e11;--panel:#101419;--panel2:#14191f;--line:rgba(255,255,255,.075);--text:#f5f3ee;--muted:#858d96;--gold:#d7a55e;--gold2:#f0c67d;--green:#d7a55e;--blue:#65b9ee;--purple:#9c82e9;--orange:#e99a55}
+html{background:var(--bg);scroll-behavior:smooth}body{background:radial-gradient(circle at 50% -15%,rgba(215,165,94,.10),transparent 34%),linear-gradient(180deg,#07090b,#090c0f 55%,#06080a);overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 0 45%,rgba(255,255,255,.012) 50%,transparent 55%);mix-blend-mode:screen;z-index:-1}
+#ambientCanvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:-3;opacity:.72}.ambient-vignette{position:fixed;inset:0;pointer-events:none;z-index:-2;background:radial-gradient(circle at 50% 20%,transparent 0,rgba(0,0,0,.14) 55%,rgba(0,0,0,.52) 100%)}
+.app{width:min(100%,760px);padding:calc(env(safe-area-inset-top) + 18px) 18px 108px}.screen.active{animation:screenIn .45s cubic-bezier(.22,.8,.24,1)}
+.lux-today{position:relative}.lux-header{display:flex;justify-content:space-between;align-items:flex-start;padding:14px 2px 24px}.brandline{font-size:10px;letter-spacing:2.4px;color:#737b84;font-weight:900;display:flex;align-items:center;gap:7px}.brand-dot{width:5px;height:5px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px rgba(215,165,94,.65)}.lux-header h1{margin:9px 0 5px;font-size:34px;line-height:1;letter-spacing:-1.7px;font-weight:800}.lux-date{margin:0;color:#747c85;font-size:13px}.lux-icon{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.025);color:var(--gold2);font-size:17px;box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 10px 30px rgba(0,0,0,.2)}
+.cinema-card{min-height:330px;position:relative;overflow:hidden;border:1px solid rgba(215,165,94,.22);border-radius:30px;background:linear-gradient(145deg,#11171b 0%,#0b0f12 48%,#15100b 100%);box-shadow:0 28px 80px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.07);isolation:isolate}.cinema-card:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 82% 28%,rgba(215,165,94,.26),transparent 28%),radial-gradient(circle at 75% 65%,rgba(255,255,255,.06),transparent 20%),linear-gradient(125deg,transparent 30%,rgba(255,255,255,.025) 50%,transparent 70%);z-index:-1;animation:cinemaPulse 8s ease-in-out infinite}.cinema-card:after{content:"";position:absolute;width:240px;height:240px;right:-100px;bottom:-120px;border-radius:50%;background:rgba(215,165,94,.09);filter:blur(30px);z-index:-1}.cinema-noise{position:absolute;inset:0;opacity:.08;background-image:radial-gradient(rgba(255,255,255,.8) .6px,transparent .6px);background-size:5px 5px;mix-blend-mode:overlay}.cinema-orb{position:absolute;right:-30px;top:-35px;width:210px;height:210px;border-radius:50%;background:radial-gradient(circle at 40% 40%,rgba(246,194,113,.22),rgba(215,165,94,.03) 38%,transparent 68%);filter:blur(2px);animation:orbFloat 7s ease-in-out infinite}.cinema-content{position:relative;padding:28px 24px 25px;max-width:88%;z-index:2}.eyebrow{font-size:10px;letter-spacing:1.7px;font-weight:900;color:#6f7880}.eyebrow.gold{color:var(--gold2)}.cinema-content h2{font-size:32px;line-height:1.02;letter-spacing:-1.5px;margin:14px 0 12px;max-width:340px}.cinema-meta{display:flex;gap:9px;align-items:center;color:#c1c5c8;font-size:12px}.cinema-meta i{width:3px;height:3px;border-radius:50%;background:#555d64}.cinema-focus{color:#7f8991;font-size:12px;margin:16px 0 24px}.lux-cta{border:0;background:linear-gradient(100deg,#f0c67d,#d69e52);color:#16100a;border-radius:15px;padding:14px 15px 14px 18px;display:flex;align-items:center;justify-content:space-between;gap:30px;font-size:14px;font-weight:900;min-width:205px;box-shadow:0 12px 30px rgba(215,165,94,.22);transition:transform .22s,box-shadow .22s}.lux-cta b{font-size:18px}.lux-cta:active{transform:scale(.97)}.cinema-index{position:absolute;right:22px;bottom:18px;color:rgba(255,255,255,.14);font-size:12px;letter-spacing:2px}
+.lux-section{margin-top:26px}.lux-section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:11px}.lux-section-head>div span{display:block;color:#626b73;font-size:9px;letter-spacing:1.7px;font-weight:900;margin-bottom:5px}.lux-section-head h3{margin:0;font-size:18px;letter-spacing:-.5px}.lux-section-head button{border:0;background:transparent;color:#a9b0b7;font-size:11px;padding:4px 0}.fuel-card{min-height:112px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(110deg,#0f1418,#12161a);display:flex;align-items:center;padding:12px;gap:14px;box-shadow:0 18px 45px rgba(0,0,0,.18);transition:transform .25s,border-color .25s}.fuel-card:active{transform:scale(.985)}.fuel-art{width:88px;height:86px;border-radius:17px;display:flex;flex-direction:column;justify-content:center;padding-left:13px;background:radial-gradient(circle at 80% 25%,rgba(114,215,160,.22),transparent 28%),linear-gradient(145deg,#17251f,#0c1210);border:1px solid rgba(114,215,160,.13)}.fuel-art span{font-size:29px;font-weight:850;color:#d8e8df}.fuel-art small{font-size:8px;letter-spacing:1.5px;color:#6e8b7c}.fuel-copy{display:flex;flex-direction:column;gap:4px;flex:1}.fuel-copy strong{font-size:21px;letter-spacing:-.5px}.fuel-copy span{font-size:12px;color:#c3c9ce}.fuel-copy small{font-size:10px;color:#6d767e}.fuel-arrow{font-size:20px;color:#687179;padding:8px}
+.coach-lux{border:1px solid rgba(114,215,160,.14);border-radius:24px;padding:17px;background:linear-gradient(145deg,rgba(17,29,23,.96),rgba(9,13,12,.96));display:flex;gap:18px;align-items:center;box-shadow:0 20px 55px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.04)}.coach-ring-wrap{flex:0 0 auto}.coach-ring{--score:72%;width:108px;height:108px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--green) var(--score),rgba(255,255,255,.06) 0);box-shadow:0 0 35px rgba(114,215,160,.12);position:relative}.coach-ring:before{content:"";position:absolute;inset:7px;border-radius:50%;background:#0b100e;border:1px solid rgba(255,255,255,.04)}.coach-ring>div{position:relative;text-align:center;z-index:1}.coach-ring b{display:block;font-size:28px;letter-spacing:-1px}.coach-ring small{display:block;font-size:8px;letter-spacing:1.4px;color:var(--green);font-weight:900;margin-top:2px}.coach-lux-copy{flex:1}.coach-line{display:flex;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.06);padding:7px 0;font-size:11px}.coach-line span{color:#7f8982}.coach-line b{color:#83dca9}.coach-lux-copy p{margin:10px 0 0;color:#9ca49f;font-size:11px;line-height:1.5}.micro-status{font-size:9px;color:var(--green);letter-spacing:1.2px;font-weight:900}
+.lux-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.lux-metric{position:relative;min-height:122px;border:1px solid var(--line);border-radius:19px;background:linear-gradient(150deg,#101419,#0c1013);padding:13px;overflow:hidden}.lux-metric:after{content:"";position:absolute;right:-25px;top:-25px;width:75px;height:75px;border-radius:50%;filter:blur(18px);opacity:.12}.lux-metric.protein:after{background:var(--orange)}.lux-metric.water:after{background:var(--blue)}.lux-metric.sleep:after{background:var(--purple)}.metric-glyph{display:grid;place-items:center;width:25px;height:25px;border-radius:8px;background:rgba(255,255,255,.05);font-size:10px;font-weight:900;margin-bottom:16px}.protein .metric-glyph{color:var(--orange)}.water .metric-glyph{color:var(--blue)}.sleep .metric-glyph{color:var(--purple)}.lux-metric small{display:block;font-size:8px;letter-spacing:1.1px;color:#69727a}.lux-metric strong{display:block;font-size:14px;margin-top:4px;letter-spacing:-.3px}.lux-metric i{display:block;height:4px;border-radius:99px;background:#242a30;margin-top:12px;overflow:hidden}.lux-metric em{display:block;height:100%;width:0;border-radius:inherit;transition:width 1s cubic-bezier(.22,.8,.24,1)}.protein em{background:var(--orange)}.water em{background:var(--blue)}.sleep em{background:var(--purple)}
+.week-lux{border:1px solid var(--line);border-radius:23px;padding:16px;background:#0e1216}.week-bars{display:grid;grid-template-columns:repeat(4,1fr);gap:11px}.week-bars>div b{font-size:14px}.week-bars>div span{display:block;font-size:9px;color:#6f7880;margin:4px 0 7px}.week-bars i{display:block;height:3px;background:#242a2f;border-radius:99px;overflow:hidden}.week-bars em{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,#8fcaa7,#d4a260);transition:width .8s}.week-score{border-top:1px solid var(--line);margin-top:16px;padding-top:13px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:9px}.week-score strong{font-size:25px;letter-spacing:-1px}.week-score span{font-size:10px;color:#747d84}.week-score i{grid-column:1/-1;height:4px;background:#242a2f;border-radius:99px;overflow:hidden}.week-score em{display:block;height:100%;width:0;background:var(--gold);transition:width 1s}
+.progress-lux{border:1px solid var(--line);border-radius:23px;padding:17px;background:linear-gradient(145deg,#11161a,#0c1013);overflow:hidden}.progress-lux small{display:block;color:#6e767d;font-size:8px;letter-spacing:1.5px}.progress-lux strong{display:block;font-size:30px;letter-spacing:-1.4px;margin-top:4px}.progress-lux span{font-size:10px;color:var(--green)}.progress-lux svg{display:block;width:100%;height:88px;margin-top:8px;color:var(--gold)}.spark-area{fill:url(#sparkFill)}.progress-lux polyline{fill:none;stroke:var(--gold);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 5px rgba(215,165,94,.35))}.closing-note{margin:30px 2px 0;padding:24px 0 5px;border-top:1px solid var(--line)}.closing-note span{font-size:9px;letter-spacing:2px;color:#5e676f}.closing-note strong{display:block;margin-top:9px;font-size:23px;line-height:1.05;letter-spacing:-.8px}
+.nav{background:rgba(7,9,11,.86);border-top:1px solid rgba(255,255,255,.06);box-shadow:0 -25px 70px rgba(0,0,0,.42);backdrop-filter:blur(26px) saturate(140%)}.nav button{color:#5d656d}.nav button .navicon{background:transparent;border-color:transparent}.nav button.active .navicon{color:var(--gold2);background:rgba(215,165,94,.08);border-color:rgba(215,165,94,.14);box-shadow:0 0 25px rgba(215,165,94,.08)}.nav button.active{color:#eee9df}.nav button.active:after{background:var(--gold);box-shadow:0 0 15px rgba(215,165,94,.45)}
+.card,.metric,.hero,.workoutHero{background:linear-gradient(145deg,#101419,#0d1115);border-color:var(--line);box-shadow:0 18px 50px rgba(0,0,0,.18)}.hero{border-radius:24px}.cta{background:linear-gradient(100deg,#f0c67d,#d69e52);color:#17110a;box-shadow:0 12px 28px rgba(215,165,94,.18)}.pill{background:rgba(215,165,94,.09);color:var(--gold2);border:1px solid rgba(215,165,94,.14)}.progress{background:#242a30}.fill{background:var(--gold)}.sectionTitle{margin-top:24px}.sectionTitle span{color:#626b73}
+.reveal{opacity:0;transform:translateY(14px);animation:reveal .7s cubic-bezier(.22,.8,.24,1) forwards;animation-delay:var(--delay,0s)}@keyframes reveal{to{opacity:1;transform:none}}@keyframes screenIn{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}@keyframes cinemaPulse{0%,100%{transform:scale(1);opacity:.85}50%{transform:scale(1.05);opacity:1}}@keyframes orbFloat{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(-15px,12px,0)}}
+@media(max-width:520px){.app{padding-left:15px;padding-right:15px}.lux-header h1{font-size:31px}.cinema-card{min-height:315px}.cinema-content{padding:25px 20px}.cinema-content h2{font-size:29px}.coach-lux{gap:13px}.coach-ring{width:94px;height:94px}.coach-ring b{font-size:25px}.lux-metric{padding:11px;min-height:115px}.lux-metric strong{font-size:12px}.week-bars{gap:7px}.week-bars>div b{font-size:12px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+:root{
+  --bg:#07090b;--ink:#f5f0e8;--sub:#a1a6aa;--faint:#676e74;--gold:#d6a45b;--gold-hi:#f3cc8e;
+  --green:#79dca2;--blue:#64b7ff;--purple:#a98cff;--line:rgba(255,255,255,.075);
+  --panel:rgba(14,18,22,.80);--panel-2:rgba(17,22,27,.86);
+}
+html{background:#07090b;scroll-behavior:smooth}
+body{
+  background:
+    radial-gradient(1200px 620px at 72% -4%,rgba(214,164,91,.08),transparent 58%),
+    radial-gradient(900px 640px at 6% 26%,rgba(71,123,100,.065),transparent 54%),
+    linear-gradient(180deg,#080a0c 0%,#06080a 100%);
+  color:var(--ink);min-height:100vh;overflow-x:hidden;
+}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.16;mix-blend-mode:soft-light;background-image:radial-gradient(rgba(255,255,255,.7) .5px,transparent .5px);background-size:4px 4px;z-index:0}
+#ambientCanvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:.8}
+.ambient-vignette{position:fixed;inset:0;pointer-events:none;z-index:1;background:radial-gradient(circle at 50% 15%,transparent 0,transparent 36%,rgba(0,0,0,.26) 100%)}
+.app{position:relative;z-index:2;width:min(100%,720px);padding:calc(env(safe-area-inset-top) + 20px) 18px calc(124px + env(safe-area-inset-bottom));}
+.lux-header{padding:10px 2px 22px;align-items:center}
+.brandline{font-size:9px;letter-spacing:3px;color:#777f85}.brand-dot{width:6px;height:6px;background:var(--gold-hi);box-shadow:0 0 16px rgba(243,204,142,.7)}
+.lux-header h1{font-size:38px;line-height:.98;letter-spacing:-2px;margin:11px 0 6px;font-weight:820;text-shadow:0 5px 25px rgba(0,0,0,.24)}
+.lux-date{font-size:12px;color:#747b82;letter-spacing:.15px}
+.lux-icon{width:44px;height:44px;border-radius:16px;background:linear-gradient(160deg,rgba(255,255,255,.07),rgba(255,255,255,.018));border:1px solid rgba(255,255,255,.08);box-shadow:0 12px 35px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.06);position:relative;overflow:hidden}
+.lux-icon:before{content:"";position:absolute;inset:1px;border-radius:15px;background:linear-gradient(135deg,rgba(243,204,142,.11),transparent 44%);pointer-events:none}
+.header-glyph{position:relative;z-index:2;color:var(--gold-hi);font-size:17px;text-shadow:0 0 14px rgba(243,204,142,.35);display:block;transform:translateY(-1px)}
+.lux-icon i{position:absolute;width:26px;height:26px;border-radius:50%;right:-7px;top:-8px;background:radial-gradient(circle,rgba(243,204,142,.2),transparent 67%);filter:blur(2px);animation:headerGlow 4.5s ease-in-out infinite}
+@keyframes headerGlow{50%{transform:translate(-4px,5px);opacity:.6}}
+.cinema-card{
+  min-height:354px;border-radius:31px;border:1px solid rgba(229,185,110,.24);
+  background:
+   radial-gradient(320px 240px at 82% 24%,rgba(232,183,100,.17),transparent 62%),
+   radial-gradient(280px 240px at 12% 86%,rgba(75,131,104,.11),transparent 64%),
+   linear-gradient(145deg,#12171b 0%,#0b0f13 52%,#0d0d0c 100%);
+  box-shadow:0 34px 90px rgba(0,0,0,.48),0 2px 0 rgba(255,255,255,.035) inset,0 0 0 1px rgba(255,255,255,.015);
+  transform:translateZ(0);transition:transform .45s cubic-bezier(.2,.7,.2,1),border-color .45s,box-shadow .45s;
+}
+.cinema-card:hover{transform:translateY(-2px) rotateX(.35deg);border-color:rgba(243,204,142,.35);box-shadow:0 40px 100px rgba(0,0,0,.52),0 0 45px rgba(214,164,91,.06)}
+.cinema-card:before{animation:cinemaBreath 10s ease-in-out infinite;opacity:.85}
+@keyframes cinemaBreath{0%,100%{transform:scale(1);opacity:.72}50%{transform:scale(1.035);opacity:1}}
+.cinema-orb{width:260px;height:260px;right:-60px;top:-56px;opacity:.9;animation:orbFloat 8s ease-in-out infinite}
+.cinema-content{padding:30px 25px 27px;max-width:92%}
+.eyebrow{font-size:9px;letter-spacing:2px}.eyebrow.gold{color:var(--gold-hi)}
+.cinema-content h2{font-size:36px;line-height:1.00;letter-spacing:-1.9px;margin:15px 0 11px;max-width:355px;text-wrap:balance}
+.cinema-meta{font-size:11px;color:#c7cbce;letter-spacing:.1px}.cinema-meta i{background:#596269;width:3px;height:3px}.live-dot{display:inline-flex;align-items:center;gap:5px;font-style:normal;color:#9fa6a9;font-size:9px;letter-spacing:1.2px;margin-left:3px}.live-dot b{width:5px;height:5px;border-radius:50%;background:var(--green);box-shadow:0 0 10px rgba(121,220,162,.75);animation:livePulse 2s ease-in-out infinite}
+@keyframes livePulse{50%{transform:scale(1.7);opacity:.5}}
+.cinema-focus{color:#8b949b;font-size:11px;margin:15px 0 19px;max-width:300px}
+.hero-trust{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:0 0 21px;color:#777f85;font-size:9px;letter-spacing:.5px}.hero-trust span{display:inline-flex;align-items:center;gap:6px}.hero-trust b{width:5px;height:5px;border-radius:50%;background:rgba(243,204,142,.7);box-shadow:0 0 8px rgba(243,204,142,.25)}
+.lux-cta{min-width:218px;padding:14px 15px 14px 19px;border-radius:14px;background:linear-gradient(105deg,#f4cf91 0%,#d7a25b 48%,#c38c47 100%);box-shadow:0 16px 35px rgba(214,164,91,.20),inset 0 1px 0 rgba(255,255,255,.35);transition:transform .2s,box-shadow .2s,filter .2s}.lux-cta:hover{filter:brightness(1.04);box-shadow:0 19px 40px rgba(214,164,91,.24),inset 0 1px 0 rgba(255,255,255,.4)}.lux-cta b{transition:transform .25s}.lux-cta:hover b{transform:translate(3px,-2px)}
+.cinema-index{right:24px;bottom:22px;font-size:10px;color:rgba(255,255,255,.16)}
+.lux-section{margin-top:29px}.lux-section-head{margin-bottom:12px}.lux-section-head>div span{font-size:8px;letter-spacing:2px;color:#666f76}.lux-section-head h3{font-size:20px;letter-spacing:-.6px}.lux-section-head button{color:#b5babf;font-size:10px;letter-spacing:.3px;transition:color .2s}.lux-section-head button:hover{color:var(--gold-hi)}
+.fuel-card{min-height:120px;border-radius:23px;padding:13px;gap:15px;background:linear-gradient(125deg,#11161a,#0d1115 75%);box-shadow:0 22px 50px rgba(0,0,0,.24),inset 0 1px 0 rgba(255,255,255,.03);position:relative;overflow:hidden}.fuel-card:before{content:"";position:absolute;inset:0;background:linear-gradient(95deg,transparent 10%,rgba(255,255,255,.035) 50%,transparent 90%);transform:translateX(-110%);animation:shine 7s ease-in-out infinite}.fuel-art{width:92px;height:90px;border-radius:18px;background:radial-gradient(circle at 72% 24%,rgba(121,220,162,.22),transparent 30%),linear-gradient(145deg,#16221d,#0b110e);border:1px solid rgba(121,220,162,.14);box-shadow:inset 0 1px 0 rgba(255,255,255,.04)}.fuel-art span{font-size:30px}.fuel-copy strong{font-size:23px;letter-spacing:-.7px}.fuel-copy span{font-size:12px}.fuel-copy small{font-size:9px;letter-spacing:.2px}.fuel-arrow{color:#889097;font-size:21px}
+@keyframes shine{50%{transform:translateX(110%)}}
+.coach-lux{border-radius:25px;padding:18px 17px;background:linear-gradient(145deg,#101b15,#090d0c);border:1px solid rgba(121,220,162,.15);box-shadow:0 22px 58px rgba(0,0,0,.26),inset 0 1px 0 rgba(255,255,255,.035);position:relative;overflow:hidden}.coach-lux:after{content:"";position:absolute;width:200px;height:200px;left:-120px;bottom:-120px;border-radius:50%;background:radial-gradient(circle,rgba(121,220,162,.09),transparent 65%);pointer-events:none}.coach-ring{width:112px;height:112px;box-shadow:0 0 46px rgba(121,220,162,.10),0 0 0 1px rgba(255,255,255,.03)}.coach-ring:after{content:"";position:absolute;inset:0;border-radius:50%;background:conic-gradient(from -35deg,transparent 0 22%,rgba(255,255,255,.18) 23% 24%,transparent 25% 100%);mask:radial-gradient(circle,transparent 67%,#000 69%)}
+.coach-ring b{font-size:30px}.coach-ring small{font-size:7px;letter-spacing:1.8px}.coach-lux-copy p{font-size:10.5px}.coach-line{padding:8px 0;font-size:10.5px}
+.lux-metrics{gap:9px}.lux-metric{min-height:132px;padding:14px;border-radius:20px;background:linear-gradient(150deg,#11161a,#0b0f13);box-shadow:0 16px 40px rgba(0,0,0,.20),inset 0 1px 0 rgba(255,255,255,.025)}.metric-glyph{width:28px;height:28px;border-radius:9px;font-size:10px;margin-bottom:17px;background:rgba(255,255,255,.045)}.lux-metric small{font-size:8px;letter-spacing:1.4px}.lux-metric strong{font-size:15px;margin-top:5px}.lux-metric i{height:5px;margin-top:13px;background:#242a30}.lux-metric em{transition:width 1.15s cubic-bezier(.2,.75,.2,1)}.metric-percent{margin-top:7px!important;letter-spacing:0!important;font-size:8px!important;color:#667077!important}
+.week-lux{border-radius:24px;padding:17px;background:linear-gradient(145deg,#101419,#0b0f13);box-shadow:0 18px 50px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.025)}.week-bars{gap:12px}.week-bars>div b{font-size:13px}.week-bars>div span{font-size:8px;letter-spacing:.6px}.week-bars i{height:4px;background:#242a2f}.week-bars em{background:linear-gradient(90deg,#7bd8a5,#d8a85f);box-shadow:0 0 12px rgba(214,164,91,.16)}.week-score strong{font-size:27px}.week-score span{font-size:9px;letter-spacing:.8px;text-transform:uppercase}.week-score i{height:5px}.week-score em{background:linear-gradient(90deg,#d8a85f,#f2ca86);box-shadow:0 0 14px rgba(214,164,91,.18)}
+.progress-lux{border-radius:24px;padding:18px;background:linear-gradient(145deg,#11161a,#0b0f13);box-shadow:0 18px 50px rgba(0,0,0,.24)}.progress-lux>div:first-child{position:relative;z-index:2}.progress-lux strong{font-size:34px;letter-spacing:-1.7px}.progress-lux span{font-size:10px}.progress-badge{justify-self:end;align-self:start;font-size:8px!important;letter-spacing:1.6px;color:#8f989e!important;padding:7px 9px;border-radius:99px;border:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.025);text-transform:uppercase}.progress-lux svg{height:96px;margin-top:-8px;filter:drop-shadow(0 8px 20px rgba(214,164,91,.08))}
+.lux-divider{height:1px;background:linear-gradient(90deg,transparent,rgba(214,164,91,.24),transparent);margin:32px 20px 0;position:relative}.lux-divider span{position:absolute;left:50%;top:50%;width:5px;height:5px;border-radius:50%;background:var(--gold-hi);transform:translate(-50%,-50%);box-shadow:0 0 12px rgba(243,204,142,.5)}
+.closing-note{margin:27px 2px 0;padding:2px 0 4px;border-top:0;text-align:center}.closing-note span{font-size:8px;letter-spacing:2.7px;color:#5e666d}.closing-note strong{font-size:22px;line-height:1.0;letter-spacing:-.7px;color:#dfe1e2;margin-top:10px}
+.nav{padding:8px 9px calc(8px + env(safe-area-inset-bottom));background:rgba(7,9,11,.80);border-top:1px solid rgba(255,255,255,.06);box-shadow:0 -22px 70px rgba(0,0,0,.55);backdrop-filter:blur(30px) saturate(125%)}
+.nav button{max-width:125px;color:#5f676e;font-size:8px;letter-spacing:.15px;padding:5px 2px 6px}.nav button .navicon{width:40px;height:34px;margin:0 auto 4px;border-radius:13px;background:rgba(255,255,255,.018);border:1px solid rgba(255,255,255,.035);box-shadow:inset 0 1px 0 rgba(255,255,255,.03)}
+.nav button .navicon svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}.nav button.active .navicon{color:var(--gold-hi);background:linear-gradient(160deg,rgba(214,164,91,.15),rgba(214,164,91,.05));border-color:rgba(214,164,91,.20);box-shadow:0 8px 25px rgba(214,164,91,.12),inset 0 1px 0 rgba(255,255,255,.08);transform:translateY(-2px)}.nav button.active:after{height:2px;background:linear-gradient(90deg,transparent,var(--gold-hi),transparent);box-shadow:0 0 13px rgba(243,204,142,.45)}
+.press{animation:navPress .22s ease}.reveal{animation:reveal .72s cubic-bezier(.2,.78,.2,1) both}.reveal.seen{animation-play-state:running}
+@keyframes navPress{50%{transform:scale(.94)}}
+@media(hover:none){.cinema-card:hover{transform:none;box-shadow:0 34px 90px rgba(0,0,0,.48),0 2px 0 rgba(255,255,255,.035) inset}}
+@media(max-width:520px){.app{padding-left:15px;padding-right:15px}.lux-header{padding-bottom:20px}.lux-header h1{font-size:34px}.cinema-card{min-height:344px;border-radius:28px}.cinema-content{padding:27px 21px 24px}.cinema-content h2{font-size:31px}.cinema-focus{margin-bottom:16px}.lux-cta{min-width:205px}.coach-lux{gap:12px;padding:16px}.coach-ring{width:98px;height:98px}.lux-metric{min-height:126px;padding:12px}.lux-metric strong{font-size:13px}.metric-glyph{margin-bottom:15px}.week-bars{gap:8px}.week-bars>div b{font-size:12px}.week-bars>div span{font-size:7px}.closing-note strong{font-size:20px}}
+
+/* =========================================================
+   V14.2.5 — UNIFIED LUXURY MINIMAL DESIGN SYSTEM
+   One visual language across Today / Nutrition / Training /
+   Sleep / Settings / Progress / Session.
+   ========================================================= */
+:root{
+  --bg:#07090c;
+  --bg-soft:#0a0d11;
+  --surface:#0f1318;
+  --surface2:#14191f;
+  --surface3:#181e24;
+  --line:rgba(255,255,255,.075);
+  --line-strong:rgba(255,255,255,.11);
+  --text:#f1f1ee;
+  --muted:#7d858c;
+  --muted2:#5e666d;
+  --gold:#d6a45b;
+  --gold-hi:#f3cc8e;
+  --gold-dim:rgba(214,164,91,.12);
+  --green:#79dca2;
+  --blue:#72b8e8;
+  --purple:#a992df;
+  --orange:#e8a866;
+  --danger:#d9858d;
+  --radius-xl:27px;
+  --radius-lg:22px;
+  --radius-md:17px;
+  --shadow:0 24px 70px rgba(0,0,0,.28);
+}
+html,body{
+  background:
+    radial-gradient(700px 400px at 50% -140px,rgba(214,164,91,.07),transparent 62%),
+    radial-gradient(560px 420px at 100% 32%,rgba(121,220,162,.035),transparent 68%),
+    var(--bg);
+  color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Segoe UI",sans-serif;
+}
+body{letter-spacing:-.01em}
+.app{padding-top:calc(env(safe-area-inset-top) + 24px);padding-bottom:34px}
+.screen{min-height:calc(100vh - 112px)}
+.screen .top{
+  min-height:0;
+  padding:9px 2px 24px;
+  margin-bottom:2px;
+  border:0;
+}
+.screen .top .title{font-size:34px;line-height:1.0;letter-spacing:-1.7px;font-weight:820;margin-top:9px}
+.screen .top .eyebrow{font-size:8px;letter-spacing:2px;color:#646d75;font-weight:800}
+
+/* Shared surface language */
+.screen .card,
+.screen .hero,
+.screen .workoutHero,
+.screen .settingsHero,
+.screen .notice,
+.screen .metric,
+.screen .sleepbox .card,
+.screen .day,
+.screen .settingsCard,
+.screen .timerbtn,
+.screen .loggrid input,
+.screen input[type=number],
+.screen input[type=text]{
+  background:linear-gradient(145deg,#11161b,#0c1014);
+  border:1px solid var(--line);
+  box-shadow:0 16px 48px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.025);
+}
+.screen .card{border-radius:var(--radius-lg);padding:18px;margin:12px 0}
+.screen .card h3{font-size:17px;line-height:1.1;letter-spacing:-.35px;margin-bottom:13px}
+.screen .hero,.screen .workoutHero,.screen .settingsHero{border-radius:var(--radius-xl)}
+.screen .hero{padding:20px}
+.screen .hero h2,.screen .workoutHero h2{letter-spacing:-.8px}
+.screen .small{color:#7c858d;font-size:11px;line-height:1.55}
+.screen .sectionhead h3{margin-bottom:0}
+.screen .sectionhead>span,.screen .sectionhead>button{font-size:9px;letter-spacing:.9px;text-transform:uppercase;color:#717a82}
+
+/* Shared labels / buttons */
+.screen .pill{
+  background:rgba(214,164,91,.08);
+  color:var(--gold-hi);
+  border:1px solid rgba(214,164,91,.14);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.04);
+}
+.screen .cta{
+  background:linear-gradient(105deg,#f0ca89,#d59e55 55%,#c58e4a);
+  color:#181108;
+  border:0;
+  border-radius:15px;
+  box-shadow:0 16px 36px rgba(214,164,91,.16),inset 0 1px 0 rgba(255,255,255,.33);
+  transition:transform .2s,filter .2s,box-shadow .2s;
+}
+.screen .cta:active{transform:scale(.985)}
+.screen .secondary,.screen .timerbtn,.screen .nextaction{
+  background:linear-gradient(145deg,#171c22,#101419);
+  color:#e7e8e7;
+  border:1px solid var(--line-strong);
+}
+.screen .progress{background:#22282f;height:5px;border-radius:99px}
+.screen .fill{background:linear-gradient(90deg,#c58e4a,#f0c989);box-shadow:0 0 16px rgba(214,164,91,.18)}
+
+/* Nutrition */
+#nutrition .top{padding-bottom:20px}
+#nutrition .metric{min-height:112px;border-radius:19px;padding:16px}
+#nutrition .metric .num{font-size:24px;letter-spacing:-.7px}
+#nutrition .metric .label{font-size:9px;letter-spacing:1px;text-transform:uppercase;color:#687179;margin-top:6px}
+#nutrition .meal{padding:16px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+#nutrition .meal:last-child{border-bottom:0}
+#nutrition .mealname{font-size:14px;letter-spacing:-.15px}
+#nutrition .kcal{color:var(--gold-hi);font-size:11px}
+#nutrition .tags .tag{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.045);color:#90989f;border-radius:9px}
+#nutrition .mealcheck{accent-color:var(--gold);border-color:#606a72;background:transparent}
+#nutrition .mealcheck:checked{background:var(--gold);border-color:var(--gold)}
+#nutrition .mealcheck:checked:after{color:#171109}
+
+/* Training */
+#workout .workoutHero{padding:20px}
+#workout .coachsummary{border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);margin-top:15px;padding:13px 0}
+#workout .exercise{padding:17px 0;border-bottom:1px solid rgba(255,255,255,.055)}
+#workout .exercise:last-child{border-bottom:0}
+#workout .exname{font-size:15px;letter-spacing:-.2px}
+#workout .exmeta span{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.045);color:#858e96;border-radius:9px}
+#workout .coachbox{background:linear-gradient(145deg,rgba(214,164,91,.06),rgba(255,255,255,.018));border:1px solid rgba(214,164,91,.10);border-radius:16px;padding:12px;margin-top:10px}
+#workout .coachlabel{font-size:8px;letter-spacing:1.5px;color:#6f777e}
+#workout .coachtarget{font-weight:850;margin-top:4px}
+#workout .badgeup{color:var(--green)}
+#workout .badgedown{color:var(--danger)}
+#workout .badgehold{color:var(--gold-hi)}
+#workout .pb{font-size:10px;color:#969ea4;margin-top:8px}
+#workout .loggrid input{padding:11px 8px;border-radius:12px;color:#eee}
+
+/* Sleep / recovery */
+#sleep .sleepbox{gap:10px}
+#sleep .sleepbox .card{margin:0;padding:17px}
+#sleep .sleepicon{font-size:22px;color:var(--gold-hi);margin-bottom:10px}
+#sleep .sleepbig{font-size:28px;letter-spacing:-1px}
+#sleep .weightrow{gap:8px}
+#sleep .weightrow input{min-height:46px;text-align:left;padding-left:14px;background:#11161b;border-color:var(--line-strong);border-radius:13px}
+#sleep .weightrow button{min-width:100px;background:linear-gradient(105deg,#f0ca89,#d59e55);color:#181108;border-radius:13px;box-shadow:0 12px 26px rgba(214,164,91,.14)}
+#sleep .historyrow{padding:11px 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:11px;color:#808991}
+#sleep .historyrow b{color:#e2e3e1}
+#sleep .notice{border-radius:16px;padding:13px 14px;color:#9ca4aa}
+
+/* Settings */
+#settings .settingsHero{padding:20px}
+#settings .settingsIcon{width:52px;height:52px;border-radius:17px;background:rgba(214,164,91,.09);border-color:rgba(214,164,91,.15);color:var(--gold-hi);display:grid;place-items:center}
+#settings .settingsIcon svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+#settings .settingsHero .pill{margin-bottom:2px}
+#settings .sectionTitle{margin:27px 2px 10px;display:flex;justify-content:space-between;align-items:end}
+#settings .sectionTitle h3{font-size:18px;letter-spacing:-.4px}
+#settings .sectionTitle span{font-size:8px;letter-spacing:1.8px;color:#5f6870}
+#settings .setting{padding:16px 0;border-bottom:1px solid rgba(255,255,255,.05)}
+#settings .setting:last-child{border-bottom:0}
+#settings .versionBadge{color:var(--gold-hi);background:rgba(214,164,91,.07);border-color:rgba(214,164,91,.12)}
+#settings .statusDot{color:var(--green);text-shadow:0 0 12px rgba(121,220,162,.45)}
+#settings .toggle{width:49px;height:29px;background:#1d2329;border:1px solid rgba(255,255,255,.08);border-radius:99px}
+#settings .toggle.on{background:rgba(214,164,91,.24);border-color:rgba(214,164,91,.28)}
+#settings .toggle i{width:23px;height:23px;background:#9ba1a5;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+#settings .toggle.on i{background:#f0cb8c}
+
+/* Progress + session screens generated dynamically */
+#progress .top,#session .top{padding-bottom:20px}
+#progress .hero,#session .hero{padding:21px}
+#progress .grid{gap:9px}
+#progress .metric{min-height:102px}
+#progress .chart{border-radius:18px;overflow:hidden}
+#progress .bar{background:linear-gradient(180deg,#f0ca89,#b97e3d);box-shadow:0 0 14px rgba(214,164,91,.18)}
+#progress .barlabel{color:#666f76;font-size:8px}
+#progress .pb{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:14px;padding:12px;margin:7px 0;display:flex;justify-content:space-between;gap:12px}
+#progress .pb b{font-size:12px}
+#progress .pb span{font-size:10px;color:#7f8990;text-align:right}
+#session .timer{font-size:40px;letter-spacing:-1px;color:var(--gold-hi);text-shadow:0 0 28px rgba(214,164,91,.13)}
+#session .title{font-size:30px}
+
+/* Keep the bottom bar exactly in the same visual family. */
+.nav{background:rgba(6,8,10,.90);border-top:1px solid rgba(255,255,255,.055);box-shadow:0 -24px 80px rgba(0,0,0,.58);backdrop-filter:blur(30px) saturate(120%)}
+.nav button{color:#596169}
+.nav button.active{color:#eee}
+.nav button .navicon{background:rgba(255,255,255,.018);border-color:rgba(255,255,255,.035)}
+.nav button.active .navicon{color:var(--gold-hi);background:rgba(214,164,91,.10);border-color:rgba(214,164,91,.20);box-shadow:0 10px 26px rgba(214,164,91,.10),inset 0 1px 0 rgba(255,255,255,.05)}
+.nav button.active:after{background:linear-gradient(90deg,transparent,var(--gold-hi),transparent);box-shadow:0 0 13px rgba(243,204,142,.38)}
+
+/* Consistent motion across every screen. */
+.screen.active .top{animation:unifiedHeaderIn .55s cubic-bezier(.2,.78,.2,1) both}
+.screen.active .card,.screen.active .hero,.screen.active .workoutHero,.screen.active .settingsHero,.screen.active .workoutHero{padding:18px}
+  #sleep .weightrow button{min-width:92px}
+}
+@media(prefers-reduced-motion:reduce){
+  .screen.active .top,.screen.active .card,.screen.active .hero,.screen.active .workoutHero,.screen.active .settingsHero,.screen.active 
+}
+
+/* V14.2.4 — Today hero: proper cinematic image zone + clean text hierarchy */
+.cinema-card{
+  min-height:390px;
+  position:relative;
+  overflow:hidden;
+  isolation:isolate;
+  background:#090d10;
+  border:1px solid rgba(215,165,94,.25);
+  border-radius:28px;
+}
+.cinema-card::before{
+  content:"";
+  position:absolute;
+  inset:0 0 0 36%;
+  z-index:0;
+  background:url('./dumbbell-hero.jpg') center right / cover no-repeat;
+  transform:none;
+  animation:none;
+}
+.cinema-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 82% 35%,rgba(215,165,94,.13),transparent 28%),
+    linear-gradient(90deg,
+      #090d10 0%,
+      rgba(9,13,16,.98) 28%,
+      rgba(9,13,16,.88) 44%,
+      rgba(9,13,16,.48) 61%,
+      rgba(9,13,16,.10) 82%,
+      rgba(9,13,16,.02) 100%),
+    linear-gradient(180deg,rgba(5,8,10,.08),rgba(5,8,10,.24));
+}
+.cinema-noise{z-index:2;opacity:.018;pointer-events:none}
+.cinema-orb{z-index:2;right:-70px;top:-80px;width:230px;height:230px;opacity:.35;pointer-events:none}
+.cinema-content{
+  position:relative;
+  z-index:3;
+  width:100%;
+  max-width:62%;
+  min-height:390px;
+  padding:30px 0 28px 30px;
+  box-sizing:border-box;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  text-align:left;
+}
+.cinema-card .eyebrow{margin:0;max-width:100%}
+.cinema-card h2{
+  margin:16px 0 14px;
+  max-width:100%;
+  font-size:34px;
+  line-height:1.02;
+  letter-spacing:-1.7px;
+  text-wrap:balance;
+}
+.cinema-meta{
+  width:100%;
+  max-width:100%;
+  justify-content:flex-start;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:7px 10px;
+}
+.cinema-focus{
+  max-width:100%;
+  margin:14px 0 0;
+  line-height:1.5;
+}
+.lux-cta{
+  width:auto;
+  max-width:205px;
+  height:46px;
+  min-height:46px;
+  margin-top:auto;
+  padding:10px 13px 10px 15px;
+  border-radius:13px;
+  justify-content:space-between;
+  gap:15px;
+  font-size:12.5px;
+  box-shadow:0 10px 24px rgba(214,164,91,.16),inset 0 1px 0 rgba(255,255,255,.28);
+}
+.lux-cta .cta-main{gap:8px}
+.cta-dumbbell{width:18px;height:18px}
+.lux-cta b{font-size:16px}
+.cinema-index{z-index:3;right:18px;bottom:15px}
+
+@media(max-width:520px){
+  .cinema-card{min-height:380px;border-radius:28px}
+  .cinema-card::before{inset:0 0 0 38%;background-position:center right;background-size:cover}
+  .cinema-content{max-width:63%;min-height:380px;padding:28px 0 25px 24px}
+  .cinema-card h2{font-size:31px;letter-spacing:-1.45px;margin-top:15px}
+  .cinema-meta{gap:6px 8px;font-size:11px}
+  .cinema-focus{font-size:11px;margin-top:12px}
+  .lux-cta{max-width:188px;height:45px;min-height:45px;padding:9px 12px 9px 14px;font-size:12px}
+}
+@media(max-width:390px){
+  .cinema-card{min-height:368px}
+  .cinema-card::before{inset:0 0 0 42%}
+  .cinema-content{max-width:65%;min-height:368px;padding:26px 0 23px 20px}
+  .cinema-card h2{font-size:29px}
+  .cinema-meta{font-size:10.5px}
+  .cinema-focus{font-size:10.5px}
+  .lux-cta{max-width:178px;height:43px;min-height:43px;font-size:11.5px}
+  .cta-dumbbell{width:17px;height:17px}
+}
+
+/* Keep Today fuel card in the same champagne/charcoal language. */
+.fuel-art{background:radial-gradient(circle at 80% 25%,rgba(215,165,94,.18),transparent 30%),linear-gradient(145deg,#241d13,#0c1013)!important;border-color:rgba(215,165,94,.16)!important}
+.fuel-art span{color:#f0cf96!important}.fuel-art small{color:#8f8068!important}.fuel-arrow{font-size:18px!important;color:#d8ad69!important;padding:4px 6px!important}
+
+/* V14.2.5 — Final Today composition + English unified system */
+:root{--accent:#d7a55e;--accent-hi:#f0c67d;--positive:#72d7a0;}
+body{background:#07090b;color:#f5f3ee}
+/* Primary action language is champagne/gold across the entire app. */
+.cta,.lux-cta{background:linear-gradient(135deg,#f0c67d 0%,#d7a55e 100%)!important;color:#171109!important}
+.cta{box-shadow:0 12px 28px rgba(215,165,94,.16)!important}
+.pill{background:rgba(215,165,94,.09)!important;color:#f0c67d!important;border-color:rgba(215,165,94,.15)!important}
+.progress .fill,.bar,.toggle.on,.check:checked,.mealcheck:checked{background:#d7a55e!important}
+.time,.coachlabel,.badgeup,.statusDot{color:#d7a55e!important}
+/* Today hero: true two-zone composition. The image never becomes a competing text layer. */
+.cinema-card{
+  min-height:455px!important;
+  background:#090d10!important;
+  border-color:rgba(215,165,94,.26)!important;
+}
+.cinema-card::before{
+  inset:0 0 0 47%!important;
+  background-position:center right!important;
+  background-size:cover!important;
+  opacity:.9!important;
+}
+.cinema-card::after{
+  background:
+    linear-gradient(90deg,#090d10 0%,#090d10 39%,rgba(9,13,16,.98) 48%,rgba(9,13,16,.78) 59%,rgba(9,13,16,.25) 76%,rgba(9,13,16,.04) 100%),
+    linear-gradient(180deg,rgba(5,8,10,.04) 0%,rgba(5,8,10,.08) 65%,rgba(5,8,10,.42) 100%)!important;
+}
+.cinema-content{
+  width:100%!important;max-width:none!important;min-height:455px!important;
+  padding:31px 30px 105px!important;align-items:flex-start!important;text-align:left!important;
+}
+.cinema-card .eyebrow{font-size:10px!important;letter-spacing:2.3px!important;color:#f0c67d!important}
+.cinema-card h2{
+  width:61%!important;max-width:270px!important;margin:18px 0 15px!important;
+  font-size:35px!important;line-height:1.03!important;letter-spacing:-1.8px!important;
+  text-wrap:balance!important;
+}
+.cinema-meta{width:62%!important;max-width:270px!important;gap:6px 9px!important;color:#d6d0c6!important}
+.cinema-focus{width:60%!important;max-width:260px!important;margin-top:15px!important;color:#9d9a95!important;line-height:1.45!important}
+.live-dot b{background:#d7a55e!important;box-shadow:0 0 10px rgba(215,165,94,.35)!important}
+.lux-cta{
+  position:absolute!important;left:50%!important;bottom:25px!important;transform:translateX(-50%)!important;
+  width:280px!important;max-width:calc(100% - 48px)!important;height:58px!important;min-height:58px!important;
+  margin:0!important;padding:0 18px!important;border-radius:17px!important;
+  justify-content:space-between!important;font-size:14px!important;font-weight:900!important;
+  box-shadow:0 15px 35px rgba(215,165,94,.22),inset 0 1px 0 rgba(255,255,255,.32)!important;
+}
+.lux-cta .cta-main{gap:10px!important}.cta-dumbbell{width:20px!important;height:20px!important}.lux-cta b{font-size:23px!important;font-weight:500!important}
+.cinema-index{right:16px!important;bottom:13px!important;color:rgba(255,255,255,.24)!important}
+/* Fuel card: compact arrow, no colored square. */
+.fuel-arrow{width:auto!important;height:auto!important;border:0!important;background:none!important;border-radius:0!important;font-size:23px!important;color:#d7a55e!important;padding:0!important;line-height:1!important;transition:transform .2s ease!important}
+.fuel-card-clickable:active .fuel-arrow{transform:translateX(3px)!important}
+/* Unified navigation */
+.nav button.active .navicon{color:#f0c67d!important;background:rgba(215,165,94,.10)!important;border-color:rgba(215,165,94,.20)!important;box-shadow:0 7px 20px rgba(215,165,94,.10)!important}
+.nav button.active:after{background:#d7a55e!important;box-shadow:0 0 14px rgba(215,165,94,.45)!important}
+.nav button.active{color:#f5f3ee!important}
+/* Unified screen surfaces */
+.screen .card,.screen .hero,.screen .workoutHero,.screen .settingsHero,.screen .metric{background:linear-gradient(145deg,#101419,#0d1115)!important;border-color:rgba(255,255,255,.075)!important}
+@media(max-width:520px){
+ .cinema-card{min-height:455px!important}
+ .cinema-card::before{inset:0 0 0 46%!important;background-position:center right!important}
+ .cinema-content{min-height:455px!important;padding:30px 25px 104px!important}
+ .cinema-card h2{width:62%!important;font-size:33px!important;letter-spacing:-1.65px!important}
+ .cinema-meta{width:64%!important;font-size:11px!important}
+ .cinema-focus{width:63%!important;font-size:11px!important}
+ .lux-cta{width:280px!important;height:57px!important;min-height:57px!important;bottom:24px!important}
+}
+@media(max-width:390px){
+ .cinema-card{min-height:430px!important}
+ .cinema-card::before{inset:0 0 0 47%!important}
+ .cinema-content{min-height:430px!important;padding:28px 21px 98px!important}
+ .cinema-card h2{width:65%!important;font-size:30px!important}
+ .cinema-meta{width:68%!important;font-size:10.5px!important}
+ .cinema-focus{width:65%!important;font-size:10.5px!important}
+ .lux-cta{width:265px!important;height:54px!important;min-height:54px!important;bottom:22px!important;font-size:13px!important}
+}
+
+/* V14.2.8 — compact Today hero, full-bleed cinematic image, seamless text transition */
+.cinema-card{
+  min-height:352px!important;
+  height:352px!important;
+  margin-bottom:0!important;
+  position:relative!important;
+  overflow:hidden!important;
+  border-radius:27px!important;
+  isolation:isolate!important;
+  background:#090d10 url('./dumbbell-hero.png') 68% center / cover no-repeat!important;
+  border:1px solid rgba(215,165,94,.24)!important;
+  box-shadow:0 24px 65px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.06)!important;
+}
+/* One continuous overlay: no hard vertical split. */
+.cinema-card::before{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  z-index:0!important;
+  background:linear-gradient(90deg,
+    rgba(7,10,12,.98) 0%,
+    rgba(7,10,12,.94) 22%,
+    rgba(7,10,12,.78) 40%,
+    rgba(7,10,12,.48) 58%,
+    rgba(7,10,12,.18) 76%,
+    rgba(7,10,12,.04) 100%)!important;
+  transform:none!important;
+  animation:none!important;
+}
+.cinema-card::after{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  z-index:1!important;
+  pointer-events:none!important;
+  background:linear-gradient(180deg,rgba(5,8,10,.04) 45%,rgba(5,8,10,.16) 72%,rgba(5,8,10,.58) 100%)!important;
+}
+.cinema-noise,.cinema-orb{display:none!important}
+.cinema-content{
+  position:relative!important;
+  z-index:3!important;
+  width:100%!important;
+  max-width:none!important;
+  min-height:352px!important;
+  height:352px!important;
+  padding:24px 22px 78px!important;
+  box-sizing:border-box!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:flex-start!important;
+  justify-content:flex-start!important;
+  text-align:left!important;
+}
+.cinema-card .eyebrow{
+  margin:0!important;
+  font-size:9px!important;
+  letter-spacing:2.1px!important;
+  color:#f0c67d!important;
+}
+.cinema-card h2{
+  width:min(78%,285px)!important;
+  max-width:none!important;
+  margin:13px 0 11px!important;
+  font-size:30px!important;
+  line-height:1.02!important;
+  letter-spacing:-1.45px!important;
+  text-wrap:balance!important;
+}
+.cinema-meta{
+  width:auto!important;
+  max-width:78%!important;
+  display:flex!important;
+  flex-wrap:wrap!important;
+  gap:5px 8px!important;
+  font-size:10.5px!important;
+  color:#d6d0c6!important;
+}
+.cinema-focus{
+  width:min(72%,260px)!important;
+  max-width:none!important;
+  margin:11px 0 0!important;
+  font-size:10.5px!important;
+  line-height:1.42!important;
+  color:#aaa59e!important;
+}
+.live-dot b{background:var(--gold)!important;box-shadow:0 0 9px rgba(215,165,94,.35)!important}
+.lux-cta{
+  position:absolute!important;
+  z-index:4!important;
+  left:50%!important;
+  bottom:16px!important;
+  transform:translateX(-50%)!important;
+  width:min(78%,270px)!important;
+  max-width:none!important;
+  height:50px!important;
+  min-height:50px!important;
+  margin:0!important;
+  padding:0 15px!important;
+  border-radius:15px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  gap:12px!important;
+  font-size:13px!important;
+}
+.lux-cta .cta-main{gap:9px!important}.cta-dumbbell{width:18px!important;height:18px!important}.lux-cta b{font-size:21px!important;font-weight:500!important}
+.cinema-index{z-index:4!important;right:14px!important;bottom:10px!important;font-size:9px!important}
+/* Compact Today spacing so the dashboard does not become a long stack. */
+#general .lux-section{margin-top:19px!important}
+#general .lux-section-head{margin-bottom:8px!important}
+#general .lux-section-head h3{font-size:18px!important}
+#general .fuel-card{min-height:96px!important;padding:10px!important;border-radius:20px!important;gap:11px!important}
+#general .fuel-art{width:76px!important;height:74px!important;border-radius:15px!important}
+#general .fuel-art span{font-size:26px!important}
+#general .fuel-copy strong{font-size:18px!important}
+#general .fuel-copy span{font-size:11px!important}
+#general .fuel-copy small{font-size:8px!important;line-height:1.25!important}
+#general .coach-lux{padding:13px!important;border-radius:20px!important}
+#general .coach-ring{width:78px!important;height:78px!important}
+#general .coach-ring b{font-size:22px!important}
+#general .coach-line{padding:5px 0!important;font-size:9.5px!important}
+#general .coach-lux-copy p{font-size:9px!important;margin:6px 0 0!important}
+#general .lux-metric{min-height:104px!important;padding:10px!important;border-radius:17px!important}
+#general .metric-glyph{width:24px!important;height:24px!important;margin-bottom:10px!important}
+#general .lux-metric small{font-size:7px!important}
+#general .lux-metric strong{font-size:11.5px!important}
+#general .lux-metric i{margin-top:8px!important}
+#general .week-lux,#general .progress-lux{padding:13px!important;border-radius:20px!important}
+#general .week-bars{gap:7px!important}
+#general .week-bars>div b{font-size:11px!important}
+#general .week-bars>div span{font-size:7px!important}
+#general .progress-lux strong{font-size:27px!important}
+#general .progress-lux svg{height:70px!important}
+#general .lux-divider,#general .closing-note{display:none!important}
+@media(max-width:520px){
+  .cinema-card{min-height:348px!important;height:348px!important;border-radius:26px!important;background-position:69% center!important}
+  .cinema-content{min-height:348px!important;height:348px!important;padding:23px 21px 72px!important}
+  .cinema-card h2{width:76%!important;font-size:29px!important;letter-spacing:-1.4px!important;margin:12px 0 10px!important}
+  .cinema-meta{max-width:78%!important;font-size:10px!important}
+  .cinema-focus{width:70%!important;font-size:10px!important;margin-top:10px!important}
+  .lux-cta{width:78%!important;height:49px!important;min-height:49px!important;bottom:15px!important;font-size:12.5px!important}
+}
+@media(max-width:390px){
+  .cinema-card{min-height:336px!important;height:336px!important;background-position:70% center!important}
+  .cinema-content{min-height:336px!important;height:336px!important;padding:22px 19px 68px!important}
+  .cinema-card h2{width:74%!important;font-size:27px!important}
+  .cinema-meta{font-size:9.5px!important}
+  .cinema-focus{font-size:9.5px!important}
+  .lux-cta{width:80%!important;height:47px!important;min-height:47px!important;bottom:14px!important;font-size:12px!important}
+}
+
+/* Responsive normalization */
+*,*::before,*::after{box-sizing:border-box}
+html,body{width:100%;max-width:100%;overflow-x:hidden}
+body{margin:0}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer;-webkit-tap-highlight-color:transparent}
+button:disabled{cursor:default}
+.app,.screen,.screen.active,.screen-lux,.premium-panel,.card,.hero,.workout-overview,.exercise-list,.exercise-row,.exercise-main,.exercise-name,.exercise-sub,.exercise-last,.sheet,.sheet-instruction,.sheet-section,.set-row,.set-header{min-width:0;max-width:100%}
+.screen{width:100%;overflow:visible}
+.card,.premium-panel,.workout-overview,.exercise-list,.exercise-row{overflow:hidden}
+.exercise-row{display:grid;grid-template-columns:34px minmax(0,1fr) 28px;align-items:center;gap:11px;width:100%}
+.exercise-main{overflow:hidden}
+.exercise-name{white-space:normal;overflow-wrap:anywhere;word-break:break-word;line-height:1.25}
+.exercise-sub{display:flex;flex-wrap:wrap;gap:5px;align-items:center;min-width:0;line-height:1.3}
+.exercise-sub span,.exercise-sub b{max-width:100%;overflow-wrap:anywhere}
+.exercise-last{white-space:normal;overflow-wrap:anywhere;line-height:1.35}
+.overview-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));width:100%}
+.overview-stat{min-width:0;overflow:hidden}
+.overview-stat b,.overview-stat span{overflow-wrap:anywhere}
+
+
+
+
+
+
+
+.set-header,.set-row{display:grid;grid-template-columns:32px minmax(0,1fr) minmax(0,1fr) minmax(0,1fr) 40px;gap:7px;align-items:center;width:100%}
+.set-row input{width:100%;min-width:0!important;font-size:16px!important}
+.set-check{width:40px;min-width:40px}
+.sheet-info{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));width:100%}
+.sheet-info>div{min-width:0;overflow:hidden}
+.sheet-info b,.sheet-info span{overflow-wrap:anywhere}
+@media(max-width:420px){
+ .app{padding-left:14px!important;padding-right:14px!important}
+ .overview-stats{gap:5px}
+ .overview-stat{padding-left:5px!important;padding-right:5px!important}
+ 
+ 
+ 
+ 
+ .exercise-row{grid-template-columns:30px minmax(0,1fr) 24px;gap:9px}
+ .exercise-index{font-size:10px}
+ .exercise-arrow{width:24px}
+ .set-header,.set-row{grid-template-columns:25px minmax(0,1fr) minmax(0,1fr) minmax(0,1fr) 36px;gap:5px}
+ .set-check{width:36px;min-width:36px}
+}
+
+
+/* Premium controls */
+#workout 
+#workout 
+#workout 
+#workout 
+#workout 
+#workout 
+#workout 
+/* One visual language for primary actions */
+#workout .start-workout,.cta,.lux-cta{border-radius:15px;min-height:52px;padding:13px 18px;font-weight:900;letter-spacing:-.1px;display:flex;align-items:center;justify-content:center;gap:10px;}
+#workout .start-workout{width:100%;margin-top:2px;}
+#workout .workout-overview{padding:22px;border-radius:24px;}
+#workout .overview-stats{gap:7px;margin:18px 0 13px;}
+#workout .overview-stat{min-width:0;text-align:center;padding:11px 7px;}
+#workout .overview-stat b,#workout .overview-stat span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+#workout .exercise-list{width:100%;max-width:100%;padding:0 13px;border-radius:22px;}
+#workout .exercise-row{grid-template-columns:32px minmax(0,1fr) 20px;gap:10px;padding:16px 0;}
+#workout .exercise-name{overflow-wrap:anywhere;}
+#workout .exercise-sub{min-width:0;}
+#workout .exercise-sub span,#workout .exercise-sub b{min-width:0;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+#workout .exercise-last{max-width:100%;}
+@media(max-width:390px){#workout #workout #workout #workout #workout .workout-overview{padding:18px;}#workout .overview-stat{padding:10px 4px;}#workout .overview-stat b{font-size:16px;}#workout .overview-stat span{font-size:8px;}#workout .exercise-list{padding:0 11px;}}
+
+/* V14.5.7 — minimal day selector. Single source of truth; no legacy day styles. */
+#workout #days{width:100%;margin:2px 0 15px;min-width:0}
+#workout .day-switcher{display:grid;grid-template-columns:36px minmax(0,1fr) 36px;align-items:center;gap:8px;width:100%;min-height:56px;padding:0;margin:0;background:transparent;border:0;box-shadow:none;overflow:visible}
+#workout .daynav{appearance:none;-webkit-appearance:none;width:36px;height:36px;min-width:36px;padding:0;margin:0;border:0;border-radius:50%;background:transparent;color:#737b82;display:grid;place-items:center;justify-self:center;font-size:28px;font-weight:300;line-height:1;cursor:pointer;touch-action:manipulation;transition:color .16s ease,transform .16s ease,background .16s ease}
+#workout .daynav span{display:block;font-size:28px;font-weight:300;line-height:1;transform:translateY(-1px)}
+#workout .daynav:hover{color:var(--gold-hi);background:rgba(214,164,91,.055)}
+#workout .daynav:active{transform:scale(.88);color:var(--gold-hi);background:rgba(214,164,91,.09)}
+#workout .daycurrent{min-width:0;width:100%;max-width:220px;justify-self:center;padding:3px 14px 4px;margin:0;border:0;border-radius:0;background:transparent;box-shadow:none;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;line-height:1.1;overflow:hidden}
+#workout .daylabel{display:block;font-size:8px;line-height:1;text-transform:uppercase;letter-spacing:1.7px;color:var(--gold-hi);font-weight:900;margin:0 0 6px;white-space:nowrap}
+#workout .dayname{display:block;width:100%;max-width:100%;font-size:18px;line-height:1.18;color:#f3f1ec;font-weight:850;letter-spacing:-.15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#workout .daydate{display:block;width:100%;max-width:100%;font-size:10px;line-height:1.2;color:#737c84;margin-top:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media(max-width:390px){#workout .day-switcher{grid-template-columns:32px minmax(0,1fr) 32px;gap:5px;min-height:54px}#workout .daynav{width:32px;height:32px;min-width:32px}#workout .daynav span{font-size:24px}#workout .daycurrent{max-width:190px;padding-left:10px;padding-right:10px}#workout .dayname{font-size:17px}#workout .daydate{font-size:9px}}
+
+/* V14.6.0 — workout exercise details and logging */
+.section-head{display:flex;align-items:center;justify-content:space-between;gap:10px}.ghost-small{background:transparent;border:0;color:#d6a45b;font-size:10px;font-weight:800;padding:4px 0}.last-session-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin-bottom:8px}.last-session-grid>div{padding:9px;border-radius:10px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.05)}.last-session-grid span,.last-session-grid em{display:block;font-size:8px;color:#747d84;font-style:normal}.last-session-grid b{display:block;font-size:12px;margin:3px 0}.sheet-last small{font-size:8px;color:#747d84}.set-check.done{background:#d6a45b!important;color:#111!important;border-color:#d6a45b!important;transform:scale(1.03)}
+@media(max-width:390px){.last-session-grid{grid-template-columns:1fr}.sheet-actions{position:sticky;bottom:0;padding-bottom:max(4px,env(safe-area-inset-bottom))}}
+
+/* =========================================================
+   V14.6.2 — WORKOUT UI POLISH
+   Final Workout-specific visual layer. No layout changes to
+   the existing logging/details logic.
+   ========================================================= */
+/* V14.6.2 — ultra-minimal centered day selector */
+#workout #days{margin:0 0 14px;}
+#workout .day-switcher{
+  width:100%;
+  min-height:46px;
+  margin:0;
+  padding:0;
+  display:grid;
+  grid-template-columns:30px minmax(0,1fr) 30px;
+  align-items:center;
+  justify-items:center;
+  gap:4px;
+  background:transparent;
+  border:0;
+  box-shadow:none;
+}
+#workout .daynav{
+  appearance:none;-webkit-appearance:none;
+  width:30px;height:34px;min-width:30px;
+  margin:0;padding:0;
+  border:0!important;
+  outline:0!important;
+  border-radius:0;
+  background:transparent!important;
+  box-shadow:none!important;
+  color:#858c91;
+  font-size:27px;font-weight:300;line-height:1;
+  display:grid;place-items:center;
+  transition:color .16s ease,transform .16s ease;
+}
+#workout .daynav span{font-size:27px;font-weight:300;line-height:1;transform:translateY(-1px);}
+#workout .daynav:hover{color:var(--gold-hi);}
+#workout .daynav:active{transform:scale(.88);color:var(--gold-hi);}
+#workout .daycurrent{
+  min-width:0;width:100%;max-width:none;
+  margin:0;padding:0;
+  border:0!important;border-radius:0;
+  background:transparent!important;box-shadow:none!important;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;line-height:1.1;
+}
+#workout .daylabel{display:none;}
+#workout .dayname{
+  display:block;width:100%;margin:0;
+  font-size:18px;line-height:1.15;
+  letter-spacing:-.2px;color:#f1f2f0;font-weight:820;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+#workout .daydate{
+  display:block;margin:3px 0 0;
+  font-size:9px;line-height:1.15;color:#737b82;
+  letter-spacing:.2px;
+  white-space:nowrap;
+}
+@media(max-width:390px){
+  #workout .day-switcher{grid-template-columns:28px minmax(0,1fr) 28px;gap:2px;min-height:44px;}
+  #workout .daynav{width:28px;height:32px;min-width:28px;}
+  #workout .daynav span{font-size:25px;}
+  #workout .dayname{font-size:17px;}
+  #workout .daydate{font-size:8px;}
+}
+
+#workout .workout-overview{
+  position:relative;overflow:hidden;
+  padding:22px;border-radius:26px;
+  background:
+    radial-gradient(380px 190px at 100% 0%,rgba(214,164,91,.10),transparent 65%),
+    linear-gradient(145deg,#151a1f,#0b0f13 78%);
+  border:1px solid rgba(255,255,255,.075);
+  box-shadow:0 24px 70px rgba(0,0,0,.30),inset 0 1px 0 rgba(255,255,255,.035);
+}
+#workout .workout-overview .eyebrow{
+  color:#d8ae70;font-size:8px;letter-spacing:1.8px;
+}
+#workout .workout-overview h2{
+  margin:8px 0 5px;font-size:31px;line-height:1;
+  letter-spacing:-1.4px;font-weight:850;
+}
+#workout .workout-overview>p{
+  margin:0;color:#899198;font-size:11px;line-height:1.5;
+}
+#workout .overview-stats{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:8px;margin:18px 0 16px;
+}
+#workout .overview-stat{
+  min-width:0;padding:11px 8px;border-radius:14px;
+  background:rgba(255,255,255,.028);
+  border:1px solid rgba(255,255,255,.05);
+  text-align:center;
+}
+#workout .overview-stat b{
+  display:block;font-size:15px;color:#eee;
+  letter-spacing:-.25px;
+}
+#workout .overview-stat span{
+  display:block;margin-top:4px;font-size:8px;
+  letter-spacing:1px;text-transform:uppercase;color:#69727a;
+}
+#workout .start-workout{
+  min-height:50px;font-size:15px;
+  letter-spacing:-.15px;
+}
+
+#workout .workout-section-label{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:26px 2px 10px;
+}
+#workout .workout-section-label span{
+  font-size:8px;letter-spacing:2px;color:#69727a;font-weight:900;
+}
+#workout .workout-section-label strong{
+  font-size:9px;color:#737c83;font-weight:700;
+}
+
+#workout .exercise-list{
+  overflow:hidden;
+  border-top:1px solid rgba(255,255,255,.055);
+}
+#workout .exercise-row{
+  display:grid;
+  grid-template-columns:38px minmax(0,1fr) 22px;
+  gap:13px;align-items:center;
+  min-height:82px;padding:15px 2px;
+  border-bottom:1px solid rgba(255,255,255,.055);
+  cursor:pointer;
+  transition:background .18s,transform .18s;
+}
+#workout .exercise-row:last-child{border-bottom:0}
+#workout .exercise-row:active{
+  transform:scale(.992);
+  background:rgba(214,164,91,.025);
+}
+#workout .exercise-index{
+  width:36px;height:36px;border-radius:12px;
+  display:grid;place-items:center;
+  background:rgba(214,164,91,.075);
+  border:1px solid rgba(214,164,91,.13);
+  color:#d9ae70;font-size:9px;font-weight:900;
+}
+#workout .exercise-main{min-width:0}
+#workout .exercise-name{
+  font-size:17px;line-height:1.15;
+  letter-spacing:-.35px;font-weight:800;color:#f0f1ef;
+  white-space:normal;
+}
+#workout .exercise-sub{
+  display:flex;flex-wrap:wrap;gap:5px 7px;
+  margin-top:7px;color:#737c83;font-size:9px;line-height:1.3;
+}
+#workout .exercise-sub b{color:#aeb5ba;font-weight:750}
+#workout .exercise-last{
+  margin-top:7px;font-size:9px;color:#5e676e;
+  line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+#workout .exercise-last.has-log{color:#b18a54}
+#workout .exercise-arrow{
+  color:#737b82;font-size:23px;font-weight:300;
+  text-align:right;transition:color .18s,transform .18s;
+}
+#workout .exercise-row:active .exercise-arrow{
+  color:var(--gold-hi);transform:translateX(2px);
+}
+#workout .workout-note{
+  margin:15px 2px 4px;text-align:center;
+  color:#555e65;font-size:7px;letter-spacing:1.25px;
+  line-height:1.6;
+}
+
+/* Exercise details: tighter and more premium */
+#exerciseSheet .exercise-sheet-panel{
+  padding:10px 18px calc(24px + env(safe-area-inset-bottom));
+}
+#exerciseSheet .sheet-title{
+  font-size:27px;letter-spacing:-.9px;
+}
+#exerciseSheet .sheet-info>div{
+  background:rgba(255,255,255,.028);
+  border-color:rgba(255,255,255,.055);
+}
+#exerciseSheet .sheet-instruction{
+  background:linear-gradient(145deg,rgba(214,164,91,.10),rgba(255,255,255,.018));
+  border-color:rgba(214,164,91,.14);
+}
+#exerciseSheet .set-row input{
+  min-width:0;font-size:16px!important;
+}
+#exerciseSheet .set-check{
+  transition:background .18s,border-color .18s,color .18s,transform .18s;
+}
+#exerciseSheet .set-check:active{transform:scale(.92)}
+#exerciseSheet .ghost-small{
+  border:0;background:transparent;color:#d7a960;
+  font-size:9px;font-weight:800;letter-spacing:.25px;
+  padding:5px 0;
+}
+@media(max-width:390px){
+  #workout .exercise-row{grid-template-columns:34px minmax(0,1fr) 18px;gap:10px}
+  #workout .exercise-index{width:34px;height:34px}
+  #workout .exercise-name{font-size:16px}
+  #workout .workout-overview{padding:20px}
+}
+
+</style>
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+<canvas id="ambientCanvas" aria-hidden="true"></canvas>
+<div class="ambient-vignette"></div>
+<div class="app">
+<section id="general" class="screen active">
+<div class="lux-today">
+  <header class="lux-header reveal">
+    <div>
+      <div class="brandline"><span class="brand-dot"></span> MY ROUTINE</div>
+      <h1 id="greeting">Good morning.</h1>
+      <p id="v133Date" class="lux-date">Thursday · 8 October</p>
+    </div>
+  </header>
+
+  <section class="cinema-card reveal" style="--delay:.04s">
+    <div class="cinema-noise"></div>
+    <div class="cinema-orb"></div>
+    <div class="cinema-content">
+      <div class="eyebrow gold">TODAY · TRAINING</div>
+      <h2 id="v133WorkoutName">Chest, Back, Shoulders & Arms</h2>
+      <div class="cinema-meta"><span id="v133WorkoutMeta">19:00 · ~60 min</span><i></i><span>1–2 RIR</span><em class="live-dot"><b></b> READY</em></div>
+      <p class="cinema-focus" id="v133WorkoutFocus">Chest · Back · Shoulders · Biceps · Triceps</p>
+      <button class="lux-cta" onclick="show('workout',document.querySelector('.nav button:nth-child(3)'))"><span class="cta-main"><svg class="cta-dumbbell" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6M7 7v10M10 10h4M14 10v4M17 7v10M20 9v6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Start workout</span></span><b aria-hidden="true">→</b></button>
+    </div>
+    <div class="cinema-index">01</div>
+  </section>
+
+  <section class="lux-section reveal" style="--delay:.09s">
+    <div class="lux-section-head"><div><span>FUEL</span><h3>Upcoming meal</h3></div></div>
+    <button class="fuel-card fuel-card-clickable" onclick="show('nutrition',document.querySelector('.nav button:nth-child(2)'))" aria-label="Open nutrition">
+      <div class="fuel-art"><span id="todayMealIndex">03</span><small id="todayMealLabel">NEXT MEAL</small></div>
+      <div class="fuel-copy"><strong id="todayMealName">Snack</strong><span id="todayMealTime">16:30 · ~350 kcal</span><small id="todayMealDesc">200 g yogurt + banana + 20–25 g nuts</small></div>
+      <div class="fuel-arrow" aria-hidden="true">→</div>
+    </button>
+  </section>
+
+  <section class="lux-section reveal" style="--delay:.14s">
+    <div class="lux-section-head"><div><span>COACH</span><h3>How are you today?</h3></div><span class="micro-status" id="v133Recovery">GOOD</span></div>
+    <div class="coach-lux">
+      <div class="coach-ring-wrap"><div class="coach-ring" id="todayScoreRing"><div><b id="v133CoachScore">—</b><small id="v133CoachState">READY</small></div></div></div>
+      <div class="coach-lux-copy"><div class="coach-line"><span>Recovery</span><b id="v133Recovery2">Good</b></div><div class="coach-line"><span>Consistency</span><b id="v133Consistency">—%</b></div><p id="v133Insight">Analyzing your recent training and recovery…</p></div>
+    </div>
+  </section>
+
+  <section class="lux-section reveal" style="--delay:.19s">
+    <div class="lux-section-head"><div><span>TODAY</span><h3>Metrics</h3></div></div>
+    <div class="lux-metrics">
+      <div class="lux-metric protein"><span class="metric-glyph">P</span><small>PROTEIN</small><strong id="v133Protein">0 / 150 g</strong><i><em id="v133ProteinBar"></em></i><small class="metric-percent" id="v133ProteinPct">0%</small></div>
+      <div class="lux-metric water"><span class="metric-glyph">W</span><small>WATER</small><strong id="v133Water">0.0 / 2.7 L</strong><i><em id="v133WaterBar"></em></i><small class="metric-percent" id="v133WaterPct">0%</small></div>
+      <div class="lux-metric sleep"><span class="metric-glyph">☾</span><small>SLEEP</small><strong id="v133Sleep">Not logged</strong><i><em id="v133SleepBar"></em></i><small class="metric-percent" id="v133SleepPct">—</small></div>
+    </div>
+  </section>
+
+  <section class="lux-section reveal" style="--delay:.24s">
+    <div class="lux-section-head"><div><span>THIS WEEK</span><h3>Your rhythm</h3></div><button onclick="show('progress')">Details →</button></div>
+    <div class="week-lux">
+      <div class="week-bars">
+        <div><b id="v133WeekTraining">0 / 4</b><span>Training</span><i><em style="width:0%"></em></i></div>
+        <div><b id="v133WeekNutrition">0 / 7</b><span>Nutrition</span><i><em style="width:0%"></em></i></div>
+        <div><b id="v133WeekWater">0 / 7</b><span>Water</span><i><em style="width:0%"></em></i></div>
+        <div><b id="v133WeekSleep">0 / 7</b><span>Sleep</span><i><em style="width:0%"></em></i></div>
+      </div>
+      <div class="week-score"><strong id="v133WeekPercent">0%</strong><span>consistency</span><i><em id="v133WeekBar"></em></i></div>
+    </div>
+  </section>
+
+  <section class="lux-section reveal" style="--delay:.29s">
+    <div class="lux-section-head"><div><span>PROGRESS</span><h3>Current form</h3></div><button onclick="show('progress')">View all →</button></div>
+    <div class="progress-lux">
+      <div><small>WEIGHT</small><strong id="v133Weight">— kg</strong><span id="v133WeightChange">No change recorded</span></div><span class="progress-badge" id="v133WeightBadge">TREND</span>
+      <svg viewBox="0 0 360 88" preserveAspectRatio="none"><defs><linearGradient id="sparkFill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#d6a45b" stop-opacity=".26"/><stop offset="1" stop-color="#d6a45b" stop-opacity="0"/></linearGradient></defs><path class="spark-area" d="M0,70 C40,58 55,64 90,50 S145,59 180,38 S240,49 270,30 S325,38 360,18 L360,88 L0,88 Z"/><polyline id="v133Spark" points="0,70 40,58 90,50 145,59 180,38 240,49 270,30 325,38 360,18"/></svg>
+    </div>
+  </section>
+
+  <div class="lux-divider reveal" style="--delay:.32s"><span></span></div>
+  <section class="closing-note reveal" style="--delay:.34s"><span>DISCIPLINE</span><strong>Small actions.<br>Compounded results.</strong></section>
+</div>
+</section>
+
+<section id="nutrition" class="screen">
+<div class="tab-shell">
+  <header class="tab-header"><div><div class="tab-kicker">FUEL</div><h1>Nutrition</h1><p>Fuel your training with consistency.</p></div></header>
+  <div class="nutri-overview premium-panel"><div class="overview-top"><div><span class="panel-kicker">TODAY</span><strong>2,700 <small>kcal</small></strong></div><span class="status-chip">MUSCLE GAIN</span></div><div class="nutri-stat-grid"><div><b id="nutritionProtein">0</b><span>g protein</span><i><em id="nutritionProteinBar"></em></i></div><div><b id="nutritionWater">0.0</b><span>L water</span><i><em id="nutritionWaterBar"></em></i></div><div><b id="mealsDone">0/6</b><span>meals</span><i><em id="nutritionMealsBar"></em></i></div></div></div>
+  <div class="tab-section-title"><span>DAILY ROUTINE</span><h2>Meals</h2></div>
+  <div class="meal-list premium-panel" id="fullMeals"></div>
+  <div class="tab-section-title"><span>HYDRATION</span><h2>Water</h2></div>
+  <div class="hydration-card premium-panel"><div class="hydration-head"><div><span class="panel-kicker">DAILY TARGET</span><strong>2.7 L</strong></div><b id="waterLabel">0.0 L</b></div><div class="lux-progress"><em id="waterBigFill"></em></div><button class="gold-btn compact" onclick="addWater()"><span>+250 ml</span><b>ADD WATER</b></button></div>
+  <div class="insight-card premium-panel"><span class="panel-kicker">COACH NOTE</span><p id="calorieAdvice">Collect at least 2–3 weeks of weight data before making changes.</p></div>
+</div></section>
+
+<section id="workout" class="screen">
+<div class="tab-shell">
+  <header class="tab-header"><div><div class="tab-kicker">TRAINING</div><h1>Workout</h1><p>Train with intent. Progress with control.</p></div></header>
+  <div class="workout-days premium-panel" id="days"></div>
+  <div id="workoutContent"></div>
+</div></section>
+
+<section id="sleep" class="screen">
+<div class="tab-shell">
+  <header class="tab-header"><div><div class="tab-kicker">RECOVERY</div><h1>Sleep</h1><p>Recovery is part of the program.</p></div></header>
+  <div class="sleep-hero premium-panel"><div><span class="panel-kicker">SLEEP TARGET</span><strong>7 h 30 min</strong><p>Keep your wake time stable and shift bedtime gradually.</p></div><div class="sleep-score-ring"><span>—</span><small>AVG</small></div></div>
+  <div class="sleep-times"><div class="premium-panel"><span>WAKE-UP</span><strong>08:00</strong><small>Daily anchor</small></div><div class="premium-panel"><span>BEDTIME</span><strong>00:30</strong><small>Wind-down before bed</small></div></div>
+  <div class="tab-section-title"><span>THIS WEEK</span><h2>Sleep log</h2></div>
+  <div class="premium-panel sleep-log"><div class="sleep-input-row"><div><span class="panel-kicker">LAST NIGHT</span><p>Enter your actual sleep duration.</p></div><div class="sleep-input"><input id="sleepInput" type="number" step="0.1" min="0" max="12" placeholder="6.8"><b>h</b></div><button class="gold-btn compact" onclick="addSleep()">Save</button></div><div class="history" id="sleepHistory"></div></div>
+  <div class="tab-section-title"><span>EVENING</span><h2>Wind-down</h2></div>
+  <div class="premium-panel timeline"><div><b>22:30</b><span>Last meal if hungry</span></div><div><b>23:30</b><span>Dim lights and screens</span></div><div><b>00:00</b><span>Wind-down time</span></div><div><b>00:30</b><span>Bedtime</span></div></div>
+</div></section>
+
+<section id="settings" class="screen">
+<div class="tab-shell">
+  <header class="tab-header"><div><div class="tab-kicker">PREFERENCES</div><h1>Settings</h1><p>Keep the experience exactly how you like it.</p></div></header>
+  <div class="settings-profile premium-panel"><div class="profile-mark">MR</div><div><span class="panel-kicker">MY ROUTINE</span><strong>Your personal system</strong><p>Notifications, reminders and app behavior.</p></div></div>
+  <div class="tab-section-title"><span>NOTIFICATIONS</span><h2>Stay on track</h2></div>
+  <div class="premium-panel settings-list"><div class="setting-row"><div><b>Push notifications</b><span>Training and routine reminders.</span></div><button class="toggle" id="notifyToggle" onclick="toggleNotifications()"><i></i></button></div><div class="setting-row"><div><b>Automatic reminders</b><span>Uses the local times in the app.</span></div><button class="toggle on" id="reminderToggle" onclick="toggleReminderSetting()"><i></i></button></div></div>
+  <div class="tab-section-title"><span>APP</span><h2>System</h2></div>
+  <div class="premium-panel settings-list"><div class="setting-row"><div><b>Version</b><span>Automatic updates are active.</span></div><span class="status-badge" id="appVersion">V14.6.2 • 2026.10.08</span></div><div class="setting-row"><div><b>Update status</b><span>The app checks for updates on launch.</span></div><span class="live-status">● Live</span></div></div>
+  <div class="premium-panel settings-note"><span class="panel-kicker">UPDATE SYSTEM</span><p>If a new version is available, an update banner will appear automatically.</p></div>
+</div></section>
+
+<section id="progress" class="screen"></section>
+<section id="session" class="screen"></section>
+</div>
+
+<div id="exerciseSheet" class="exercise-sheet"></div>
+<nav class="nav">
+<button class="active" onclick="show('general',this)"><span class="navicon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11.2 12 4l8 7.2V20a1 1 0 0 1-1 1h-5v-5h-4v5H5a1 1 0 0 1-1-1z"/></svg></span><b>Today</b></button>
+<button onclick="show('nutrition',this)"><span class="navicon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 10.5c.6 4.2 3.2 7 7 7s6.4-2.8 7-7H5Z"/><path d="M6 10.5h12M8 7.5c1.4-1.8 2.7-2.6 4-2.6s2.6.8 4 2.6M4 10.5h16"/><path d="M8 19.5h8"/></svg></span><b>Nutrition</b></button>
+<button onclick="show('workout',this)"><span class="navicon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9v6m3-8v10m8-10v10m3-8v6M3 10v4m18-4v4M8 12h8"/></svg></span><b>Workout</b></button>
+<button onclick="show('sleep',this)"><span class="navicon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.2A8.7 8.7 0 0 1 9.8 4a8.7 8.7 0 1 0 10.2 10.2Z"/></svg></span><b>Sleep</b></button>
+<button onclick="show('settings',this)"><span class="navicon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8.2a3.8 3.8 0 1 0 0 7.6 3.8 3.8 0 0 0 0-7.6Z"/><path d="M19.2 13.7a7.7 7.7 0 0 0 0-3.4l2-1.5-2-3.4-2.4 1a8 8 0 0 0-3-1.7L13.5 2h-3l-.4 2.7a8 8 0 0 0-3 1.7l-2.4-1-2 3.4 2 1.5a7.7 7.7 0 0 0 0 3.4l-2 1.5 2 3.4 2.4-1a8 8 0 0 0 3 1.7l.4 2.7h3l.4-2.7a8 8 0 0 0 3-1.7l2.4 1 2-3.4-2-1.5Z"/></svg></span><b>Settings</b></button>
+</nav>
+<div id="toast" class="toast"></div>
+
+<script>
+const workouts={
+"Monday":{title:"Chest, Back, Shoulders & Arms",focus:"Chest • Back • Shoulders • Biceps • Triceps",ex:[["Dumbbell Bench Press","4 × 6–10","120 sec","Chest"],["One-Arm Dumbbell Row","4 × 8–12","90 sec","Back"],["Dumbbell Shoulder Press","3 × 8–12","90 sec","Shoulders"],["Lateral Raise","3 × 12–15","60 sec","Lateral delts"],["Dumbbell Curl","3 × 10–12","60 sec","Biceps"],["Overhead Triceps Extension","3 × 10–12","60 sec","Triceps"]]},
+"Tuesday":{title:"Legs, Glutes & Core",focus:"Legs • Hamstrings • Glutes • Calves • Core",ex:[["Goblet Squat","4 × 8–12","120 sec","Legs"],["Romanian Deadlift","4 × 8–12","120 sec","Hamstrings"],["Bulgarian Split Squat","3 × 8–10/leg","90 sec","Legs"],["Calf Raises","4 × 12–15","60 sec","Calves"],["Abs","3 sets","60 sec","Core"]]},
+"Thursday":{title:"Chest, Back, Shoulders & Arms",focus:"Upper Chest • Back • Shoulders • Biceps • Triceps",ex:[["Incline Dumbbell Press","4 × 8–12","120 sec","Upper chest"],["Dumbbell Row","4 × 8–12","90 sec","Back"],["Arnold Press","3 × 8–12","90 sec","Shoulders"],["Rear Delt Fly","3 × 12–15","60 sec","Rear delts"],["Hammer Curl","3 × 10–12","60 sec","Biceps"],["Triceps Kickback","3 × 12–15","60 sec","Triceps"]]},
+"Saturday":{title:"Legs, Glutes, Calves & Core",focus:"Legs • Hamstrings • Glutes • Calves • Core",ex:[["Dumbbell Squat","4 × 8–12","120 sec","Legs"],["Dumbbell Romanian Deadlift","4 × 8–12","120 sec","Hamstrings"],["Reverse Lunge","3 × 10/leg","90 sec","Legs"],["Calf Raises","4 × 12–15","60 sec","Calves"],["Abs","3 sets","60 sec","Core"]]}
+};
+const meals=[["08:20","Breakfast","3 eggs + 2 slices whole-grain bread + 200 g yogurt + 1 banana","~600 kcal","35–40 g protein",38,600],["12:30","Lunch","180 g chicken + 250–300 g cooked rice + vegetables + 10 g olive oil","~650–700 kcal","~50 g protein",50,680],["16:30","Snack","200 g yogurt + banana + 20–25 g nuts","~350 kcal","15–20 g protein",18,350],["18:30","Pre-workout","1 banana + 2–3 rice cakes + 20–25 g protein","~250 kcal","20–25 g protein",22,250],["20:30","Dinner","180–200 g meat/fish + 300 g potatoes or 250–300 g rice + salad","~650–750 kcal","40–50 g protein",45,700],["22:30","If hungry","150–200 g cottage cheese or yogurt","~150–250 kcal","20–30 g protein",25,200]];
+const days=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], dayIndex={"Sunday":0,"Monday":1,"Tuesday":2,"Wednesday":3,"Thursday":4,"Friday":5,"Saturday":6}, short={"Monday":"Mon","Tuesday":"Tue","Wednesday":"Wed","Thursday":"Thu","Friday":"Fri","Saturday":"Sat","Sunday":"Sun"};
+const todayName=Object.keys(dayIndex).find(k=>dayIndex[k]===new Date().getDay())||"Monday";let selected=todayName;
+const todayKey=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`}, read=(k,f)=>{try{return JSON.parse(localStorage.getItem(k))??f}catch{return f}}, store=(k,v)=>localStorage.setItem(k,JSON.stringify(v));
+function toast(t){const e=document.getElementById("toast");e.textContent=t;e.classList.add("show");setTimeout(()=>e.classList.remove("show"),2200)}
+function show(id,btn){document.querySelectorAll(".screen").forEach(s=>{s.classList.remove("active");s.classList.remove("screen-lux")});const active=document.getElementById(id);active.classList.add("active","screen-lux");document.body.dataset.screen=id;document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("active"));if(btn)btn.classList.add("active");else if(["general","nutrition","workout","sleep","settings"].includes(id))document.querySelectorAll(".nav button")[["general","nutrition","workout","sleep","settings"].indexOf(id)].classList.add("active");if(id==="workout")renderWorkout();if(id==="nutrition")renderMeals();if(id==="progress")renderProgressPage();if(id==="settings")renderNotificationUI();window.scrollTo({top:0,behavior:"smooth"})}
+function formatDate(){const d=new Date(),m=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],n=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];return`${n[d.getDay()]} • ${String(d.getDate()).padStart(2,"0")} ${m[d.getMonth()]}`}
+function greeting(){const h=new Date().getHours();return h>=5&&h<12?"Good morning.":h>=12&&h<18?"Good afternoon.":h>=18&&h<23?"Good evening.":"Good night."}
+function nowMin(){const d=new Date();return d.getHours()*60+d.getMinutes()}function tmin(t){const [h,m]=t.split(":").map(Number);return h*60+m}
+function focus(){const w=workouts[todayName];if(w)return["WORKOUT",`Today: ${w.title}: ${w.focus.toLowerCase()}. Target 1–2 RIR with steady progression.`];return["RECOVERY","Lighter day: walk, mobility, food and recovery."]}
+function tasksData(){return[["NUTRITION","All meals for today"],["WORKOUT",workouts[todayName]?workouts[todayName].title:"Walk / Mobility"]]}
+function state(){let s=read("daily",{date:todayKey(),tasks:{},meals:{},water:0,protein:0,kcal:0});if(s.date!==todayKey())s={date:todayKey(),tasks:{},meals:{},water:0,protein:0,kcal:0};return s}function saveState(s){store("daily",s)}
+function currentNext(){const t=nowMin(),w=workouts[todayName];const items=[["12:30","Nutrition"],["18:30","Pre-workout meal"],...(w?[["19:00",w.title]]:[])];const a=items.filter(x=>tmin(x[0])>=t);return a[0]?{time:a[0][0],label:a[0][1],i:null}:{time:null,label:null,i:null}}
+function renderGeneral(){
+  const g=document.getElementById("greeting");
+  if(g) g.textContent=greeting();
+  const date=document.getElementById("v133Date");
+  if(date) date.textContent=formatDate();
+  const s=state();
+  const p=Math.min(150,Number(s.protein)||0), water=Math.min(2.7,Number(s.water)||0);
+  const set=(id,val)=>{const el=document.getElementById(id);if(el)el.textContent=val};
+  const fill=(id,val)=>{const el=document.getElementById(id);if(el)el.style.width=val};
+  set("proteinNow",Math.round(p)); fill("proteinFill",`${p/150*100}%`);
+  set("waterNow",water.toFixed(2)); fill("waterFill",`${water/2.7*100}%`);
+  const ws=read("weights",[]); if(ws.length)set("generalWeight",Number(ws.at(-1).v).toFixed(1));
+  if(typeof renderV133==='function') renderV133();
+}
+
+function renderMeals(){const s=state();document.getElementById("fullMeals").innerHTML=meals.map((m,i)=>`<div class="meal"><div class="mealrow"><input class="mealcheck" type="checkbox" ${s.meals[i]?"checked":""} onchange="toggleMeal(${i},this.checked)"><div style="flex:1"><div class="mealhead"><div class="mealname">${m[0]} · ${m[1]}</div><div class="kcal">${m[3]}</div></div><div class="small" style="margin-top:5px">${m[2]}</div><div class="tags"><span class="tag">${m[4]}</span></div></div></div></div>`).join("");const p=Math.min(150,s.protein),w=Math.min(2.7,s.water),d=meals.filter((_,i)=>s.meals[i]).length;document.getElementById("nutritionProtein").textContent=Math.round(p);document.getElementById("nutritionWater").textContent=w.toFixed(2);document.getElementById("mealsDone").textContent=`${d}/${meals.length}`;document.getElementById("waterBigFill").style.width=`${w/2.7*100}%`;renderCalorieAdvice();document.getElementById("nutritionProteinBar")&&(document.getElementById("nutritionProteinBar").style.width=Math.min(100,p/150)+"%");document.getElementById("nutritionWaterBar")&&(document.getElementById("nutritionWaterBar").style.width=Math.min(100,w/2.7*100)+"%");document.getElementById("nutritionMealsBar")&&(document.getElementById("nutritionMealsBar").style.width=(d/meals.length*100)+"%");document.getElementById("waterLabel")&&(document.getElementById("waterLabel").textContent=w.toFixed(2)+" L")}
+function toggleMeal(i,v){const s=state();s.meals[i]=v;s.protein=Math.max(0,s.protein+(v?meals[i][5]:-meals[i][5]));s.kcal=Math.max(0,s.kcal+(v?meals[i][6]:-meals[i][6]));saveState(s);archiveToday();renderMeals();renderGeneral()}
+function addWater(){const s=state();s.water=Math.min(5,Number((s.water+.25).toFixed(2)));saveState(s);archiveToday();renderMeals();renderGeneral();toast("+250 ml water 💧")}
+function renderCalorieAdvice(){const a=read("weights",[]);if(a.length<4){document.getElementById("calorieAdvice").textContent="Collect at least 2–3 weeks of weight data before making changes.";return}const recent=a.slice(-7).map(x=>Number(x.v)),diff=recent.at(-1)-recent[0];document.getElementById("calorieAdvice").textContent=Math.abs(diff)<.1?"The trend is nearly flat. If this continues, we may add a small calorie surplus.":diff<.2?"Gain is below the 0.2–0.4 kg/week target. With consistent tracking, we may add ~100–150 kcal.":diff>.5?"Gain is fast. We will watch a few more measurements before reducing calories.":"Trend is within the target range. Keep intake steady."}
+function renderDays(){
+ const d=new Date();
+ const todayName=days[(d.getDay()+6)%7];
+ const dateText=d.toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'});
+ const isToday=selected===todayName;
+ document.getElementById("days").innerHTML=`<div class="day-switcher"><button class="daynav" aria-label="Previous day" onclick="changeDay(-1)"><span>‹</span></button><div class="daycurrent"><span class="daylabel">${isToday?'TODAY':'DAY'}</span><strong class="dayname">${selected}</strong><span class="daydate">${isToday?dateText:'Workout schedule'}</span></div><button class="daynav" aria-label="Next day" onclick="changeDay(1)"><span>›</span></button></div>`;
+}
+function changeDay(step){
+ const i=(days.indexOf(selected)+step+days.length)%days.length;
+ selected=days[i];
+ renderWorkout();
+}
+function parseRange(x){const m=x.match(/(\d+)\s*[×x]\s*(\d+)[–-](\d+)/);return m?{sets:+m[1],lo:+m[2],hi:+m[3]}:null}
+function exerciseHistory(name){return read("exerciseHistory",{})[name]||[]}
+function exercisePB(name){const h=exerciseHistory(name);return h.reduce((b,x)=>{const v=(+x.kg||0)*(+x.reps||0);return v>(b?.score||0)?{kg:x.kg,reps:x.reps,score:v,date:x.date}:b},null)}
+function lastExercise(name){const h=exerciseHistory(name);return h.length?h[h.length-1]:null}
+function lastExerciseSession(name){const h=exerciseHistory(name);if(!h.length)return[];const last=h[h.length-1],date=last.date,title=last.title;return h.filter(x=>x.date===date&&x.title===title).sort((a,b)=>(a.set||0)-(b.set||0))}
+function prefillLast(i){const w=workouts[selected],e=w.ex[i],sets=lastExerciseSession(e[0]);sets.forEach((x,j)=>{const kg=document.getElementById("setkg"+j),reps=document.getElementById("setreps"+j),rir=document.getElementById("setrir"+j);if(kg)kg.value=x.kg||"";if(reps)reps.value=x.reps||"";if(rir)rir.value=x.rir||""});toast("Last performance loaded")}
+const exerciseInfo={
+"Dumbbell Bench Press":["Chest","Lie back with feet planted. Lower the dumbbells with control, keep elbows slightly tucked and press without bouncing.","Compound • 4 sets • 6–10 reps"],
+"One-Arm Dumbbell Row":["Back","Brace one hand on a stable surface, pull the dumbbell toward your hip and control the stretch on the way down.","Compound • 4 sets • 8–12 reps"],
+"Dumbbell Shoulder Press":["Shoulders","Start at shoulder height, keep ribs controlled and press overhead without leaning back.","Compound • 3 sets • 8–12 reps"],
+"Lateral Raise":["Lateral delts","Raise the dumbbells out to the sides with a soft elbow bend. Stop around shoulder height and lower slowly.","Isolation • 3 sets • 12–15 reps"],
+"Dumbbell Curl":["Biceps","Keep elbows close to your torso and curl without swinging. Lower slowly to full extension.","Isolation • 3 sets • 10–12 reps"],
+"Overhead Triceps Extension":["Triceps","Keep elbows pointing forward and extend the weight overhead while maintaining a stable torso.","Isolation • 3 sets • 10–12 reps"],
+"Goblet Squat":["Quads • Glutes","Hold one dumbbell at chest height, sit between the hips and drive through the floor to stand.","Compound • 4 sets • 8–12 reps"],
+"Romanian Deadlift":["Hamstrings • Glutes","Push hips back with a soft knee bend. Keep the dumbbells close and stop when hamstrings are loaded.","Compound • 4 sets • 8–12 reps"],
+"Bulgarian Split Squat":["Quads • Glutes","Keep the front foot planted, lower under control and drive through the front leg.","Unilateral • 3 sets • 8–10 / leg"],
+"Calf Raises":["Calves","Rise through the balls of the feet, pause at the top and lower through a full comfortable range.","Isolation • 4 sets • 12–15 reps"],
+"Abs":["Core","Brace the trunk and move slowly. Avoid using momentum to complete repetitions.","Core • 3 sets"],
+"Incline Dumbbell Press":["Upper chest","Keep shoulder blades set and press the dumbbells up and slightly together without losing control.","Compound • 4 sets • 8–12 reps"],
+"Dumbbell Row":["Back","Brace the torso and pull toward the hip. Keep the spine neutral throughout.","Compound • 4 sets • 8–12 reps"],
+"Arnold Press":["Shoulders","Start palms facing you, rotate as you press overhead and reverse the motion under control.","Compound • 3 sets • 8–12 reps"],
+"Rear Delt Fly":["Rear delts","Hinge forward, keep a soft elbow bend and move the arms out without shrugging.","Isolation • 3 sets • 12–15 reps"],
+"Hammer Curl":["Biceps","Use a neutral grip and curl without swinging. Keep the upper arm stable.","Isolation • 3 sets • 10–12 reps"],
+"Triceps Kickback":["Triceps","Hinge forward, keep the upper arm still and extend the elbow until the triceps contract.","Isolation • 3 sets • 12–15 reps"],
+"Dumbbell Squat":["Quads • Glutes","Keep the dumbbells stable at your sides, squat with control and stand tall through the full foot.","Compound • 4 sets • 8–12 reps"],
+"Dumbbell Romanian Deadlift":["Hamstrings • Glutes","Hinge at the hips while keeping the weights close to the legs and spine neutral.","Compound • 4 sets • 8–12 reps"],
+"Reverse Lunge":["Legs • Glutes","Step back softly, lower under control and drive through the front foot to return.","Unilateral • 3 sets • 10 / leg"]};
+function renderWorkout(){renderDays();const w=workouts[selected];if(!w){document.getElementById("workoutContent").innerHTML=`<div class="premium-panel recovery-card"><div class="panel-kicker">RECOVERY DAY</div><h3>Recover with intention</h3><p class="small">Walk, mobility and recovery are enough today. There is no need to compensate for a rest day.</p></div>`;return}const logs=Object.values(read("exerciseHistory",{})).flat().length;document.getElementById("workoutContent").innerHTML=`<div class="workout-overview"><div class="eyebrow">${selected.toUpperCase()} • STRENGTH</div><h2>${w.title}</h2><p>${w.focus}</p><div class="overview-stats"><div class="overview-stat"><b>${w.ex.length}</b><span>Exercises</span></div><div class="overview-stat"><b>50–60</b><span>Minutes</span></div><div class="overview-stat"><b>${logs}</b><span>Logged sets</span></div></div><button class="cta start-workout" onclick="startSession()">Start workout</button></div><div class="workout-section-label"><span>WORKOUT</span><strong>${w.ex.length} movements</strong></div><div class="exercise-list">${w.ex.map((e,i)=>{const last=lastExercise(e[0]);return `<div class="exercise-row" onclick="openExercise(${i})"><div class="exercise-index">${String(i+1).padStart(2,'0')}</div><div class="exercise-main"><div class="exercise-name">${e[0]}</div><div class="exercise-sub"><b>${e[1]}</b><span>• ${e[3]}</span><span>• Rest ${e[2]}</span></div>${last?`<div class="exercise-last has-log">Last: ${last.kg||'—'} kg × ${last.reps||'—'}${last.rir!==''&&last.rir!=null?` • RIR ${last.rir}`:''}</div>`:`<div class="exercise-last">Tap for technique, cues & logging</div>`}</div><div class="exercise-arrow">›</div></div>`}).join("")}</div><div class="workout-note">TAP ANY EXERCISE → TECHNIQUE • LAST PERFORMANCE • KG / REPS / RIR • SET TRACKING</div>`}
+function openExercise(i){const w=workouts[selected],e=w.ex[i],info=exerciseInfo[e[0]]||[e[3],e[4]||"Perform every repetition with a controlled tempo and keep the target muscle under tension.",e[1]],r=parseRange(e[1])||{sets:3,lo:8,hi:12},session=lastExerciseSession(e[0]),last=session[session.length-1];let sheet=document.getElementById("exerciseSheet"),existing=read("exerciseDraft",{})[e[0]]||[];const technique=`<strong>HOW TO PERFORM</strong>${info[1]}`;const cues=`<div class="form-cue-grid"><div class="form-cue"><span>CONTROL</span><b>Use a controlled eccentric and avoid bouncing or swinging.</b></div><div class="form-cue"><span>BREATHING</span><b>Brace before the hard part of the rep and keep the torso stable.</b></div></div>`;sheet.innerHTML=`<div class="exercise-sheet-panel" onclick="event.stopPropagation()"><div class="sheet-grab"></div><div class="sheet-head"><div><div class="sheet-kicker">${info[0].toUpperCase()}</div><div class="sheet-title">${e[0]}</div></div><button class="sheet-close" aria-label="Close exercise" onclick="closeExercise()">×</button></div><div class="sheet-info"><div><b>${r.sets}</b><span>Sets</span></div><div><b>${r.lo}–${r.hi}</b><span>Target reps</span></div><div><b>${e[2]}</b><span>Rest</span></div></div><div class="sheet-instruction">${technique}${cues}</div><div class="sheet-section"><div class="section-head"><label>LAST PERFORMANCE</label>${session.length?`<button class="ghost-small" onclick="prefillLast(${i})">Use last loads</button>`:''}</div><div class="sheet-last">${session.length?`<div class="last-session-grid">${session.map(x=>`<div><span>Set ${x.set||''}</span><b>${x.kg||'—'} kg × ${x.reps||'—'}</b>${x.rir!==''&&x.rir!=null?`<em>RIR ${x.rir}</em>`:''}</div>`).join('')}</div><small>${session[0].date} • ${session[0].title}</small>`:'No previous log. Start with a load you can perform for the target reps with about 1–2 RIR.'}</div></div><div class="sheet-section"><label>LOG EACH WORKING SET</label><div class="set-header"><span>SET</span><span>KG</span><span>REPS</span><span>RIR</span><span>DONE</span></div>${Array.from({length:r.sets},(_,j)=>{const d=existing[j]||{};return `<div class="set-row"><span>${j+1}</span><input id="setkg${j}" type="number" inputmode="decimal" step="0.5" value="${d.kg||''}" placeholder="0"><input id="setreps${j}" type="number" inputmode="numeric" min="0" value="${d.reps||''}" placeholder="0"><input id="setrir${j}" type="number" inputmode="numeric" min="0" max="5" value="${d.rir||''}" placeholder="1–2"><button class="set-check" id="setcheck${j}" aria-label="Complete set ${j+1}" onclick="toggleSetDone(${j})">✓</button></div>`}).join('')}<div class="rest-strip"><span>Recommended rest</span><b>${e[2]}</b></div><div class="sheet-actions"><button onclick="closeExercise()">Cancel</button><button class="primary" onclick="saveExerciseSets(${i})">Save exercise</button></div></div></div>`;sheet.onclick=closeExercise;requestAnimationFrame(()=>sheet.classList.add("open"))}
+function toggleSetDone(i){const b=document.getElementById("setcheck"+i);b.classList.toggle("done")}
+function closeExercise(){const s=document.getElementById("exerciseSheet");if(s)s.classList.remove("open")}
+function saveExerciseSets(i){const w=workouts[selected],e=w.ex[i],r=parseRange(e[1])||{sets:3},h=read("exerciseHistory",{});h[e[0]]=h[e[0]]||[];const now=Date.now();let saved=0;for(let j=0;j<r.sets;j++){const kg=document.getElementById("setkg"+j)?.value,reps=document.getElementById("setreps"+j)?.value,rir=document.getElementById("setrir"+j)?.value;if(kg||reps){h[e[0]].push({date:todayKey(),kg,reps,rir,title:w.title,set:j+1,ts:now});saved++}}store("exerciseHistory",h);const draft=read("exerciseDraft",{});delete draft[e[0]];store("exerciseDraft",draft);closeExercise();renderWorkout();toast(saved?`${e[0]} saved`:'Nothing to save')}
+function startSession(){const w=workouts[selected];document.getElementById("session").innerHTML=`<div class="top"><div><div class="eyebrow">${selected}</div><div class="title">${w.title}</div></div></div><div class="card"><div class="small">WORKOUT MODE</div><div class="timer" id="timer">01:30</div><button class="timerbtn" onclick="startTimer()">Start rest timer</button></div><div class="card"><h3>Log as you go</h3><div class="notice">Open each exercise from the Workout tab to record its working sets. Finish the session after your final movement.</div></div><div class="card"><button class="cta" onclick="finishWorkout()">Finish workout ✓</button></div>`;show("session")}
+let timerId;function startTimer(){clearInterval(timerId);let n=90,e=document.getElementById("timer");timerId=setInterval(()=>{n--;e.textContent=`${String(Math.floor(n/60)).padStart(2,"0")}:${String(n%60).padStart(2,"0")}`;if(n<=0){clearInterval(timerId);navigator.vibrate?.([200,100,200]);toast("Rest complete")}},1000)}
+function finishWorkout(){const w=workouts[selected],arr=read("workouts",[]);arr.push({date:todayKey(),title:w.title});store("workouts",arr);const st=state();st.tasks[1]=true;saveState(st);document.getElementById("session").innerHTML=`<div class="top"><div><div class="eyebrow">WORKOUT COMPLETE</div><div class="title">Session saved</div></div></div><div class="hero"><span class="pill">${w.title.toUpperCase()}</span><h2>Good work.</h2><p>Your exercise logs are saved on this device and will be shown next time.</p></div><div class="card"><button class="cta" onclick="show('workout');renderWorkout()">Back to Workout →</button></div>`;show("session")}
+function weekStart(){const d=new Date(),diff=(d.getDay()+6)%7;d.setDate(d.getDate()-diff);d.setHours(0,0,0,0);return d}
+function archiveToday(){const s=state(),td=tasksData(),hist=read("dailyHistory",{});hist[todayKey()]={protein:s.protein||0,water:s.water||0,kcal:s.kcal||0,done:td.filter((_,i)=>s.tasks[i]).length,total:td.length};store("dailyHistory",hist)}
+function weekStats(){archiveToday();const start=weekStart(),hist=read("dailyHistory",{}),w=read("workouts",[]);let pd=0,wd=0,done=0,total=0;for(let i=0;i<7;i++){const d=new Date(start);d.setDate(start.getDate()+i);if(d>new Date())continue;const x=hist[d.toISOString().slice(0,10)];if(x){if(x.protein>=120)pd++;if(x.water>=2.4)wd++;done+=x.done||0;total+=x.total||8}}const wc=w.filter(x=>new Date(x.date)>=start).length;const score=Math.round((Math.min(wc,4)/4*.35+pd/7*.25+wd/7*.2+(total?done/total:0)*.2)*100);return{pd,wd,done,total,wc,score}}
+function renderProgressMini(){const s=weekStats();document.getElementById("weekWorkouts").textContent=`${Math.min(s.wc,4)}/4`;document.getElementById("weekProtein").textContent=`${s.pd}/7`;document.getElementById("weekWater").textContent=`${s.wd}/7`;document.getElementById("weekTasks").textContent=`${s.total?Math.round(s.done/s.total*100):0}%`;document.getElementById("scorePill").textContent=`${s.score}%`}
+function renderWeight(){const a=read("weights",[]);document.getElementById("weightHistory").innerHTML=a.slice(-7).reverse().map(x=>`<div class="historyrow"><span>${x.date}</span><b>${(+x.v).toFixed(1)} kg</b></div>`).join("");if(a.length>1){const first=+a[Math.max(0,a.length-7)].v,last=+a.at(-1).v;document.getElementById("weightTrend").textContent=`Trend: ${last-first>=0?"+":""}${(last-first).toFixed(1)} kg across recent logs.`}else document.getElementById("weightTrend").textContent="Log your weight at the same time for a more reliable trend."}
+function addWeight(){const v=+document.getElementById("weightInput").value;if(!v)return;const a=read("weights",[]);a.push({date:todayKey(),v});store("weights",a);document.getElementById("weightInput").value="";renderGeneral();toast("Weight saved")}
+function weeklyReviewText(s){if(s.score>=85)return"Excellent week. Keep the pace and avoid changing what already works.";if(s.score>=70)return"Good week. Pick one weakness to improve instead of changing everything at once.";if(s.score>=50)return"Good foundation, but consistency is slipping. Priority: training, protein and sleep.";return"Focus on the basics. Small daily actions beat drastic changes."}
+function renderWeeklyReview(){const s=weekStats();document.getElementById("reviewScore").textContent=`${s.score}%`;document.getElementById("weeklyReview").textContent=weeklyReviewText(s)}
+function renderProgressPage(){const s=weekStats();document.getElementById("progress").innerHTML=`<div class="top"><div><div class="eyebrow">ANALYTICS</div><div class="title">Progress</div></div></div><div class="hero"><span class="pill">WEEKLY SCORE</span><h2>${s.score}% consistency</h2><p>${weeklyReviewText(s)}</p></div><div class="grid"><div class="metric"><div class="num">${s.wc}</div><div class="label">workouts</div></div><div class="metric"><div class="num">${s.pd}/7</div><div class="label">protein days</div></div><div class="metric"><div class="num">${s.wd}/7</div><div class="label">water days</div></div><div class="metric"><div class="num">${s.total?Math.round(s.done/s.total*100):0}%</div><div class="label">tasks</div></div></div><div class="card"><h3>Weight</h3>${weightChart()}</div><div class="card"><h3>Personal Bests</h3>${pbs()}</div><div class="card"><h3>What to watch</h3><div class="notice">Do not chase a max every workout. Aim for stable reps, 1–2 RIR and gradual load increases.</div></div>`}
+function weightChart(){const a=read("weights",[]).slice(-14);if(!a.length)return`<div class="small">Not enough data yet.</div>`;const vals=a.map(x=>+x.v),min=Math.min(...vals),max=Math.max(...vals),span=max-min||1;return`<div class="chart"><div class="bars">${a.map((x,i)=>`<div class="barcol"><div class="bar" style="height:${15+(+x.v-min)/span*100}px"></div><div class="barlabel">${x.date.slice(5)}</div></div>`).join("")}</div></div><div class="small" style="margin-top:8px">Last: ${vals.at(-1).toFixed(1)} kg • range ${min.toFixed(1)}–${max.toFixed(1)} kg</div>`}
+function pbs(){const h=read("exerciseHistory",{}),rows=[];Object.entries(h).forEach(([name,a])=>a.forEach(x=>{if(x.kg&&x.reps){const score=+x.kg*+x.reps;const old=rows.find(r=>r.name===name);if(!old||score>old.score)rows.splice(rows.indexOf(old),old?1:0,{name,score,kg:x.kg,reps:x.reps,date:x.date})}}));return rows.slice(0,20).map(x=>`<div class="pb"><b>${x.name}</b><span>${x.kg} kg × ${x.reps}<br>${x.date}</span></div>`).join("")||`<div class="small">Log your first workouts to see Personal Bests.</div>`}
+function addSleep(){const v=+document.getElementById("sleepInput").value;if(!v)return;const a=read("sleep",[]);a.push({date:todayKey(),v});store("sleep",a);document.getElementById("sleepInput").value="";renderSleep();toast("Sleep saved")}
+function renderSleep(){const a=read("sleep",[]),l=a.slice(-7),avg=l.length?l.reduce((s,x)=>s+x.v,0)/l.length:0;document.getElementById("sleepScore").textContent=avg?`${avg.toFixed(1)} h avg`:"No data";document.getElementById("sleepHistory").innerHTML=l.reverse().map(x=>`<div class="historyrow"><span>${x.date}</span><b>${(+x.v).toFixed(1)} h</b></div>`).join("")}
+function renderNotificationUI(){const on=read("notificationsEnabled",false),rem=read("remindersEnabled",true);document.getElementById("notifyToggle").classList.toggle("on",on);document.getElementById("reminderToggle").classList.toggle("on",rem)}
+async function toggleNotifications(){if(!("Notification"in window)){toast("This browser does not support notifications");return}if(Notification.permission==="denied"){toast("Notifications are blocked by the browser");return}const p=await Notification.requestPermission();if(p==="granted"){store("notificationsEnabled",true);toast("Notifications enabled ✓")}else{store("notificationsEnabled",false);toast("Notifications were not granted")}renderNotificationUI()}
+function toggleReminderSetting(){store("remindersEnabled",!read("remindersEnabled",true));renderNotificationUI();toast(read("remindersEnabled",true)?"Reminders are enabled":"Reminders are disabled")}
+function notifyIfDue(){if(!read("notificationsEnabled",false)||!read("remindersEnabled",true)||!("Notification"in window)||Notification.permission!=="granted")return;const n=currentNext();if(!n.time)return;const key=todayKey()+"-"+n.time;if(Math.abs(nowMin()-tmin(n.time))>1)return;if(read("lastNotification","")===key)return;new Notification("My Routine",{body:`${n.time} — ${n.label}`});store("lastNotification",key)}
+document.body.dataset.screen="general";document.getElementById("general")?.classList.add("screen-lux");
+renderGeneral();renderMeals();renderWorkout();renderSleep();
+setInterval(()=>{renderGeneral();notifyIfDue()},60000);
+</script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', async () => {
+    try {
+      const registration = await navigator.serviceWorker.register('./sw-v14-6-3.js?v=14.6.3', {updateViaCache:'none'});
+
+      const showUpdate = () => {
+        if (document.getElementById('updateBanner')) return;
+        const banner = document.createElement('div');
+        banner.id = 'updateBanner';
+        banner.innerHTML = `
+          <div class="updateIcon">↻</div>
+          <div class="updateCopy">
+            <strong>New version available</strong>
+            <span>My Routine is ready to update.</span>
+          </div>
+          <button id="updateNow">Update</button>
+        `;
+        document.body.appendChild(banner);
+
+        document.getElementById('updateNow').onclick = () => {
+          const worker = registration.waiting;
+          if (worker) worker.postMessage({ type: 'SKIP_WAITING' });
+          else window.location.reload();
+        };
+      };
+
+      if (registration.waiting) showUpdate();
+
+      registration.addEventListener('updatefound', () => {
+        const worker = registration.installing;
+        if (!worker) return;
+        worker.addEventListener('statechange', () => {
+          if (worker.state === 'installed' && navigator.serviceWorker.controller) {
+            showUpdate();
+          }
+        });
+      });
+
+      navigator.serviceWorker.addEventListener('controllerchange', () => {
+        if (!window.__myRoutineReloading) {
+          window.__myRoutineReloading = true;
+          window.location.reload();
+        }
+      });
+
+      // Check periodically while the app is open.
+      registration.update().catch(() => {});
+      setInterval(() => registration.update().catch(() => {}), 60 * 1000);
+    } catch (e) {
+      console.warn('Service worker registration failed', e);
+    }
+  });
+}
+</script>
+<script>
+(function(){
+ const R=(k,f)=>{try{let v=localStorage.getItem(k);return v===null?f:JSON.parse(v)}catch(e){return f}};
+ function coach(){
+  const q=id=>document.getElementById(id); if(!q('coachScoreNum'))return;
+  const w=R('workouts',[]),sl=R('sleep',[]),week=Date.now()-604800000;
+  const recent=w.filter(x=>{let t=new Date(x.date||0).getTime();return Number.isFinite(t)&&t>=week});
+  const consistency=Math.min(100,Math.round(recent.length/4*100));
+  const avg=sl.length?sl.slice(-7).reduce((a,x)=>a+(+x.v||0),0)/Math.min(7,sl.length):null;
+  const sleepScore=avg==null?72:Math.max(35,Math.min(100,avg/8*100));
+  const score=Math.max(35,Math.min(100,Math.round(Math.min(100,recent.length*25)*.38+sleepScore*.32+consistency*.30)));
+  q('coachScoreNum').textContent=score;q('coachRing').style.setProperty('--score',score+'%');
+  q('coachState').textContent=score>=72?'Ready to train':score>=55?'Train with control':'Take it easier';
+  q('coachReason').textContent=score>=72?'Your current signals support a productive session.':score>=55?'Keep 1–2 reps in reserve and focus on quality.':'Recovery signals are below your normal baseline.';
+  q('coachTraining').textContent=recent.length+'/4 sessions';q('coachRecovery').textContent=score>=72?'Good':score>=55?'Moderate':'Low';q('coachConsistency').textContent=consistency+'%';
+  let insight=recent.length>=3?'You are building a consistent training rhythm. Keep progressive overload controlled.':recent.length?'You have started the week. Prioritize the next planned session over extra volume.':'Your coach is ready. Complete your first session to start building a personal baseline.';
+  if(avg!==null&&avg<6.5)insight='Your logged sleep is below 6.5h on average. Prioritize recovery before pushing intensity.';
+  q('coachInsightText').textContent=insight;
+ }
+ window.addEventListener('load',()=>{setTimeout(coach,100);setTimeout(coach,700)});
+})();
+</script>
+<script id="v14-luxury-logic">
+(function(){
+ const R=(k,f)=>{try{let v=localStorage.getItem(k);return v===null?f:JSON.parse(v)}catch(e){return f}};
+ const $=id=>document.getElementById(id);
+ function n(keys,f=0){for(const k of keys){const v=localStorage.getItem(k);if(v!==null&&v!==''&&!isNaN(Number(v)))return Number(v)}return f}
+ function coach(){
+  if(!$('v133CoachScore'))return;
+  const h=R('workoutHistory',R('workouts',[])),sl=R('sleep',[]),week=Date.now()-7*86400000;
+  const recent=h.filter(x=>{let t=new Date(x.date||x.timestamp||0).getTime();return Number.isFinite(t)&&t>=week});
+  const training=Math.min(4,recent.length), consistency=Math.min(100,Math.round(training/4*100));
+  const avg=sl.length?sl.slice(-7).reduce((a,x)=>a+(+x.v||0),0)/Math.min(7,sl.length):null;
+  const sleepScore=avg==null?68:Math.max(35,Math.min(100,avg/8*100));
+  const score=Math.max(35,Math.min(100,Math.round(Math.min(100,training*25)*.42+sleepScore*.33+consistency*.25)));
+  $('v133CoachScore').textContent=score; $('todayScoreRing').style.setProperty('--score',score+'%');
+  $('v133CoachState').textContent=score>=72?'READY':score>=55?'CONTROL':'RECOVER';
+  const rec=score>=72?'Good':score>=55?'Moderate':'Low'; $('v133Recovery').textContent=rec.toUpperCase(); $('v133Recovery2').textContent=rec;
+  $('v133Consistency').textContent=consistency+'%'; $('v133CoachSessions').textContent=training+' / 4';
+  $('v133Insight').textContent=score>=72?'Your body is ready for normal training intensity.':score>=55?'Keep 1–2 RIR and prioritize quality over volume.':'Recovery is the priority today. Reduce intensity if needed.';
+ }
+ function render(){
+  if(!$('v133Date'))return;
+  const d=new Date(), dn=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'], mn=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  $('v133Date').textContent=dn[d.getDay()]+' · '+d.getDate()+' '+mn[d.getMonth()];
+  const p={Monday:['Chest, Back, Shoulders & Arms','19:00 · ~60 min','Chest · Back · Shoulders · Biceps · Triceps'],Tuesday:['Legs, Glutes & Core','19:00 · ~60 min','Legs · Hamstrings · Glutes · Calves · Core'],Thursday:['Chest, Back, Shoulders & Arms','19:00 · ~60 min','Upper Chest · Back · Shoulders · Biceps · Triceps'],Saturday:['Legs, Glutes, Calves & Core','19:00 · ~60 min','Legs · Hamstrings · Glutes · Calves · Core']};
+  const plan=p[dn[d.getDay()]]||['Recovery','Walk · mobility · rest','Walk · mobility · light recovery'];
+  $('v133WorkoutName').textContent=plan[0]; $('v133WorkoutMeta').textContent=plan[1]; $('v133WorkoutFocus').textContent=plan[2];
+  const daily=typeof state==='function'?state():{protein:0,water:0,meals:{}}; const protein=Number(daily.protein)||0,water=Number(daily.water)||0;
+  $('v133Protein').textContent=Math.round(protein)+' / 150 g'; $('v133Water').textContent=water.toFixed(1)+' / 2.7 L';
+  $('v133ProteinBar').style.width=Math.min(100,protein/150*100)+'%'; $('v133WaterBar').style.width=Math.min(100,water/2.7*100)+'%';
+  const sl=R('sleep',[]), today=todayKey(), todaySleep=sl.filter(x=>x.date===today).at(-1), sleep=todaySleep?+todaySleep.v:0;
+  $('v133Sleep').textContent=sleep?sleep.toFixed(1)+' h':'Not logged'; $('v133SleepBar').style.width=sleep?Math.min(100,sleep/8*100)+'%':'0%';
+  const h=R('workoutHistory',R('workouts',[])), week=Date.now()-7*86400000, recent=h.filter(x=>new Date(x.date||x.timestamp||0).getTime()>=week), training=Math.min(4,recent.length);
+  const nutrition=Object.values(daily.meals||{}).filter(Boolean).length>=5?1:0;
+  const waterDay=water>=2.7?1:0, sleepDay=sleep>=7?1:0;
+  const pct=Math.round(training/4*40+nutrition/1*20+waterDay/1*20+sleepDay/1*20);
+  $('v133WeekTraining').textContent=training+' / 4'; $('v133WeekNutrition').textContent=nutrition+' / 7'; $('v133WeekWater').textContent=waterDay+' / 7'; $('v133WeekSleep').textContent=sleepDay+' / 7'; $('v133WeekPercent').textContent=pct+'%'; $('v133WeekBar').style.width=pct+'%';
+  const bars=document.querySelectorAll('.week-bars em'); if(bars[0])bars[0].style.width=(training/4*100)+'%';if(bars[1])bars[1].style.width=(nutrition*100)+'%';if(bars[2])bars[2].style.width=(waterDay*100)+'%';if(bars[3])bars[3].style.width=(sleepDay*100)+'%';
+  const ws=R('weights',[]),weight=ws.length?Number(ws.at(-1).v):n(['currentWeight','weight']); const start=ws.length?Number(ws[0].v):n(['startingWeight','initialWeight']);
+  $('v133Weight').textContent=weight?weight.toFixed(1)+' kg':'— kg'; $('v133WeightChange').textContent=start&&weight?((weight-start>=0?'+':'')+(weight-start).toFixed(1)+' kg since start'):'No change recorded';
+  const pPct=Math.round(Math.min(1,protein/150)*100), wPct=Math.round(Math.min(1,water/2.7)*100), sPct=sleep?Math.round(Math.min(1,sleep/8)*100):null;
+  if($('v133ProteinPct'))$('v133ProteinPct').textContent=pPct+'%'; if($('v133WaterPct'))$('v133WaterPct').textContent=wPct+'%'; if($('v133SleepPct'))$('v133SleepPct').textContent=sPct===null?'—':sPct+'%';
+  if($('v133WeightBadge'))$('v133WeightBadge').textContent=start&&weight?(weight-start>=0?'+'+((weight-start).toFixed(1))+' KG':'−'+Math.abs(weight-start).toFixed(1)+' KG'):'TREND';
+  const namesBG=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],monthsBG=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  $('v133Date').textContent=namesBG[d.getDay()]+' · '+d.getDate()+' '+monthsBG[d.getMonth()];
+  // Upcoming meal: show the next planned meal based on local time.
+  if(typeof meals!=='undefined' && meals.length){
+    const nowM=d.getHours()*60+d.getMinutes();
+    let idx=meals.findIndex(m=>{const [hh,mm]=m[0].split(':').map(Number);return hh*60+mm>nowM;});
+    if(idx<0) idx=0; // after the final meal, roll to tomorrow's breakfast
+    const m=meals[idx];
+    const time=m[0], name=m[1], desc=m[2], kcal=m[3];
+    if($('todayMealIndex'))$('todayMealIndex').textContent=String(idx+1).padStart(2,'0');
+    if($('todayMealLabel'))$('todayMealLabel').textContent=idx===0 && nowM>=22*60+30?'TOMORROW · BREAKFAST':'NEXT MEAL';
+    if($('todayMealName'))$('todayMealName').textContent=name;
+    if($('todayMealTime'))$('todayMealTime').textContent=time+' · '+kcal;
+    if($('todayMealDesc'))$('todayMealDesc').textContent=desc;
+  }
+
+  const data=(ws||[]).map(x=>Number(x.v)).filter(Number.isFinite).slice(-10);
+  if(data.length>=2 && $('v133Spark')){const min=Math.min(...data),max=Math.max(...data),span=Math.max(.1,max-min);const pts=data.map((v,i)=>{const x=i/(data.length-1)*360;const y=72-((v-min)/span)*54;return x.toFixed(1)+','+y.toFixed(1)}).join(' ');$('v133Spark').setAttribute('points',pts)}
+  coach();
+ }
+ window.renderV133=render; document.addEventListener('DOMContentLoaded',()=>{render();setTimeout(render,250);}); setTimeout(render,500);
+})();
+</script>
+<script id="luxury-interactions">
+(function(){
+ const canvas=document.getElementById('ambientCanvas'),ctx=canvas&&canvas.getContext('2d');
+ if(ctx){let w,h,dpr,pts=[];function resize(){dpr=Math.min(2,devicePixelRatio||1);w=innerWidth;h=innerHeight;canvas.width=w*dpr;canvas.height=h*dpr;canvas.style.width=w+'px';canvas.style.height=h+'px';ctx.setTransform(dpr,0,0,dpr,0,0);pts=Array.from({length:Math.min(34,Math.floor(w/13))},()=>({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.2+.25,v:Math.random()*.18+.04,a:Math.random()*.25+.05}))}function tick(t){ctx.clearRect(0,0,w,h);for(const p of pts){p.y-=p.v;if(p.y<-5)p.y=h+5;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=`rgba(215,165,94,${p.a})`;ctx.fill()}requestAnimationFrame(tick)}addEventListener('resize',resize);resize();requestAnimationFrame(tick)}
+ document.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;b.classList.remove('press');void b.offsetWidth;b.classList.add('press');setTimeout(()=>b.classList.remove('press'),220)});
+ if('IntersectionObserver'in window){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('seen');io.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll('.reveal').forEach(e=>io.observe(e))}
+ window.addEventListener('load',()=>{document.querySelectorAll('.reveal').forEach((e,i)=>e.style.setProperty('--delay',Math.min(i*.035,.28)+'s'))});
+})();
+</script>
+<script id="v14-1-motion">
+(function(){
+  const card=document.querySelector('.cinema-card');
+  if(!card || !window.matchMedia || !matchMedia('(pointer:fine)').matches) return;
+  let raf=0;
+  card.addEventListener('pointermove',e=>{
+    const r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+    cancelAnimationFrame(raf);raf=requestAnimationFrame(()=>{card.style.setProperty('--px',(x*8).toFixed(2)+'px');card.style.setProperty('--py',(y*6).toFixed(2)+'px')});
+  });
+  card.addEventListener('pointerleave',()=>{card.style.setProperty('--px','0px');card.style.setProperty('--py','0px')});
+  const orb=card.querySelector('.cinema-orb'); if(orb) orb.style.transform='translate3d(var(--px,0px),var(--py,0px),0)';
+  const obs=new MutationObserver(()=>{if(orb)orb.style.transform='translate3d(var(--px,0px),var(--py,0px),0)'});obs.observe(card,{attributes:true});
+})();
+</script>
+</body>
+</html>
+
