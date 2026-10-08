@@ -7,8 +7,8 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>My Routine</title>
-<link rel="manifest" href="manifest.json?v=14.6.5">
-<link rel="apple-touch-icon" sizes="192x192" href="apple-touch-icon.png?v=14.6.5">
+<link rel="manifest" href="manifest.json?v=14.6.6">
+<link rel="apple-touch-icon" sizes="192x192" href="apple-touch-icon.png?v=14.6.6">
 <style id="my-routine-unified-css">
 :root{--bg:#0b0d10;--surface:#15181d;--surface2:#1c2027;--line:#2a3038;--text:#f5f7fa;--muted:#929aa6;--green:#d7a55e;--green2:#f0c67d;--orange:#ffb86b;--blue:#7db7ff;--red:#ff7d88;--purple:#b99cff}
 *{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif}
@@ -1450,7 +1450,7 @@ setInterval(()=>{renderGeneral();notifyIfDue()},60000);
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', async () => {
     try {
-      const registration = await navigator.serviceWorker.register('./sw-v14-6-5.js?v=14.6.5', {updateViaCache:'none'});
+      const registration = await navigator.serviceWorker.register('./sw-v14-6-6.js?v=14.6.6', {updateViaCache:'none'});
 
       const showUpdate = () => {
         if (document.getElementById('updateBanner')) return;
