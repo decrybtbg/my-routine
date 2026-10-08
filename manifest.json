@@ -1,11 +1,10 @@
 {
   "name": "My Routine",
   "short_name": "Routine",
-  "description": "Личен режим за сън, хранене, тренировки и прогрес.",
   "start_url": "./",
   "display": "standalone",
-  "background_color": "#0f1115",
-  "theme_color": "#111318",
+  "background_color": "#0b0d10",
+  "theme_color": "#0b0d10",
   "orientation": "portrait",
   "icons": [
     {
