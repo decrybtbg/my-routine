@@ -96,6 +96,13 @@ body{padding-bottom:98px}button,input{font:inherit}button{cursor:pointer}
 .coachAction{width:100%;display:flex;justify-content:space-between;align-items:center;margin-top:12px;padding:13px 14px;border-radius:17px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.075);color:#fff;text-align:left;cursor:pointer;transition:.2s}.coachAction:active{transform:scale(.98)}.coachAction small{display:block;color:#818b87;font-size:9px;margin-bottom:3px}.coachAction strong{font-size:13px}.coachAction .arrow{font-size:18px;color:#a0ffc2}.sectionTitle{display:flex;align-items:center;justify-content:space-between;margin:22px 2px 9px}.sectionTitle h3{margin:0;font-size:14px}.sectionTitle span{font-size:9px;color:#707a76}
 </style>
 </style>
+<style>
+.smartRoutine{position:relative;overflow:hidden;padding:17px;border-radius:24px;background:linear-gradient(145deg,rgba(22,31,27,.96),rgba(11,16,14,.96));border:1px solid rgba(160,255,194,.11);box-shadow:0 18px 48px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.04)}
+.smartRoutine:before{content:"";position:absolute;width:180px;height:180px;right:-90px;top:-90px;background:radial-gradient(circle,rgba(160,255,194,.11),transparent 68%);pointer-events:none}
+.smartHead{display:flex;justify-content:space-between;align-items:center;gap:10px}.smartHead h3{margin:0;font-size:14px}.smartLive{font-size:8px;letter-spacing:1px;font-weight:900;color:#9dffbe;padding:6px 8px;border-radius:9px;background:rgba(160,255,194,.07);border:1px solid rgba(160,255,194,.12)}
+.smartMain{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:14px}.smartMain strong{display:block;font-size:18px;letter-spacing:-.4px}.smartMain p{margin:4px 0 0;color:#8e9993;font-size:10px;line-height:1.45}.smartTime{text-align:right;flex:none}.smartTime b{font-size:20px}.smartTime span{display:block;color:#77827d;font-size:9px;margin-top:2px}.smartStats{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:13px}.smartStat{padding:10px;border-radius:15px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.05)}.smartStat small{display:block;color:#707b75;font-size:8px;margin-bottom:3px}.smartStat b{font-size:12px}.smartRoutineAction{margin-top:11px;width:100%;padding:11px 13px;border:1px solid rgba(160,255,194,.13);border-radius:15px;background:rgba(160,255,194,.055);color:#eafff1;font-weight:800;text-align:left;cursor:pointer}.smartRoutineAction:active{transform:scale(.985)}
+@media(max-width:420px){.smartRoutine{padding:15px}.smartMain strong{font-size:16px}.smartTime b{font-size:18px}}
+</style>
 </head>
 <body>
 <div class="app">
@@ -114,7 +121,14 @@ body{padding-bottom:98px}button,input{font:inherit}button{cursor:pointer}
 <div class="insight"><div class="insightIcon">✦</div><p><strong>Coach insight</strong><br><span id="coachInsightText">Complete a few sessions and daily check-ins to unlock personalized recommendations.</span></p></div>
 <button class="coachAction" id="coachAction"><span><small>NEXT ACTION</small><strong>Open today's plan</strong></span><span class="arrow">›</span></button>
 
-<div class="card"><div class="sectionhead"><h3>Сега</h3><span class="pill" id="statusPill">—</span></div><div class="next" id="nextAction"></div></div>
+<div class="sectionTitle"><h3>Smart Routine</h3><span>YOUR NEXT MOVE</span></div>
+<div class="smartRoutine" id="smartRoutine">
+  <div class="smartHead"><h3 id="smartHeadline">Зареждане…</h3><span class="smartLive">LIVE</span></div>
+  <div class="smartMain"><div><strong id="smartActionTitle">Следващо действие</strong><p id="smartActionDesc">Приложението определя най-полезната следваща стъпка.</p></div><div class="smartTime"><b id="smartActionTime">—</b><span id="smartActionLabel">NEXT</span></div></div>
+  <div class="smartStats"><div class="smartStat"><small>PROTEIN</small><b id="smartProtein">0 / 150 g</b></div><div class="smartStat"><small>WATER</small><b id="smartWater">0 / 2.7 L</b></div><div class="smartStat"><small>SLEEP</small><b id="smartSleep">—</b></div></div>
+  <button class="smartRoutineAction" id="smartRoutineAction">Отвори следващото действие →</button>
+</div>
+
 <div class="grid">
 <div class="metric"><div class="num" id="generalWeight">72.0</div><div class="label">kg • текущо тегло</div></div>
 <div class="metric"><div class="num"><span id="proteinNow">0</span> g</div><div class="label">протеин • 150 g</div><div class="progress"><div class="fill" id="proteinFill"></div></div></div>
@@ -159,7 +173,7 @@ body{padding-bottom:98px}button,input{font:inherit}button{cursor:pointer}
 <div class="sectionTitle"><h3>Известия</h3><span>NOTIFICATIONS</span></div>
 <div class="card settingsCard"><div class="setting"><div><b>Push notifications</b><div class="small">Напомняния за следващото действие.</div></div><button class="toggle" id="notifyToggle" onclick="toggleNotifications()"><i></i></button></div><div class="setting"><div><b>Автоматични напомняния</b><div class="small">Използват локалните часове в приложението.</div></div><button class="toggle on" id="reminderToggle" onclick="toggleReminderSetting()"><i></i></button></div></div>
 <div class="sectionTitle"><h3>Приложение</h3><span>APP</span></div>
-<div class="card settingsCard"><div class="setting"><div><b>Версия</b><div class="small">Автоматичните обновявания са активни.</div></div><span class="versionBadge" id="appVersion">V12.2 • 2026.10.08</span></div><div class="setting"><div><b>Последна проверка</b><div class="small">Update механизмът проверява при отваряне и периодично.</div></div><span class="statusDot">●</span></div></div>
+<div class="card settingsCard"><div class="setting"><div><b>Версия</b><div class="small">Автоматичните обновявания са активни.</div></div><span class="versionBadge" id="appVersion">V13 • 2026.10.08</span></div><div class="setting"><div><b>Последна проверка</b><div class="small">Update механизмът проверява при отваряне и периодично.</div></div><span class="statusDot">●</span></div></div>
 <div class="card settingsCard"><div class="notice">Ако има нова версия, ще видиш банер „Нова версия е налична“ и приложението ще се обнови с един бутон.</div></div>
 </section>
 
@@ -196,7 +210,22 @@ function focus(){const w=workouts[todayName];if(w)return["ТРЕНИРОВКА",
 function tasksData(){return[["08:00","Ставане + вода"],["08:20","Закуска"],["09:00","Работа"],["12:30","Обяд"],["16:30","Междинно хранене"],["18:30","Предтренировъчно хранене"],["19:00",workouts[todayName]?"Тренировка":"Разходка / мобилност"],["20:30","Вечеря"]]}
 function state(){let s=read("daily",{date:todayKey(),tasks:{},meals:{},water:0,protein:0,kcal:0});if(s.date!==todayKey())s={date:todayKey(),tasks:{},meals:{},water:0,protein:0,kcal:0};return s}function saveState(s){store("daily",s)}
 function currentNext(){const t=nowMin(),s=state(),a=tasksData().map((x,i)=>({time:x[0],label:x[1],done:!!s.tasks[i],i})).filter(x=>tmin(x.time)>=t&&!x.done);const n=a[0]||tasksData().map((x,i)=>({time:x[0],label:x[1],done:!!s.tasks[i],i})).find(x=>!x.done);return n||{time:"Готово",label:"Основните задачи са изпълнени",done:true,i:null}}
-function renderGeneral(){document.getElementById("todayLabel").textContent=formatDate();document.getElementById("greeting").textContent=greeting();const w=workouts[todayName];document.getElementById("todayPlanTitle").textContent=w?w.title:"Почивен ден";document.getElementById("todayPlanDesc").textContent=w?`${w.focus} • ~50–60 мин • ${w.ex.length} упражнения`:"Възстановяване • разходка + мобилност";const n=currentNext();document.getElementById("nextAction").innerHTML=`<div class="nexticon">${n.label.includes("Тренировка")?"🏋️":n.label.includes("хран")||n.label.includes("Обяд")||n.label.includes("Закуска")?"🍽️":"✓"}</div><div><div class="nexttime">${n.time}</div><div class="nexttitle">${n.label}</div></div><button class="nextaction" onclick="completeNext()">Готово</button>`;document.getElementById("statusPill").textContent=n.done?"ГОТОВО":"СЛЕДВАЩО";const s=state(),td=tasksData(),done=td.filter((_,i)=>s.tasks[i]).length;document.getElementById("tasks").innerHTML=td.map((x,i)=>`<label class="task"><input class="check" type="checkbox" ${s.tasks[i]?"checked":""} onchange="toggleTask(${i},this.checked)"><div><div class="time">${x[0]}</div><div class="${s.tasks[i]?"done":""}">${x[1]}</div></div></label>`).join("");document.getElementById("doneCount").textContent=`${done}/${td.length}`;document.getElementById("activitySummary").textContent=`${done} от ${td.length}`;const p=Math.min(150,s.protein),water=Math.min(2.7,s.water);document.getElementById("proteinNow").textContent=Math.round(p);document.getElementById("proteinFill").style.width=`${p/150*100}%`;document.getElementById("waterNow").textContent=water.toFixed(2);document.getElementById("waterFill").style.width=`${water/2.7*100}%`;const ws=read("weights",[]);if(ws.length)document.getElementById("generalWeight").textContent=Number(ws.at(-1).v).toFixed(1);renderProgressMini();renderWeight();renderWeeklyReview();renderNotificationUI()}
+function smartRoutine(){
+ const s=state(), n=currentNext(), w=workouts[todayName];
+ const protein=Math.round(Math.min(150,s.protein)), water=Number(Math.min(2.7,s.water).toFixed(2));
+ const sleep=read("sleep",[]).at(-1);
+ const hour=new Date().getHours();
+ let headline="Днешният ти ритъм", title=n.label, desc="Следвай следващата стъпка, без да усложняваш деня.", time=n.time, label="NEXT";
+ if(n.i===null){headline="Денят е под контрол";title="Основните задачи са изпълнени";desc="Остават възстановяване, спокойна вечер и навреме сън.";time="✓";label="DONE";}
+ else if(w && n.label.includes("Тренировка")){headline="Време е за тренировка";title=w.title;desc=`${w.focus} • целта е качествена работа с 1–2 RIR.`;label="WORKOUT";}
+ else if(protein<110 && hour>=16){headline="Затвори протеиновата разлика";title=`Остават ${150-protein} g протеин`;desc="Избери следващото хранене с приоритет протеин.";time="NOW";label="NUTRITION";}
+ else if(water<1.5 && hour>=15){headline="Хидратацията изостава";title="Добави 250–500 ml вода";desc="Малка корекция сега ще направи вечерта по-лесна.";time="NOW";label="WATER";}
+ else if(hour>=22){headline="Премини към wind-down";title="Подготви се за сън";desc="Намали светлината и екраните, за да запазиш утрешната енергия.";time="23:30";label="SLEEP";}
+ document.getElementById("smartHeadline").textContent=headline;document.getElementById("smartActionTitle").textContent=title;document.getElementById("smartActionDesc").textContent=desc;document.getElementById("smartActionTime").textContent=time;document.getElementById("smartActionLabel").textContent=label;
+ document.getElementById("smartProtein").textContent=`${protein} / 150 g`;document.getElementById("smartWater").textContent=`${water.toFixed(2)} / 2.7 L`;document.getElementById("smartSleep").textContent=sleep?`${(+sleep.v).toFixed(1)} h`:(hour>=22?"Target 7.5 h":"Not logged");
+ const btn=document.getElementById("smartRoutineAction");btn.onclick=()=>{if(label==="WORKOUT"){show("workout");return}if(label==="NUTRITION"||label==="WATER"){show("nutrition");return}if(label==="SLEEP"){show("sleep");return}if(n.i!==null){completeNext();}};
+}
+function renderGeneral(){document.getElementById("todayLabel").textContent=formatDate();document.getElementById("greeting").textContent=greeting();const w=workouts[todayName];document.getElementById("todayPlanTitle").textContent=w?w.title:"Почивен ден";document.getElementById("todayPlanDesc").textContent=w?`${w.focus} • ~50–60 мин • ${w.ex.length} упражнения`:"Възстановяване • разходка + мобилност";const s=state(),td=tasksData(),done=td.filter((_,i)=>s.tasks[i]).length;document.getElementById("tasks").innerHTML=td.map((x,i)=>`<label class="task"><input class="check" type="checkbox" ${s.tasks[i]?"checked":""} onchange="toggleTask(${i},this.checked)"><div><div class="time">${x[0]}</div><div class="${s.tasks[i]?"done":""}">${x[1]}</div></div></label>`).join("");document.getElementById("doneCount").textContent=`${done}/${td.length}`;document.getElementById("activitySummary").textContent=`${done} от ${td.length}`;const p=Math.min(150,s.protein),water=Math.min(2.7,s.water);document.getElementById("proteinNow").textContent=Math.round(p);document.getElementById("proteinFill").style.width=`${p/150*100}%`;document.getElementById("waterNow").textContent=water.toFixed(2);document.getElementById("waterFill").style.width=`${water/2.7*100}%`;const ws=read("weights",[]);if(ws.length)document.getElementById("generalWeight").textContent=Number(ws.at(-1).v).toFixed(1);renderProgressMini();renderWeight();renderWeeklyReview();renderNotificationUI();smartRoutine()}
 function completeNext(){const n=currentNext();if(n.i==null)return;toggleTask(n.i,true);toast("Готово ✓")}
 function toggleTask(i,v){const s=state();s.tasks[i]=v;archiveToday();saveState(s);renderGeneral()}
 function renderMeals(){const s=state();document.getElementById("fullMeals").innerHTML=meals.map((m,i)=>`<div class="meal"><div class="mealrow"><input class="mealcheck" type="checkbox" ${s.meals[i]?"checked":""} onchange="toggleMeal(${i},this.checked)"><div style="flex:1"><div class="mealhead"><div class="mealname">${m[0]} · ${m[1]}</div><div class="kcal">${m[3]}</div></div><div class="small" style="margin-top:5px">${m[2]}</div><div class="tags"><span class="tag">${m[4]}</span></div></div></div></div>`).join("");const p=Math.min(150,s.protein),w=Math.min(2.7,s.water),d=meals.filter((_,i)=>s.meals[i]).length;document.getElementById("nutritionProtein").textContent=Math.round(p);document.getElementById("nutritionWater").textContent=w.toFixed(2);document.getElementById("mealsDone").textContent=`${d}/${meals.length}`;document.getElementById("waterBigFill").style.width=`${w/2.7*100}%`;renderCalorieAdvice()}
@@ -255,13 +284,13 @@ async function toggleNotifications(){if(!("Notification"in window)){toast("То�
 function toggleReminderSetting(){store("remindersEnabled",!read("remindersEnabled",true));renderNotificationUI();toast(read("remindersEnabled",true)?"Напомнянията са включени":"Напомнянията са изключени")}
 function notifyIfDue(){if(!read("notificationsEnabled",false)||!read("remindersEnabled",true)||!("Notification"in window)||Notification.permission!=="granted")return;const n=currentNext();const key=todayKey()+"-"+n.i+"-"+n.time;if(n.i==null)return;if(Math.abs(nowMin()-tmin(n.time))>1)return;if(read("lastNotification","")===key)return;new Notification("My Routine",{body:`${n.time} — ${n.label}`});store("lastNotification",key)}
 function refreshAll(){archiveToday();renderGeneral();renderMeals();renderWorkout();renderSleep();renderProgressPage()}
-renderGeneral();renderMeals();renderWorkout();renderSleep();setInterval(()=>{renderGeneral();notifyIfDue()},60000);
+renderGeneral();renderMeals();renderWorkout();renderSleep();setInterval(()=>{renderGeneral();notifyIfDue();smartRoutine()},60000);
 </script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', async () => {
     try {
-      const registration = await navigator.serviceWorker.register('./sw.js?v=12.2.0', {updateViaCache:'none'});
+      const registration = await navigator.serviceWorker.register('./sw.js?v=13.0.0', {updateViaCache:'none'});
 
       const showUpdate = () => {
         if (document.getElementById('updateBanner')) return;
