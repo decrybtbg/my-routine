@@ -986,44 +986,70 @@ button:disabled{cursor:default}
 @media(max-width:390px){.last-session-grid{grid-template-columns:1fr}.sheet-actions{position:sticky;bottom:0;padding-bottom:max(4px,env(safe-area-inset-bottom))}}
 
 /* =========================================================
-   V14.6.1 — WORKOUT UI POLISH
+   V14.6.2 — WORKOUT UI POLISH
    Final Workout-specific visual layer. No layout changes to
    the existing logging/details logic.
    ========================================================= */
+/* V14.6.2 — ultra-minimal centered day selector */
+#workout #days{margin:0 0 14px;}
 #workout .day-switcher{
-  margin:0 0 18px;
-  min-height:64px;
+  width:100%;
+  min-height:46px;
+  margin:0;
+  padding:0;
   display:grid;
-  grid-template-columns:44px minmax(0,1fr) 44px;
+  grid-template-columns:30px minmax(0,1fr) 30px;
   align-items:center;
-  gap:10px;
+  justify-items:center;
+  gap:4px;
+  background:transparent;
+  border:0;
+  box-shadow:none;
 }
 #workout .daynav{
-  width:44px;height:44px;border-radius:14px;
-  border:1px solid rgba(255,255,255,.075);
-  background:linear-gradient(145deg,#151a20,#0d1115);
-  color:#b9bec2;font-size:25px;line-height:1;
+  appearance:none;-webkit-appearance:none;
+  width:30px;height:34px;min-width:30px;
+  margin:0;padding:0;
+  border:0!important;
+  outline:0!important;
+  border-radius:0;
+  background:transparent!important;
+  box-shadow:none!important;
+  color:#858c91;
+  font-size:27px;font-weight:300;line-height:1;
   display:grid;place-items:center;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.035);
-  transition:transform .18s,border-color .18s,color .18s;
+  transition:color .16s ease,transform .16s ease;
 }
-#workout .daynav:active{transform:scale(.94)}
+#workout .daynav span{font-size:27px;font-weight:300;line-height:1;transform:translateY(-1px);}
+#workout .daynav:hover{color:var(--gold-hi);}
+#workout .daynav:active{transform:scale(.88);color:var(--gold-hi);}
 #workout .daycurrent{
-  min-width:0;text-align:center;
-  display:flex;flex-direction:column;align-items:center;
+  min-width:0;width:100%;max-width:none;
+  margin:0;padding:0;
+  border:0!important;border-radius:0;
+  background:transparent!important;box-shadow:none!important;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;line-height:1.1;
 }
-#workout .daylabel{
-  font-size:8px;letter-spacing:2px;color:var(--gold-hi);
-  font-weight:900;text-transform:uppercase;
-}
+#workout .daylabel{display:none;}
 #workout .dayname{
-  margin-top:4px;font-size:20px;line-height:1.1;
-  letter-spacing:-.55px;color:#f1f2f0;font-weight:820;
-  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;
+  display:block;width:100%;margin:0;
+  font-size:18px;line-height:1.15;
+  letter-spacing:-.2px;color:#f1f2f0;font-weight:820;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
 }
 #workout .daydate{
-  margin-top:4px;font-size:9px;color:#687178;
-  letter-spacing:.3px;
+  display:block;margin:3px 0 0;
+  font-size:9px;line-height:1.15;color:#737b82;
+  letter-spacing:.2px;
+  white-space:nowrap;
+}
+@media(max-width:390px){
+  #workout .day-switcher{grid-template-columns:28px minmax(0,1fr) 28px;gap:2px;min-height:44px;}
+  #workout .daynav{width:28px;height:32px;min-width:28px;}
+  #workout .daynav span{font-size:25px;}
+  #workout .dayname{font-size:17px;}
+  #workout .daydate{font-size:8px;}
 }
 
 #workout .workout-overview{
@@ -1294,7 +1320,7 @@ button:disabled{cursor:default}
   <div class="tab-section-title"><span>NOTIFICATIONS</span><h2>Stay on track</h2></div>
   <div class="premium-panel settings-list"><div class="setting-row"><div><b>Push notifications</b><span>Training and routine reminders.</span></div><button class="toggle" id="notifyToggle" onclick="toggleNotifications()"><i></i></button></div><div class="setting-row"><div><b>Automatic reminders</b><span>Uses the local times in the app.</span></div><button class="toggle on" id="reminderToggle" onclick="toggleReminderSetting()"><i></i></button></div></div>
   <div class="tab-section-title"><span>APP</span><h2>System</h2></div>
-  <div class="premium-panel settings-list"><div class="setting-row"><div><b>Version</b><span>Automatic updates are active.</span></div><span class="status-badge" id="appVersion">V14.6.1 • 2026.10.08</span></div><div class="setting-row"><div><b>Update status</b><span>The app checks for updates on launch.</span></div><span class="live-status">● Live</span></div></div>
+  <div class="premium-panel settings-list"><div class="setting-row"><div><b>Version</b><span>Automatic updates are active.</span></div><span class="status-badge" id="appVersion">V14.6.2 • 2026.10.08</span></div><div class="setting-row"><div><b>Update status</b><span>The app checks for updates on launch.</span></div><span class="live-status">● Live</span></div></div>
   <div class="premium-panel settings-note"><span class="panel-kicker">UPDATE SYSTEM</span><p>If a new version is available, an update banner will appear automatically.</p></div>
 </div></section>
 
@@ -1423,7 +1449,7 @@ setInterval(()=>{renderGeneral();notifyIfDue()},60000);
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', async () => {
     try {
-      const registration = await navigator.serviceWorker.register('./sw-v14-6.js?v=14.6.1', {updateViaCache:'none'});
+      const registration = await navigator.serviceWorker.register('./sw-v14-6-2.js?v=14.6.1', {updateViaCache:'none'});
 
       const showUpdate = () => {
         if (document.getElementById('updateBanner')) return;
