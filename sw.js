@@ -1,4 +1,4 @@
-const VERSION="14.2.0-20261008";
+const VERSION="14.2.2-20261008";
 const CACHE=`my-routine-${VERSION}`;
 const CORE=["./","./index.html","./manifest.json","./icon-192.png","./icon-512.png"];
 self.addEventListener("install",event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(CORE)).then(()=>self.skipWaiting()))});
